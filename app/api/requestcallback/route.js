@@ -6,11 +6,7 @@ export const runtime = "nodejs"; // 🚨 REQUIRED for nodemailer
 export async function POST(req) {
   const { name, surname, email, telephone } = await req.json();
 
-  console.log("SMTP_HOST:", process.env.SMTP_HOST);
-  console.log("SMTP_USER:", process.env.SMTP_USER);
-  console.log("SMTP_PASS exists:", !!process.env.SMTP_PASS);
-
-  console.log(name, surname, email, telephone);
+  //  console.log(name, surname, email, telephone);
 
   // Basic validation
   if (!name || !surname || !email) {

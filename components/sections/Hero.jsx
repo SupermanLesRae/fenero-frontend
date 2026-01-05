@@ -67,7 +67,7 @@ export default function Hero({ data }) {
         viewport={{ once: true, margin: "-100px" }}
         transition={{ duration: 0.3, ease: "easeOut" }}
       >
-        <div className="relative max-w-432 mx-auto ">
+        <div className="relative max-w-500 mx-auto ">
           <div ref={emblaRef} className="overflow-hidden ">
             <div className="flex ">
               {data.map((item, index) => {

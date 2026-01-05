@@ -15,7 +15,7 @@ export default async function HomeHero() {
 
   return (
     <section className="w-full bg-[#000E47] p-0 z-0">
-      <div className="relative flex flex-row xl:items-center select-none min-h-0 h-full max-h-250 portrait:min-h-0 max-w-432 mx-auto">
+      <div className="relative flex flex-row xl:items-center select-none min-h-0 h-full max-h-250 portrait:min-h-0 max-w-500 mx-auto">
         <div className="w-full p-10 xl:p-20 lg:flex lg:items-center flex justify-center lg:justify-start portrait:items-start z-0">
           <div className="max-w-150">
             <div className="mb-4">

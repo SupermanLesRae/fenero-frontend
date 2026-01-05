@@ -123,7 +123,7 @@ export default function HeaderMenu({ menu }) {
 
       {/* Desktop Menu */}
       <nav className="relative bg-[#000E47] shadow px-0 py-6 z-10 font-semibold">
-        <div className="max-w-432 px-10 xl:px-20 mx-auto flex items-end justify-between bg-[#000E47]">
+        <div className="max-w-500 px-10 xl:px-20 mx-auto flex items-end justify-between bg-[#000E47]">
           {/* Logo */}
           <Link href="/" className="cursor-pointer">
             <div className="text-2xl font-bold">

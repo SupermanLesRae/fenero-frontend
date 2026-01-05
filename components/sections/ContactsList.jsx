@@ -11,7 +11,7 @@ export async function ContactsList() {
   if (!sectionData) return null;
 
   return (
-    <section className="pb-8 pt-20 select-none max-w-432 mx-auto">
+    <section className="pb-8 pt-20 select-none max-w-500 mx-auto">
       {/* GRID WRAPPER */}
       <div className="grid gap-6 sm:grid-cols-2 lg:grid-cols-3 px-10">
         {sectionData.contacts.map((contact, index) => (

@@ -1,38 +1,29 @@
-import nodemailer from "nodemailer";
 import { NextResponse } from "next/server";
+import { Resend } from "resend";
 
-export const runtime = "nodejs"; // 🚨 REQUIRED for nodemailer
+export const runtime = "edge"; // ✅ Edge-safe (default on Amplify)
+
+const resend = new Resend(process.env.NEXT_PUBLIC_RESEND_API_KEY);
 
 export async function POST(req) {
-  const { name, surname, email, telephone } = await req.json();
-
-  //  console.log(name, surname, email, telephone);
-
-  // Basic validation
-  if (!name || !surname || !email) {
-    return NextResponse.json(
-      { error: "Missing required fields" },
-      { status: 400 }
-    );
-  }
-
-  const transporter = nodemailer.createTransport({
-    host: process.env.SMTP_HOST,
-    port: Number(process.env.SMTP_PORT),
-    auth: {
-      user: process.env.SMTP_USER,
-      pass: process.env.SMTP_PASS,
-    },
-  });
-
   try {
-    await transporter.sendMail({
-      from: `"Website Contact" <${process.env.SMTP_USER}>`,
-      to: process.env.CONTACT_RECEIVER,
+    const { name, surname, email, telephone } = await req.json();
+
+    // Basic validation
+    if (!name || !surname || !email) {
+      return NextResponse.json(
+        { error: "Missing required fields" },
+        { status: 400 }
+      );
+    }
+
+    await resend.emails.send({
+      from: "Website Contact <onboarding@resend.dev>", // replace after domain verification
+      to: ["superman.lesrae111@gmail.com"], // 👈 CONTACT_RECEIVER
       replyTo: email,
       subject: "Request for a Callback",
       html: `
-        <h3>Request for a Callback: </h3>
+        <h3>Request for a Callback</h3>
         <p><strong>Name:</strong> ${name} ${surname}</p>
         <p><strong>Email:</strong> ${email}</p>
         <p><strong>Telephone:</strong> ${telephone || "N/A"}</p>
@@ -41,7 +32,7 @@ export async function POST(req) {
 
     return NextResponse.json({ success: true });
   } catch (error) {
-    console.error("EMAIL ERROR:", error);
+    console.error("RESEND ERROR:", error);
     return NextResponse.json({ error: "Email failed" }, { status: 500 });
   }
 }

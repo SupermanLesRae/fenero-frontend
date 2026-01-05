@@ -5,30 +5,33 @@ import { NEWS_POST_BY_SLUG_QUERY, ALL_NEWS_SLUGS } from "@/lib/queries/Queries";
 import { IconArrowLeft } from "@tabler/icons-react";
 import Link from "next/link";
 
+// Optional revalidation for ISR
 export const revalidate = 60;
 
-export async function generateStaticParams() {
-  const client = createApolloClient();
-
-  const { data } = await client.query({
-    query: ALL_NEWS_SLUGS,
-  });
-
-  return data.newsPosts.nodes.map((post) => ({
-    slug: post.slug,
-  }));
-}
-
 export default async function Page({ params }) {
-  const { slug } = await params;
-  const client = createApolloClient();
-  const { data } = await client.query({
-    query: NEWS_POST_BY_SLUG_QUERY,
-    variables: { slug },
-  });
+  const slug = params?.slug;
 
-  const sectionData = data.newsPostBy.newsPostsCoreFields;
-  const content = data.newsPostBy.content;
+  if (!slug) return <p>Slug missing</p>;
+
+  const client = createApolloClient();
+
+  let data;
+  try {
+    const res = await client.query({
+      query: NEWS_POST_BY_SLUG_QUERY,
+      variables: { slug },
+    });
+    data = res.data;
+  } catch (error) {
+    console.error("GraphQL fetch failed:", error);
+    return <p>Error fetching post. Try again later.</p>;
+  }
+
+  const sectionData = data?.newsPostBy?.newsPostsCoreFields;
+  const content = data?.newsPostBy?.content;
+
+  if (!sectionData) return <p>Post not found</p>;
+
   const dateObj = sectionData.date ? new Date(sectionData.date) : null;
   const formattedDate = dateObj
     ? dateObj.toLocaleDateString("en-US", {
@@ -37,8 +40,6 @@ export default async function Page({ params }) {
         year: "numeric",
       })
     : "";
-
-  if (!sectionData) return null;
 
   return (
     <div>
@@ -58,12 +59,12 @@ export default async function Page({ params }) {
             {sectionData?.title || "Add a Date"}
           </h2>
           <p
-            dangerouslySetInnerHTML={{ __html: sectionData.description }}
+            dangerouslySetInnerHTML={{ __html: sectionData?.description || "" }}
             className="font-nunito font-medium text-[28px] leading-6 tracking-[0.15px] text-[#000E47] text-center select-none px-8 pb-8"
           ></p>
 
           {/* Tags */}
-          {sectionData?.tags && (
+          {sectionData?.tags?.length > 0 && (
             <div className="flex flex-wrap justify-center gap-2 pb-6">
               {sectionData.tags.map((tag, index) => (
                 <span
@@ -78,13 +79,13 @@ export default async function Page({ params }) {
 
           {sectionData?.date && (
             <div className="text-center pb-[250px]">
-              {/* Date */}
               <p className="text-[#000E47] text-sm ">{formattedDate}</p>
             </div>
           )}
         </div>
       </div>
-      {sectionData?.featureImg.node.sourceUrl && (
+
+      {sectionData?.featureImg?.node?.sourceUrl && (
         <div className="bg-white">
           <div className="relative h-[440px] max-w-[1128px] text-center mx-auto w-full rounded-xl">
             <img
@@ -95,10 +96,12 @@ export default async function Page({ params }) {
           </div>
         </div>
       )}
+
       <div
         className="policy-content max-w-[1128px] mx-auto py-10 bg-white -mt-[220px]"
-        dangerouslySetInnerHTML={{ __html: content }}
+        dangerouslySetInnerHTML={{ __html: content || "" }}
       ></div>
+
       <LatestNewsPosts currentSlug={slug} />
     </div>
   );

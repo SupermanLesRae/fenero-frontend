@@ -4,7 +4,7 @@ import Link from "next/link";
 export default function FooterMenu({ menu }) {
   if (!menu) return null;
   return (
-    <footer className="bg-[#000E47] text-white py-16 px-6 select-none">
+    <footer className="bg-[#000E47] text-white py-16 px-6 select-auto">
       <div className="max-w-432 px-10 mx-auto grid grid-cols-1 sm:grid-cols-1 lg:grid-cols-4 gap-10">
         <div className="space-y-4 flex flex-col items-center sm:items-start max-w-xl mx-auto">
           <div className="flex items-center gap-3 mx-auto lg:mx-0">

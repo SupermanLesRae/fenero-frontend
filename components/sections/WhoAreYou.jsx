@@ -163,6 +163,8 @@ export default function WhoAreYou() {
                         }}
                         size="lg"
                         className="
+                          hover:bg-[#D1DF20]
+                          hover:text-[#000E47]
                           select-none cursor-pointer
                           font-nunito font-semibold text-[16px]
                           flex items-center gap-3 justify-center

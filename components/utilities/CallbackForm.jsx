@@ -10,8 +10,12 @@ import {
   FormMessage,
 } from "@/components/ui/form";
 import { useForm } from "react-hook-form";
+import { Spinner } from "../ui/spinner";
+import { useState } from "react";
+import { toast } from "sonner";
 
 export default function CallbackForm() {
+  const [loading, setLoading] = useState(false);
   const form = useForm({
     defaultValues: {
       name: "",
@@ -22,8 +26,30 @@ export default function CallbackForm() {
     mode: "onTouched", // validate on blur
   });
 
-  const onSubmit = (values) => {
-    console.log("Form submitted:", values);
+  const onSubmit = async (values) => {
+    setLoading(true);
+
+    const res = await fetch("/api/requestcallback", {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify({
+        name: values.name,
+        surname: values.surname,
+        email: values.email,
+        telephone: values.telephone,
+      }),
+    });
+
+    if (res.ok) {
+      setLoading(false);
+      toast.success(
+        "Your callback request has been sent. We'll get back to you shortly."
+      );
+      form.reset();
+    } else {
+      toast.error("Failed to send message. Please try again later.");
+      setLoading(false);
+    }
   };
 
   return (
@@ -126,9 +152,19 @@ export default function CallbackForm() {
         <div className="md:col-span-2 flex justify-center mt-2">
           <Button
             type="submit"
-            className="z-10 cursor-pointer flex-1 max-w-[250px] bg-[#D1DF20] hover:bg-[#C9D217] text-[#000E47] h-[48px]"
+            disabled={loading}
+            className={`z-10 cursor-pointer flex-1 max-w-[250px] h-[48px] select-none ${
+              loading
+                ? "bg-gray-300 text-gray-600 cursor-not-allowed"
+                : "bg-[#D1DF20] hover:bg-[#C9D217] text-[#000E47]"
+            }`}
           >
-            Submit
+            {loading && (
+              <span className="mr-2">
+                <Spinner size={20} />
+              </span>
+            )}
+            {loading ? "Submitting..." : "Submit"}
           </Button>
         </div>
       </form>

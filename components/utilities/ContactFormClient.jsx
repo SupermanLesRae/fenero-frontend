@@ -23,6 +23,9 @@ import {
   FormLabel,
   FormMessage,
 } from "@/components/ui/form";
+import { Spinner } from "@/components/ui/spinner";
+import { useState } from "react";
+
 import {
   IconUser,
   IconMail,
@@ -30,7 +33,7 @@ import {
   IconInfoCircle,
   IconPencil,
 } from "@tabler/icons-react";
-import { useState } from "react";
+import { toast } from "sonner";
 
 const schema = z.object({
   name: z.string().min(2, "Name is required"),
@@ -45,6 +48,7 @@ const schema = z.object({
 
 export function ContactFormClient({ selectOptions }) {
   const [captchaValue, setCaptchaValue] = useState(null);
+  const [loading, setLoading] = useState(false);
 
   const form = useForm({
     resolver: zodResolver(schema),
@@ -58,17 +62,52 @@ export function ContactFormClient({ selectOptions }) {
     },
   });
 
-  const onSubmit = () => {
+  const onSubmit = async (values) => {
     if (!captchaValue) {
-      alert("Please verify you are human");
+      toast({
+        title: "Verification required",
+        description: "Please verify you are human.",
+        variant: "destructive",
+      });
       return;
+    }
+
+    setLoading(true);
+    try {
+      const res = await fetch("/api/contact", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify(values),
+      });
+
+      if (res.ok) {
+        setCaptchaValue(null);
+        setLoading(false);
+        toast.success(
+          "Your message has been sent successfully. We’ll get back to you shortly."
+        );
+
+        form.reset();
+      } else {
+        toast.error("Failed to send message. Please try again later.");
+        setLoading(false);
+      }
+    } catch (err) {
+      console.error(err);
+      toast({
+        title: "Error",
+        description: "Something went wrong. Please try again.",
+        variant: "destructive",
+      });
+    } finally {
+      setLoading(false);
     }
   };
 
   return (
     <Form {...form}>
-      <form onSubmit={form.handleSubmit(onSubmit)} className="space-y-4 ">
-        {/* ===== 2 COLUMN GRID ===== */}
+      <form onSubmit={form.handleSubmit(onSubmit)} className="space-y-4">
+        {/* 2 COLUMN GRID */}
         <div className="grid grid-cols-1 gap-6 md:grid-cols-2">
           {/* NAME */}
           <FormField
@@ -86,8 +125,6 @@ export function ContactFormClient({ selectOptions }) {
                     />
                   </FormControl>
                 </div>
-
-                {/* Reserve space for error message */}
                 <div className="h-5">
                   <FormMessage className="text-red-500 text-sm" />
                 </div>
@@ -151,23 +188,12 @@ export function ContactFormClient({ selectOptions }) {
                   <IconInfoCircle className="text-gray-400" size={20} />
                   <Select value={field.value} onValueChange={field.onChange}>
                     <FormControl className="flex-1">
-                      <SelectTrigger
-                        className="
-                      w-full
-                      border-0
-                      rounded-none
-                      px-0
-                      bg-transparent
-                      focus:ring-0
-                      focus-visible:ring-0
-                      data-[state=open]:ring-0
-                    "
-                      >
+                      <SelectTrigger className="w-full border-0 rounded-none px-0 bg-transparent focus:ring-0">
                         <SelectValue placeholder="General Enquiries" />
                       </SelectTrigger>
                     </FormControl>
 
-                    <SelectContent className="border-0 shadow-none ">
+                    <SelectContent className="border-0 shadow-none">
                       {selectOptions.map((item, index) => (
                         <SelectItem value={item.selection} key={index}>
                           {item.selection}
@@ -184,7 +210,7 @@ export function ContactFormClient({ selectOptions }) {
           />
         </div>
 
-        {/* ===== MESSAGE (FULL WIDTH) ===== */}
+        {/* MESSAGE */}
         <FormField
           control={form.control}
           name="message"
@@ -208,7 +234,7 @@ export function ContactFormClient({ selectOptions }) {
           )}
         />
 
-        {/* ===== TERMS + SUBMIT ===== */}
+        {/* TERMS + CAPTCHA + SUBMIT */}
         <div className="flex flex-col gap-4 lg:flex-row lg:items-end">
           <FormField
             control={form.control}
@@ -233,7 +259,7 @@ export function ContactFormClient({ selectOptions }) {
             )}
           />
 
-          {/* ===== reCAPTCHA ===== */}
+          {/* reCAPTCHA */}
           <FormItem>
             <ReCAPTCHA
               sitekey={process.env.NEXT_PUBLIC_RECAPTCHA_SITE_KEY}
@@ -241,11 +267,14 @@ export function ContactFormClient({ selectOptions }) {
             />
           </FormItem>
 
+          {/* SUBMIT BUTTON */}
           <Button
             type="submit"
-            className="z-10  cursor-pointer flex-1 h-10 max-w-[250px] bg-[#D1DF20] hover:bg-[#D1DF20] text-[#000E47]"
+            disabled={loading}
+            className="z-10 flex items-center gap-2 cursor-pointer flex-1 h-10 max-w-[250px] bg-[#D1DF20] hover:bg-[#C9D217] text-[#000E47] select-none"
           >
-            Submit
+            {loading && <Spinner size={20} />}
+            {loading ? "Submitting..." : "Submit"}
           </Button>
         </div>
       </form>

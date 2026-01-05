@@ -76,7 +76,7 @@ export default function Hero({ data }) {
                     key={"aboutHeroSlide" + index}
                     className="flex-[0_0_100%] relative flex flex-row xl:items-center select-none min-h-0 h-auto lg:min-h-159.75 portrait:min-h-0 overflow-y-hidden "
                   >
-                    <div className="w-full p-10 xl:p-20 lg:flex lg:items-center flex justify-center lg:justify-start portrait:items-start z-1 mb-10">
+                    <div className="w-full p-10 sm:p-20 xl:p-20 lg:flex lg:items-center flex justify-start portrait:items-start z-1 mb-10">
                       <div className="max-w-160 ">
                         <h2
                           className="mb-4 text-[40px] leading-12 md:text-[48px] md:leading-13 tracking-[0.15px] font-bold text-white "
@@ -104,7 +104,7 @@ export default function Hero({ data }) {
                             <Link className="w-full" href={item.cta?.link}>
                               <Button
                                 size="lg"
-                                className={`text-[#000E47] bg-[#AFCE67] hover:bg-[#AFCE67] cursor-pointer w-full lg:w-auto transition shadow-md shadow-[#AFCE67]/30 hover:shadow-[#AFCE67]/10`}
+                                className={`bg-[#AFCE67] hover:bg-[#D1DF20] text-[#000E47] cursor-pointer w-full lg:w-auto transition shadow-md shadow-[#AFCE67]/30 hover:shadow-[#AFCE67]/10`}
                               >
                                 <span className=" font-bold text-[16px]">
                                   {item.cta.label}
@@ -118,13 +118,13 @@ export default function Hero({ data }) {
                       </div>
                     </div>
 
-                    <div className="absolute top-0 right-0 w-[50%] h-full overflow-hidden opacity-20 lg:opacity-100 justify-end">
+                    <div className="absolute flex top-0 right-0 w-[100%] lg:w-[70%] h-full overflow-hidden opacity-20 lg:opacity-100 justify-end">
                       <img
                         src={item.img.node.sourceUrl}
                         alt={"No alternative text provided"}
-                        className="absolute portrait:relative right-0 top-0 h-full  w-auto  object-cover object-left"
-                        width={2092}
-                        height={2052}
+                        className="absolute portrait:relative right-0 lg:-right-50 xl:right-0 top-0 h-full  w-auto  object-cover object-right"
+                        width={651}
+                        height={639}
                       />
                     </div>
                   </div>

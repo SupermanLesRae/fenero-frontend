@@ -48,7 +48,7 @@ export async function Roles() {
                     <Link className="w-full" href={item?.link || "/"}>
                       <Button
                         size="lg"
-                        className={`cursor-pointer w-full lg:w-auto transition shadow-sm bg-[#AFCE67] hover:bg-[#AFCE67] shadow-[#AFCE67]/30 hover:shadow-[#AFCE67]/10`}
+                        className={`cursor-pointer w-full lg:w-auto transition shadow-sm bg-[#AFCE67] hover:bg-[#D1DF20] shadow-[#AFCE67]/30 hover:shadow-[#AFCE67]/10`}
                       >
                         <span className=" font-bold text-[16px] text-black">
                           Apply Now

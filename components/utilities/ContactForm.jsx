@@ -17,7 +17,10 @@ export default async function ContactPage() {
 
   return (
     <div className="relative pb-20 px-10">
-      <h2 className="relative text-[30px] md:text-[48px] font-extrabold font-nunito mb-2 select-none text-white text-center pt-20 pb-20 z-11">
+      <h2
+        id="contact"
+        className="relative text-[30px] md:text-[48px] font-extrabold font-nunito mb-2 select-none text-white text-center pt-20 pb-20 z-11"
+      >
         {data.title}
       </h2>
       <div className="absolute w-full h-full z-0 left-0 top-0">

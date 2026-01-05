@@ -5,6 +5,7 @@ import { createApolloClient } from "@/lib/apolloClient";
 import { MenuQuery } from "@/lib/queries/MenuQuery";
 import HeaderMenu from "@/components/global/HeaderMenu";
 import FooterMenu from "@/components/global/FooterMenu";
+import { Toaster } from "@/components/ui/sonner";
 
 import TopLoadingBar from "@/components/utilities/TopLoadingBar";
 
@@ -78,6 +79,7 @@ export default async function RootLayout({ children }) {
         <HeaderMenu menu={headerMenu} />
         <main className=" bg-white mx-auto">{children}</main>
         <FooterMenu menu={footerMenu} />
+        <Toaster />
       </body>
     </html>
   );

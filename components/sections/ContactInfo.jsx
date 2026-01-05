@@ -53,7 +53,7 @@ export default async function ContactInfo({ sel, bgColor }) {
                     borderColor:
                       cta.styling.bordercolor || cta.styling.backgroundcolor, // border same as text color
                   }}
-                  className="font-bold text-[16px] w-full border-2 lg:w-auto cursor-pointer shadow-md transition hover:opacity-90 flex items-center justify-center gap-2"
+                  className="font-bold hover:text-white text-[16px] w-full border-2 lg:w-auto cursor-pointer shadow-md transition hover:opacity-90 flex items-center justify-center gap-2"
                 >
                   {cta.title}
                   {/* Example: Add arrow if you want it, can add property in your data */}

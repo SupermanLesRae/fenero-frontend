@@ -9,6 +9,7 @@ import { IconArrowLeft } from "@tabler/icons-react";
 import Link from "next/link";
 
 export const revalidate = 60;
+process.env.NODE_TLS_REJECT_UNAUTHORIZED = "0";
 
 export async function generateStaticParams() {
   const client = createApolloClient();

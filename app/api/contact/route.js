@@ -5,7 +5,7 @@ export const runtime = "edge"; // ✅ Required for Amplify hosting
 
 const resend = new Resend(process.env.NEXT_PUBLIC_RESEND_API_KEY);
 
-export async function POST(req: Request) {
+export async function POST(req) {
   try {
     const { name, email, phone, enquiry, message, terms } = await req.json();
 
@@ -22,8 +22,8 @@ export async function POST(req: Request) {
     ============================ */
 
     await resend.emails.send({
-      from: "Website Contact <onboarding@resend.dev>",
-      to: ["your@email.com"], // 👈 CONTACT_RECEIVER
+      from: "Fenero <onboarding@resend.dev>",
+      to: ["superman.lesrae111@gmail.com"], // 👈 CONTACT_RECEIVER
       replyTo: email,
       subject: `New Contact Request: ${enquiry}`,
       html: `

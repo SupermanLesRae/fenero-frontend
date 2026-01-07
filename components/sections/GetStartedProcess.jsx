@@ -1,6 +1,7 @@
 import { createApolloClient } from "@/lib/apolloClient";
 import { PROCESSES_INFO_QUERY } from "@/lib/queries/Queries";
 import { ArrowDown, ArrowRight } from "lucide-react";
+import Image from "next/image";
 
 export async function GetStartedProcess({ sel, multiple }) {
   const client = createApolloClient();
@@ -43,10 +44,12 @@ export async function GetStartedProcess({ sel, multiple }) {
 
                   {/* CARD */}
                   <div className="flex flex-col justify-center items-center w-[270px] min-h-[260px] bg-white rounded-lg p-6 shadow-sm">
-                    <img
+                    <Image
                       src={item.icon.node.sourceUrl}
                       className="w-[100px] h-[100px] mb-4"
                       alt={item.label}
+                      width={100}
+                      height={100}
                     />
                     <h3 className="text-lg font-semibold text-center">
                       {item.label}

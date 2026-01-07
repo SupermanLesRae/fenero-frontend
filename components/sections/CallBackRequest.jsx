@@ -1,6 +1,7 @@
 import { createApolloClient } from "@/lib/apolloClient";
 import { CALLBACK_QUERY } from "@/lib/queries/Queries";
 import CallbackForm from "../utilities/CallbackForm";
+import Image from "next/image";
 
 // Server Component
 export default async function CallBackRequest() {
@@ -25,12 +26,12 @@ export default async function CallBackRequest() {
         className="relative text-[20px] md:text-[20px] font-nunito mb-2 select-none text-white text-center  z-11"
       ></p>
       <div className="absolute w-full h-full z-0 left-0 top-0">
-        <img
+        <Image
           src={sectionData?.img.node.sourceUrl}
           alt={sectionData?.img.node.altText || "Image"}
           className="w-full h-full object-cover"
-          width={100}
-          height={100}
+          width={1411}
+          height={408}
         />
         <div className="absolute top-0 left-0 bg-[#036735] w-full h-full inset-0 mix-blend-multiply" />
       </div>

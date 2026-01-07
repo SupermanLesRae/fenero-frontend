@@ -2,6 +2,7 @@ import { createApolloClient } from "@/lib/apolloClient";
 import { SOLUTIONS_QUERY } from "@/lib/queries/Queries";
 import Link from "next/link";
 import { Button } from "../ui/button";
+import Image from "next/image";
 
 export async function Solutions({ sel }) {
   const client = createApolloClient();
@@ -55,7 +56,12 @@ export async function Solutions({ sel }) {
                           key={itemIndex}
                           className="flex items-center gap-3 leading-5 text-gray-700"
                         >
-                          <img src={item.icon.node.sourceUrl} alt="" />
+                          <Image
+                            width={16}
+                            height={16}
+                            src={item.icon.node.sourceUrl}
+                            alt=""
+                          />
                           <span>{item.title}</span>
                         </li>
                       ))}
@@ -96,7 +102,12 @@ export async function Solutions({ sel }) {
                           key={itemIndex}
                           className="flex items-center gap-3 leading-5 text-gray-700"
                         >
-                          <img src={listItem.icon.node.sourceUrl} alt="" />
+                          <Image
+                            width={16}
+                            height={16}
+                            src={listItem.icon.node.sourceUrl}
+                            alt=""
+                          />
                           <span>{listItem.label}</span>
                         </li>
                       ))}

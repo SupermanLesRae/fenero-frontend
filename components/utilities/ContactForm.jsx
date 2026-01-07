@@ -2,6 +2,7 @@ import { motion } from "framer-motion";
 import { createApolloClient } from "@/lib/apolloClient";
 import { CONTACT_FORM_QUERY } from "@/lib/queries/Queries";
 import { ContactFormClient } from "./ContactFormClient";
+import Image from "next/image";
 
 // Server Component
 export default async function ContactPage() {
@@ -24,12 +25,12 @@ export default async function ContactPage() {
         {data.title}
       </h2>
       <div className="absolute w-full h-full z-0 left-0 top-0">
-        <img
+        <Image
           src={data.img.node.sourceUrl}
           alt={data.img.node.altText || "Image"}
           className="w-full h-full object-cover"
-          width={100}
-          height={100}
+          width={1411}
+          height={480}
         />
         <div className="absolute top-0 left-0 bg-[#036735] w-full h-full inset-0 mix-blend-multiply" />
       </div>

@@ -3,6 +3,7 @@ import { Button } from "../ui/button";
 import { IconArrowRight } from "@tabler/icons-react";
 import { createApolloClient } from "@/lib/apolloClient";
 import { SOCIAL_IMPACT_QUERY } from "@/lib/queries/Queries";
+import Image from "next/image";
 
 export async function SocialImpact() {
   const client = createApolloClient();
@@ -20,7 +21,7 @@ export async function SocialImpact() {
         <div className="flex flex-col xl:flex-row items-center gap-14">
           {/* Left Image */}
           <div className="relative w-full flex justify-center">
-            <img
+            <Image
               src={sectionData.img.node.sourceUrl}
               alt={
                 sectionData.img.node.altText || "No alternative text provided"

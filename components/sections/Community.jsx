@@ -1,5 +1,6 @@
 import { createApolloClient } from "@/lib/apolloClient";
 import { COMMUNITY_QUERY } from "@/lib/queries/Queries";
+import Image from "next/image";
 import Link from "next/link";
 
 export async function Community() {
@@ -34,7 +35,12 @@ export async function Community() {
       <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 text-white max-w-[1400px] mx-auto px-10">
         {sectionData?.communities?.map((community, index) => (
           <div key={index} className="max-w-[461px] mx-auto">
-            <img src={community.img.node.sourceUrl} alt="" />
+            <Image
+              width={461}
+              height={461}
+              src={community.img.node.sourceUrl}
+              alt=""
+            />
             <h3 className="text-[40px] font-bold mt-10 leading-[45px]">
               {community.label}
             </h3>

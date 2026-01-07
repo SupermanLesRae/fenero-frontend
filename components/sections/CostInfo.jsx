@@ -3,6 +3,7 @@ import { COST_INFO_SECTION } from "@/lib/queries/Queries";
 import Link from "next/link";
 import { Button } from "../ui/button";
 import { IconArrowLeft } from "@tabler/icons-react";
+import Image from "next/image";
 
 export async function CostInfo() {
   const client = createApolloClient();
@@ -63,7 +64,9 @@ export async function CostInfo() {
                           className="flex items-center gap-4"
                           key={"list_" + index}
                         >
-                          <img
+                          <Image
+                            width={24}
+                            height={24}
                             className="w-[24px] h-[24px]"
                             src={item.icon.node.sourceUrl}
                             alt=""

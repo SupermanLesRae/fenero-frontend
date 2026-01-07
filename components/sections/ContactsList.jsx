@@ -1,5 +1,6 @@
 import { createApolloClient } from "@/lib/apolloClient";
 import { CONTACTS_QUERY } from "@/lib/queries/Queries";
+import Image from "next/image";
 
 export async function ContactsList() {
   const client = createApolloClient();
@@ -21,7 +22,9 @@ export async function ContactsList() {
           >
             {/* Icon */}
             <div className="shrink-0 bg-[#6B0071] p-10 rounded-full">
-              <img
+              <Image
+                width={80}
+                height={80}
                 src={contact.icon.node.sourceUrl}
                 alt={contact.icon.node.altText || "Icon"}
                 className="h-[80px] w-[80px] "

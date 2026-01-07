@@ -1,5 +1,6 @@
 import { createApolloClient } from "@/lib/apolloClient";
 import { IMPORTANT_DETAILS_QUERY } from "@/lib/queries/Queries";
+import Image from "next/image";
 
 export async function ImportantDetails({ sel, multiple }) {
   const client = createApolloClient();
@@ -26,7 +27,12 @@ export async function ImportantDetails({ sel, multiple }) {
             className="flex flex-col bg-white border border-[#AFCE67] items-center gap-2 rounded-lg p-6 shadow-sm select-none w-full max-w-[360px]"
           >
             <div className="w-[100px] h-[100px]">
-              <img src={item.icon.node.sourceUrl} alt="" />
+              <Image
+                width={100}
+                height={100}
+                src={item.icon.node.sourceUrl}
+                alt=""
+              />
             </div>
 
             <h3 className="leading-6 font-semibold text-[#036735] text-center">

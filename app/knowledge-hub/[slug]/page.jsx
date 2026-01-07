@@ -3,6 +3,7 @@ import { Button } from "@/components/ui/button";
 import { createApolloClient } from "@/lib/apolloClient";
 import { NEWS_POST_BY_SLUG_QUERY, ALL_NEWS_SLUGS } from "@/lib/queries/Queries";
 import { IconArrowLeft } from "@tabler/icons-react";
+import Image from "next/image";
 import Link from "next/link";
 
 export const revalidate = 60;
@@ -88,10 +89,12 @@ export default async function Page({ params }) {
       {sectionData?.featureImg.node.sourceUrl && (
         <div className="bg-white">
           <div className="relative h-[440px] max-w-[1128px] text-center mx-auto w-full rounded-xl">
-            <img
+            <Image
               className="object-cover w-full h-[440px] max-w-[1128px] absolute -mt-[220px] rounded-xl shadow-lg border-10 border-white"
               src={sectionData.featureImg.node.sourceUrl}
               alt=""
+              width={1108}
+              height={420}
             />
           </div>
         </div>

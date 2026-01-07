@@ -1,6 +1,7 @@
 import { createApolloClient } from "@/lib/apolloClient";
 import { NEXT_STEPS_QUERY } from "@/lib/queries/Queries";
 import { ArrowDown, ArrowRight } from "lucide-react";
+import Image from "next/image";
 
 export async function NextSteps({ sel, multiple }) {
   const client = createApolloClient();
@@ -16,7 +17,9 @@ export async function NextSteps({ sel, multiple }) {
   return (
     <section className="relative w-full overflow-hidden">
       <div className="absolute left-0 right-0 z-0 w-full h-full">
-        <img
+        <Image
+          width={1728}
+          height={738}
           className="object-cover w-full h-full"
           src={sectionData.background.node.sourceUrl}
           alt=""
@@ -48,7 +51,9 @@ export async function NextSteps({ sel, multiple }) {
 
                 {/* CARD */}
                 <div className="flex flex-col  items-center w-[270px] min-h-[260px] bg-white rounded-lg py-6 shadow-sm">
-                  <img
+                  <Image
+                    width={270}
+                    height={260}
                     src={item.icon.node.sourceUrl}
                     className="w-[100px] h-[100px] mb-4"
                     alt={item.label}

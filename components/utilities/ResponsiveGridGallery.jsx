@@ -1,5 +1,6 @@
 "use client";
 
+import Image from "next/image";
 import { useState, useEffect } from "react";
 import Lightbox from "yet-another-react-lightbox";
 import "yet-another-react-lightbox/styles.css";
@@ -47,7 +48,9 @@ export default function TrueSizeGridGallery({ images, square }) {
                 className="relative w-full rounded-lg overflow-hidden focus:outline-none"
                 style={{ paddingBottom: `${paddingPercent}%` }}
               >
-                <img
+                <Image
+                  width={389}
+                  height={239}
                   src={img.sourceUrl}
                   alt={img.altText || ""}
                   className="absolute top-0 left-0 w-full h-full object-cover"

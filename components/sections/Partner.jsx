@@ -1,5 +1,6 @@
 import { createApolloClient } from "@/lib/apolloClient";
 import { PARTNER_QUERY } from "@/lib/queries/Queries";
+import Image from "next/image";
 
 export async function Partner() {
   const client = createApolloClient();
@@ -16,12 +17,12 @@ export async function Partner() {
     <section className="relative w-full  ">
       <div className="relative w-full mx-auto">
         <div className="absolute w-full h-full z-0">
-          <img
+          <Image
             src={sectionData.img.node.sourceUrl}
             alt={"No alt text"}
             className="w-full h-full object-cover"
-            width={100}
-            height={100}
+            width={1571}
+            height={738}
           />
           <div className="absolute top-0 left-0 bg-[#036735] w-full h-full inset-0 mix-blend-multiply " />
         </div>
@@ -36,7 +37,7 @@ export async function Partner() {
             >
               <div className="relative h-auto">
                 <div className="flex items-center justify-center pt-8 pb-8 h-auto w-auto">
-                  <img
+                  <Image
                     src={item.icon.node.sourceUrl}
                     alt={"No alt text"}
                     width={100}

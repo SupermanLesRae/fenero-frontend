@@ -11,6 +11,7 @@ import { IconChevronLeft, IconChevronRight } from "@tabler/icons-react";
 import Link from "next/link";
 import { Button } from "../ui/button";
 import { IconArrowRight } from "@tabler/icons-react";
+import Image from "next/image";
 
 export default function WhoAreYou() {
   const [sectionData, setSectionData] = useState(null);
@@ -129,7 +130,7 @@ export default function WhoAreYou() {
                     className="relative h-auto"
                   >
                     <div className="flex items-center justify-start pt-10 pl-6 h-[61px] w-auto">
-                      <img
+                      <Image
                         src={item.icon.node.sourceUrl}
                         alt={"No alt text"}
                         width={74}

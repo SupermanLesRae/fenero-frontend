@@ -1,6 +1,7 @@
 "use client";
 
 import { Card, CardContent, CardTitle } from "@/components/ui/card";
+import Image from "next/image";
 
 export default function RecruiterCard({ image, title, date }) {
   const dateObj = date ? new Date(date) : null;
@@ -20,7 +21,9 @@ export default function RecruiterCard({ image, title, date }) {
       {/* Image */}
       {image && (
         <div className="overflow-hidden w-[393px] h-[553px] rounded-none">
-          <img
+          <Image
+            width={100}
+            height={100}
             src={image}
             alt={title}
             className="w-full h-full  object-cover transform transition-transform duration-300 ease-in-out group-hover:scale-105"

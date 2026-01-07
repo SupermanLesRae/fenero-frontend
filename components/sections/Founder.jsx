@@ -1,5 +1,6 @@
 import { createApolloClient } from "@/lib/apolloClient";
 import { FOUNDERS_QUERY } from "@/lib/queries/Queries";
+import Image from "next/image";
 
 export async function Founder() {
   const client = createApolloClient();
@@ -17,7 +18,7 @@ export async function Founder() {
         <div className="flex flex-col xl:flex-row items-center gap-14">
           {/* Left Image */}
           <div className="relative w-full flex justify-center">
-            <img
+            <Image
               src={sectionData.img.node.sourceUrl}
               alt={
                 sectionData.img.node.altText || "No alternative text provided"

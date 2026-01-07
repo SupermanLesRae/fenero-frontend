@@ -1,5 +1,6 @@
 import { createApolloClient } from "@/lib/apolloClient";
 import { OFFER_QUERY } from "@/lib/queries/Queries";
+import Image from "next/image";
 
 export async function WhatWeOffer({ bg, sel }) {
   const client = createApolloClient();
@@ -27,7 +28,7 @@ export async function WhatWeOffer({ bg, sel }) {
                     key={"offer-" + index}
                   >
                     <div>
-                      <img
+                      <Image
                         src={item.icon.node.sourceUrl}
                         alt={
                           item.icon.node.altText ||

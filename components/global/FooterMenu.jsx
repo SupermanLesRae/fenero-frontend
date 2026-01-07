@@ -9,7 +9,7 @@ export default function FooterMenu({ menu }) {
         <div className="space-y-4 flex flex-col items-center sm:items-start max-w-xl mx-auto">
           <div className="flex items-center gap-3 mx-auto lg:mx-0">
             <Link href="/" className="cursor-pointer">
-              <img
+              <Image
                 src={menu.logo.node.sourceUrl}
                 alt={"No alternative text provided"}
                 width={165}

@@ -6,6 +6,7 @@ import {
   CardTitle,
   CardDescription,
 } from "@/components/ui/card";
+import Image from "next/image";
 
 export default function NewsCard({
   image,
@@ -34,7 +35,9 @@ export default function NewsCard({
       {/* Image */}
       {image && (
         <div className="overflow-hidden max-h-75 rounded-xl">
-          <img
+          <Image
+            width={334}
+            height={317}
             src={image}
             alt={title}
             className="w-full h-auto  object-cover transform transition-transform duration-300 ease-in-out group-hover:scale-105"

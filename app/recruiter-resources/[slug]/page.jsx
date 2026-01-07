@@ -6,6 +6,7 @@ import {
   ALL_RECRUITER_SLUGS,
 } from "@/lib/queries/Queries";
 import { IconArrowLeft } from "@tabler/icons-react";
+import Image from "next/image";
 import Link from "next/link";
 
 export const revalidate = 60;
@@ -40,7 +41,7 @@ export default async function Page({ params }) {
     <div className="pb-20">
       <div className="bg-[#ECF8EF] relative overflow-hidden">
         <div>
-          <img
+          <Image
             src={sectionData.img.node.sourceUrl}
             className="absolute
                       right-0

@@ -3,6 +3,7 @@ import { IMAGE_TEXT_SECTION } from "@/lib/queries/Queries";
 import Link from "next/link";
 import { Button } from "../ui/button";
 import { IconArrowLeft } from "@tabler/icons-react";
+import Image from "next/image";
 
 export async function ImageTextSections() {
   const client = createApolloClient();
@@ -56,7 +57,7 @@ export async function ImageTextSections() {
             >
               {/* IMAGE */}
               <div className="w-full md:w-1/2">
-                <img
+                <Image
                   src={
                     sectionData.imageTextSectionsCoreFields.cols.img?.node
                       ?.sourceUrl
@@ -66,6 +67,8 @@ export async function ImageTextSections() {
                       ?.altText || ""
                   }
                   className="w-full h-auto rounded-lg"
+                  width={590}
+                  height={590}
                 />
               </div>
 
@@ -78,10 +81,12 @@ export async function ImageTextSections() {
                           className="flex items-center gap-4"
                           key={"list_" + index}
                         >
-                          <img
+                          <Image
                             className="w-[24px] h-[24px]"
                             src={item.icon.node.sourceUrl}
                             alt=""
+                            width={24}
+                            height={24}
                           />
                           <p className="text-[16px] leading-5">{item.label}</p>
                         </div>

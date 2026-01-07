@@ -25,7 +25,7 @@ export default async function ContactPage() {
         {data.title}
       </h2>
       <div className="absolute w-full h-full z-0 left-0 top-0">
-        <Image
+        <img
           src={data.img.node.sourceUrl}
           alt={data.img.node.altText || "Image"}
           className="w-full h-full object-cover"

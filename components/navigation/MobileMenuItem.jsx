@@ -15,7 +15,7 @@ export default function MobileMenuItem({ item }) {
             onClick={() => setOpen(!open)}
           >
             {item.label}
-            <Image
+            <img
               src="/icons/chevron-down.svg"
               alt="icon"
               width={14}

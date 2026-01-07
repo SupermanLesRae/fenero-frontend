@@ -35,7 +35,7 @@ function MenuItemDesktop({ item }) {
         >
           {item.label}
           {hasChildren && (
-            <Image
+            <img
               src="/icons/chevron-down.svg"
               alt="icon"
               width={14}

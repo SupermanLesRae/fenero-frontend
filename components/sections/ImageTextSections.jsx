@@ -57,7 +57,7 @@ export async function ImageTextSections() {
             >
               {/* IMAGE */}
               <div className="w-full md:w-1/2">
-                <Image
+                <img
                   src={
                     sectionData.imageTextSectionsCoreFields.cols.img?.node
                       ?.sourceUrl
@@ -81,7 +81,7 @@ export async function ImageTextSections() {
                           className="flex items-center gap-4"
                           key={"list_" + index}
                         >
-                          <Image
+                          <img
                             className="w-[24px] h-[24px]"
                             src={item.icon.node.sourceUrl}
                             alt=""

@@ -64,7 +64,7 @@ export async function CostInfo() {
                           className="flex items-center gap-4"
                           key={"list_" + index}
                         >
-                          <Image
+                          <img
                             width={24}
                             height={24}
                             className="w-[24px] h-[24px]"

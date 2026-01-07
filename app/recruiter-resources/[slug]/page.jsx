@@ -41,7 +41,7 @@ export default async function Page({ params }) {
     <div className="pb-20">
       <div className="bg-[#ECF8EF] relative overflow-hidden">
         <div>
-          <Image
+          <img
             src={sectionData.img.node.sourceUrl}
             className="absolute
                       right-0

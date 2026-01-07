@@ -89,7 +89,7 @@ export default async function Page({ params }) {
       {sectionData?.featureImg.node.sourceUrl && (
         <div className="bg-white">
           <div className="relative h-[440px] max-w-[1128px] text-center mx-auto w-full rounded-xl">
-            <Image
+            <img
               className="object-cover w-full h-[440px] max-w-[1128px] absolute -mt-[220px] rounded-xl shadow-lg border-10 border-white"
               src={sectionData.featureImg.node.sourceUrl}
               alt=""

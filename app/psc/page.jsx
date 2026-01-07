@@ -29,7 +29,7 @@ export default async function Page() {
   return (
     <div>
       <Hero data={data.heroBy.herosCoreFields.heroSlide} />
-      <ImageTextSections />
+      <imgTextSections />
       <CostInfo />
       <ContactInfo sel={0} />
       <ImportantDetails />

@@ -9,7 +9,7 @@ export default function FooterMenu({ menu }) {
         <div className="space-y-4 flex flex-col items-center sm:items-start max-w-xl mx-auto">
           <div className="flex items-center gap-3 mx-auto lg:mx-0">
             <Link href="/" className="cursor-pointer">
-              <Image
+              <img
                 src={menu.logo.node.sourceUrl}
                 alt={"No alternative text provided"}
                 width={165}
@@ -29,7 +29,7 @@ export default function FooterMenu({ menu }) {
                 href={item.url}
                 className="hover:text-[#D1DF20] transition"
               >
-                <Image
+                <img
                   src={`/icons/${item.icon[0]}.svg`}
                   alt={"No alternative text provided"}
                   className="w-[18px] h-[18px]"

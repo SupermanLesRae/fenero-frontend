@@ -21,7 +21,7 @@ export default function RecruiterCard({ image, title, date }) {
       {/* Image */}
       {image && (
         <div className="overflow-hidden w-[393px] h-[553px] rounded-none">
-          <Image
+          <img
             width={100}
             height={100}
             src={image}

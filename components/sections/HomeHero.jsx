@@ -16,7 +16,7 @@ export default async function HomeHero() {
 
   return (
     <section className="w-full bg-[#000E47] p-0 z-0">
-      <div className="relative flex flex-row xl:items-center select-none min-h-0 h-full max-h-250 portrait:min-h-0 max-w-500 mx-auto">
+      <div className="relative flex flex-row xl:items-center select-none min-h-0 h-full max-h-250 max-w-500 mx-auto shadow-md z-10">
         <div className="w-full p-10 xl:p-20 lg:flex lg:items-center flex justify-center lg:justify-start portrait:items-start z-0">
           <div className="max-w-150">
             <div className="mb-4">
@@ -107,8 +107,10 @@ export default async function HomeHero() {
           </div>
         </div>
 
-        <div className="absolute portrait:absolute top-0 right-0 w-full sm:w-[50%] h-full max-h-250 overflow-hidden block opacity-10 lg:opacity-100 z-0">
+        <div className="absolute portrait:absolute top-0 right-0 w-full sm:w-[50%] h-full max-h-250 overflow-hidden hidden lg:block z-0">
           <img
+            placeholder="blur"
+            blurDataURL={homeData.img.node.sourceUrl}
             src={homeData.img.node.sourceUrl}
             alt={"No alternative text provided"}
             className="absolute portrait:relative right-0 top-0 h-full w-auto  object-cover object-left"
@@ -116,6 +118,16 @@ export default async function HomeHero() {
             height={639}
           />
         </div>
+      </div>
+
+      <div className="relative w-full h-full overflow-hidden flex justify-end lg:hidden z-0">
+        <img
+          src={homeData.img.node.sourceUrl}
+          alt="No alternative text provided"
+          className="max-w-[652px] w-[70%] h-auto object-cover object-right"
+          width={652}
+          height={639}
+        />
       </div>
     </section>
   );

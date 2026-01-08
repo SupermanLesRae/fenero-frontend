@@ -75,10 +75,10 @@ export default function Hero({ data }) {
                 return (
                   <div
                     key={"aboutHeroSlide" + index}
-                    className="flex-[0_0_100%] relative flex flex-row xl:items-center select-none min-h-0 h-auto lg:min-h-159.75 portrait:min-h-0 overflow-y-hidden "
+                    className="flex-[0_0_100%] relative flex flex-col lg:flex-row xl:items-center select-none min-h-0 h-auto lg:min-h-screen portrait:min-h-0 overflow-y-hidden "
                   >
-                    <div className="w-full p-10 sm:p-20 xl:p-20 lg:flex lg:items-center flex justify-start portrait:items-start z-1 mb-10">
-                      <div className="max-w-160 ">
+                    <div className="w-full py-10 px-10 xl:p-20 lg:flex lg:items-center flex justify-center lg:justify-start z-1 mb-0 lg:mb-10 shadow-lg">
+                      <div className="max-w-140 xl:max-w-160 ">
                         <h2
                           className="mb-4 text-[40px] leading-12 md:text-[48px] md:leading-13 tracking-[0.15px] font-bold text-white "
                           dangerouslySetInnerHTML={{
@@ -90,7 +90,7 @@ export default function Hero({ data }) {
                           dangerouslySetInnerHTML={{
                             __html: item.subTitle,
                           }}
-                          className=" font-medium text-[18px] md:text-[24px] text-bold leading-7 md:leading-8 tracking-[0.15px] text-[#ffffff] mb-6 pr-10"
+                          className=" font-medium text-[18px] lg:text-[24px] text-bold leading-6 lg:leading-8 tracking-[0.15px] text-[#ffffff] mb-6 pr-10"
                         ></p>
 
                         <p
@@ -119,12 +119,22 @@ export default function Hero({ data }) {
                       </div>
                     </div>
 
-                    <div className="absolute flex top-0 right-0 w-[100%] lg:w-[70%] h-full overflow-hidden opacity-20 lg:opacity-100 justify-end">
+                    <div className="absolute portrait:absolute top-0 right-0 w-full sm:w-[50%] h-full max-h-250 overflow-hidden hidden lg:block z-0">
                       <img
                         src={item.img.node.sourceUrl}
                         alt={"No alternative text provided"}
-                        className="absolute portrait:relative right-0 lg:-right-50 xl:right-0 top-0 h-full  w-auto  object-cover object-right"
-                        width={651}
+                        className="absolute portrait:relative right-0 top-0 h-full w-auto  object-cover object-left"
+                        width={652}
+                        height={639}
+                      />
+                    </div>
+
+                    <div className="relative w-full h-full overflow-hidden flex justify-end lg:hidden z-0">
+                      <img
+                        src={item.img.node.sourceUrl}
+                        alt="No alternative text provided"
+                        className="max-w-[652px] w-[70%] h-auto object-cover object-right"
+                        width={652}
                         height={639}
                       />
                     </div>

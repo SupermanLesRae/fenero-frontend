@@ -2,7 +2,7 @@ import { useState } from "react";
 import Link from "next/link";
 import Image from "next/image";
 
-export default function MobileMenuItem({ item }) {
+export default function MobileMenuItem({ item, callback }) {
   const [open, setOpen] = useState(false);
   const hasChildren = item.subMenuItems;
 
@@ -35,7 +35,7 @@ export default function MobileMenuItem({ item }) {
           )}
         </>
       ) : (
-        <Link href={item.link || "#"}>
+        <Link href={item.link || "#"} onClick={() => callback()}>
           <span className="flex justify-between items-center w-full text-left font-semibold text-white pb-5">
             {item.label}
           </span>

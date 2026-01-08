@@ -13,6 +13,12 @@ export default function HeaderMenu({ menu }) {
 
   if (!menu) return null;
 
+  // MOBILE MENU CLOSE
+  const closeMenu = () => {
+    menuPanel.classList.add("-translate-x-full");
+    setTimeout(() => menuOverlay.classList.add("hidden"), 300);
+  };
+
   useEffect(() => {
     const menuBtn = document.getElementById("mobile-menu-button");
     const menuOverlay = document.getElementById("mobileMenu");
@@ -151,7 +157,7 @@ export default function HeaderMenu({ menu }) {
           id="mobileMenuPanel"
         >
           <div className="p-5 border-b border-white/20 flex justify-between items-center">
-            <Link href="/">
+            <Link href="/" onClick={() => closeMenu()}>
               <img src={logo} alt="Logo" width={120} height={120} />
             </Link>
             <button id="closeMobileMenu" className="p-2 text-white">
@@ -174,7 +180,13 @@ export default function HeaderMenu({ menu }) {
           <nav className="p-5 space-y-5 font-medium text-[16px]">
             {navigation.map((nav, index) => {
               const dropdownId = `mobileDropdown${index}`;
-              return <MobileMenuItem key={dropdownId} item={nav} />;
+              return (
+                <MobileMenuItem
+                  key={dropdownId}
+                  item={nav}
+                  callback={closeMenu}
+                />
+              );
             })}
 
             <Link href={loginCta.url}>

@@ -77,7 +77,7 @@ export default function Hero({ data }) {
                     key={"aboutHeroSlide" + index}
                     className="flex-[0_0_100%] relative flex flex-col lg:flex-row xl:items-center select-none min-h-0 h-auto lg:min-h-screen portrait:min-h-0 overflow-y-hidden "
                   >
-                    <div className="w-full py-10 px-10 xl:p-20 lg:flex lg:items-center flex justify-center lg:justify-start z-1 mb-0 lg:mb-10 shadow-lg">
+                    <div className="w-full py-10 px-10 xl:p-20 lg:flex lg:items-center flex justify-center lg:justify-start z-1 mb-0 lg:mb-10 shadow-lg lg:shadow-none">
                       <div className="max-w-140 xl:max-w-160 ">
                         <h2
                           className="mb-4 text-[40px] leading-12 md:text-[48px] md:leading-13 tracking-[0.15px] font-bold text-white "

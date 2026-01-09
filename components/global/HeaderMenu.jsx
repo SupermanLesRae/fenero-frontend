@@ -5,11 +5,15 @@ import { useEffect } from "react";
 import MenuItemDesktop from "@/components/navigation/MenuItemDesktop";
 import MobileMenuItem from "@/components/navigation/MobileMenuItem";
 import Image from "next/image";
+import SearchOverlay from "./SearchOverlay";
+import { useState } from "react";
 
 export default function HeaderMenu({ menu }) {
   const logo = menu.logo.node.sourceUrl;
   const loginCta = menu.loginCta;
   const navigation = menu.menuItems;
+
+  const [open, setOpen] = useState(false);
 
   if (!menu) return null;
 
@@ -55,7 +59,7 @@ export default function HeaderMenu({ menu }) {
   }, []);
 
   return (
-    <header>
+    <header className="select-none">
       {/* Top Right login + search */}
       <div className="w-full absolute pr-10 xl:pr-20 max-w-430 left-1/2 -translate-x-1/2 h-8.75 top-14 xl:top-6 flex justify-end gap-4 z-50">
         <div className="gap-4 flex">
@@ -65,7 +69,10 @@ export default function HeaderMenu({ menu }) {
             </div>
           </Link>
 
-          <button className="pointer-events-auto cursor-pointer flex items-center font-semibold text-[18px] text-white bg-transparent hover:bg-[#38BB3F] rounded-lg transition">
+          <button
+            onClick={() => setOpen(true)}
+            className="pointer-events-auto cursor-pointer flex items-center font-semibold text-[18px] text-white bg-transparent hover:bg-[#38BB3F] rounded-lg transition"
+          >
             {/* Search icon */}
             <svg
               width="35"
@@ -197,6 +204,7 @@ export default function HeaderMenu({ menu }) {
           </nav>
         </div>
       </div>
+      <SearchOverlay isOpen={open} onClose={() => setOpen(false)} />
     </header>
   );
 }

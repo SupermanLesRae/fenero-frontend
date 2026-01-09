@@ -109,8 +109,6 @@ export default async function HomeHero() {
 
         <div className="absolute portrait:absolute top-0 right-0 w-full sm:w-[50%] h-full max-h-250 overflow-hidden hidden lg:block z-0">
           <img
-            placeholder="blur"
-            blurDataURL={homeData.img.node.sourceUrl}
             src={homeData.img.node.sourceUrl}
             alt={"No alternative text provided"}
             className="absolute portrait:relative right-0 top-0 h-full w-auto  object-cover object-left"

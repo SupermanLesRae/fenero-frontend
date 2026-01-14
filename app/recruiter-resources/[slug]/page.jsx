@@ -1,4 +1,3 @@
-import LatestNewsPosts from "@/components/sections/LatestNewsPosts";
 import { Button } from "@/components/ui/button";
 import { createApolloClient } from "@/lib/apolloClient";
 import {
@@ -55,11 +54,11 @@ export default async function Page({ params }) {
           <div className="bg-[#000E47] absolute w-full h-full opacity-80"></div>
         </div>
         <div className="px-10 w-full">
-          <div className="max-w-[1128px] mx-auto pt-20 pb-20">
+          <div className="max-w-282 mx-auto pt-20 pb-20">
             <h2 className="relative text-[30px] md:text-[48px] leading-10 md:leading-14 font-bold font-nunito mb-0 select-none text-[#38BB3F] text-left pt-0 pb-4">
               {sectionData?.title || "Add a Date"}
             </h2>
-            <div className="max-w-[100px]">
+            <div className="max-w-25">
               <Link href="/recruiter-resources">
                 <Button
                   size="lg"
@@ -74,9 +73,9 @@ export default async function Page({ params }) {
         </div>
       </div>
 
-      <div className="relative w-full max-w-[1200px] mx-auto pt-10 px-10">
+      <div className="relative w-full max-w-300 mx-auto pt-10 px-10">
         <div
-          className="relative policy-content max-w-[1128px] mx-auto py-10 bg-white px-0"
+          className="relative policy-content max-w-282 mx-auto py-10 bg-white px-0"
           dangerouslySetInnerHTML={{ __html: content }}
         ></div>
 

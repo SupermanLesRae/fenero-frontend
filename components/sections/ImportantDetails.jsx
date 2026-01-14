@@ -16,17 +16,17 @@ export async function ImportantDetails({ sel, multiple }) {
 
   return (
     <section className="relative w-full py-20 xl:py-0 px-10">
-      <h2 className="relative text-[36px] max-w-[1200px] mx-auto leading-12 md:text-[48px] md:leading-14 font-extrabold font-nunito select-none text-center pt-0 pb-10 text-[#000E47]">
+      <h2 className="relative text-[36px] max-w-300 mx-auto leading-12 md:text-[48px] md:leading-14 font-extrabold font-nunito select-none text-center pt-0 pb-10 text-[#000E47]">
         {sectionData.title}
       </h2>
 
-      <div className="flex flex-wrap justify-center gap-5 max-w-[1200px] mx-auto">
+      <div className="flex flex-wrap justify-center gap-5 max-w-300 mx-auto">
         {sectionData?.details?.map((item, index) => (
           <div
             key={index}
-            className="flex flex-col bg-white border border-[#AFCE67] items-center gap-2 rounded-lg p-6 shadow-sm select-none w-full max-w-[360px]"
+            className="flex flex-col bg-white border border-[#AFCE67] items-center gap-2 rounded-lg p-6 shadow-sm select-none w-full max-w-90"
           >
-            <div className="w-[100px] h-[100px]">
+            <div className="w-25 h-25">
               <img
                 width={100}
                 height={100}

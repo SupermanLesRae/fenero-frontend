@@ -20,7 +20,7 @@ export async function FAQs({ sel }) {
 
   return (
     <section className="relative w-full pb-20 px-10">
-      <div className="max-w-[1400px] mx-auto text-center">
+      <div className="max-w-350 mx-auto text-center">
         <h2 className="relative text-[36px] leading-12 md:text-[48px] md:leading-14  font-extrabold font-nunito  select-none text-center pt-20 pb-10 text-[#000E47]">
           {sectionData.title}
         </h2>

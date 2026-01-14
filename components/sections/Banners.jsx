@@ -16,7 +16,7 @@ export async function Banners({ sel }) {
       style={{ backgroundColor: sectionData.styling.backgroundColor }}
       className="relative w-full pb-20"
     >
-      <div className="max-w-[1400px] mx-auto text-center">
+      <div className="max-w-350 mx-auto text-center">
         <h2
           style={{ color: sectionData.styling.titleColor }}
           className="relative text-[36px] leading-12 md:text-[48px] md:leading-14  font-extrabold font-nunito  select-none text-center pt-20 pb-10 text-[#000E47]"

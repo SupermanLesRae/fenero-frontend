@@ -121,7 +121,7 @@ export default function WhoAreYou() {
                 key={index}
                 className="flex-[0_0_100%] lg:flex-[0_0_50%] xl:flex-[0_0_33.333%] min-w-0 px-2 py-2 "
               >
-                <div className="relative border border-gray-200 flex flex-col w-full md:w-[373px] rounded-xl shadow-md shadow-[#000000]/10 h-full bg-white overflow-hidden select-none">
+                <div className="relative border border-gray-200 flex flex-col w-full md:w-93.25 rounded-xl shadow-md shadow-[#000000]/10 h-full bg-white overflow-hidden select-none">
                   <div
                     style={{
                       color: item.textColor,
@@ -129,7 +129,7 @@ export default function WhoAreYou() {
                     }}
                     className="relative h-auto"
                   >
-                    <div className="flex items-center justify-start pt-10 pl-6 h-[61px] w-auto">
+                    <div className="flex items-center justify-start pt-10 pl-6 h-15.25 w-auto">
                       <img
                         src={item.icon.node.sourceUrl}
                         alt={"No alt text"}
@@ -150,7 +150,7 @@ export default function WhoAreYou() {
                     <ul className="space-y-4 font-nunito list-disc marker:text-[#036735] pl-4 text-[#666666] text-[16px] leading-5 font-medium">
                       {item.cardList.map((listItem, index) => (
                         <li key={"whoAreYouCardListItem" + index}>
-                          <div className="select-none overflow-hidden line-clamp-2 break-words">
+                          <div className="select-none overflow-hidden line-clamp-2 wrap-break-word">
                             {listItem.label}
                           </div>
                         </li>

@@ -272,7 +272,7 @@ export function ContactFormClient({ selectOptions }) {
           <Button
             type="submit"
             disabled={loading}
-            className="z-10 flex items-center gap-2 cursor-pointer flex-1 h-10 max-w-[250px] bg-[#D1DF20] hover:bg-[#C9D217] text-[#000E47] select-none"
+            className="z-10 flex items-center gap-2 cursor-pointer flex-1 h-10 max-w-62.5 bg-[#D1DF20] hover:bg-[#C9D217] text-[#000E47] select-none"
           >
             {loading && <Spinner size={20} />}
             {loading ? "Submitting..." : "Submit"}

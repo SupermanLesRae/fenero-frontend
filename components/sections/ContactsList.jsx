@@ -27,7 +27,7 @@ export async function ContactsList() {
                 height={80}
                 src={contact.icon.node.sourceUrl}
                 alt={contact.icon.node.altText || "Icon"}
-                className="h-[80px] w-[80px] "
+                className="h-20 w-20 "
               />
             </div>
 

@@ -60,7 +60,7 @@ export default function CallbackForm() {
     <Form {...form}>
       <form
         onSubmit={form.handleSubmit(onSubmit)}
-        className="grid grid-cols-1 md:grid-cols-2 gap-4 p-4 max-w-[650px] mx-auto"
+        className="grid grid-cols-1 md:grid-cols-2 gap-4 p-4 max-w-162.5 mx-auto"
       >
         {/* Name */}
         <FormField
@@ -157,7 +157,7 @@ export default function CallbackForm() {
           <Button
             type="submit"
             disabled={loading}
-            className={`z-10 cursor-pointer flex-1 max-w-[250px] h-[48px] select-none ${
+            className={`z-10 cursor-pointer flex-1 max-w-62.5 h-12 select-none ${
               loading
                 ? "bg-gray-300 text-gray-600 cursor-not-allowed"
                 : "bg-[#D1DF20] hover:bg-[#C9D217] text-[#000E47]"

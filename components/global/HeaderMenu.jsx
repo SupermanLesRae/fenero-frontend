@@ -146,7 +146,7 @@ export default function HeaderMenu({ menu }) {
           </Link>
 
           {/* Desktop Navigation */}
-          <ul className="relative flex items-center gap-x-14 hidden xl:flex">
+          <ul className="relative items-center gap-x-14 hidden xl:flex">
             {navigation.map((nav, index) => (
               <MenuItemDesktop key={`header_${index}`} item={nav} />
             ))}

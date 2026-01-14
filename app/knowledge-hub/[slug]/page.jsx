@@ -45,7 +45,7 @@ export default async function Page({ params }) {
   return (
     <div>
       <div className="bg-[#ECF8EF] ">
-        <div className="max-w-[1128px] mx-auto pt-20">
+        <div className="max-w-282 mx-auto pt-20">
           <Link href="/knowledge-hub">
             <Button
               size="lg"
@@ -79,7 +79,7 @@ export default async function Page({ params }) {
           )}
 
           {sectionData?.date && (
-            <div className="text-center pb-[250px]">
+            <div className="text-center pb-62.5">
               {/* Date */}
               <p className="text-[#000E47] text-sm ">{formattedDate}</p>
             </div>
@@ -88,9 +88,9 @@ export default async function Page({ params }) {
       </div>
       {sectionData?.featureImg.node.sourceUrl && (
         <div className="bg-white">
-          <div className="relative h-[440px] max-w-[1128px] text-center mx-auto w-full rounded-xl">
+          <div className="relative h-110 max-w-282 text-center mx-auto w-full rounded-xl">
             <img
-              className="object-cover w-full h-[440px] max-w-[1128px] absolute -mt-[220px] rounded-xl shadow-lg border-10 border-white"
+              className="object-cover w-full h-110 max-w-282 absolute -mt-55 rounded-xl shadow-lg border-10 border-white"
               src={sectionData.featureImg.node.sourceUrl}
               alt=""
               width={1108}
@@ -100,7 +100,7 @@ export default async function Page({ params }) {
         </div>
       )}
       <div
-        className="policy-content max-w-[1128px] mx-auto py-10 bg-white -mt-[220px]"
+        className="policy-content max-w-282 mx-auto py-10 bg-white -mt-55"
         dangerouslySetInnerHTML={{ __html: content }}
       ></div>
       <LatestNewsPosts currentSlug={slug} />

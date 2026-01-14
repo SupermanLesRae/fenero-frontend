@@ -32,21 +32,21 @@ export async function Community() {
           </div>
         </div>
       </div>
-      <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 text-white max-w-[1400px] mx-auto px-10">
+      <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 text-white max-w-350 mx-auto px-10">
         {sectionData?.communities?.map((community, index) => (
-          <div key={index} className="max-w-[461px] mx-auto">
+          <div key={index} className="max-w-115.25 mx-auto">
             <img
               width={461}
               height={461}
               src={community.img.node.sourceUrl}
               alt=""
             />
-            <h3 className="text-[40px] font-bold mt-10 leading-[45px]">
+            <h3 className="text-[40px] font-bold mt-10 leading-11.25">
               {community.label}
             </h3>
 
             <p
-              className="text-[20px] leading-[28px] pt-2 pb-6"
+              className="text-[20px] leading-7 pt-2 pb-6"
               dangerouslySetInnerHTML={{ __html: community.description }}
             ></p>
 

@@ -1,7 +1,8 @@
 @import "tailwindcss";
 @import "tw-animate-css";
 
-@custom-variant dark (&:is(.dark *));
+/* Removed unsupported @custom-variant — use the .dark class in this stylesheet
+   or register a custom variant in tailwind.config.js if needed. */
 
 :root {
   --font-nunito: "Nunito", sans-serif;

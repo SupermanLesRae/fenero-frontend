@@ -109,7 +109,7 @@ export default function SearchOverlay({ isOpen, onClose }) {
             onChange={(e) => setQuery(e.target.value)}
             onKeyDown={handleKeyDown}
             placeholder="Search the site..."
-            className="w-full px-4 py-3 rounded-lg border-1 border-[#ffffff] bg-transparent text-white placeholder-white/80 focus:outline-none focus:ring-1 focus:ring-[#ffffff]"
+            className="w-full px-4 py-3 rounded-lg border border-[#ffffff] bg-transparent text-white placeholder-white/80 focus:outline-none focus:ring-1 focus:ring-[#ffffff]"
           />
           <button
             onClick={handleClose}

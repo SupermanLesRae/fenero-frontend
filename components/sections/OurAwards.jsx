@@ -25,7 +25,7 @@ export async function OurAwards() {
           {sectionData.awards.map((item, index) => (
             <div
               key={index}
-              className="relative flex items-center justify-center w-[300px] rounded-xl h-full overflow-hidden select-none"
+              className="relative flex items-center justify-center w-75 rounded-xl h-full overflow-hidden select-none"
             >
               <div className="relative h-auto">
                 <div className="flex items-center justify-center pt-8 pb-2 h-auto w-auto">

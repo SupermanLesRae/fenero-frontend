@@ -32,7 +32,7 @@ export default function FooterMenu({ menu }) {
                 <img
                   src={`/icons/${item.icon[0]}.svg`}
                   alt={"No alternative text provided"}
-                  className="w-[18px] h-[18px]"
+                  className="w-4.5 h-4.5"
                   width={18}
                   height={18}
                 />

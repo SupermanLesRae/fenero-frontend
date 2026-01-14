@@ -33,7 +33,7 @@ export async function Partner() {
           {sectionData.cards.map((item, index) => (
             <div
               key={index}
-              className="relative flex w-[362px] sm:h-[450px] rounded-xl shadow-md shadow-[#000000]/10 h-full bg-white overflow-hidden select-none p-2"
+              className="relative flex w-90.5 sm:h-112.5 rounded-xl shadow-md shadow-[#000000]/10 h-full bg-white overflow-hidden select-none p-2"
             >
               <div className="relative h-auto">
                 <div className="flex items-center justify-center pt-8 pb-8 h-auto w-auto">

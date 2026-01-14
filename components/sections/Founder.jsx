@@ -14,7 +14,7 @@ export async function Founder() {
 
   return (
     <section className="bg-[#ECF8EF]">
-      <div className="relative w-full py-28 px-10 max-w-[1300px] mx-auto select-none">
+      <div className="relative w-full py-28 px-10 max-w-325 mx-auto select-none">
         <div className="flex flex-col xl:flex-row items-center gap-14">
           {/* Left Image */}
           <div className="relative w-full flex justify-center">
@@ -35,7 +35,7 @@ export async function Founder() {
             </h2>
 
             <div
-              className="mb-4 text-[18px] md:text-[24px] leading-6 md:leading-8 font-semibold flex flex-col gap-4 w-[90%] max-w-[600px] mx-auto xl:mx-0 text-[#056735]"
+              className="mb-4 text-[18px] md:text-[24px] leading-6 md:leading-8 font-semibold flex flex-col gap-4 w-[90%] max-w-150 mx-auto xl:mx-0 text-[#056735]"
               dangerouslySetInnerHTML={{ __html: sectionData.description }}
             />
 

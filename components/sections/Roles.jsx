@@ -20,7 +20,7 @@ export async function Roles() {
       className="relative w-full"
       style={{ backgroundColor: sectionData.styling.backgroundColor }}
     >
-      <div className="relative w-full mx-auto max-w-[853px] pb-40">
+      <div className="relative w-full mx-auto max-w-213.25 pb-40">
         <h2 className="relative text-[30px] md:text-[48px] font-extrabold font-nunito mb-2 select-none text-[#000E47] text-center pt-28 pb-14">
           {sectionData.title}
         </h2>

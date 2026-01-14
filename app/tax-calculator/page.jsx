@@ -1,9 +1,6 @@
 import Hero from "@/components/sections/Hero";
 import { createApolloClient } from "@/lib/apolloClient";
 import { HERO_QUERY } from "@/lib/queries/Queries";
-import ContactForm from "@/components/utilities/ContactForm";
-import ContactInfo from "@/components/sections/ContactInfo";
-import RecruiterPosts from "@/components/sections/RecruiterPosts";
 import CallBackRequest from "@/components/sections/CallBackRequest";
 import { WhatWeOffer } from "@/components/sections/WhatWeOffer";
 

@@ -34,7 +34,7 @@ export async function ImageTextSections() {
           >
             <div className="px-10">
               {/* TITLE */}
-              <h2 className="relative text-[36px] max-w-[900px] mx-auto leading-tight md:text-[48px] font-extrabold font-nunito text-center text-[#000E47] pt-20">
+              <h2 className="relative text-[36px] max-w-225 mx-auto leading-tight md:text-[48px] font-extrabold font-nunito text-center text-[#000E47] pt-20">
                 {sectionData.imageTextSectionsCoreFields.title}
               </h2>
 
@@ -49,7 +49,7 @@ export async function ImageTextSections() {
 
             {/* CONTENT */}
             <div
-              className={`flex flex-col md:flex-row items-start gap-10 px-10 pb-20 max-w-[1350px] mx-auto ${
+              className={`flex flex-col md:flex-row items-start gap-10 px-10 pb-20 max-w-337.5 mx-auto ${
                 sectionData.imageTextSectionsCoreFields.cols.isreversed
                   ? "md:flex-row-reverse"
                   : ""
@@ -82,7 +82,7 @@ export async function ImageTextSections() {
                           key={"list_" + index}
                         >
                           <img
-                            className="w-[24px] h-[24px]"
+                            className="w-6 h-6"
                             src={item.icon.node.sourceUrl}
                             alt=""
                             width={24}

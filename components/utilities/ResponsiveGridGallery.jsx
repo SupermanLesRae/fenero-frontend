@@ -25,7 +25,7 @@ export default function TrueSizeGridGallery({ images, square }) {
   return (
     <>
       {/* Container with max width and centered */}
-      <div className="mx-auto max-w-[1200px]">
+      <div className="mx-auto max-w-300">
         <div
           className="grid gap-4"
           style={{

@@ -77,7 +77,7 @@ export default function NewsPostsClient({ posts, tags }) {
         </div>
       </div>
 
-      <div className="max-w-[1128px] py-10 mx-auto flex items-center justify-center select-none">
+      <div className="max-w-282 py-10 mx-auto flex items-center justify-center select-none">
         <div className="text-[#3C3E47] text-[16px] mr-6">Filter by:</div>
 
         <div className="flex flex-wrap gap-2">

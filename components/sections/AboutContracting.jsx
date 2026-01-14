@@ -23,15 +23,15 @@ export async function AboutContracting({ sel, multiple }) {
     <div className="pb-20 bg-[#ECF8EF]">
       {sections.map((sectionData, sectionIndex) => (
         <section key={sectionIndex} className={`relative w-full `}>
-          <h2 className="relative text-[36px] max-w-[900px] mx-auto leading-12 md:text-[48px] md:leading-14 font-extrabold font-nunito select-none text-center pt-20 pb-10 text-[#000E47]">
+          <h2 className="relative text-[36px] max-w-225 mx-auto leading-12 md:text-[48px] md:leading-14 font-extrabold font-nunito select-none text-center pt-20 pb-10 text-[#000E47]">
             {sectionData.title}
           </h2>
 
-          <div className="flex flex-wrap gap-6 px-10 max-w-[1350px] mx-auto justify-center">
+          <div className="flex flex-wrap gap-6 px-10 max-w-337.5 mx-auto justify-center">
             {sectionData?.card?.map((item, index) => (
               <div
                 key={index}
-                className="flex flex-col bg-white rounded-lg p-6 shadow-sm min-w-[250px] max-w-[300px] flex-1"
+                className="flex flex-col bg-white rounded-lg p-6 shadow-sm min-w-62.5 max-w-75 flex-1"
               >
                 <h3 className="text-lg font-semibold">{item.title}</h3>
                 <p

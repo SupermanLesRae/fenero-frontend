@@ -1,8 +1,5 @@
 import { createApolloClient } from "@/lib/apolloClient";
 import { COST_INFO_SECTION } from "@/lib/queries/Queries";
-import Link from "next/link";
-import { Button } from "../ui/button";
-import { IconArrowLeft } from "@tabler/icons-react";
 import Image from "next/image";
 
 export async function CostInfo() {
@@ -29,17 +26,17 @@ export async function CostInfo() {
           <section key={sectionIndex} className="relative w-full bg-[#ECF8EF]">
             <div className="px-10">
               {/* TITLE */}
-              <h2 className="relative text-[36px] max-w-[900px] mx-auto leading-tight md:text-[48px] font-extrabold font-nunito text-center text-[#000E47] pt-20 pb-16">
+              <h2 className="relative text-[36px] max-w-225 mx-auto leading-tight md:text-[48px] font-extrabold font-nunito text-center text-[#000E47] pt-20 pb-16">
                 {sectionData.costInfoSectionsCoreFields.title}
               </h2>
             </div>
 
             {/* CONTENT */}
             <div
-              className={`flex flex-col md:flex-row items-center md:items-start gap-10 px-10 pb-10 max-w-[1350px] relative mx-auto justify-center `}
+              className={`flex flex-col md:flex-row items-center md:items-start gap-10 px-10 pb-10 max-w-337.5 relative mx-auto justify-center `}
             >
               {/*  */}
-              <div className="flex flex-col gap-4  bg-[#036735] max-w-[448px] text-white p-10 rounded-xl ">
+              <div className="flex flex-col gap-4  bg-[#036735] max-w-md text-white p-10 rounded-xl ">
                 <p className="relative text-[18px] leading-tight font-nunito text-left  ">
                   {sectionData.costInfoSectionsCoreFields.cols.leftCol.title}
                 </p>
@@ -67,7 +64,7 @@ export async function CostInfo() {
                           <img
                             width={24}
                             height={24}
-                            className="w-[24px] h-[24px]"
+                            className="w-6 h-6"
                             src={item.icon.node.sourceUrl}
                             alt=""
                           />
@@ -80,7 +77,7 @@ export async function CostInfo() {
               </div>
             </div>
 
-            <h2 className="relative text-[18px] max-w-[900px] mx-auto leading-tight font-nunito text-center text-[#000E47] pt-10 pb-20">
+            <h2 className="relative text-[18px] max-w-225 mx-auto leading-tight font-nunito text-center text-[#000E47] pt-10 pb-20">
               {sectionData.costInfoSectionsCoreFields.note}
             </h2>
           </section>

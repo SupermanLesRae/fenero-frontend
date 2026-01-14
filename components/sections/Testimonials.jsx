@@ -120,7 +120,7 @@ export default function Testimonials() {
         </p>
       </div>
       <div className="flex items-center justify-center gap-4 flex-col md:flex-row md:gap-2 mb-8">
-        <p className="font-nunito font-[700] text-[18px] leading-[20px] tracking-[0.15px] text-[#000E47]">
+        <p className="font-nunito font-bold text-[18px] leading-5 tracking-[0.15px] text-[#000E47]">
           Average rating
         </p>
 
@@ -156,7 +156,7 @@ export default function Testimonials() {
                 key={"item.id" + index}
                 className="embla__slide flex-[0_0_100%] md:flex-[0_0_50%] lg:flex-[0_0_33.333%] px-2 flex items-center justify-center h-full select-none"
               >
-                <div className="relative border border-gray-200 flex flex-col w-full sm:w-[363px] rounded-xl shadow-md shadow-[#000000]/10 h-[372px] bg-white overflow-hidden p-5 ">
+                <div className="relative border border-gray-200 flex flex-col w-full sm:w-90.75 rounded-xl shadow-md shadow-[#000000]/10 h-93 bg-white overflow-hidden p-5 ">
                   <div className="flex h-auto items-center gap-2 mb-5">
                     <div className="flex">
                       {Array.from({
@@ -177,20 +177,20 @@ export default function Testimonials() {
                         </svg>
                       ))}
                     </div>
-                    <div className="font-nunito font-[800] text-[18px] leading-[20px] tracking-[0.25px] text-[#000000]">
+                    <div className="font-nunito font-extrabold text-[18px] leading-5 tracking-[0.25px] text-[#000000]">
                       <span>{item.rating.toFixed(1)}</span>
                     </div>
                   </div>
-                  <div className="flex flex-grow">
-                    <p className="font-nunito font-[500] text-[16px] leading-[24px] tracking-[0.5px] text-[#000000]">
+                  <div className="flex grow">
+                    <p className="font-nunito font-medium text-[16px] leading-6 tracking-[0.5px] text-[#000000]">
                       {truncate(item.description, 340)}
                     </p>
                   </div>
                   <div>
-                    <h2 className="font-nunito font-[700] text-[18px] leading-[20px] tracking-[0.25px] text-[#000000] mb-1">
+                    <h2 className="font-nunito font-bold text-[18px] leading-5 tracking-[0.25px] text-[#000000] mb-1">
                       {truncate(item.name, 30)}
                     </h2>
-                    <p className="font-nunito font-[500] text-[18px] leading-[20px] tracking-[0.25px] text-[#000000]">
+                    <p className="font-nunito font-medium text-[18px] leading-5 tracking-[0.25px] text-[#000000]">
                       {truncate(item.position, 30)}
                     </p>
                   </div>

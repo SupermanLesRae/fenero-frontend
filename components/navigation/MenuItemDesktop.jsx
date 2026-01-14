@@ -64,7 +64,7 @@ function MenuItemDesktop({ item }) {
           className={`
             absolute left-0 top-full mt-1
             bg-white rounded overflow-hidden shadow-lg
-            min-w-[200px] z-50
+            min-w-50 z-50
             transition-all duration-200 ease-out
             ${
               isOpen

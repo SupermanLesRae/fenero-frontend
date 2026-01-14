@@ -29,7 +29,7 @@ export async function GetStartedProcess({ sel, multiple }) {
             {sectionData.title}
           </h2>
 
-          <div className="flex flex-wrap justify-center gap-4 px-10 max-w-[350px] md:max-w-[1450px] mx-auto select-none">
+          <div className="flex flex-wrap justify-center gap-4 px-10 max-w-87.5 md:max-w-362.5 mx-auto select-none">
             {sectionData?.process?.map((item, index) => {
               const isLast = index === sectionData.process.length - 1;
 
@@ -43,10 +43,10 @@ export async function GetStartedProcess({ sel, multiple }) {
                   )}
 
                   {/* CARD */}
-                  <div className="flex flex-col justify-center items-center w-[270px] min-h-[260px] bg-white rounded-lg p-6 shadow-sm">
+                  <div className="flex flex-col justify-center items-center w-67.5 min-h-65 bg-white rounded-lg p-6 shadow-sm">
                     <img
                       src={item.icon.node.sourceUrl}
-                      className="w-[100px] h-[100px] mb-4"
+                      className="w-25 h-25 mb-4"
                       alt={item.label}
                       width={100}
                       height={100}

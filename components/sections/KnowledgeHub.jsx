@@ -31,7 +31,7 @@ export async function KnowledgeHub() {
 
   return (
     <section className="relative w-full pb-20 bg-[#ECF8EF]">
-      <div className="max-w-[900px] mx-auto text-center mb-10">
+      <div className="max-w-225 mx-auto text-center mb-10">
         <h2 className="relative text-[36px] leading-12 md:text-[48px] md:leading-14  font-extrabold font-nunito  select-none text-center pt-20 pb-10 text-[#000E47]">
           {sectionData.title}
         </h2>
@@ -39,11 +39,11 @@ export async function KnowledgeHub() {
           {sectionData.description}
         </p>
       </div>
-      <div className="flex flex-wrap gap-6 px-10 max-w-[1350px] mx-auto justify-center">
+      <div className="flex flex-wrap gap-6 px-10 max-w-337.5 mx-auto justify-center">
         {sectionDataBlocks?.map((item, index) => (
           <Link key={"posts_" + index} href={"/knowledge-hub/" + item.slug}>
-            <div className="flex flex-col bg-white rounded-lg p-0 shadow-md hover:shadow-sm min-w-[414px] max-w-[414px] flex-1 h-[392px] overflow-hidden">
-              <div className="relative w-[414px] h-[196px] overflow-hidden">
+            <div className="flex flex-col bg-white rounded-lg p-0 shadow-md hover:shadow-sm min-w-103.5 max-w-103.5 flex-1 h-98 overflow-hidden">
+              <div className="relative w-103.5 h-49 overflow-hidden">
                 <img
                   width={414}
                   height={196}
@@ -51,7 +51,7 @@ export async function KnowledgeHub() {
                   src={item.newsPostsCoreFields.cardImg.node.sourceUrl}
                   alt=""
                 />
-                <div className="flex items-center justify-center text-white bg-[#056735] rounded-full px-4 py-2 absolute w-[128px] h-[28px] top-8 left-8">
+                <div className="flex items-center justify-center text-white bg-[#056735] rounded-full px-4 py-2 absolute w-32 h-7 top-8 left-8">
                   Regulation
                 </div>
               </div>

@@ -20,10 +20,7 @@ export default async function HomeHero() {
         <div className="w-full p-10 xl:p-20 lg:flex lg:items-center flex justify-center lg:justify-start portrait:items-start z-0">
           <div className="max-w-150">
             <div className="mb-4">
-              <Button
-                variant="outline"
-                className=" bg-transparent py-5 px-8 font-bold text-[14px] rounded-full text-[#CEEED6] pointer-events-none"
-              >
+              <Button className="border-2 bg-transparent py-5 px-8 font-bold text-[14px] rounded-full text-[#CEEED6] pointer-events-none">
                 <img
                   src={homeData.awardLabel?.img.node.sourceUrl}
                   alt={"No alternative text provided"}

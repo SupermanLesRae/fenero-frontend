@@ -7,22 +7,20 @@ export default async function handler(req, res) {
   }
 
   try {
-    // For servers without valid SSL
-    const agent = new https.Agent({
-      rejectUnauthorized: false, // only server-side
-    });
+    // Node.js HTTPS agent that ignores invalid SSL (server-side only)
+    const agent = new https.Agent({ rejectUnauthorized: false });
 
     const response = await fetch("https://13.60.181.6/graphql", {
       method: "POST",
       headers: { "Content-Type": "application/json" },
       body: JSON.stringify(req.body),
-      agent,
+      agent, // bypass TLS only here
     });
 
     const data = await response.json();
     res.status(200).json(data);
   } catch (err) {
     console.error(err);
-    res.status(500).json({ error: "GraphQL fetch error" });
+    res.status(500).json({ error: "Error fetching GraphQL" });
   }
 }

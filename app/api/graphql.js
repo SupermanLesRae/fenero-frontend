@@ -1,14 +1,18 @@
 import fetch from "cross-fetch";
 
 export default async function handler(req, res) {
+  if (req.method !== "POST") {
+    return res.status(405).json({ error: "Method not allowed" }); // prevent GET requests
+  }
+
   try {
     const response = await fetch("https://13.60.181.6/graphql", {
-      method: req.method,
+      method: "POST",
       headers: {
         "Content-Type": "application/json",
-        // Add auth headers here if needed
+        // Add auth headers here if required
       },
-      body: req.method === "POST" ? JSON.stringify(req.body) : undefined,
+      body: JSON.stringify(req.body),
     });
 
     const data = await response.json();

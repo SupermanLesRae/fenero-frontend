@@ -6,7 +6,7 @@ import WhoAreYou from "@/components/sections/WhoAreYou";
 
 export const revalidate = 60;
 
-export default function Home() {
+export default function HomePage() {
   return (
     <div>
       <HomeHero />

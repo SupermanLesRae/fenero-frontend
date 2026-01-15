@@ -3,6 +3,9 @@ import Link from "next/link";
 
 export default function FooterMenu({ menu }) {
   if (!menu) return null;
+
+  console.log("footer: ", menu);
+
   return (
     <footer className="bg-[#000E47] text-white py-16 px-6 select-none">
       <div className="max-w-500 px-10 mx-auto grid grid-cols-1 sm:grid-cols-1 lg:grid-cols-4 gap-10">
@@ -60,7 +63,7 @@ export default function FooterMenu({ menu }) {
                   {item.footerSectionLinks.map((item, index) => (
                     <li key={index}>
                       <Link
-                        href={item.footerSectionLink}
+                        href={item.footerSectionLink || ""}
                         className="hover:text-[#D1DF20] transition flex items-start justify-center sm:justify-start sm:items-center gap-2"
                       >
                         {item.footerLabelIcon === "phone" && (
@@ -139,6 +142,14 @@ export default function FooterMenu({ menu }) {
 
                         {item.footerSectionLinkLabel}
                       </Link>
+                      {item?.logoicon?.node?.sourceUrl && (
+                        <div className="w-full">
+                          <img
+                            className="mt-4 mx-auto sm:mx-0"
+                            src={item.logoicon.node.sourceUrl}
+                          />
+                        </div>
+                      )}
                     </li>
                   ))}
                 </ul>
@@ -148,7 +159,7 @@ export default function FooterMenu({ menu }) {
         </div>
       </div>
 
-      <div className="border-t max-w-7xl mx-auto border-white mt-10 pt-5 text-center font-nunito font-medium text-[16px] text-white">
+      <div className="border-t max-w-7xl mx-auto border-white mt-20 pt-10 text-center font-nunito font-medium text-[16px] text-white">
         {menu.copyrightText}
       </div>
     </footer>

@@ -196,7 +196,7 @@ export default function CallbackForm() {
                 <Spinner size={20} />
               </span>
             )}
-            {loading ? "Submitting..." : "Submit"}
+            {loading ? "Submitting..." : "Request A Callback"}
           </Button>
         </div>
       </form>

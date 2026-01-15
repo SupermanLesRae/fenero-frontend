@@ -1,6 +1,10 @@
 import { AboutContracting } from "@/components/sections/AboutContracting";
+import { Banners } from "@/components/sections/Banners";
+import CallBackRequest from "@/components/sections/CallBackRequest";
+import { FAQs } from "@/components/sections/FAQs";
 import { GetStartedProcess } from "@/components/sections/GetStartedProcess";
 import Hero from "@/components/sections/Hero";
+import { KnowledgeHub } from "@/components/sections/KnowledgeHub";
 import { Solutions } from "@/components/sections/Solutions";
 import { WhatWeOffer } from "@/components/sections/WhatWeOffer";
 import { createApolloClient } from "@/lib/apolloClient";
@@ -31,6 +35,10 @@ export default async function Page() {
       <Solutions section={section} />
       <WhatWeOffer section={section} />
       <GetStartedProcess section={section} />
+      <Banners section={section} />
+      <FAQs section={section} />
+      <KnowledgeHub />
+      <CallBackRequest />
     </div>
   );
 }

@@ -26,11 +26,11 @@ export default async function Page() {
   return (
     <div>
       <Hero data={data.heroBy.herosCoreFields.heroSlide} />
-      <ImageTextSections />
-      <CostInfo />
+      <ImageTextSections section={section} />
+      <CostInfo section={section} />
       <ContactInfo section={section} />
-      <ImportantDetails />
-      <NextSteps />
+      <ImportantDetails section={section} />
+      <NextSteps section={section} />
       <FAQs section={section} />
       <CallBackRequest />
       <KnowledgeHub />

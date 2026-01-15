@@ -4,7 +4,7 @@ import Link from "next/link";
 import { Button } from "../ui/button";
 import { IconArrowRight } from "@tabler/icons-react";
 
-export async function Roles() {
+export async function Roles({ customStyles }) {
   const client = createApolloClient();
   const { data } = await client.query({
     query: ROLES_QUERY,
@@ -48,7 +48,9 @@ export async function Roles() {
                     <Link className="w-full" href={item?.link || "/"}>
                       <Button
                         size="lg"
-                        className={`cursor-pointer w-full lg:w-auto transition shadow-sm bg-[#AFCE67] hover:bg-[#D1DF20] shadow-[#AFCE67]/30 hover:shadow-[#AFCE67]/10`}
+                        className={`cursor-pointer w-full lg:w-auto max-w-auto transition shadow-sm bg-[#AFCE67] hover:bg-[#D1DF20] shadow-[#AFCE67]/30 hover:shadow-[#AFCE67]/10 ${
+                          customStyles && customStyles
+                        }`}
                       >
                         <span className=" font-bold text-[16px] text-black">
                           Apply Now

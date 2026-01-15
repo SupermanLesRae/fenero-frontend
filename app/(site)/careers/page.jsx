@@ -27,7 +27,7 @@ export default async function Page() {
       <Partner />
       <WhatWeOffer section={section} />
       <OurValues />
-      <Roles />
+      <Roles customStyles={"min-w-auto rounded-md"} />
       <Events />
       <Community />
     </div>

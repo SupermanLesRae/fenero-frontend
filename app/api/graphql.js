@@ -6,7 +6,7 @@ export default async function handler(req, res) {
   }
 
   try {
-    const response = await fetch("https://13.60.181.6/graphql", {
+    const response = await fetch("http://13.60.181.6/graphql", {
       method: "POST",
       headers: {
         "Content-Type": "application/json",

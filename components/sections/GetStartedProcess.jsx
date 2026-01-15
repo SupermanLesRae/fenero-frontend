@@ -3,33 +3,42 @@ import { PROCESSES_INFO_QUERY } from "@/lib/queries/Queries";
 import { ArrowDown, ArrowRight } from "lucide-react";
 import Image from "next/image";
 
-export async function GetStartedProcess({ sel, multiple }) {
+{
+  /* Get Started Steps */
+}
+export async function GetStartedProcess({ section }) {
   const client = createApolloClient();
   const { data } = await client.query({
     query: PROCESSES_INFO_QUERY,
   });
 
-  const nodes = data?.getStartedSteps?.nodes || [];
+  const searchText = section.toLowerCase(); // normalize sel
 
-  // 👉 Normalize sel to array
-  const selectedIndexes = multiple ? sel : [sel];
+  // Get all nodes whose section includes sel
+  const matchedNodes = data.getStartedSteps.nodes.filter((node) => {
+    const sections = node.getStartedStepsCoreFields.section; // e.g. ['Home', 'New to Contracting']
+    return sections?.some((section) => section.toLowerCase() === searchText);
+  });
 
-  // 👉 Collect selected sections
-  const sections = selectedIndexes
-    .map((index) => nodes[index]?.getStartedStepsCoreFields)
-    .filter(Boolean);
+  // Extract only getStartedStepsCoreFields from matched nodes
+  const results = matchedNodes.map((node) => node.getStartedStepsCoreFields);
 
-  if (!sections.length) return null;
+  if (!results) return null;
 
   return (
-    <div className="pb-20 bg-[#ECF8EF]">
-      {sections.map((sectionData, sectionIndex) => (
+    <div className={` bg-[#ECF8EF] ${results.length === 0 && " pb-20"}`}>
+      {results.map((sectionData, sectionIndex) => (
         <section key={sectionIndex} className="relative w-full">
-          <h2 className="relative text-[36px] leading-12 md:text-[48px] md:leading-14 font-extrabold font-nunito select-none text-center pt-20 pb-10 text-[#000E47]">
+          <h2
+            className={`relative text-[36px] leading-12 md:text-[48px] md:leading-14 pb-14 font-extrabold font-nunito select-none text-center  
+               text-[#000E47] ${sectionIndex === 0 && " pt-20"}`}
+          >
             {sectionData.title}
           </h2>
 
-          <div className="flex flex-wrap justify-center gap-4 px-10 max-w-87.5 md:max-w-362.5 mx-auto select-none">
+          <div
+            className={`flex flex-wrap justify-center gap-4 px-10 max-w-87.5 md:max-w-362.5 mx-auto select-none`}
+          >
             {sectionData?.process?.map((item, index) => {
               const isLast = index === sectionData.process.length - 1;
 
@@ -39,11 +48,11 @@ export async function GetStartedProcess({ sel, multiple }) {
                   className="flex flex-col md:flex-row items-center md:items-stretch gap-4"
                 >
                   {index !== 0 && (
-                    <ArrowRight className="hidden md:block self-center shrink-0" />
+                    <ArrowRight className="hidden md:block self-center shrink-0 text-[#036735]" />
                   )}
 
                   {/* CARD */}
-                  <div className="flex flex-col justify-center items-center w-67.5 min-h-65 bg-white rounded-lg p-6 shadow-sm">
+                  <div className="flex flex-col justify-center items-center w-67.5 min-h-65 bg-white border border-[#AFCE67] rounded-lg p-6 shadow-sm">
                     <Image
                       unoptimized
                       src={item.icon.node.sourceUrl}
@@ -58,17 +67,22 @@ export async function GetStartedProcess({ sel, multiple }) {
                   </div>
 
                   {isLast && (
-                    <ArrowRight className="hidden md:block self-center shrink-0 opacity-0" />
+                    <ArrowRight className="hidden md:block self-center shrink-0 opacity-0 text-[#036735]" />
                   )}
 
                   {/* MOBILE ARROW */}
                   {!isLast && (
-                    <ArrowDown className="block md:hidden mt-2 shrink-0" />
+                    <ArrowDown className="block md:hidden mt-2 shrink-0 text-[#036735]" />
                   )}
                 </div>
               );
             })}
           </div>
+
+          <p
+            className="relative text-[16px] leading-12 md:text-[16px] md:leading-14  font-nunito select-none text-center pt-10 pb-14 text-[#3C3E47]"
+            dangerouslySetInnerHTML={{ __html: sectionData.notes }}
+          ></p>
         </section>
       ))}
     </div>

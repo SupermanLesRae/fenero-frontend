@@ -1,41 +1,45 @@
 import { createApolloClient } from "@/lib/apolloClient";
 import { CONTACTING_INFO_QUERY } from "@/lib/queries/Queries";
 
-export async function AboutContracting({ sel, multiple }) {
+{
+  /* More About contracting */
+}
+export async function AboutContracting({ section }) {
   const client = createApolloClient();
   const { data } = await client.query({
     query: CONTACTING_INFO_QUERY,
   });
 
-  const nodes = data?.allMoreAboutContracting?.nodes || [];
+  const searchText = section.toLowerCase(); // normalize sel
 
-  // 👉 Normalize sel to an array
-  const selectedIndexes = multiple ? sel : [sel];
+  // Get all nodes whose section includes sel
+  const matchedNodes = data.allMoreAboutContracting.nodes.filter((node) => {
+    const sections = node.aboutContractingFields.section; // e.g. ['Home', 'New to Contracting']
+    return sections?.some((section) => section.toLowerCase() === searchText);
+  });
 
-  // 👉 Collect matching section data
-  const sections = selectedIndexes
-    .map((index) => nodes[index]?.aboutContractingFields)
-    .filter(Boolean);
+  // Extract only getStartedStepsCoreFields from matched nodes
+  const results = matchedNodes.map((node) => node.aboutContractingFields);
 
-  if (!sections.length) return null;
+  if (!results) return null;
 
   return (
     <div className="pb-20 bg-[#ECF8EF]">
-      {sections.map((sectionData, sectionIndex) => (
+      {results.map((sectionData, sectionIndex) => (
         <section key={sectionIndex} className={`relative w-full `}>
           <h2 className="relative text-[36px] max-w-225 mx-auto leading-12 md:text-[48px] md:leading-14 font-extrabold font-nunito select-none text-center pt-20 pb-10 text-[#000E47]">
             {sectionData.title}
           </h2>
 
-          <div className="flex flex-wrap gap-6 px-10 max-w-337.5 mx-auto justify-center">
+          <div className="flex flex-wrap gap-6 px-10 max-w-full mx-auto justify-center">
             {sectionData?.card?.map((item, index) => (
               <div
                 key={index}
-                className="flex flex-col bg-white rounded-lg p-6 shadow-sm min-w-62.5 max-w-75 flex-1"
+                className="flex flex-col bg-white rounded-xl p-8 shadow-sm min-w-[445px] max-w-75 min-h-[257px] flex-1"
               >
-                <h3 className="text-lg font-semibold">{item.title}</h3>
+                <h3 className="text-[24px] font-semibold">{item.title}</h3>
                 <p
-                  className="text-gray-600 mt-2"
+                  className="text-gray-600 mt-2 text-[16px]"
                   dangerouslySetInnerHTML={{
                     __html: item.description,
                   }}

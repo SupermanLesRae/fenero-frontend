@@ -5,17 +5,30 @@ import Link from "next/link";
 import Image from "next/image";
 
 // Server Component
-export default async function ContactInfo({ sel, bgColor }) {
+{
+  /* Contact Info Banners */
+}
+export default async function ContactInfo({ section, bgColor }) {
   const client = createApolloClient();
-
-  const result = await client.query({
+  const { data } = await client.query({
     query: CONTACT_INFO_QUERY,
   });
 
-  const data =
-    result.data.contactInfoBlocks.nodes[sel]?.contactInfoBlockCoreFields;
+  // Find the first matching node
+  const searchText = section.toLowerCase(); // normalize sel
 
-  if (!data) return null;
+  // Find the first node whose section includes sel
+  const matchedNode = data.contactInfoBlocks.nodes.find((node) => {
+    const sections = node.contactInfoBlockCoreFields.section; // e.g. ['Home', 'New to Contracting']
+    return sections?.some((section) => section.toLowerCase() === searchText);
+  });
+
+  // Return solutionComparisonsCoreFields if found
+  const result = matchedNode ? matchedNode.contactInfoBlockCoreFields : null;
+
+  const sectionData = result;
+
+  if (!sectionData) return null;
 
   return (
     <div
@@ -24,20 +37,20 @@ export default async function ContactInfo({ sel, bgColor }) {
     >
       <div className="relative pb-20 max-w-365 xl:rounded-3xl border-white overflow-hidden mx-auto ">
         <h2
-          style={{ color: data.styling.titlecolor }}
+          style={{ color: sectionData.styling.titlecolor }}
           className="relative text-[30px] md:text-[48px] leading-10 md:leading-14 font-extrabold font-nunito select-none text-white text-center pt-20 pb-4 z-11 max-w-250 mx-auto"
         >
-          {data.title}
+          {sectionData.title}
         </h2>
         <p
-          dangerouslySetInnerHTML={{ __html: data.description }}
+          dangerouslySetInnerHTML={{ __html: sectionData.description }}
           className="relative font-nunito font-medium text-[20px] text-white text-center leading-7 tracking-[0.15px] select-none px-8 max-w-250 z-10 mx-auto"
         ></p>
         <div className="absolute w-full h-full z-0 left-0 top-0">
           <Image
             unoptimized
-            src={data.img.node.sourceUrl}
-            alt={data.img.node.altText || "Image"}
+            src={sectionData.img.node.sourceUrl}
+            alt={sectionData.img.node.altText || "Image"}
             className="w-full h-full object-cover"
             width={1411}
             height={480}
@@ -45,7 +58,7 @@ export default async function ContactInfo({ sel, bgColor }) {
         </div>
         <div className="relative z-10">
           <div className="flex flex-col justify-center mt-10 md:flex-row gap-4 w-full px-20 md:px-0 ">
-            {data.ctaLinks.map((cta, index) => (
+            {sectionData.ctaLinks.map((cta, index) => (
               <Link key={index} href={cta.link} className="w-auto">
                 <Button
                   size="lg"
@@ -58,7 +71,13 @@ export default async function ContactInfo({ sel, bgColor }) {
                   className="font-bold hover:text-white text-[16px] w-full border-2 lg:w-auto cursor-pointer shadow-md transition hover:opacity-90 flex items-center justify-center gap-2 min-w-56"
                 >
                   {cta?.icon?.node.sourceUrl && (
-                    <Image unoptimized src={cta?.icon?.node.sourceUrl} alt="" />
+                    <Image
+                      unoptimized
+                      width={18}
+                      height={20}
+                      src={cta?.icon?.node.sourceUrl}
+                      alt=""
+                    />
                   )}
                   {cta.title}
                   {/* Example: Add arrow if you want it, can add property in your data */}

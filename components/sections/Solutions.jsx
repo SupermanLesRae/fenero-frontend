@@ -4,28 +4,42 @@ import Link from "next/link";
 import { Button } from "../ui/button";
 import Image from "next/image";
 
-export async function Solutions({ sel }) {
+{
+  /* Solution Comparisons */
+}
+export async function Solutions({ section }) {
   const client = createApolloClient();
   const { data } = await client.query({
     query: SOLUTIONS_QUERY,
   });
 
-  const sectionData =
-    data.solutionComparisons.nodes[sel].solutionComparisonsCoreFields;
-  console.log("Solutions", sectionData);
+  // Find the first matching node
+  const searchText = section.toLowerCase(); // normalize sel
+
+  // Find the first node whose section includes sel
+  const matchedNode = data.solutionComparisons.nodes.find((node) => {
+    const sections = node.solutionComparisonsCoreFields.section; // e.g. ['Home', 'New to Contracting']
+    return sections?.some((section) => section.toLowerCase() === searchText);
+  });
+
+  // Return solutionComparisonsCoreFields if found
+  const result = matchedNode ? matchedNode.solutionComparisonsCoreFields : null;
+
+  const sectionData = result;
 
   if (!sectionData) return null;
 
   return (
     <section className="relative w-full pb-20 bg-[#ffffff]">
       <div className="max-w-225 mx-auto text-center mb-10">
-        <h2 className="relative text-[36px] leading-12 md:text-[48px] md:leading-14  font-extrabold font-nunito  select-none text-center pt-10 pb-10 text-[#000E47]">
+        <h2 className="relative text-[36px] leading-12 md:text-[48px] md:leading-14  font-extrabold font-nunito  select-none text-center pt-10 pb-2 text-[#000E47]">
           {sectionData.title}
         </h2>
         {sectionData.description && (
-          <p className="font-nunito font-medium text-[16px] leading-6 tracking-[0.15px] select-none px-8">
-            {sectionData.description}
-          </p>
+          <p
+            className="font-nunito font-medium text-[16px] leading-6 tracking-[0.15px] select-none px-8"
+            dangerouslySetInnerHTML={{ __html: sectionData.description }}
+          ></p>
         )}
       </div>
       <div className=" flex flex-wrap gap-6 px-10 max-w-337.5 mx-auto justify-center">
@@ -71,19 +85,21 @@ export async function Solutions({ sel }) {
                 ))}
               </div>
               <div className="w-full">
-                <div className="bg-[#F5F7FF] w-full border-2 border-[#CCCFDA] mb-6 rounded-xl text-[#000E47] px-6 flex flex-col gap-4 py-6">
-                  <div>
-                    {item.priceMonth.price && (
-                      <h2 className="font-bold text-[36px] leading-9">
-                        {item.priceMonth.price}
-                      </h2>
-                    )}
-                    {item.priceMonth.priceInfo && (
-                      <p className="text-[20px] leading-7">
-                        {item.priceMonth.priceInfo}
-                      </p>
-                    )}
-                  </div>
+                <div className="bg-[#F5F7FF] w-full border-2 border-[#CCCFDA] mb-6 rounded-xl text-[#000E47] px-6 flex flex-col py-6">
+                  {(item.priceMonth.price || item.priceMonth.priceInfo) && (
+                    <div className="mb-6">
+                      {item.priceMonth.price && (
+                        <h2 className="font-bold text-[36px] leading-9">
+                          {item.priceMonth.price} price
+                        </h2>
+                      )}
+                      {item.priceMonth.priceInfo && (
+                        <p className="text-[20px] leading-7">
+                          {item.priceMonth.priceInfo} info
+                        </p>
+                      )}
+                    </div>
+                  )}
                   <div>
                     {item.priceWeek.price && (
                       <h2 className="font-bold text-[20px] leading-7">
@@ -101,12 +117,12 @@ export async function Solutions({ sel }) {
                       {item.list.map((listItem, itemIndex) => (
                         <li
                           key={itemIndex}
-                          className="flex items-center gap-3 leading-5 text-gray-700"
+                          className="flex items-center gap-2 leading-5 text-gray-700 font-light"
                         >
                           <Image
                             unoptimized
-                            width={16}
-                            height={16}
+                            width={8}
+                            height={8}
                             src={listItem.icon.node.sourceUrl}
                             alt=""
                           />

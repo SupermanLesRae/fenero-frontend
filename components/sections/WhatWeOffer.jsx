@@ -2,15 +2,33 @@ import { createApolloClient } from "@/lib/apolloClient";
 import { OFFER_QUERY } from "@/lib/queries/Queries";
 import Image from "next/image";
 
-export async function WhatWeOffer({ bg, sel }) {
+{
+  /* How We Help */
+}
+export async function WhatWeOffer({ bg, section }) {
   const client = createApolloClient();
   const { data } = await client.query({
     query: OFFER_QUERY,
   });
 
-  const sectionData = data.whatWeOfferSections.nodes[sel].whatWeOfferCoreFields;
+  // Find the first matching node
+  const searchText = section.toLowerCase(); // normalize sel
+
+  // Find the first node whose section includes sel
+  const matchedNode = data.whatWeOfferSections.nodes.find((node) => {
+    const sections = node.whatWeOfferCoreFields.section; // e.g. ['Home', 'New to Contracting']
+    return sections?.some((section) => section.toLowerCase() === searchText);
+  });
+
+  // Return solutionComparisonsCoreFields if found
+  const result = matchedNode ? matchedNode.whatWeOfferCoreFields : null;
+
+  const sectionData = result;
+
+  console.log("WhatWeOffer: ", sectionData);
 
   if (!sectionData) return null;
+
   return (
     <section style={{ backgroundColor: bg || "#ffffff" }}>
       <div className="flex w-full">

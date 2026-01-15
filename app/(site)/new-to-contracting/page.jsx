@@ -1,12 +1,13 @@
+import { AboutContracting } from "@/components/sections/AboutContracting";
+import { Banners } from "@/components/sections/Banners";
 import CallBackRequest from "@/components/sections/CallBackRequest";
 import ContactInfo from "@/components/sections/ContactInfo";
-import { CostInfo } from "@/components/sections/CostInfo";
 import { FAQs } from "@/components/sections/FAQs";
+import { GetStartedProcess } from "@/components/sections/GetStartedProcess";
 import Hero from "@/components/sections/Hero";
-import { ImageTextSections } from "@/components/sections/ImageTextSections";
-import { ImportantDetails } from "@/components/sections/ImportantDetails";
 import { KnowledgeHub } from "@/components/sections/KnowledgeHub";
-import { NextSteps } from "@/components/sections/NextSteps";
+import { Solutions } from "@/components/sections/Solutions";
+import { WhatWeOffer } from "@/components/sections/WhatWeOffer";
 import { createApolloClient } from "@/lib/apolloClient";
 import { HERO_QUERY } from "@/lib/queries/Queries";
 
@@ -14,7 +15,8 @@ export const runtime = "edge"; // ✅ Edge runtime
 export const revalidate = 60; // ✅ ISR caching
 
 export default async function Page() {
-  const slug = "psc";
+  const slug = "new-to-contracting";
+  const section = "New to Contracting";
 
   const client = createApolloClient();
   const { data } = await client.query({
@@ -25,14 +27,15 @@ export default async function Page() {
   return (
     <div>
       <Hero data={data.heroBy.herosCoreFields.heroSlide} />
-      <ImageTextSections />
-      <CostInfo />
-      <ContactInfo sel={0} />
-      <ImportantDetails />
-      <NextSteps />
-      <FAQs sel={0} />
-      <CallBackRequest />
+      <AboutContracting section={section} />
+      <ContactInfo section={section} bgColor={"#ffffff"} />
+      <Solutions section={section} />
+      <WhatWeOffer section={section} />
+      <GetStartedProcess section={section} />
+      <Banners section={section} />
+      <FAQs section={section} />
       <KnowledgeHub />
+      <CallBackRequest />
     </div>
   );
 }

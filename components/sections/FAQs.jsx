@@ -8,13 +8,28 @@ import {
   AccordionTrigger,
 } from "@/components/ui/accordion";
 
-export async function FAQs({ sel }) {
+{
+  /* FAQ */
+}
+export async function FAQs({ section }) {
   const client = createApolloClient();
   const { data } = await client.query({
     query: FAQ_QUERY,
   });
 
-  const sectionData = data.faqs.nodes[sel].faqFields;
+  // Find the first matching node
+  const searchText = section.toLowerCase(); // normalize sel
+
+  // Find the first node whose section includes sel
+  const matchedNode = data.faqs.nodes.find((node) => {
+    const sections = node.faqFields.section; // e.g. ['Home', 'New to Contracting']
+    return sections?.some((section) => section.toLowerCase() === searchText);
+  });
+
+  // Return solutionComparisonsCoreFields if found
+  const result = matchedNode ? matchedNode.faqFields : null;
+
+  const sectionData = result;
 
   if (!sectionData) return null;
 

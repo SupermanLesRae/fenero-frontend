@@ -9,6 +9,7 @@ export const revalidate = 60; // ✅ ISR caching
 
 export default async function Page() {
   const slug = "tax-calculator";
+  const section = "Tax Calculator";
 
   const client = createApolloClient();
   const { data } = await client.query({
@@ -19,7 +20,7 @@ export default async function Page() {
   return (
     <div>
       <Hero data={data.heroBy.herosCoreFields.heroSlide} />
-      <WhatWeOffer bg={"#ECF8EF"} sel={0} />
+      <WhatWeOffer bg={"#ECF8EF"} section={section} />
       <CallBackRequest />
     </div>
   );

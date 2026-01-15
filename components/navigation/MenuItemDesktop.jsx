@@ -29,7 +29,7 @@ function MenuItemDesktop({ item }) {
       {/* Trigger */}
       {hasChildren ? (
         <div
-          className="flex items-center gap-2 text-white cursor-pointer transition"
+          className="flex items-center gap-2 text-white cursor-pointer transition text-[18px] 2xl:text-[20px] hover:text-[#AFCE67]"
           onMouseEnter={openMenu}
           onMouseLeave={closeMenu}
         >
@@ -49,7 +49,7 @@ function MenuItemDesktop({ item }) {
       ) : (
         <Link href={item.link}>
           <div
-            className="flex items-center gap-2 text-white cursor-pointer transition"
+            className="flex items-center gap-2 text-white cursor-pointer transition text-[18px] 2xl:text-[20px] hover:text-[#AFCE67]"
             onMouseEnter={openMenu}
             onMouseLeave={closeMenu}
           >
@@ -63,8 +63,8 @@ function MenuItemDesktop({ item }) {
         <ul
           className={`
             absolute left-0 top-full mt-1
-            bg-white rounded overflow-hidden shadow-lg
-            min-w-50 z-50
+            bg-white rounded-lg overflow-hidden shadow-lg
+            min-w-50 z-50            
             transition-all duration-200 ease-out
             ${
               isOpen
@@ -80,7 +80,7 @@ function MenuItemDesktop({ item }) {
             <li key={`submenu-${index}`}>
               <Link
                 href={sub.link}
-                className="block relative px-4 py-2 text-gray-800 hover:bg-gray-100 whitespace-nowrap pointer-events-auto cursor-pointer"
+                className="block relative px-4 py-3 first:pt-4 last:pb-4 text-[#000E47] hover:bg-[#AFCE67] hover:text-[#000E47] whitespace-nowrap pointer-events-auto cursor-pointer"
               >
                 {sub.label}
               </Link>

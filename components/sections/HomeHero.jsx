@@ -15,7 +15,7 @@ export default async function HomeHero() {
   const homeData = data.homeheros.nodes[0].homeHeroCoreFields;
 
   return (
-    <section className="w-full bg-[#000E47] p-0 z-0">
+    <section className="w-full bg-[#000E47] p-0 z-0 relative">
       <div className="relative flex flex-row xl:items-center select-none min-h-0 h-full max-h-250 max-w-500 mx-auto shadow-md z-10">
         <div className="w-full p-10 xl:p-20 lg:flex lg:items-center flex justify-center lg:justify-start portrait:items-start z-0">
           <div className="max-w-150">

@@ -59,7 +59,7 @@ export default function HeaderMenu({ menu }) {
   }, []);
 
   return (
-    <header className="select-none">
+    <header className="select-none z-50">
       {/* Top Right login + search */}
       <div className="w-full absolute pr-10 xl:pr-20 max-w-430 left-1/2 -translate-x-1/2 h-8.75 top-14 xl:top-6 flex justify-end gap-4 z-50">
         <div className="gap-4 flex">
@@ -146,7 +146,7 @@ export default function HeaderMenu({ menu }) {
           </Link>
 
           {/* Desktop Navigation */}
-          <ul className="relative items-center gap-x-14 hidden xl:flex">
+          <ul className="relative items-center gap-x-12 2xl:gap-x-18 hidden xl:flex">
             {navigation.map((nav, index) => (
               <MenuItemDesktop key={`header_${index}`} item={nav} />
             ))}

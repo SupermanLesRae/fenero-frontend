@@ -3,6 +3,7 @@ import ContactInfo from "@/components/sections/ContactInfo";
 import { CostInfo } from "@/components/sections/CostInfo";
 import { FAQs } from "@/components/sections/FAQs";
 import Hero from "@/components/sections/Hero";
+import { ImageTextSections } from "@/components/sections/ImageTextSections";
 import { ImportantDetails } from "@/components/sections/ImportantDetails";
 import { KnowledgeHub } from "@/components/sections/KnowledgeHub";
 import { NextSteps } from "@/components/sections/NextSteps";
@@ -23,7 +24,7 @@ export default async function Page() {
   return (
     <div>
       <Hero data={data.heroBy.herosCoreFields.heroSlide} />
-      <imgTextSections />
+      <ImageTextSections />
       <CostInfo />
       <ContactInfo sel={0} />
       <ImportantDetails />

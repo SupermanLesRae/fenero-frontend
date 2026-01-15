@@ -24,9 +24,9 @@ export async function ImportantDetails({ sel, multiple }) {
         {sectionData?.details?.map((item, index) => (
           <div
             key={index}
-            className="flex flex-col bg-white border border-[#AFCE67] items-center gap-2 rounded-lg p-6 shadow-sm select-none w-full max-w-90"
+            className="flex flex-col bg-white border border-[#AFCE67] items-center gap-2 rounded-lg p-6 shadow-sm select-none w-full max-w-85"
           >
-            <div className="w-25 h-25">
+            <div className="w-25 h-25 mb-2">
               <img
                 width={100}
                 height={100}
@@ -35,7 +35,7 @@ export async function ImportantDetails({ sel, multiple }) {
               />
             </div>
 
-            <h3 className="leading-6 font-semibold text-[#036735] text-center">
+            <h3 className="leading-7 font-bold text-[#036735] text-center text-[22px]">
               {item.title}
             </h3>
           </div>

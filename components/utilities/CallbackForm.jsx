@@ -13,6 +13,7 @@ import { useForm } from "react-hook-form";
 import { Spinner } from "../ui/spinner";
 import { useState } from "react";
 import { toast } from "sonner";
+import { Textarea } from "../ui/textarea";
 
 export default function CallbackForm() {
   const [loading, setLoading] = useState(false);
@@ -22,6 +23,7 @@ export default function CallbackForm() {
       surname: "",
       email: "",
       telephone: "",
+      message: "",
     },
     mode: "onTouched", // validate on blur
   });
@@ -41,6 +43,7 @@ export default function CallbackForm() {
         surname: values.surname,
         email: values.email,
         telephone: values.telephone,
+        message: values.message,
       }),
     });
 
@@ -60,91 +63,116 @@ export default function CallbackForm() {
     <Form {...form}>
       <form
         onSubmit={form.handleSubmit(onSubmit)}
-        className="grid grid-cols-1 md:grid-cols-2 gap-4 p-4 max-w-162.5 mx-auto"
+        className="flex flex-col gap-4 p-4 max-w-162.5 mx-auto"
       >
-        {/* Name */}
-        <FormField
-          control={form.control}
-          name="name"
-          rules={{ required: "Name is required" }}
-          render={({ field }) => (
-            <FormItem>
-              <FormControl>
-                <Input
-                  {...field}
-                  placeholder="Name"
-                  className="bg-white rounded-xl border border-gray-300 h-13.75"
-                />
-              </FormControl>
-              <FormMessage className="text-white" />
-            </FormItem>
-          )}
-        />
+        <div className="flex gap-4">
+          {/* Name */}
+          <FormField
+            control={form.control}
+            name="name"
+            rules={{ required: "Name is required" }}
+            render={({ field }) => (
+              <FormItem className="flex-1">
+                <FormControl>
+                  <Input
+                    {...field}
+                    placeholder="Name"
+                    className="w-full bg-white rounded-xl border border-gray-300 h-13.75"
+                  />
+                </FormControl>
+                <FormMessage className="text-white" />
+              </FormItem>
+            )}
+          />
 
-        {/* Surname */}
-        <FormField
-          control={form.control}
-          name="surname"
-          rules={{ required: "Surname is required" }}
-          render={({ field }) => (
-            <FormItem>
-              <FormControl>
-                <Input
-                  {...field}
-                  placeholder="Surname"
-                  className="bg-white rounded-xl border border-gray-300 h-13.75"
-                />
-              </FormControl>
-              <FormMessage className="text-white" />
-            </FormItem>
-          )}
-        />
+          {/* Surname */}
+          <FormField
+            control={form.control}
+            name="surname"
+            rules={{ required: "Surname is required" }}
+            render={({ field }) => (
+              <FormItem className="flex-1">
+                <FormControl>
+                  <Input
+                    {...field}
+                    placeholder="Surname"
+                    className="w-full bg-white rounded-xl border border-gray-300 h-13.75"
+                  />
+                </FormControl>
+                <FormMessage className="text-white" />
+              </FormItem>
+            )}
+          />
+        </div>
 
-        {/* Email */}
+        <div className="flex gap-4">
+          {/* Email */}
+          <FormField
+            control={form.control}
+            name="email"
+            rules={{
+              required: "Email is required",
+              pattern: {
+                value: /^[^\s@]+@[^\s@]+\.[^\s@]+$/,
+                message: "Enter a valid email",
+              },
+            }}
+            render={({ field }) => (
+              <FormItem className="flex-1">
+                <FormControl>
+                  <Input
+                    type="email"
+                    {...field}
+                    placeholder="Email"
+                    className="bg-white rounded-xl border border-gray-300 h-13.75"
+                  />
+                </FormControl>
+                <FormMessage className="text-white" />
+              </FormItem>
+            )}
+          />
+
+          {/* Telephone */}
+          <FormField
+            control={form.control}
+            name="telephone"
+            rules={{
+              required: "Telephone is required",
+              pattern: {
+                value: /^[0-9+\-()\s]{6,20}$/,
+                message: "Enter a valid phone number",
+              },
+            }}
+            render={({ field }) => (
+              <FormItem className="flex-1">
+                <FormControl>
+                  <Input
+                    type="tel"
+                    {...field}
+                    placeholder="Telephone"
+                    className="bg-white rounded-xl border border-gray-300 h-13.75"
+                  />
+                </FormControl>
+                <FormMessage className="text-white" />
+              </FormItem>
+            )}
+          />
+        </div>
+
+        {/* Message */}
         <FormField
           control={form.control}
-          name="email"
+          name="message"
           rules={{
-            required: "Email is required",
-            pattern: {
-              value: /^[^\s@]+@[^\s@]+\.[^\s@]+$/,
-              message: "Enter a valid email",
-            },
+            required: "Message is required",
           }}
           render={({ field }) => (
             <FormItem>
               <FormControl>
-                <Input
-                  type="email"
+                <Textarea
                   {...field}
-                  placeholder="Email"
-                  className="bg-white rounded-xl border border-gray-300 h-13.75"
-                />
-              </FormControl>
-              <FormMessage className="text-white" />
-            </FormItem>
-          )}
-        />
-
-        {/* Telephone */}
-        <FormField
-          control={form.control}
-          name="telephone"
-          rules={{
-            required: "Telephone is required",
-            pattern: {
-              value: /^[0-9+\-()\s]{6,20}$/,
-              message: "Enter a valid phone number",
-            },
-          }}
-          render={({ field }) => (
-            <FormItem>
-              <FormControl>
-                <Input
-                  type="tel"
-                  {...field}
-                  placeholder="Telephone"
-                  className="bg-white rounded-xl border border-gray-300 h-13.75"
+                  placeholder="Your message"
+                  className="bg-white rounded-xl border border-gray-300 h-32.25 px-6 py-4"
                 />
               </FormControl>
               <FormMessage className="text-white" />

@@ -31,12 +31,12 @@ export async function NextSteps({ sel, multiple }) {
           <h2 className="relative text-[36px] leading-12 md:text-[48px] md:leading-14 font-extrabold font-nunito select-none text-center pt-20 pb-4 ">
             {sectionData.title}
           </h2>
-          <p className="font-nunito font-medium text-[16px] leading-6 tracking-[0.15px] select-none px-8 text-center pb-10">
+          <p className="font-nunito font-medium text-[16px] leading-6 tracking-[0.15px] select-none px-8 text-center pb-14">
             {sectionData.descrption}
           </p>
         </div>
 
-        <div className="flex flex-wrap justify-center gap-4 px-10 max-w-87.5 md:max-w-362.5 mx-auto select-none">
+        <div className="flex flex-wrap justify-center gap-4 px-10 max-w-87.5 md:max-w-362.5 ] mx-auto select-none">
           {sectionData?.steps?.map((item, index) => {
             const isLast = index === sectionData.steps.length - 1;
 
@@ -50,7 +50,7 @@ export async function NextSteps({ sel, multiple }) {
                 )}
 
                 {/* CARD */}
-                <div className="flex flex-col  items-center w-67.5 min-h-65 bg-white rounded-lg py-6 shadow-sm">
+                <div className="flex flex-col  items-center w-83 min-h-65 bg-white rounded-lg py-6 shadow-sm">
                   <img
                     width={270}
                     height={260}
@@ -64,7 +64,7 @@ export async function NextSteps({ sel, multiple }) {
                   >
                     {item.title}
                   </h3>
-                  <p className="font-nunito font-medium text-[16px] leading-6 tracking-[0.15px] select-none px-4 text-center text-[#3C3E47]">
+                  <p className="font-nunito font-medium text-[18px] leading-6 tracking-[0.15px] select-none px-6 text-center text-[#3C3E47]">
                     {item.description}
                   </p>
                 </div>

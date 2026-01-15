@@ -90,14 +90,14 @@ export default function Hero({ data }) {
                           dangerouslySetInnerHTML={{
                             __html: item.subTitle,
                           }}
-                          className=" font-medium text-[18px] lg:text-[24px] text-bold leading-6 lg:leading-8 tracking-[0.15px] text-[#ffffff] mb-6 pr-10"
+                          className=" font-medium text-[18px] lg:text-[32px] text-bold leading-6 lg:leading-9 tracking-[0.15px] text-[#ffffff] mb-6 pr-10"
                         ></p>
 
                         <p
                           dangerouslySetInnerHTML={{
                             __html: item.description,
                           }}
-                          className=" font-medium text-[18px] leading-7 tracking-[0.15px] text-[#ffffff] mb-6 pr-10"
+                          className=" font-medium text-[17px] leading-7 tracking-[0.15px] text-[#ffffff] mb-6 pr-10"
                         ></p>
 
                         {item.hasCta && (

@@ -35,7 +35,8 @@ export async function Community() {
       <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 text-white max-w-350 mx-auto px-10">
         {sectionData?.communities?.map((community, index) => (
           <div key={index} className="max-w-115.25 mx-auto">
-            <img
+            <Image
+              unoptimized
               width={461}
               height={461}
               src={community.img.node.sourceUrl}

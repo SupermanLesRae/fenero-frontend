@@ -27,7 +27,8 @@ export async function ImportantDetails({ sel, multiple }) {
             className="flex flex-col bg-white border border-[#AFCE67] items-center gap-2 rounded-lg p-6 shadow-sm select-none w-full max-w-85"
           >
             <div className="w-25 h-25 mb-2">
-              <img
+              <Image
+                unoptimized
                 width={100}
                 height={100}
                 src={item.icon.node.sourceUrl}

@@ -1,7 +1,8 @@
 import { createApolloClient } from "@/lib/apolloClient";
 import { PRIVACY_POLICY_QUERY } from "@/lib/queries/Queries";
 
-export const revalidate = 60;
+export const runtime = "edge"; // ✅ Edge runtime
+export const revalidate = 60; // ✅ ISR caching
 
 export default async function Page() {
   const client = createApolloClient();

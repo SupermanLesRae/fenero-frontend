@@ -44,7 +44,8 @@ export async function KnowledgeHub() {
           <Link key={"posts_" + index} href={"/knowledge-hub/" + item.slug}>
             <div className="flex flex-col bg-white rounded-lg p-0 shadow-md hover:shadow-sm min-w-103.5 max-w-103.5 flex-1 h-98 overflow-hidden">
               <div className="relative w-103.5 h-49 overflow-hidden">
-                <img
+                <Image
+                  unoptimized
                   width={414}
                   height={196}
                   className="w-full h-auto"

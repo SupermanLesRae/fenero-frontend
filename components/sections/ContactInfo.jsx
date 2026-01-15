@@ -34,7 +34,8 @@ export default async function ContactInfo({ sel, bgColor }) {
           className="relative font-nunito font-medium text-[20px] text-white text-center leading-7 tracking-[0.15px] select-none px-8 max-w-250 z-10 mx-auto"
         ></p>
         <div className="absolute w-full h-full z-0 left-0 top-0">
-          <img
+          <Image
+            unoptimized
             src={data.img.node.sourceUrl}
             alt={data.img.node.altText || "Image"}
             className="w-full h-full object-cover"
@@ -57,7 +58,7 @@ export default async function ContactInfo({ sel, bgColor }) {
                   className="font-bold hover:text-white text-[16px] w-full border-2 lg:w-auto cursor-pointer shadow-md transition hover:opacity-90 flex items-center justify-center gap-2 min-w-56"
                 >
                   {cta?.icon?.node.sourceUrl && (
-                    <img src={cta?.icon?.node.sourceUrl} alt="" />
+                    <Image unoptimized src={cta?.icon?.node.sourceUrl} alt="" />
                   )}
                   {cta.title}
                   {/* Example: Add arrow if you want it, can add property in your data */}

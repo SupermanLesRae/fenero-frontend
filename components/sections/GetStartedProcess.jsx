@@ -44,7 +44,8 @@ export async function GetStartedProcess({ sel, multiple }) {
 
                   {/* CARD */}
                   <div className="flex flex-col justify-center items-center w-67.5 min-h-65 bg-white rounded-lg p-6 shadow-sm">
-                    <img
+                    <Image
+                      unoptimized
                       src={item.icon.node.sourceUrl}
                       className="w-25 h-25 mb-4"
                       alt={item.label}

@@ -141,7 +141,13 @@ export default function HeaderMenu({ menu }) {
           {/* Logo */}
           <Link href="/" className="cursor-pointer">
             <div className="text-2xl font-bold">
-              <img src={logo} alt="Logo" width={121} height={84} />
+              <Image
+                unoptimized
+                src={logo}
+                alt="Logo"
+                width={121}
+                height={84}
+              />
             </div>
           </Link>
 
@@ -165,7 +171,13 @@ export default function HeaderMenu({ menu }) {
         >
           <div className="p-5 border-b border-white/20 flex justify-between items-center">
             <Link href="/" onClick={() => closeMenu()}>
-              <img src={logo} alt="Logo" width={120} height={120} />
+              <Image
+                unoptimized
+                src={logo}
+                alt="Logo"
+                width={120}
+                height={120}
+              />
             </Link>
             <button id="closeMobileMenu" className="p-2 text-white">
               <svg

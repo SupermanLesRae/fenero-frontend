@@ -21,7 +21,8 @@ export default async function HomeHero() {
           <div className="max-w-150">
             <div className="mb-4">
               <Button className="border-2 bg-transparent py-5 px-8 font-bold text-[14px] rounded-full text-[#CEEED6] pointer-events-none">
-                <img
+                <Image
+                  unoptimized
                   src={homeData.awardLabel?.img.node.sourceUrl}
                   alt={"No alternative text provided"}
                   className="block"
@@ -49,7 +50,8 @@ export default async function HomeHero() {
                     className="flex items-center gap-4 text-[#AFCE67]"
                   >
                     {/* Icon SVG */}
-                    <img
+                    <Image
+                      unoptimized
                       src={item?.icon.node.sourceUrl}
                       alt={"No alternative text provided"}
                       className=""
@@ -87,7 +89,8 @@ export default async function HomeHero() {
                   className=" text-white flex flex-col items-center gap-1 font-bold text-[28px]"
                 >
                   <div className="flex items-center gap-2">
-                    <img
+                    <Image
+                      unoptimized
                       src={item.icon.node.sourceUrl}
                       alt={"No alternative text provided"}
                       className="w-auto h-auto"
@@ -105,7 +108,8 @@ export default async function HomeHero() {
         </div>
 
         <div className="absolute portrait:absolute top-0 right-0 w-full sm:w-[50%] h-full max-h-250 overflow-hidden hidden lg:block z-0">
-          <img
+          <Image
+            unoptimized
             src={homeData.img.node.sourceUrl}
             alt={"No alternative text provided"}
             className="absolute portrait:relative right-0 top-0 h-full w-auto  object-cover object-left"
@@ -116,7 +120,8 @@ export default async function HomeHero() {
       </div>
 
       <div className="relative w-full h-full overflow-hidden flex justify-end lg:hidden z-0">
-        <img
+        <Image
+          unoptimized
           src={homeData.img.node.sourceUrl}
           alt="No alternative text provided"
           className="max-w-163 w-[70%] h-auto object-cover object-right"

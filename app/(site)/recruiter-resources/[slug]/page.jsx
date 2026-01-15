@@ -8,8 +8,8 @@ import { IconArrowLeft } from "@tabler/icons-react";
 import Image from "next/image";
 import Link from "next/link";
 
-export const revalidate = 60;
-//process.env.NODE_TLS_REJECT_UNAUTHORIZED = "0";
+export const runtime = "edge"; // ✅ Edge runtime
+export const revalidate = 60; // ✅ ISR caching
 
 export async function generateStaticParams() {
   const client = createApolloClient();
@@ -40,7 +40,8 @@ export default async function Page({ params }) {
     <div className="pb-20">
       <div className="bg-[#ECF8EF] relative overflow-hidden">
         <div>
-          <img
+          <Image
+            unoptimized
             src={sectionData.img.node.sourceUrl}
             className="absolute
                       right-0

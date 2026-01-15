@@ -48,7 +48,8 @@ export default function TrueSizeGridGallery({ images, square }) {
                 className="relative w-full rounded-lg overflow-hidden focus:outline-none"
                 style={{ paddingBottom: `${paddingPercent}%` }}
               >
-                <img
+                <Image
+                  unoptimized
                   width={389}
                   height={239}
                   src={img.sourceUrl}

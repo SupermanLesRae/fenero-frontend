@@ -35,7 +35,8 @@ export default function NewsCard({
       {/* Image */}
       {image && (
         <div className="overflow-hidden max-h-75 rounded-xl">
-          <img
+          <Image
+            unoptimized
             width={334}
             height={317}
             src={image}

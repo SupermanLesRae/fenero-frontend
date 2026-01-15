@@ -6,8 +6,8 @@ import { IconArrowLeft } from "@tabler/icons-react";
 import Image from "next/image";
 import Link from "next/link";
 
-export const revalidate = 60;
-//process.env.NODE_TLS_REJECT_UNAUTHORIZED = "0";
+export const runtime = "edge"; // ✅ Edge runtime
+export const revalidate = 60; // ✅ ISR caching
 
 export async function generateStaticParams() {
   const client = createApolloClient();
@@ -22,9 +22,8 @@ export async function generateStaticParams() {
 }
 
 export default async function Page({ params }) {
-  const { slug } = params;
+  const { slug } = await params;
   const client = createApolloClient();
-
   const { data } = await client.query({
     query: NEWS_POST_BY_SLUG_QUERY,
     variables: { slug },
@@ -32,9 +31,6 @@ export default async function Page({ params }) {
 
   const sectionData = data.newsPostBy.newsPostsCoreFields;
   const content = data.newsPostBy.content;
-
-  if (!sectionData) return null;
-
   const dateObj = sectionData.date ? new Date(sectionData.date) : null;
   const formattedDate = dateObj
     ? dateObj.toLocaleDateString("en-US", {
@@ -49,7 +45,7 @@ export default async function Page({ params }) {
   return (
     <div>
       <div className="bg-[#ECF8EF] ">
-        <div className="max-w-282 mx-auto pt-20">
+        <div className="max-w-[1128px] mx-auto pt-20">
           <Link href="/knowledge-hub">
             <Button
               size="lg"
@@ -93,7 +89,8 @@ export default async function Page({ params }) {
       {sectionData?.featureImg.node.sourceUrl && (
         <div className="bg-white">
           <div className="relative h-110 max-w-282 text-center mx-auto w-full rounded-xl">
-            <img
+            <Image
+              unoptimized
               className="object-cover w-full h-110 max-w-282 absolute -mt-55 rounded-xl shadow-lg border-10 border-white"
               src={sectionData.featureImg.node.sourceUrl}
               alt=""

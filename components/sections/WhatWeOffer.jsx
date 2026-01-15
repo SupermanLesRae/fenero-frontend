@@ -28,7 +28,8 @@ export async function WhatWeOffer({ bg, sel }) {
                     key={"offer-" + index}
                   >
                     <div>
-                      <img
+                      <Image
+                        unoptimized
                         src={item.icon.node.sourceUrl}
                         alt={
                           item.icon.node.altText ||

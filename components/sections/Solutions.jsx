@@ -56,7 +56,8 @@ export async function Solutions({ sel }) {
                           key={itemIndex}
                           className="flex items-center gap-3 leading-5 text-gray-700"
                         >
-                          <img
+                          <Image
+                            unoptimized
                             width={16}
                             height={16}
                             src={item.icon.node.sourceUrl}
@@ -102,7 +103,8 @@ export async function Solutions({ sel }) {
                           key={itemIndex}
                           className="flex items-center gap-3 leading-5 text-gray-700"
                         >
-                          <img
+                          <Image
+                            unoptimized
                             width={16}
                             height={16}
                             src={listItem.icon.node.sourceUrl}

@@ -21,7 +21,8 @@ export async function SocialImpact() {
         <div className="flex flex-col xl:flex-row items-center gap-14">
           {/* Left Image */}
           <div className="relative w-full flex justify-center">
-            <img
+            <Image
+              unoptimized
               src={sectionData.img.node.sourceUrl}
               alt={
                 sectionData.img.node.altText || "No alternative text provided"

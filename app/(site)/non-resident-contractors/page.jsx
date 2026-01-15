@@ -6,7 +6,8 @@ import { WhatWeOffer } from "@/components/sections/WhatWeOffer";
 import { createApolloClient } from "@/lib/apolloClient";
 import { HERO_QUERY } from "@/lib/queries/Queries";
 
-export const revalidate = 60;
+export const runtime = "edge"; // ✅ Edge runtime
+export const revalidate = 60; // ✅ ISR caching
 
 export default async function Page() {
   const slug = "non-resident-contractors";

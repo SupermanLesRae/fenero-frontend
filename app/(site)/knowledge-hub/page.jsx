@@ -5,6 +5,7 @@ import { createApolloClient } from "@/lib/apolloClient";
 import { HERO_QUERY } from "@/lib/queries/Queries";
 
 export const revalidate = 60;
+export const runtime = "edge"; // ✅ Edge runtime
 
 export default async function Page() {
   const slug = "knowledge-hub";

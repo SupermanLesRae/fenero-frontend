@@ -1,7 +1,7 @@
 import { NextResponse } from "next/server";
 import { Resend } from "resend";
 
-export const runtime = "edge"; // ✅ Required for Amplify hosting
+// ✅ Required for Amplify hosting
 
 const resend = new Resend(process.env.NEXT_PUBLIC_RESEND_API_KEY);
 

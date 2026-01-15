@@ -1,18 +1,24 @@
-import https from "https";
 import fetch from "cross-fetch";
-
-const agent = new https.Agent({
-  rejectUnauthorized: false, // bypass invalid SSL
-});
+import https from "https";
 
 export default async function handler(req, res) {
+  if (req.method !== "POST") {
+    return res.status(405).json({ error: "Method not allowed" });
+  }
+
   try {
+    // For servers without valid SSL
+    const agent = new https.Agent({
+      rejectUnauthorized: false, // only server-side
+    });
+
     const response = await fetch("https://13.60.181.6/graphql", {
-      method: req.method,
+      method: "POST",
       headers: { "Content-Type": "application/json" },
       body: JSON.stringify(req.body),
-      agent, // Node HTTPS agent
+      agent,
     });
+
     const data = await response.json();
     res.status(200).json(data);
   } catch (err) {

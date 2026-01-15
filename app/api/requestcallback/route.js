@@ -1,7 +1,7 @@
 import { NextResponse } from "next/server";
 import { Resend } from "resend";
 
-export const runtime = "edge"; // ✅ Edge-safe (default on Amplify)
+// ✅ Edge-safe (default on Amplify)
 
 const resend = new Resend(process.env.NEXT_PUBLIC_RESEND_API_KEY);
 

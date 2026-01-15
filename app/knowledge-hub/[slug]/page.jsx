@@ -22,8 +22,9 @@ export async function generateStaticParams() {
 }
 
 export default async function Page({ params }) {
-  const { slug } = await params;
+  const { slug } = params;
   const client = createApolloClient();
+
   const { data } = await client.query({
     query: NEWS_POST_BY_SLUG_QUERY,
     variables: { slug },
@@ -31,6 +32,9 @@ export default async function Page({ params }) {
 
   const sectionData = data.newsPostBy.newsPostsCoreFields;
   const content = data.newsPostBy.content;
+
+  if (!sectionData) return null;
+
   const dateObj = sectionData.date ? new Date(sectionData.date) : null;
   const formattedDate = dateObj
     ? dateObj.toLocaleDateString("en-US", {

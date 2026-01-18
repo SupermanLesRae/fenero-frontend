@@ -4,7 +4,7 @@ import HomeHero from "@/components/sections/HomeHero";
 import Testimonials from "@/components/sections/Testimonials";
 import WhoAreYou from "@/components/sections/WhoAreYou";
 
-//export const runtime = "edge"; // ✅ Edge runtime
+export const runtime = "nodejs"; // ✅ Edge runtime
 export const revalidate = 60; // ✅ ISR caching
 
 export default function HomePage() {

@@ -25,8 +25,6 @@ export async function WhatWeOffer({ bg, section }) {
 
   const sectionData = result;
 
-  console.log("WhatWeOffer: ", sectionData);
-
   if (!sectionData) return null;
 
   return (

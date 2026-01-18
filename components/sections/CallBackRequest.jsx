@@ -23,7 +23,7 @@ export default async function CallBackRequest() {
         dangerouslySetInnerHTML={{
           __html: sectionData?.description,
         }}
-        className="relative text-[20px] md:text-[20px] font-nunito mb-2 select-none text-white text-center  z-11"
+        className="relative text-[20px] md:text-[20px] font-nunito mb-2 select-none text-white text-center  z-11 pb-10 md:p-0"
       ></p>
       <div className="absolute w-full h-full z-0 left-0 top-0">
         <Image
@@ -38,7 +38,7 @@ export default async function CallBackRequest() {
       </div>
 
       {/* Client-side form component */}
-      <div className="relative max-w-358.75 mx-auto py-10 px-10 shadow-sm">
+      <div className="relative max-w-358.75 mx-auto py-0 md:py-10 px-0 md:px-10 shadow-sm">
         <CallbackForm />
       </div>
     </div>

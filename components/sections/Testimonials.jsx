@@ -34,7 +34,7 @@ export default function Testimonials() {
       const averageRatingCount =
         core?.testimonials.reduce(
           (sum, t) => sum + (Number(t.rating) || 0),
-          0
+          0,
         ) / core?.testimonials.length;
 
       setAverageRating(averageRatingCount.toFixed(1));
@@ -147,7 +147,7 @@ export default function Testimonials() {
           {sectionData.googleRatings}
         </p>
       </div>
-      <div className="relative w-full max-[1024px]:max-w-95 max-[1280px]:max-w-190 xl:max-w-300 mx-auto ">
+      <div className="relative w-full px-10 md:px-0 max-[1024px]:max-w-95 max-[1280px]:max-w-190 xl:max-w-300 mx-auto ">
         {/* Carousel */}
         <div ref={emblaRef} className="overflow-hidden py-1">
           <div className="flex">
@@ -156,7 +156,7 @@ export default function Testimonials() {
                 key={"item.id" + index}
                 className="embla__slide flex-[0_0_100%] md:flex-[0_0_50%] lg:flex-[0_0_33.333%] px-2 flex items-center justify-center h-full select-none"
               >
-                <div className="relative border border-gray-200 flex flex-col w-full sm:w-90.75 rounded-xl shadow-md shadow-[#000000]/10 h-93 bg-white overflow-hidden p-5 ">
+                <div className="relative border border-gray-200 flex flex-col w-full sm:w-90.75 rounded-xl shadow-md shadow-[#000000]/10 md:h-93 bg-white overflow-hidden p-5 ">
                   <div className="flex h-auto items-center gap-2 mb-5">
                     <div className="flex">
                       {Array.from({

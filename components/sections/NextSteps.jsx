@@ -17,8 +17,8 @@ export async function NextSteps({ section }) {
   // ✅ filter all matching nodes
   const matchedSections = data.nextSteps.nodes.filter((node) =>
     node.nextStepsCoreFields.section?.some(
-      (s) => s.toLowerCase() === searchText
-    )
+      (s) => s.toLowerCase() === searchText,
+    ),
   );
 
   if (!matchedSections.length) return null;
@@ -52,7 +52,7 @@ export async function NextSteps({ section }) {
                 </p>
               </div>
 
-              <div className="flex flex-wrap justify-center gap-4 px-10 max-w-87.5 md:max-w-362.5 mx-auto select-none">
+              <div className="flex flex-wrap justify-center gap-4 px-10  md:max-w-362.5 mx-auto select-none">
                 {sectionData.steps?.map((item, index) => {
                   const isLast = index === sectionData.steps.length - 1;
 
@@ -66,7 +66,7 @@ export async function NextSteps({ section }) {
                       )}
 
                       {/* CARD */}
-                      <div className="flex flex-col items-center w-83 min-h-65 bg-white rounded-lg py-6 shadow-sm">
+                      <div className="flex flex-col items-center w-full md:w-83 min-h-65 bg-white rounded-lg py-6 shadow-sm">
                         <Image
                           unoptimized
                           width={270}

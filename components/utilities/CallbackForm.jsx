@@ -50,7 +50,7 @@ export default function CallbackForm() {
     if (res.ok) {
       setLoading(false);
       toast.success(
-        "Your callback request has been sent. We'll get back to you shortly."
+        "Your callback request has been sent. We'll get back to you shortly.",
       );
       form.reset();
     } else {
@@ -63,9 +63,9 @@ export default function CallbackForm() {
     <Form {...form}>
       <form
         onSubmit={form.handleSubmit(onSubmit)}
-        className="flex flex-col gap-4 p-4 max-w-162.5 mx-auto"
+        className="flex flex-col gap-4 p-0 max-w-162.5 mx-auto"
       >
-        <div className="flex gap-4">
+        <div className="block space-y-4 md:space-y-0 md:flex  gap-4">
           {/* Name */}
           <FormField
             control={form.control}
@@ -105,7 +105,7 @@ export default function CallbackForm() {
           />
         </div>
 
-        <div className="flex gap-4">
+        <div className="block space-y-4 md:space-y-0 md:flex  gap-4">
           {/* Email */}
           <FormField
             control={form.control}
@@ -185,7 +185,7 @@ export default function CallbackForm() {
           <Button
             type="submit"
             disabled={loading}
-            className={`z-10 cursor-pointer flex-1 max-w-62.5 h-12 select-none ${
+            className={`z-10 cursor-pointer flex-1 md:max-w-62.5 h-12 select-none ${
               loading
                 ? "bg-gray-300 text-gray-600 cursor-not-allowed"
                 : "bg-[#D1DF20] hover:bg-[#C9D217] text-[#000E47]"

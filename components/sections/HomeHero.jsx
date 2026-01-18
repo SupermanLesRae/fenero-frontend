@@ -16,7 +16,7 @@ export default async function HomeHero() {
 
   return (
     <section className="w-full bg-[#000E47] p-0 z-0 relative">
-      <div className="relative flex flex-row xl:items-center select-none min-h-0 h-full max-h-250 max-w-500 mx-auto shadow-md z-10">
+      <div className="relative flex flex-row xl:items-center select-none min-h-0 h-full md:max-h-250 max-w-500 mx-auto shadow-md z-10">
         <div className="w-full p-10 xl:p-20 lg:flex lg:items-center flex justify-center lg:justify-start portrait:items-start z-0">
           <div className="max-w-150">
             <div className="mb-4">
@@ -82,7 +82,7 @@ export default async function HomeHero() {
               </Link>
             </div>
 
-            <div className="flex flex-wrap items-center gap-10 md:gap-20 mt-14">
+            <div className="flex flex-wrap justify-center md:justify-start items-center gap-10 md:gap-20 mt-14">
               {homeData.stats?.map((item, index) => (
                 <div
                   key={"item.id" + index}
@@ -119,7 +119,7 @@ export default async function HomeHero() {
         </div>
       </div>
 
-      <div className="relative w-full h-full overflow-hidden flex justify-end lg:hidden z-0">
+      <div className="relative w-full h-full flex justify-end lg:hidden z-0">
         <Image
           unoptimized
           src={homeData.img.node.sourceUrl}

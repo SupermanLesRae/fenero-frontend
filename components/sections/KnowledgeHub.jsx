@@ -39,11 +39,15 @@ export async function KnowledgeHub() {
           {sectionData.description}
         </p>
       </div>
-      <div className="flex flex-wrap gap-6 px-10 max-w-337.5 mx-auto justify-center">
+      <div className="flex flex-col md:flex-row gap-6 px-10 max-w-337.5 mx-auto justify-center items-center md:items-stretch">
         {sectionDataBlocks?.map((item, index) => (
           <Link key={"posts_" + index} href={"/knowledge-hub/" + item.slug}>
-            <div className="flex flex-col bg-white rounded-lg p-0 shadow-md hover:shadow-sm min-w-103.5 max-w-103.5 flex-1 h-98 overflow-hidden">
-              <div className="relative w-103.5 h-49 overflow-hidden">
+            <div
+              className="flex flex-col bg-white rounded-lg p-0 shadow-md hover:shadow-sm
+                      w-full max-w-103.5 mx-auto md:mx-0
+                      lg:min-w-103.5 flex-1 h-98 overflow-hidden"
+            >
+              <div className="relative h-49 overflow-hidden">
                 <Image
                   unoptimized
                   width={414}
@@ -56,6 +60,7 @@ export async function KnowledgeHub() {
                   Regulation
                 </div>
               </div>
+
               <div className="p-6">
                 <h3 className="text-lg font-semibold">
                   {item.newsPostsCoreFields.title}

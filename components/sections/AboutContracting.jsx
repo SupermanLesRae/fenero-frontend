@@ -26,20 +26,23 @@ export async function AboutContracting({ section }) {
   return (
     <div className="pb-20 bg-[#ECF8EF]">
       {results.map((sectionData, sectionIndex) => (
-        <section key={sectionIndex} className={`relative w-full `}>
-          <h2 className="relative text-[36px] max-w-225 mx-auto leading-12 md:text-[48px] md:leading-14 font-extrabold font-nunito select-none text-center pt-20 pb-10 text-[#000E47]">
+        <section key={sectionIndex} className="relative w-full px-10">
+          <h2 className="relative text-[36px] md:text-[48px] leading-12 md:leading-14 font-extrabold font-nunito select-none text-center pt-20 pb-10 text-[#000E47]">
             {sectionData.title}
           </h2>
 
-          <div className="flex flex-wrap gap-6 px-10 max-w-full mx-auto justify-center">
+          <div className="flex flex-col gap-4 sm:flex-row sm:flex-wrap sm:gap-6 justify-center w-full">
             {sectionData?.card?.map((item, index) => (
               <div
                 key={index}
-                className="flex flex-col bg-white rounded-xl p-8 shadow-sm min-w-[445px] max-w-75 min-h-[257px] flex-1"
+                className="w-full sm:w-[48%] lg:w-[23%] bg-white rounded-xl p-6 sm:p-8 shadow-sm"
               >
-                <h3 className="text-[24px] font-semibold">{item.title}</h3>
+                <h3 className="text-[20px] sm:text-[24px] font-semibold">
+                  {item.title}
+                </h3>
+
                 <p
-                  className="text-gray-600 mt-2 text-[16px]"
+                  className="text-gray-600 mt-2 text-[14px] sm:text-[16px]"
                   dangerouslySetInnerHTML={{
                     __html: item.description,
                   }}

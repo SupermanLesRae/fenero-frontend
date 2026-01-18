@@ -57,7 +57,7 @@ export default async function ContactInfo({ section, bgColor }) {
           />
         </div>
         <div className="relative z-10">
-          <div className="flex flex-col justify-center mt-10 md:flex-row gap-4 w-full px-20 md:px-0 ">
+          <div className="flex flex-col justify-center mt-10 md:flex-row gap-4 w-full px-10 md:px-0 ">
             {sectionData.ctaLinks.map((cta, index) => (
               <Link key={index} href={cta.link} className="w-auto">
                 <Button
@@ -68,7 +68,7 @@ export default async function ContactInfo({ section, bgColor }) {
                     borderColor:
                       cta.styling.bordercolor || cta.styling.backgroundcolor, // border same as text color
                   }}
-                  className="font-bold hover:text-white text-[16px] w-full border-2 lg:w-auto cursor-pointer shadow-md transition hover:opacity-90 flex items-center justify-center gap-2 min-w-56"
+                  className="font-bold hover:text-white text-[16px] border-2 lg:w-auto cursor-pointer shadow-md transition hover:opacity-90 flex items-center justify-center gap-2 min-w-56"
                 >
                   {cta?.icon?.node.sourceUrl && (
                     <Image

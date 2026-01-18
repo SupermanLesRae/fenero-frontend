@@ -31,7 +31,7 @@ export async function Solutions({ section }) {
 
   return (
     <section className="relative w-full pb-20 bg-[#ffffff]">
-      <div className="max-w-225 mx-auto text-center mb-10">
+      <div className="max-w-225 mx-auto text-center mb-10 px-10">
         <h2 className="relative text-[36px] leading-12 md:text-[48px] md:leading-14  font-extrabold font-nunito  select-none text-center pt-10 pb-2 text-[#000E47]">
           {sectionData.title}
         </h2>
@@ -46,7 +46,7 @@ export async function Solutions({ section }) {
         {sectionData?.solutions?.map((item, index) => (
           <div
             key={index}
-            className="flex flex-col bg-white border-2 border-[#CEEED6] rounded-xl overflow-hidden shadow-sm min-w-100 max-w-100 flex-1 relative pb-0"
+            className="flex flex-col bg-white border-2 border-[#CEEED6] rounded-xl overflow-hidden shadow-sm md:min-w-100 md:max-w-100 md:flex-1 relative pb-0"
           >
             <div className="w-full bg-[#EFF5E1] border-b-2 border-[#CEEED6] p-6">
               <h2

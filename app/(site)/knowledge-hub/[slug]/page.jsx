@@ -42,9 +42,9 @@ export default async function Page({ params }) {
   if (!sectionData) return null;
 
   return (
-    <div>
+    <div className="">
       <div className="bg-[#ECF8EF] ">
-        <div className="max-w-[1128px] mx-auto pt-20">
+        <div className="max-w-[1128px] mx-auto pt-20 px-10">
           <Link href="/knowledge-hub">
             <Button
               size="lg"
@@ -100,7 +100,7 @@ export default async function Page({ params }) {
         </div>
       )}
       <div
-        className="policy-content max-w-282 mx-auto py-10 bg-white -mt-55"
+        className="policy-content max-w-282 mx-auto py-10 bg-white -mt-55 px-10"
         dangerouslySetInnerHTML={{ __html: content }}
       ></div>
       <LatestNewsPosts currentSlug={slug} />

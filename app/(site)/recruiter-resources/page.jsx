@@ -5,7 +5,7 @@ import ContactForm from "@/components/utilities/ContactForm";
 import ContactInfo from "@/components/sections/ContactInfo";
 import RecruiterPosts from "@/components/sections/RecruiterPosts";
 
-export const runtime = "edge"; // ✅ Edge runtime
+//export const runtime = "edge"; // ✅ Edge runtime
 export const revalidate = 60; // ✅ ISR caching
 
 export default async function Page() {

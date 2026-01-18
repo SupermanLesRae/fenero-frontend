@@ -10,7 +10,7 @@ import { WhatWeOffer } from "@/components/sections/WhatWeOffer";
 import { createApolloClient } from "@/lib/apolloClient";
 import { HERO_QUERY } from "@/lib/queries/Queries";
 
-export const runtime = "edge"; // ✅ Edge runtime
+//export const runtime = "edge"; // ✅ Edge runtime
 export const revalidate = 60; // ✅ ISR caching
 
 export default async function Page() {
@@ -25,7 +25,7 @@ export default async function Page() {
 
   console.log(
     "data.heroBy.herosCoreFields.heroSlide",
-    data.heroBy.herosCoreFields.heroSlide
+    data.heroBy.herosCoreFields.heroSlide,
   );
 
   return (

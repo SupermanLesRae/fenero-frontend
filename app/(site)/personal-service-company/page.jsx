@@ -10,7 +10,7 @@ import { NextSteps } from "@/components/sections/NextSteps";
 import { createApolloClient } from "@/lib/apolloClient";
 import { HERO_QUERY } from "@/lib/queries/Queries";
 
-export const runtime = "edge"; // ✅ Edge runtime
+//export const runtime = "edge"; // ✅ Edge runtime
 export const revalidate = 60; // ✅ ISR caching
 
 export default async function Page() {

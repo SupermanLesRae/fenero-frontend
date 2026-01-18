@@ -4,7 +4,7 @@ import { HERO_QUERY } from "@/lib/queries/Queries";
 import CallBackRequest from "@/components/sections/CallBackRequest";
 import { WhatWeOffer } from "@/components/sections/WhatWeOffer";
 
-export const runtime = "edge"; // ✅ Edge runtime
+//export const runtime = "edge"; // ✅ Edge runtime
 export const revalidate = 60; // ✅ ISR caching
 
 export default async function Page() {

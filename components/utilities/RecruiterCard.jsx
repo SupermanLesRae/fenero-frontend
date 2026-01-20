@@ -27,7 +27,7 @@ export default function RecruiterCard({ image, title, date }) {
             src={image}
             alt={title}
             placeholder="blur"
-            blurDataURL="/images/blur_4.png"
+            blurDataURL="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABoAAAAkAQMAAACt9LhQAAAAAXNSR0IB2cksfwAAAAlwSFlzAAALEwAACxMBAJqcGAAAAANQTFRFTS1YmqKgYAAAAA9JREFUeJxjZAACxqFFAAANtgAlZyMZzAAAAABJRU5ErkJggg=="
             className="w-full h-full  object-cover transform transition-transform duration-300 ease-in-out group-hover:scale-105"
           />
         </div>

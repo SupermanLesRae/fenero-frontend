@@ -51,7 +51,7 @@ export default async function Page({ params }) {
                       h-auto
                       w-full"
             placeholder="blur"
-            blurDataURL="/images/blur_2.jpg"
+            blurDataURL="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAGYAAABmAQMAAAADEXYhAAAAAXNSR0IB2cksfwAAAAlwSFlzAAALEwAACxMBAJqcGAAAAANQTFRFzu7WkwYvEwAAABhJREFUeJxjZEAGjKO8Ud4ob5Q3yhtAHgAk6QBnmOT1xwAAAABJRU5ErkJggg=="
             alt=""
           />
           <div className="bg-[#000E47] absolute w-full h-full opacity-80"></div>

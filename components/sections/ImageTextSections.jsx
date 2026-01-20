@@ -83,7 +83,7 @@ export async function ImageTextSections({ section }) {
                     width={590}
                     height={590}
                     placeholder="blur"
-                    blurDataURL="/images/blur_2.jpg"
+                    blurDataURL="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAGYAAABmAQMAAAADEXYhAAAAAXNSR0IB2cksfwAAAAlwSFlzAAALEwAACxMBAJqcGAAAAANQTFRFzu7WkwYvEwAAABhJREFUeJxjZEAGjKO8Ud4ob5Q3yhtAHgAk6QBnmOT1xwAAAABJRU5ErkJggg=="
                   />
                 </div>
 

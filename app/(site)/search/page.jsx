@@ -6,7 +6,9 @@ export default async function SearchPage({ searchParams }) {
   const params = await searchParams; // <- unwrap it
   const q = params?.q || "";
 
-  const baseUrl = process.env.NEXT_PUBLIC_BASE_URL || "http://localhost:3000";
+  const baseUrl =
+    process.env.NEXT_PUBLIC_BASE_URL ||
+    "https://fenero-frontend-git-main-les-raes-projects.vercel.app";
 
   const res = await fetch(`${baseUrl}/api/search?q=${q}`, {
     cache: "no-store",

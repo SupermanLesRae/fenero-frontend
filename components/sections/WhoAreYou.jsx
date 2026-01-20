@@ -119,7 +119,7 @@ export default function WhoAreYou() {
             {items.map((item, index) => (
               <div
                 key={index}
-                className="flex-[0_0_100%] lg:flex-[0_0_50%] xl:flex-[0_0_33.333%] min-w-0 px-0 py-2 "
+                className="flex-[0_0_100%] lg:flex-[0_0_50%] xl:flex-[0_0_33.333%] min-w-0 px-0  py-2 "
               >
                 <div className="relative border border-gray-200 flex flex-col w-full md:w-93.25 rounded-xl shadow-md shadow-[#000000]/10 h-full bg-white overflow-hidden select-none">
                   <div

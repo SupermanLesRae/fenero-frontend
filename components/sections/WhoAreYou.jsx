@@ -112,7 +112,7 @@ export default function WhoAreYou() {
           {sectionData.description}
         </p>
       </div>
-      <div className="relative w-full px-4 px-0 max-[1024px]:max-w-97.5 max-[1280px]:max-w-195 xl:max-w-300 mx-auto h-auto">
+      <div className="relative w-full px-0 max-[1024px]:max-w-97.5 max-[1280px]:max-w-195 xl:max-w-300 mx-auto h-auto">
         {/* Carousel */}
         <div ref={emblaRef} className="overflow-hidden">
           <div className="flex">

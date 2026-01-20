@@ -16,7 +16,6 @@ export default function MobileMenuItem({ item, callback }) {
           >
             {item.label}
             <Image
-              unoptimized
               src="/icons/chevron-down.svg"
               alt="icon"
               width={14}

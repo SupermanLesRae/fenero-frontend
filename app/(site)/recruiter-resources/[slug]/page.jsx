@@ -40,7 +40,8 @@ export default async function Page({ params }) {
       <div className="bg-[#ECF8EF] relative overflow-hidden">
         <div>
           <Image
-            unoptimized
+            width={1200}
+            height={1200}
             src={sectionData.img.node.sourceUrl}
             className="absolute
                       right-0
@@ -49,6 +50,8 @@ export default async function Page({ params }) {
                       object-cover
                       h-auto
                       w-full"
+            placeholder="blur"
+            blurDataURL="/images/blur_2.jpg"
             alt=""
           />
           <div className="bg-[#000E47] absolute w-full h-full opacity-80"></div>

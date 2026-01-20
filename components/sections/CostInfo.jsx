@@ -71,7 +71,6 @@ export async function CostInfo({ section }) {
                             key={"list_" + index}
                           >
                             <Image
-                              unoptimized
                               width={24}
                               height={24}
                               className="w-6 h-6"

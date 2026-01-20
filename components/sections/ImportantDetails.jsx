@@ -41,7 +41,6 @@ export async function ImportantDetails({ section }) {
                 >
                   <div className="w-25 h-25 mb-2">
                     <Image
-                      unoptimized
                       width={100}
                       height={100}
                       src={item.icon.node.sourceUrl}

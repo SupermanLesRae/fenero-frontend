@@ -22,7 +22,6 @@ export default async function HomeHero() {
             <div className="mb-4">
               <Button className="border-2 bg-transparent py-5 px-8 font-bold text-[14px] rounded-full text-[#CEEED6] pointer-events-none">
                 <Image
-                  unoptimized
                   src={homeData.awardLabel?.img.node.sourceUrl}
                   alt={"No alternative text provided"}
                   className="block"
@@ -51,7 +50,6 @@ export default async function HomeHero() {
                   >
                     {/* Icon SVG */}
                     <Image
-                      unoptimized
                       src={item?.icon.node.sourceUrl}
                       alt={"No alternative text provided"}
                       className=""
@@ -90,7 +88,6 @@ export default async function HomeHero() {
                 >
                   <div className="flex items-center gap-2">
                     <Image
-                      unoptimized
                       src={item.icon.node.sourceUrl}
                       alt={"No alternative text provided"}
                       className="w-auto h-auto"
@@ -109,24 +106,25 @@ export default async function HomeHero() {
 
         <div className="absolute portrait:absolute top-0 right-0 w-full sm:w-[50%] h-full max-h-250 overflow-hidden hidden lg:block z-0">
           <Image
-            unoptimized
             src={homeData.img.node.sourceUrl}
             alt={"No alternative text provided"}
             className="absolute portrait:relative right-0 top-0 h-full w-auto  object-cover object-left"
-            width={652}
-            height={639}
+            fill
+            placeholder="blur"
+            blurDataURL="/images/blur_3.png"
           />
         </div>
       </div>
 
       <div className="relative w-full h-full flex justify-end lg:hidden z-0">
         <Image
-          unoptimized
           src={homeData.img.node.sourceUrl}
           alt="No alternative text provided"
           className="max-w-163 w-[70%] h-auto object-cover object-right"
           width={652}
           height={639}
+          placeholder="blur"
+          blurDataURL="/images/blur_3.png"
         />
       </div>
     </section>

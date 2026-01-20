@@ -131,7 +131,6 @@ export default function WhoAreYou() {
                   >
                     <div className="flex items-center justify-start pt-10 pl-6 h-15.25 w-auto">
                       <Image
-                        unoptimized
                         src={item.icon.node.sourceUrl}
                         alt={"No alt text"}
                         width={74}

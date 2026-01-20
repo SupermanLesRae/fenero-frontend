@@ -78,7 +78,7 @@ export default function Hero({ data }) {
                     className="flex-[0_0_100%] relative flex flex-col lg:flex-row xl:items-center select-none min-h-0 h-auto lg:h-[640px] portrait:min-h-0 overflow-y-hidden lg:max-h-[640px]"
                   >
                     <div className="w-full py-10 px-6 xl:p-20 lg:flex lg:items-center flex justify-center lg:justify-start z-1 mb-0 lg:mb-10 shadow-lg lg:shadow-none">
-                      <div className="text-center md:text-left">
+                      <div className="text-center md:text-left md:max-w-[620px]">
                         <h2
                           className="mb-4 text-[35px] leading-9 md:text-[48px] md:leading-13 tracking-[0.15px] font-bold text-white "
                           dangerouslySetInnerHTML={{
@@ -121,29 +121,24 @@ export default function Hero({ data }) {
 
                     <div className="absolute portrait:absolute top-0 right-0 w-full sm:w-[50%] h-full max-h-250 overflow-hidden hidden lg:block z-0">
                       <Image
-                        unoptimized
-                        src={
-                          item?.img?.node?.sourceUrl ||
-                          "https://webstaging.fenero.ie/wp-content/uploads/2025/12/Home_header_cropped_58103e20be_1db3f17e10.png"
-                        }
-                        alt={"No alternative text provided"}
-                        className="absolute portrait:relative right-0 top-0 h-full w-auto  object-cover object-left"
-                        width={652}
-                        height={639}
+                        src={item?.img?.node?.sourceUrl}
+                        alt="No alternative text provided"
+                        fill
+                        className="absolute portrait:relative right-0 top-0 h-full w-auto object-cover object-left"
+                        placeholder="blur"
+                        blurDataURL="/images/blur.png"
                       />
                     </div>
 
-                    <div className="relative w-full h-full overflow-hidden flex justify-end lg:hidden z-0">
+                    <div className="relative w-full h-full overflow-hidden flex justify-end lg:hidden z-0 min-h-[448px] max-h-[448px]">
                       <Image
-                        unoptimized
-                        src={
-                          item?.img?.node?.sourceUrl ||
-                          "https://webstaging.fenero.ie/wp-content/uploads/2025/12/Home_header_cropped_58103e20be_1db3f17e10.png"
-                        }
+                        src={item?.img?.node?.sourceUrl}
                         alt="No alternative text provided"
-                        className="max-w-163 w-full h-auto object-cover  object-right"
+                        className="absolute portrait:relative right-0 top-0 h-full w-auto object-cover object-left"
                         width={652}
                         height={639}
+                        placeholder="blur"
+                        blurDataURL="/images/blur.png"
                       />
                     </div>
                   </div>

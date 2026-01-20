@@ -71,7 +71,6 @@ export async function ImageTextSections({ section }) {
                 {/* IMAGE */}
                 <div className="w-full md:w-1/2">
                   <Image
-                    unoptimized
                     src={
                       sectionData.imageTextSectionsCoreFields.cols.img?.node
                         ?.sourceUrl
@@ -83,6 +82,8 @@ export async function ImageTextSections({ section }) {
                     className="w-full h-auto rounded-lg"
                     width={590}
                     height={590}
+                    placeholder="blur"
+                    blurDataURL="/images/blur_2.jpg"
                   />
                 </div>
 
@@ -96,7 +97,6 @@ export async function ImageTextSections({ section }) {
                             key={"list_" + index}
                           >
                             <Image
-                              unoptimized
                               className="w-6 h-6"
                               src={item.icon.node.sourceUrl}
                               alt=""

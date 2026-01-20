@@ -45,7 +45,6 @@ export async function WhatWeOffer({ bg, section }) {
                   >
                     <div>
                       <Image
-                        unoptimized
                         src={item.icon.node.sourceUrl}
                         alt={
                           item.icon.node.altText ||

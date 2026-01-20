@@ -33,7 +33,6 @@ export async function OurValues() {
               <div className="relative h-auto">
                 <div className="flex items-center justify-center pt-8 pb-6 h-auto w-auto">
                   <Image
-                    unoptimized
                     src={item.icon.node.sourceUrl}
                     alt={item.icon.node.altText || "No alt text"}
                     width={160}

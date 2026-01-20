@@ -48,7 +48,6 @@ export default async function ContactInfo({ section, bgColor }) {
         ></p>
         <div className="absolute w-full h-full z-0 left-0 top-0">
           <Image
-            unoptimized
             src={sectionData.img.node.sourceUrl}
             alt={sectionData.img.node.altText || "Image"}
             className="w-full h-full object-cover"
@@ -72,7 +71,6 @@ export default async function ContactInfo({ section, bgColor }) {
                 >
                   {cta?.icon?.node.sourceUrl && (
                     <Image
-                      unoptimized
                       width={18}
                       height={20}
                       src={cta?.icon?.node.sourceUrl}

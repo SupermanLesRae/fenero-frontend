@@ -26,7 +26,6 @@ export default async function ContactPage() {
       </h2>
       <div className="absolute w-full h-full z-0 left-0 top-0">
         <Image
-          unoptimized
           src={data.img.node.sourceUrl}
           alt={data.img.node.altText || "Image"}
           className="w-full h-full object-cover"
@@ -37,7 +36,7 @@ export default async function ContactPage() {
       </div>
 
       {/* Client-side form component */}
-      <div className="relative max-w-358.75 mx-auto rounded-xl border bg-white py-10 px-10 shadow-sm">
+      <div className="relative max-w-358.75 mx-auto rounded-xl border bg-white py-10 px-10 shadow-sm max-w-[980px]">
         <ContactFormClient selectOptions={data.select} />
       </div>
     </div>

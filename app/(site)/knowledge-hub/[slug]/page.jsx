@@ -89,12 +89,13 @@ export default async function Page({ params }) {
         <div className="bg-white px-6 lg:px-0">
           <div className="relative h-110 max-w-282 text-center mx-auto w-full rounded-xl ">
             <Image
-              unoptimized
               className="object-cover w-full h-110 max-w-282 absolute -mt-55 rounded-xl shadow-lg border-10 border-white "
               src={sectionData.featureImg.node.sourceUrl}
               alt=""
               width={1108}
               height={420}
+              placeholder="blur"
+              blurDataURL="/images/blur_2.jpg"
             />
           </div>
         </div>

@@ -23,7 +23,6 @@ export async function ContactsList() {
             {/* Icon */}
             <div className="shrink-0 bg-[#6B0071] p-10 rounded-full">
               <Image
-                unoptimized
                 width={80}
                 height={80}
                 src={contact.icon.node.sourceUrl}

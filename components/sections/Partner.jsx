@@ -18,7 +18,6 @@ export async function Partner() {
       <div className="relative w-full mx-auto">
         <div className="absolute w-full h-full z-0">
           <Image
-            unoptimized
             src={sectionData.img.node.sourceUrl}
             alt={"No alt text"}
             className="w-full h-full object-cover"
@@ -39,7 +38,6 @@ export async function Partner() {
               <div className="relative h-auto">
                 <div className="flex items-center justify-center pt-8 pb-8 h-auto w-auto">
                   <Image
-                    unoptimized
                     src={item.icon.node.sourceUrl}
                     alt={"No alt text"}
                     width={100}

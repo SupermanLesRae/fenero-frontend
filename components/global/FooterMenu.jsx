@@ -13,7 +13,6 @@ export default function FooterMenu({ menu }) {
           <div className="flex items-center gap-3 mx-auto lg:mx-0">
             <Link href="/" className="cursor-pointer">
               <Image
-                unoptimized
                 src={menu.logo.node.sourceUrl}
                 alt={"No alternative text provided"}
                 width={165}
@@ -34,7 +33,6 @@ export default function FooterMenu({ menu }) {
                 className="hover:text-[#D1DF20] transition"
               >
                 <Image
-                  unoptimized
                   src={`${item?.icon?.node?.sourceUrl}`}
                   alt={"No alternative text provided"}
                   className="w-4.5 h-4.5"

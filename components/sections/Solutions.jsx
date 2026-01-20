@@ -71,7 +71,6 @@ export async function Solutions({ section }) {
                           className="flex items-center gap-3 leading-5 text-gray-700"
                         >
                           <Image
-                            unoptimized
                             width={16}
                             height={16}
                             src={item.icon.node.sourceUrl}
@@ -120,7 +119,6 @@ export async function Solutions({ section }) {
                           className="flex items-center gap-2 leading-5 text-gray-700 font-light"
                         >
                           <Image
-                            unoptimized
                             width={8}
                             height={8}
                             src={listItem.icon.node.sourceUrl}

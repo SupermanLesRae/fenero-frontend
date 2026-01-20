@@ -49,7 +49,6 @@ export async function KnowledgeHub() {
             >
               <div className="relative h-49 overflow-hidden">
                 <Image
-                  unoptimized
                   width={414}
                   height={196}
                   className="w-full h-auto"

@@ -22,11 +22,12 @@ export default function RecruiterCard({ image, title, date }) {
       {image && (
         <div className="overflow-hidden w-98.25 h-138.25 rounded-none">
           <Image
-            unoptimized
             width={100}
             height={100}
             src={image}
             alt={title}
+            placeholder="blur"
+            blurDataURL="/images/blur_4.png"
             className="w-full h-full  object-cover transform transition-transform duration-300 ease-in-out group-hover:scale-105"
           />
         </div>

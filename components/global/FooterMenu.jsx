@@ -144,7 +144,10 @@ export default function FooterMenu({ menu }) {
                       </Link>
                       {item?.logoicon?.node?.sourceUrl && (
                         <div className="w-full">
-                          <img
+                          <Image
+                            width={68}
+                            height={69}
+                            alt=""
                             className="mt-4 mx-auto sm:mx-0"
                             src={item.logoicon.node.sourceUrl}
                           />

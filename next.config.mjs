@@ -10,6 +10,10 @@ const nextConfig = {
         protocol: "https",
         hostname: "13.60.181.6",
       },
+      {
+        protocol: "https",
+        hostname: "webstaging.fenero.ie",
+      },
     ],
   },
 };

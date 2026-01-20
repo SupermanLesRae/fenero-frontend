@@ -147,7 +147,7 @@ export default function Testimonials() {
           {sectionData.googleRatings}
         </p>
       </div>
-      <div className="relative w-full px-4 px-0 max-[1024px]:max-w-95 max-[1280px]:max-w-190 xl:max-w-300 mx-auto ">
+      <div className="relative w-full px-0 max-[1024px]:max-w-95 max-[1280px]:max-w-190 xl:max-w-300 mx-auto ">
         {/* Carousel */}
         <div ref={emblaRef} className="overflow-hidden py-1">
           <div className="flex">

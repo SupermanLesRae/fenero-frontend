@@ -35,7 +35,7 @@ export default function FooterMenu({ menu }) {
               >
                 <Image
                   unoptimized
-                  src={`/icons/${item.icon[0]}.svg`}
+                  src={`${item?.icon?.node?.sourceUrl}`}
                   alt={"No alternative text provided"}
                   className="w-4.5 h-4.5"
                   width={18}

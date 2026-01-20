@@ -23,7 +23,9 @@ export default async function Page() {
 
   return (
     <div>
-      <Hero data={data.heroBy.herosCoreFields.heroSlide} />
+      {data?.heroBy?.herosCoreFields && (
+        <Hero data={data.heroBy.herosCoreFields.heroSlide} />
+      )}
       <Partner />
       <WhatWeOffer section={section} />
       <OurValues />

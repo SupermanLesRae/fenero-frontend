@@ -60,22 +60,22 @@ export default function Hero({ data }) {
     };
   }, [emblaApi, updateDots]);
   return (
-    <section className="bg-[#000E47] ">
+    <section className="bg-[#000E47] max-h-[640px]">
       <motion.section
-        className="relative w-full m-0 bg-[#000E47]"
+        className="relative w-full max-h-[640px] m-0 bg-[#000E47]"
         initial={{ opacity: 0, y: 0 }}
         whileInView={{ opacity: 1, y: 0 }}
         viewport={{ once: true, margin: "-100px" }}
         transition={{ duration: 0.3, ease: "easeOut" }}
       >
-        <div className="relative max-w-500 mx-auto ">
+        <div className="relative max-w-500 mx-auto max-h-[640px]">
           <div ref={emblaRef} className="overflow-hidden ">
-            <div className="flex ">
+            <div className="flex max-h-[640px]">
               {data.map((item, index) => {
                 return (
                   <div
                     key={"aboutHeroSlide" + index}
-                    className="flex-[0_0_100%] relative flex flex-col lg:flex-row xl:items-center select-none min-h-0 h-auto lg:min-h-screen portrait:min-h-0 overflow-y-hidden "
+                    className="flex-[0_0_100%] relative flex flex-col lg:flex-row xl:items-center select-none min-h-0 h-auto lg:h-[640px] portrait:min-h-0 overflow-y-hidden max-h-[640px]"
                   >
                     <div className="w-full py-10 px-10 xl:p-20 lg:flex lg:items-center flex justify-center lg:justify-start z-1 mb-0 lg:mb-10 shadow-lg lg:shadow-none">
                       <div className="max-w-140 xl:max-w-160 ">
@@ -122,7 +122,10 @@ export default function Hero({ data }) {
                     <div className="absolute portrait:absolute top-0 right-0 w-full sm:w-[50%] h-full max-h-250 overflow-hidden hidden lg:block z-0">
                       <Image
                         unoptimized
-                        src={item.img.node.sourceUrl}
+                        src={
+                          item?.img?.node?.sourceUrl ||
+                          "https://webstaging.fenero.ie/wp-content/uploads/2025/12/Home_header_cropped_58103e20be_1db3f17e10.png"
+                        }
                         alt={"No alternative text provided"}
                         className="absolute portrait:relative right-0 top-0 h-full w-auto  object-cover object-left"
                         width={652}
@@ -133,7 +136,10 @@ export default function Hero({ data }) {
                     <div className="relative w-full h-full overflow-hidden flex justify-end lg:hidden z-0">
                       <Image
                         unoptimized
-                        src={item.img.node.sourceUrl}
+                        src={
+                          item?.img?.node?.sourceUrl ||
+                          "https://webstaging.fenero.ie/wp-content/uploads/2025/12/Home_header_cropped_58103e20be_1db3f17e10.png"
+                        }
                         alt="No alternative text provided"
                         className="max-w-163 w-full h-auto object-cover  object-right"
                         width={652}

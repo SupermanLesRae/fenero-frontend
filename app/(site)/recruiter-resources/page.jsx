@@ -20,7 +20,9 @@ export default async function Page() {
 
   return (
     <div>
-      <Hero data={data.heroBy.herosCoreFields.heroSlide} />
+      {data?.heroBy?.herosCoreFields && (
+        <Hero data={data.heroBy.herosCoreFields.heroSlide} />
+      )}
       <RecruiterPosts />
       <ContactInfo section={section} />
       <ContactForm />

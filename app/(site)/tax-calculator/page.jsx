@@ -19,7 +19,9 @@ export default async function Page() {
 
   return (
     <div>
-      <Hero data={data.heroBy.herosCoreFields.heroSlide} />
+      {data?.heroBy?.herosCoreFields && (
+        <Hero data={data.heroBy.herosCoreFields.heroSlide} />
+      )}
       <WhatWeOffer bg={"#ECF8EF"} section={section} />
       <CallBackRequest />
     </div>

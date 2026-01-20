@@ -1,6 +1,7 @@
 import { AboutContracting } from "@/components/sections/AboutContracting";
 import { Banners } from "@/components/sections/Banners";
 import CallBackRequest from "@/components/sections/CallBackRequest";
+import ContactInfo from "@/components/sections/ContactInfo";
 import { FAQs } from "@/components/sections/FAQs";
 import { GetStartedProcess } from "@/components/sections/GetStartedProcess";
 import Hero from "@/components/sections/Hero";
@@ -14,8 +15,8 @@ export const runtime = "nodejs"; // ✅ Edge runtime
 export const revalidate = 60; // ✅ ISR caching
 
 export default async function Page() {
-  const slug = "non-resident-contractors";
-  const section = "non-resident Contractor";
+  const slug = "experienced-contractor";
+  const section = "Experienced Contractor";
 
   const client = createApolloClient();
   const { data } = await client.query({
@@ -23,17 +24,13 @@ export default async function Page() {
     variables: { slug },
   });
 
-  console.log(
-    "data.heroBy.herosCoreFields.heroSlide",
-    data.heroBy.herosCoreFields.heroSlide,
-  );
-
   return (
     <div>
       {data?.heroBy?.herosCoreFields && (
         <Hero data={data.heroBy.herosCoreFields.heroSlide} />
       )}
       <AboutContracting section={section} />
+      <ContactInfo section={section} bgColor={"#ffffff"} />
       <Solutions section={section} />
       <WhatWeOffer section={section} />
       <GetStartedProcess section={section} />

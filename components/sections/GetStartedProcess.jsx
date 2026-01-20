@@ -23,7 +23,7 @@ export async function GetStartedProcess({ section }) {
   // Extract only getStartedStepsCoreFields from matched nodes
   const results = matchedNodes.map((node) => node.getStartedStepsCoreFields);
 
-  if (!results) return null;
+  if (!results || results[0] === undefined) return null;
 
   return (
     <div className={` bg-[#ECF8EF] ${results.length === 0 && " pb-20"}`}>

@@ -21,10 +21,10 @@ export async function AboutContracting({ section }) {
   // Extract only getStartedStepsCoreFields from matched nodes
   const results = matchedNodes.map((node) => node.aboutContractingFields);
 
-  if (!results) return null;
+  if (!results[0] || results.length > 0) return null;
 
   return (
-    <div className="pb-20 bg-[#ECF8EF]">
+    <div className="pb-20 bg-[#ECF8EF] h-auto">
       {results.map((sectionData, sectionIndex) => (
         <section key={sectionIndex} className="relative w-full px-10">
           <h2 className="relative text-[36px] md:text-[48px] leading-12 md:leading-14 font-extrabold font-nunito select-none text-center pt-20 pb-10 text-[#000E47]">

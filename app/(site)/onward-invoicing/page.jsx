@@ -1,12 +1,12 @@
-import { AboutContracting } from "@/components/sections/AboutContracting";
-import { Banners } from "@/components/sections/Banners";
 import CallBackRequest from "@/components/sections/CallBackRequest";
+import ContactInfo from "@/components/sections/ContactInfo";
+import { CostInfo } from "@/components/sections/CostInfo";
 import { FAQs } from "@/components/sections/FAQs";
-import { GetStartedProcess } from "@/components/sections/GetStartedProcess";
 import Hero from "@/components/sections/Hero";
+import { ImageTextSections } from "@/components/sections/ImageTextSections";
+import { ImportantDetails } from "@/components/sections/ImportantDetails";
 import { KnowledgeHub } from "@/components/sections/KnowledgeHub";
-import { Solutions } from "@/components/sections/Solutions";
-import { WhatWeOffer } from "@/components/sections/WhatWeOffer";
+import { NextSteps } from "@/components/sections/NextSteps";
 import { createApolloClient } from "@/lib/apolloClient";
 import { HERO_QUERY } from "@/lib/queries/Queries";
 
@@ -14,8 +14,8 @@ export const runtime = "nodejs"; // ✅ Edge runtime
 export const revalidate = 60; // ✅ ISR caching
 
 export default async function Page() {
-  const slug = "non-resident-contractors";
-  const section = "non-resident Contractor";
+  const slug = "onward-invoicing";
+  const section = "Onward Invoicing";
 
   const client = createApolloClient();
   const { data } = await client.query({
@@ -23,24 +23,19 @@ export default async function Page() {
     variables: { slug },
   });
 
-  console.log(
-    "data.heroBy.herosCoreFields.heroSlide",
-    data.heroBy.herosCoreFields.heroSlide,
-  );
-
   return (
     <div>
       {data?.heroBy?.herosCoreFields && (
         <Hero data={data.heroBy.herosCoreFields.heroSlide} />
       )}
-      <AboutContracting section={section} />
-      <Solutions section={section} />
-      <WhatWeOffer section={section} />
-      <GetStartedProcess section={section} />
-      <Banners section={section} />
+      <ImageTextSections section={section} />
+      <CostInfo section={section} />
+      <ContactInfo section={section} />
+      <ImportantDetails section={section} />
+      <NextSteps section={section} />
       <FAQs section={section} />
-      <KnowledgeHub />
       <CallBackRequest />
+      <KnowledgeHub />
     </div>
   );
 }

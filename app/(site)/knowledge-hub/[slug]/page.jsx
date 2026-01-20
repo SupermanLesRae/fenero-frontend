@@ -55,7 +55,7 @@ export default async function Page({ params }) {
             </Button>
           </Link>
 
-          <h2 className="relative text-[30px] md:text-[48px] leading-9 font-extrabold font-nunito mb-2 select-none text-[#000E47] text-center pt-8 pb-6">
+          <h2 className="relative text-[30px] md:text-[48px] leading-9 lg:leading-12 font-extrabold font-nunito mb-2 select-none text-[#000E47] text-center pt-8 pb-6">
             {sectionData?.title || "Add a Date"}
           </h2>
           <p

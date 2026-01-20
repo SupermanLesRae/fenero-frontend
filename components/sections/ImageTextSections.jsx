@@ -22,18 +22,18 @@ export async function ImageTextSections({ section }) {
       {[...nodes]
         .filter((sectionData) =>
           sectionData.imageTextSectionsCoreFields.section?.some(
-            (section) => section.toLowerCase() === searchText
-          )
+            (section) => section.toLowerCase() === searchText,
+          ),
         )
         .sort(
           (a, b) =>
             a.imageTextSectionsCoreFields.order -
-            b.imageTextSectionsCoreFields.order
+            b.imageTextSectionsCoreFields.order,
         )
         .map((sectionData, sectionIndex) => {
           console.log(
             "ImageTextSections: ",
-            sectionData.imageTextSectionsCoreFields
+            sectionData.imageTextSectionsCoreFields,
           );
 
           return (
@@ -45,13 +45,13 @@ export async function ImageTextSections({ section }) {
               }}
               className="relative w-full"
             >
-              <div className="px-10">
+              <div className="px-6">
                 {/* TITLE */}
-                <h2 className="relative text-[36px] mx-auto leading-tight md:text-[48px] font-extrabold font-nunito text-center text-[#000E47] pt-20">
+                <h2 className="relative text-[36px] mx-auto leading-tight md:text-[48px] font-extrabold font-nunito text-center text-[#000E47] pt-10 lg:pt-20">
                   {sectionData.imageTextSectionsCoreFields.title}
                 </h2>
 
-                <div className="w-full flex flex-col gap-4 text-center pt-4 pb-20">
+                <div className="w-full flex flex-col gap-4 text-center pt-4 pb-10 lg:pb-20">
                   {sectionData.imageTextSectionsCoreFields.description && (
                     <p className="text-lg text-[#000E47]">
                       {sectionData.imageTextSectionsCoreFields.description}
@@ -62,7 +62,7 @@ export async function ImageTextSections({ section }) {
 
               {/* CONTENT */}
               <div
-                className={`flex flex-col md:flex-row items-start gap-10 px-10 pb-20 max-w-337.5 mx-auto ${
+                className={`flex flex-col md:flex-row items-start gap-10 px-6 pb-10 lg:pb-20 max-w-337.5 mx-auto ${
                   sectionData.imageTextSectionsCoreFields.cols.isreversed
                     ? "md:flex-row-reverse"
                     : ""
@@ -108,7 +108,7 @@ export async function ImageTextSections({ section }) {
                             </p>
                           </div>
                         );
-                      }
+                      },
                     )}
                   </div>
                   <div>

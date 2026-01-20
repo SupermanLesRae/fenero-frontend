@@ -44,7 +44,7 @@ export default async function Page({ params }) {
   return (
     <div className="">
       <div className="bg-[#ECF8EF] ">
-        <div className="max-w-[1128px] mx-auto pt-20 px-10">
+        <div className="max-w-[1128px] mx-auto pt-10 lg:pt-20 px-10">
           <Link href="/knowledge-hub">
             <Button
               size="lg"
@@ -55,12 +55,12 @@ export default async function Page({ params }) {
             </Button>
           </Link>
 
-          <h2 className="relative text-[30px] md:text-[48px] leading-14 font-extrabold font-nunito mb-2 select-none text-[#000E47] text-center pt-8 pb-6">
+          <h2 className="relative text-[30px] md:text-[48px] leading-9 font-extrabold font-nunito mb-2 select-none text-[#000E47] text-center pt-8 pb-6">
             {sectionData?.title || "Add a Date"}
           </h2>
           <p
             dangerouslySetInnerHTML={{ __html: sectionData.description }}
-            className="font-nunito font-medium text-[28px] leading-6 tracking-[0.15px] text-[#000E47] text-center select-none px-8 pb-8"
+            className="font-nunito font-medium text-[28px] leading-8 tracking-[0.15px] text-[#000E47] text-center select-none px-8 pb-8"
           ></p>
 
           {/* Tags */}
@@ -86,11 +86,11 @@ export default async function Page({ params }) {
         </div>
       </div>
       {sectionData?.featureImg.node.sourceUrl && (
-        <div className="bg-white">
-          <div className="relative h-110 max-w-282 text-center mx-auto w-full rounded-xl">
+        <div className="bg-white px-6 lg:px-0">
+          <div className="relative h-110 max-w-282 text-center mx-auto w-full rounded-xl ">
             <Image
               unoptimized
-              className="object-cover w-full h-110 max-w-282 absolute -mt-55 rounded-xl shadow-lg border-10 border-white"
+              className="object-cover w-full h-110 max-w-282 absolute -mt-55 rounded-xl shadow-lg border-10 border-white "
               src={sectionData.featureImg.node.sourceUrl}
               alt=""
               width={1108}
@@ -100,7 +100,7 @@ export default async function Page({ params }) {
         </div>
       )}
       <div
-        className="policy-content max-w-282 mx-auto py-10 bg-white -mt-55 px-10"
+        className="policy-content max-w-282 mx-auto py-10 bg-white -mt-55 px-6"
         dangerouslySetInnerHTML={{ __html: content }}
       ></div>
       <LatestNewsPosts currentSlug={slug} />

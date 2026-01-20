@@ -20,11 +20,11 @@ export async function OurValues() {
       <div className="relative w-full mx-auto text-white">
         <h2
           style={{ color: sectionData.styling.textColor }}
-          className="relative text-[36px] md:text-[48px] font-extrabold font-nunito  select-none text-center pt-20 pb-8"
+          className="relative text-[36px] md:text-[48px] font-extrabold font-nunito  select-none text-center pt-10 lg:pt-20 pb-8"
         >
           {sectionData.title}
         </h2>
-        <div className="flex justify-center flex-wrap pb-20">
+        <div className="flex justify-center flex-wrap pb-10 lg:pb-20">
           {sectionData.valuesList.map((item, index) => (
             <div
               key={index}
@@ -44,7 +44,7 @@ export async function OurValues() {
                   <h2 className="text-[20px] font-bold font-nunito pb-2 select-none">
                     {item.label}
                   </h2>
-                  <p className="font-nunito font-medium text-[16px] leading-6 tracking-[0.15px] select-none px-8">
+                  <p className="font-nunito font-medium text-[16px] leading-6 tracking-[0.15px] select-none px-0">
                     {item.description}
                   </p>
                 </div>

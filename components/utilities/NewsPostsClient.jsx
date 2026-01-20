@@ -15,7 +15,7 @@ export default function NewsPostsClient({ posts, tags }) {
       (prev) =>
         prev.includes(tag)
           ? prev.filter((t) => t !== tag) // remove if already active
-          : [...prev, tag] // add if not active
+          : [...prev, tag], // add if not active
     );
   };
 
@@ -42,27 +42,27 @@ export default function NewsPostsClient({ posts, tags }) {
 
     // Tag search match (case-insensitive, trimmed)
     const tagsMatchQuery = postTagStrings.some((tag) =>
-      tag.includes(normalizedQuery)
+      tag.includes(normalizedQuery),
     );
 
     // Active tag filter (case-insensitive, trimmed)
     const activeTagsMatch =
       activeTags.length === 0 ||
       activeTags.some((active) =>
-        postTagStrings.includes(active.toLowerCase().trim())
+        postTagStrings.includes(active.toLowerCase().trim()),
       );
 
     return (titleMatch || tagsMatchQuery) && activeTagsMatch;
   });
 
   return (
-    <div className="relative pb-20 px-10 min-h-50 bg-[#ECF8EF]">
-      <h2 className="relative text-[30px] md:text-[48px] font-extrabold font-nunito mb-6 select-none text-[#000E47] text-center pt-14 pb-14">
+    <div className="relative pb-10 lg:pb-20 px-6 min-h-50 bg-[#ECF8EF]">
+      <h2 className="relative text-[30px] md:text-[48px] font-extrabold font-nunito mb-6 select-none text-[#000E47] text-center pt-14 lg:pb-14">
         What are you looking for?
       </h2>
 
       {/* Search Field */}
-      <div className="relative max-w-md mx-auto mb-8">
+      <div className="relative max-w-md mx-auto lg:mb-8">
         <input
           type="text"
           value={query}
@@ -77,10 +77,12 @@ export default function NewsPostsClient({ posts, tags }) {
         </div>
       </div>
 
-      <div className="max-w-282 py-10 mx-auto flex items-center justify-center select-none">
-        <div className="text-[#3C3E47] text-[16px] mr-6">Filter by:</div>
+      <div className="max-w-282 py-10 mx-auto flex flex-wrap items-center justify-center select-none">
+        <div className="text-[#3C3E47] text-[16px] mr-6 mb-6 md:mb-0">
+          Filter by:
+        </div>
 
-        <div className="flex flex-wrap gap-2">
+        <div className="flex flex-wrap gap-2 space-y-2 md:space-y-0 justify-center md:justify-start">
           {tags.map((tagObj, index) => {
             const isActive = activeTags.includes(tagObj.tag);
 
@@ -106,7 +108,7 @@ export default function NewsPostsClient({ posts, tags }) {
       </div>
 
       {/* News Cards */}
-      <div className="flex flex-wrap items-center justify-center gap-6 p-4">
+      <div className="flex flex-wrap items-center justify-center gap-6 lg:p-4">
         {filteredPosts.length > 0 ? (
           filteredPosts.map((post, index) => {
             const item = post.newsPostsCoreFields;

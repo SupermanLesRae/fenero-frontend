@@ -22,8 +22,8 @@ export async function CostInfo({ section }) {
       {nodes
         .filter((sectionData) =>
           sectionData.costInfoSectionsCoreFields.section?.some(
-            (section) => section.toLowerCase() === searchText
-          )
+            (section) => section.toLowerCase() === searchText,
+          ),
         )
         .map((sectionData, sectionIndex) => {
           return (
@@ -31,7 +31,7 @@ export async function CostInfo({ section }) {
               key={sectionIndex}
               className="relative w-full bg-[#ECF8EF]"
             >
-              <div className="px-10">
+              <div className="px-6">
                 {/* TITLE */}
                 <h2 className="relative text-[36px] max-w-225 mx-auto leading-tight md:text-[48px] font-extrabold font-nunito text-center text-[#000E47] pt-20 pb-16">
                   {sectionData.costInfoSectionsCoreFields.title}
@@ -40,7 +40,7 @@ export async function CostInfo({ section }) {
 
               {/* CONTENT */}
               <div
-                className={`flex flex-col md:flex-row items-center md:items-start gap-10 px-10 pb-10 w-full max-w-337.5 relative mx-auto justify-center `}
+                className={`flex flex-col md:flex-row items-center md:items-start gap-10 px-6 pb-10 w-full max-w-337.5 relative mx-auto justify-center `}
               >
                 {/*  */}
                 <div className="flex flex-col gap-4  bg-[#036735] max-w-xl text-white p-10 rounded-xl ">
@@ -83,14 +83,14 @@ export async function CostInfo({ section }) {
                             </p>
                           </div>
                         );
-                      }
+                      },
                     )}
                   </div>
                 </div>
               </div>
 
               <h2
-                className="relative text-[18px] max-w-225 mx-auto leading-tight font-nunito text-center text-[#000E47] pt-10 pb-20"
+                className="relative text-[18px] max-w-225 mx-auto leading-tight font-nunito text-center text-[#000E47] pt-10 pb-10 lg:pb-20"
                 dangerouslySetInnerHTML={{
                   __html: sectionData.costInfoSectionsCoreFields.note,
                 }}

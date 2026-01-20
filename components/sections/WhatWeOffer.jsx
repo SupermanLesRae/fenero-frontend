@@ -30,9 +30,9 @@ export async function WhatWeOffer({ bg, section }) {
   return (
     <section style={{ backgroundColor: bg || "#ffffff" }}>
       <div className="flex w-full">
-        <div className="relative flex flex-row xl:items-center select-none mx-auto pb-20">
+        <div className="relative flex flex-row xl:items-center select-none mx-auto pb-10 lg:pb-20">
           <div className="w-full text-center">
-            <h2 className="mb-6 text-[40px] leading-12 md:text-[48px] md:leading-13 tracking-[0.15px] font-black pt-20 pb-10">
+            <h2 className="mb-6 text-[40px] leading-12 md:text-[48px] md:leading-13 tracking-[0.15px] font-black pt-10 lg:pt-20 lg:pb-10">
               {sectionData.title}
             </h2>
 

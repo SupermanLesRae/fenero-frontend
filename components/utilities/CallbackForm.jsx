@@ -63,7 +63,7 @@ export default function CallbackForm() {
     <Form {...form}>
       <form
         onSubmit={form.handleSubmit(onSubmit)}
-        className="flex flex-col gap-4 p-0 max-w-162.5 mx-auto"
+        className="flex flex-col gap-4 p-0 w-full lg:max-w-162.5 mx-auto"
       >
         <div className="block space-y-4 md:space-y-0 md:flex  gap-4">
           {/* Name */}

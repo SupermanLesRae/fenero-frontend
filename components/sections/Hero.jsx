@@ -60,25 +60,25 @@ export default function Hero({ data }) {
     };
   }, [emblaApi, updateDots]);
   return (
-    <section className="bg-[#000E47] max-h-[640px]">
+    <section className="bg-[#000E47] lg:max-h-[640px]">
       <motion.section
-        className="relative w-full max-h-[640px] m-0 bg-[#000E47]"
+        className="relative w-full lg:max-h-[640px] m-0 bg-[#000E47]"
         initial={{ opacity: 0, y: 0 }}
         whileInView={{ opacity: 1, y: 0 }}
         viewport={{ once: true, margin: "-100px" }}
         transition={{ duration: 0.3, ease: "easeOut" }}
       >
-        <div className="relative max-w-500 mx-auto max-h-[640px]">
+        <div className="relative max-w-500 mx-auto lg:max-h-[640px]">
           <div ref={emblaRef} className="overflow-hidden ">
-            <div className="flex max-h-[640px]">
+            <div className="flex lg:max-h-[640px]">
               {data.map((item, index) => {
                 return (
                   <div
                     key={"aboutHeroSlide" + index}
-                    className="flex-[0_0_100%] relative flex flex-col lg:flex-row xl:items-center select-none min-h-0 h-auto lg:h-[640px] portrait:min-h-0 overflow-y-hidden max-h-[640px]"
+                    className="flex-[0_0_100%] relative flex flex-col lg:flex-row xl:items-center select-none min-h-0 h-auto lg:h-[640px] portrait:min-h-0 overflow-y-hidden lg:max-h-[640px]"
                   >
-                    <div className="w-full py-10 px-10 xl:p-20 lg:flex lg:items-center flex justify-center lg:justify-start z-1 mb-0 lg:mb-10 shadow-lg lg:shadow-none">
-                      <div className="max-w-140 xl:max-w-160 ">
+                    <div className="w-full py-10 px-6 xl:p-20 lg:flex lg:items-center flex justify-center lg:justify-start z-1 mb-0 lg:mb-10 shadow-lg lg:shadow-none">
+                      <div className="text-center md:text-left">
                         <h2
                           className="mb-4 text-[35px] leading-9 md:text-[48px] md:leading-13 tracking-[0.15px] font-bold text-white "
                           dangerouslySetInnerHTML={{
@@ -90,14 +90,14 @@ export default function Hero({ data }) {
                           dangerouslySetInnerHTML={{
                             __html: item.subTitle,
                           }}
-                          className=" font-medium text-[18px] lg:text-[32px] text-bold leading-6 lg:leading-9 tracking-[0.15px] text-[#ffffff] mb-6 pr-10"
+                          className=" font-medium text-[18px] lg:text-[32px] text-bold leading-6 lg:leading-9 tracking-[0.15px] text-[#ffffff] mb-6 lg:pr-10"
                         ></p>
 
                         <p
                           dangerouslySetInnerHTML={{
                             __html: item.description,
                           }}
-                          className=" font-medium text-[17px] leading-7 tracking-[0.15px] text-[#ffffff] mb-6 pr-10"
+                          className=" font-medium text-[17px] leading-7 tracking-[0.15px] text-[#ffffff] mb-6 lg:pr-10"
                         ></p>
 
                         {item.hasCta && (

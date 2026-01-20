@@ -17,10 +17,10 @@ export default async function ContactPage() {
   if (!data) return null;
 
   return (
-    <div className="relative pb-20 px-10">
+    <div className="relative pb-10 lg:pb-20 px-6">
       <h2
         id="contact"
-        className="relative text-[30px] md:text-[48px] font-extrabold font-nunito mb-2 select-none text-white text-center pt-20 pb-20 z-11"
+        className="relative text-[30px] md:text-[48px] font-extrabold font-nunito mb-2 select-none text-white text-center py-10 lg:py-20 z-11"
       >
         {data.title}
       </h2>

@@ -18,10 +18,10 @@ export async function OurAwards() {
       style={{ backgroundColor: sectionData.styling.backgroundColor }}
     >
       <div className="relative w-full mx-auto text-white">
-        <h2 className="relative text-[36px] leading-12 md:text-[48px] md:leading-14  font-extrabold font-nunito  select-none text-center pt-20 pb-8 text-[#000E47]">
+        <h2 className="relative text-[36px] leading-12 md:text-[48px] md:leading-14  font-extrabold font-nunito  select-none text-center pt-10 lg:pt-20 pb-8 text-[#000E47]">
           {sectionData.title}
         </h2>
-        <div className="flex justify-center flex-wrap pb-20">
+        <div className="flex justify-center flex-wrap pb-10 lg:pb-20">
           {sectionData.awards.map((item, index) => (
             <div
               key={index}

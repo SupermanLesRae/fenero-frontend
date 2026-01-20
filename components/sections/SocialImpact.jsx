@@ -17,7 +17,7 @@ export async function SocialImpact() {
 
   return (
     <section style={{ backgroundColor: sectionData.styling.backgroundColor }}>
-      <div className="relative w-full py-28 px-10 max-w-325 mx-auto select-none">
+      <div className="relative w-full py-10 lg:py-28 px-6 max-w-325 mx-auto select-none">
         <div className="flex flex-col xl:flex-row items-center gap-14">
           {/* Left Image */}
           <div className="relative w-full flex justify-center">

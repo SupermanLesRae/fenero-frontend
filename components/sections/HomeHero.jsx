@@ -17,7 +17,7 @@ export default async function HomeHero() {
   return (
     <section className="w-full bg-[#000E47] p-0 z-0 relative">
       <div className="relative flex flex-row xl:items-center select-none min-h-0 h-full md:max-h-250 max-w-500 mx-auto shadow-md z-10">
-        <div className="w-full p-10 xl:p-20 lg:flex lg:items-center flex justify-center lg:justify-start portrait:items-start z-0">
+        <div className="w-full p-6 lg:p-10 xl:p-20 lg:flex lg:items-center flex justify-center lg:justify-start portrait:items-start z-0">
           <div className="max-w-150">
             <div className="mb-4">
               <Button className="border-2 bg-transparent py-5 px-8 font-bold text-[14px] rounded-full text-[#CEEED6] pointer-events-none">
@@ -38,7 +38,7 @@ export default async function HomeHero() {
               dangerouslySetInnerHTML={{ __html: homeData.title }}
             />
 
-            <p className=" font-medium text-[16px] leading-6 tracking-[0.15px] text-[#CEE3E4] mb-6 pr-10">
+            <p className=" font-medium text-[16px] leading-6 tracking-[0.15px] text-[#CEE3E4] mb-6 lg:pr-10">
               {homeData.description}
             </p>
 

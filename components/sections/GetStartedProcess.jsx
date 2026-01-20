@@ -28,10 +28,10 @@ export async function GetStartedProcess({ section }) {
   return (
     <div className={` bg-[#ECF8EF] ${results.length === 0 && " pb-20"}`}>
       {results.map((sectionData, sectionIndex) => (
-        <section key={sectionIndex} className="relative w-full">
+        <section key={sectionIndex} className="relative w-full pb-10 lg:pb-0">
           <h2
-            className={`relative text-[36px] leading-12 md:text-[48px] md:leading-14 pb-14 font-extrabold font-nunito select-none text-center  
-               text-[#000E47] ${sectionIndex === 0 && " pt-20"}`}
+            className={`relative text-[36px] px-6 leading-10 md:text-[48px] md:leading-14 pb-10 lg:pb-14 font-extrabold font-nunito select-none text-center  
+               text-[#000E47] ${sectionIndex === 0 && "pt-10 lg:pt-20"}`}
           >
             {sectionData.title}
           </h2>
@@ -79,10 +79,12 @@ export async function GetStartedProcess({ section }) {
             })}
           </div>
 
-          <p
-            className="relative text-[16px] leading-12 md:text-[16px] md:leading-14  font-nunito select-none text-center pt-10 pb-14 text-[#3C3E47]"
-            dangerouslySetInnerHTML={{ __html: sectionData.notes }}
-          ></p>
+          {sectionData?.notes && (
+            <p
+              className="relative text-[16px] leading-12 md:text-[16px] md:leading-14  font-nunito select-none text-center pt-10 pb-14 text-[#3C3E47]"
+              dangerouslySetInnerHTML={{ __html: sectionData.notes }}
+            ></p>
+          )}
         </section>
       ))}
     </div>

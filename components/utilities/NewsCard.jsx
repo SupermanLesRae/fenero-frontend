@@ -29,7 +29,7 @@ export default function NewsCard({
   return (
     <Card
       className={`max-w-sm bg-white shadow-md rounded-xl overflow-hidden hover:shadow-lg transition-shadow cursor-pointer py-0 p-6 select-none ${
-        type === "small" ? "min-h-130" : "min-h-155"
+        type === "small" ? "min-h-130" : "min-h-auto lg:min-h-155"
       } group`}
     >
       {/* Image */}

@@ -15,8 +15,8 @@ export default async function CallBackRequest() {
   if (!sectionData) return null;
 
   return (
-    <div className="relative pb-20 px-10 min-h-50">
-      <h2 className="relative text-[30px] md:text-[48px] font-bold font-nunito mb-2 select-none text-white text-center pt-20 pb-0 z-11">
+    <div className="relative pb-10 lg:pb-20 px-6 min-h-50">
+      <h2 className="relative text-[30px] md:text-[48px] font-bold font-nunito mb-2 select-none text-white text-center pt-10 lg:pt-20 pb-0 z-11">
         {sectionData?.title}
       </h2>
       <p
@@ -38,7 +38,7 @@ export default async function CallBackRequest() {
       </div>
 
       {/* Client-side form component */}
-      <div className="relative max-w-358.75 mx-auto py-0 md:py-10 px-0 md:px-10 shadow-sm">
+      <div className="relative w-full lg:max-w-358.75 mx-auto py-0 md:py-10 px-0 md:px-10 shadow-sm">
         <CallbackForm />
       </div>
     </div>

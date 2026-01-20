@@ -35,10 +35,10 @@ export default async function ContactInfo({ section, bgColor }) {
       className="relative w-full h-full xl:py-20 xl:px-20"
       style={{ backGroundColor: bgColor || "#ECF8EF" }}
     >
-      <div className="relative pb-20 max-w-365 xl:rounded-3xl border-white overflow-hidden mx-auto ">
+      <div className="relative pb-10 lg:pb-20 max-w-365 xl:rounded-3xl border-white overflow-hidden mx-auto ">
         <h2
           style={{ color: sectionData.styling.titlecolor }}
-          className="relative text-[30px] md:text-[48px] leading-10 md:leading-14 font-extrabold font-nunito select-none text-white text-center pt-20 pb-4 z-11 max-w-250 mx-auto"
+          className="relative text-[30px] md:text-[48px] leading-10 md:leading-14 font-extrabold font-nunito select-none text-white text-center pt-10 lg:pt-20 pb-4 z-11 max-w-250 mx-auto"
         >
           {sectionData.title}
         </h2>
@@ -57,7 +57,7 @@ export default async function ContactInfo({ section, bgColor }) {
           />
         </div>
         <div className="relative z-10">
-          <div className="flex flex-col justify-center mt-10 md:flex-row gap-4 w-full px-10 md:px-0 ">
+          <div className="flex flex-col justify-center mt-10 md:flex-row gap-4 w-full px-6 md:px-0 ">
             {sectionData.ctaLinks.map((cta, index) => (
               <Link key={index} href={cta.link} className="w-auto">
                 <Button

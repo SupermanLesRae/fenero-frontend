@@ -44,10 +44,10 @@ export async function NextSteps({ section }) {
 
             <div className="relative z-10 pb-20 text-white">
               <div>
-                <h2 className="relative text-[36px] leading-12 md:text-[48px] md:leading-14 font-extrabold font-nunito select-none text-center pt-20 pb-4">
+                <h2 className="relative text-[36px] leading-12 md:text-[48px] md:leading-14 font-extrabold font-nunito select-none text-center pt-10 lg:pt-20 pb-4">
                   {sectionData.title}
                 </h2>
-                <p className="font-nunito font-medium text-[16px] leading-6 tracking-[0.15px] select-none px-8 text-center pb-14">
+                <p className="font-nunito font-medium text-[16px] leading-6 tracking-[0.15px] select-none px-0 text-center pb-14">
                   {sectionData.descrption}
                 </p>
               </div>
@@ -100,7 +100,7 @@ export async function NextSteps({ section }) {
               </div>
 
               {sectionData.note && (
-                <p className="font-nunito font-medium text-[16px] leading-6 tracking-[0.15px] select-none px-8 text-center pt-14">
+                <p className="font-nunito font-medium text-[16px] leading-6 tracking-[0.15px] select-none px-0 text-center pt-14">
                   {sectionData.note}
                 </p>
               )}

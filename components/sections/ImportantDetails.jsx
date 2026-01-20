@@ -13,8 +13,8 @@ export async function ImportantDetails({ section }) {
   // ✅ filter all matching nodes
   const matchedSections = data.importantDetails.nodes.filter((node) =>
     node.importantDetailsCoreFields.section?.some(
-      (s) => s.toLowerCase() === searchText
-    )
+      (s) => s.toLowerCase() === searchText,
+    ),
   );
 
   if (!matchedSections.length) return null;
@@ -27,7 +27,7 @@ export async function ImportantDetails({ section }) {
         return (
           <section
             key={nodeIndex}
-            className="relative w-full py-20 xl:py-0 px-10"
+            className="relative w-full py-10 lg:py-20 xl:py-0 px-10"
           >
             <h2 className="relative text-[36px] max-w-300 mx-auto leading-12 md:text-[48px] md:leading-14 font-extrabold font-nunito select-none text-center pt-0 pb-10 text-[#000E47]">
               {sectionData.title}
@@ -58,7 +58,7 @@ export async function ImportantDetails({ section }) {
 
             {sectionData.note && (
               <p
-                className="text-[#3C3E47] text-[16px] pt-10 pb-20 text-center"
+                className="text-[#3C3E47] text-[16px] pt-10 pb-0 lg:pb-20 text-center"
                 dangerouslySetInnerHTML={{ __html: sectionData.note }}
               />
             )}

@@ -27,10 +27,10 @@ export async function Partner() {
           />
           <div className="absolute top-0 left-0 bg-[#036735] w-full h-full inset-0 mix-blend-multiply " />
         </div>
-        <h2 className="relative text-[30px] md:text-[48px] font-extrabold font-nunito mb-2 select-none text-white text-center pt-14 pb-14">
+        <h2 className="relative text-[30px] md:text-[48px] font-extrabold font-nunito mb-2 select-none text-white text-center pt-14 pb-14 px-6">
           {sectionData.title}
         </h2>
-        <div className="flex justify-center flex-wrap gap-10 pb-24">
+        <div className="flex justify-center flex-wrap gap-10 pb-10 lg:pb-24 px-6">
           {sectionData.cards.map((item, index) => (
             <div
               key={index}

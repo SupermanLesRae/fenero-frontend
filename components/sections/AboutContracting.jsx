@@ -26,7 +26,7 @@ export async function AboutContracting({ section }) {
   return (
     <div className="pb-20 bg-[#ECF8EF] h-auto">
       {results.map((sectionData, sectionIndex) => (
-        <section key={sectionIndex} className="relative w-full px-10">
+        <section key={sectionIndex} className="relative w-full px-6">
           <h2 className="relative text-[36px] md:text-[48px] leading-12 md:leading-14 font-extrabold font-nunito select-none text-center pt-20 pb-10 text-[#000E47]">
             {sectionData.title}
           </h2>

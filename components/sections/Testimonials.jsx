@@ -104,13 +104,13 @@ export default function Testimonials() {
   return (
     <motion.section
       style={{ backgroundColor: sectionData.backgroundColor || "#FFFFFF" }}
-      className="relative w-full pb-20 m-0"
+      className="relative w-full pb-10 lg:pb-20 m-0"
       initial={{ opacity: 0, y: 24 }}
       whileInView={{ opacity: 1, y: 0 }}
       viewport={{ once: true, margin: "-100px" }}
       transition={{ duration: 0.3, ease: "easeOut" }}
     >
-      <div className="text-center mx-auto max-w-120 md:max-w-175 lg:max-w-225 py-20 px-6">
+      <div className="text-center mx-auto max-w-120 md:max-w-175 lg:max-w-225 py-10 lg:py-20 px-6">
         <h2 className="mb-4 text-[40px] lg:text-[48px] leading-12 md:leading-14 font-extrabold text-[#000E47] font-nunito">
           {sectionData.title}
         </h2>
@@ -147,7 +147,7 @@ export default function Testimonials() {
           {sectionData.googleRatings}
         </p>
       </div>
-      <div className="relative w-full px-10 md:px-0 max-[1024px]:max-w-95 max-[1280px]:max-w-190 xl:max-w-300 mx-auto ">
+      <div className="relative w-full px-4 lg:px-10 md:px-0 max-[1024px]:max-w-95 max-[1280px]:max-w-190 xl:max-w-300 mx-auto ">
         {/* Carousel */}
         <div ref={emblaRef} className="overflow-hidden py-1">
           <div className="flex">

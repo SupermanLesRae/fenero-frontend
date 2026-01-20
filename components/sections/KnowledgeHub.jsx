@@ -30,16 +30,16 @@ export async function KnowledgeHub() {
   }
 
   return (
-    <section className="relative w-full pb-20 bg-[#ECF8EF]">
-      <div className="max-w-225 mx-auto text-center mb-10">
-        <h2 className="relative text-[36px] leading-12 md:text-[48px] md:leading-14  font-extrabold font-nunito  select-none text-center pt-20 pb-10 text-[#000E47]">
+    <section className="relative w-full pb-10 lg:pb-20 bg-[#ECF8EF]">
+      <div className="max-w-225 mx-auto text-center mb-10 px-6">
+        <h2 className="relative text-[36px] leading-12 md:text-[48px] md:leading-14  font-extrabold font-nunito  select-none text-center pt-10 lg:pt-20 pb-10 text-[#000E47]">
           {sectionData.title}
         </h2>
-        <p className="font-nunito font-medium text-[16px] leading-6 tracking-[0.15px] select-none px-8">
+        <p className="font-nunito font-medium text-[16px] leading-6 tracking-[0.15px] select-none px-0">
           {sectionData.description}
         </p>
       </div>
-      <div className="flex flex-col md:flex-row gap-6 px-10 max-w-337.5 mx-auto justify-center items-center md:items-stretch">
+      <div className="flex flex-col md:flex-row gap-6 px-6 max-w-337.5 mx-auto justify-center items-center md:items-stretch">
         {sectionDataBlocks?.map((item, index) => (
           <Link key={"posts_" + index} href={"/knowledge-hub/" + item.slug}>
             <div

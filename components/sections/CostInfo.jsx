@@ -39,53 +39,81 @@ export async function CostInfo({ section }) {
               </div>
 
               {/* CONTENT */}
+
               <div
-                className={`flex flex-col md:flex-row items-center md:items-start gap-10 px-6 pb-10 w-full max-w-337.5 relative mx-auto justify-center `}
+                className={`flex flex-col md:flex-row items-center md:items-start gap-10 px-6 pb-10 w-full max-w-337.5 relative mx-auto justify-center h-full`}
               >
                 {/*  */}
-                <div className="flex flex-col gap-4  bg-[#036735] max-w-xl text-white p-10 rounded-xl ">
-                  <p className="relative text-[18px] leading-tight font-nunito text-left  ">
-                    {sectionData.costInfoSectionsCoreFields.cols.leftCol.title}
-                  </p>
-                  <p className="relative text-[24px]  leading-tight md:text-[26px] font-extrabold font-nunito text-left  ">
-                    {sectionData.costInfoSectionsCoreFields.cols.leftCol.price}
-                  </p>
-                  <p className="relative text-[18px] leading-tight font-nunito text-left">
-                    <i>
-                      {sectionData.costInfoSectionsCoreFields.cols.leftCol.note}
-                    </i>
-                  </p>
-                </div>
+                {sectionData.costInfoSectionsCoreFields.cols?.left?.title && (
+                  <div className="flex flex-col gap-4  bg-[#036735] max-w-xl text-white p-10 rounded-xl min-w-[300px] max-w-[500px]">
+                    <p className="relative text-[18px] leading-tight font-nunito text-left  ">
+                      {sectionData.costInfoSectionsCoreFields.cols.left.title}
+                    </p>
+                    {sectionData.costInfoSectionsCoreFields.cols.left?.priceInfo
+                      ?.length > 0 &&
+                      sectionData.costInfoSectionsCoreFields.cols.left.priceInfo.map(
+                        (price, index) => (
+                          <div key={index} className="mb-2">
+                            <p
+                              className="relative text-[24px] leading-tight md:text-[26px] font-extrabold font-nunito text-left"
+                              dangerouslySetInnerHTML={{
+                                __html: price.price,
+                              }}
+                            ></p>
+                            <p
+                              className="relative text-[18px] leading-tight font-nunito text-left"
+                              dangerouslySetInnerHTML={{
+                                __html: price.note,
+                              }}
+                            ></p>
+                          </div>
+                        ),
+                      )}
+                  </div>
+                )}
 
                 {/*  */}
-                <div className="flex flex-col gap-10 ">
-                  <h2 className="relative text-[20px]  leading-tight md:text-[24px] font-extrabold font-nunito text-left text-[#000E47]">
-                    {sectionData.costInfoSectionsCoreFields.cols.rightCol.title}
-                  </h2>
-                  <div className="flex flex-col gap-5">
-                    {sectionData.costInfoSectionsCoreFields.cols.rightCol.list.map(
-                      (item, index) => {
-                        return (
-                          <div
-                            className="flex items-center gap-4"
-                            key={"list_" + index}
-                          >
-                            <Image
-                              width={24}
-                              height={24}
-                              className="w-6 h-6"
-                              src={item.icon.node.sourceUrl}
-                              alt=""
-                            />
-                            <p className="text-[16px] leading-5 text-[#3C3E47] font-light">
-                              {item.label}
-                            </p>
-                          </div>
-                        );
-                      },
+                {sectionData.costInfoSectionsCoreFields?.cols?.right && (
+                  <div className="flex flex-col gap-10 max-w-[500px] h-full">
+                    {sectionData.costInfoSectionsCoreFields?.cols?.right
+                      ?.title && (
+                      <h2 className="relative text-[20px]  leading-tight md:text-[24px] font-extrabold font-nunito text-left text-[#000E47]">
+                        {
+                          sectionData.costInfoSectionsCoreFields.cols.right
+                            .title
+                        }
+                      </h2>
                     )}
+                    <div className="flex flex-col gap-5">
+                      {sectionData.costInfoSectionsCoreFields.cols.right?.list
+                        ?.length > 0 &&
+                        sectionData.costInfoSectionsCoreFields.cols.right.list.map(
+                          (item, index) => {
+                            return (
+                              <div
+                                className="flex items-center gap-4"
+                                key={"list_" + index}
+                              >
+                                <Image
+                                  width={24}
+                                  height={24}
+                                  className="w-6 h-6"
+                                  src={
+                                    item?.icon?.node?.sourceUrl ||
+                                    "http://fenerodemo.local/wp-content/uploads/2026/01/Icon.svg"
+                                  }
+                                  alt=""
+                                />
+                                <p className="text-[16px] leading-5 text-[#3C3E47] font-light">
+                                  {item.label}
+                                </p>
+                              </div>
+                            );
+                          },
+                        )}
+                    </div>
                   </div>
-                </div>
+                )}
               </div>
 
               <h2

@@ -27,7 +27,7 @@ export async function ImportantDetails({ section }) {
         return (
           <section
             key={nodeIndex}
-            className="relative w-full py-10 lg:py-20 xl:py-0 px-10"
+            className="relative w-full py-10 lg:py-20 px-10"
           >
             <h2 className="relative text-[36px] max-w-300 mx-auto leading-12 md:text-[48px] md:leading-14 font-extrabold font-nunito select-none text-center pt-0 pb-10 text-[#000E47]">
               {sectionData.title}

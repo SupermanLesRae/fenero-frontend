@@ -2,7 +2,6 @@ import { createApolloClient } from "@/lib/apolloClient";
 import { IMAGE_TEXT_SECTION } from "@/lib/queries/Queries";
 import Link from "next/link";
 import { Button } from "../ui/button";
-import { IconArrowLeft } from "@tabler/icons-react";
 import Image from "next/image";
 
 export async function ImageTextSections({ section }) {
@@ -11,9 +10,19 @@ export async function ImageTextSections({ section }) {
     query: IMAGE_TEXT_SECTION,
   });
 
-  const searchText = section.toLowerCase();
+  const searchText = section.toLowerCase(); // "umbrella paye"
 
   const nodes = data?.imageTextSections?.nodes ?? [];
+
+  const query = searchText.trim().toLowerCase();
+
+  const filtered = nodes.filter((sectionData) =>
+    sectionData.imageTextSectionsCoreFields.section?.some((section) =>
+      section.toLowerCase().includes(query),
+    ),
+  );
+
+  console.log("filtered", query, nodes);
 
   if (!nodes) return null;
 
@@ -21,8 +30,8 @@ export async function ImageTextSections({ section }) {
     <>
       {[...nodes]
         .filter((sectionData) =>
-          sectionData.imageTextSectionsCoreFields.section?.some(
-            (section) => section.toLowerCase() === searchText,
+          sectionData.imageTextSectionsCoreFields.section?.some((section) =>
+            section.toLowerCase().includes(searchText),
           ),
         )
         .sort(
@@ -98,11 +107,15 @@ export async function ImageTextSections({ section }) {
                           >
                             <Image
                               className="w-6 h-6"
-                              src={item.icon.node.sourceUrl}
+                              src={
+                                item?.icon?.node?.sourceUrl ||
+                                "https://webstaging.fenero.ie/wp-content/uploads/2026/01/check-circle-broken.svg"
+                              }
                               alt=""
                               width={24}
                               height={24}
                             />
+
                             <p className="text-[16px] leading-5">
                               {item.label}
                             </p>
@@ -111,25 +124,28 @@ export async function ImageTextSections({ section }) {
                       },
                     )}
                   </div>
-                  <div>
-                    <Link
-                      href={
-                        sectionData.imageTextSectionsCoreFields.cols.cta.link
-                      }
-                    >
-                      <Button
-                        size="lg"
-                        className="bg-transparent border-2 border-[#056735] hover:border-[#38BB3F]  hover:bg-transparent text-[#056735] hover:text-[#38BB3F] cursor-pointer w-full lg:w-auto transition shadow-none z-20 relative select-none"
+                  {sectionData?.imageTextSectionsCoreFields?.cols?.cta
+                    ?.link && (
+                    <div>
+                      <Link
+                        href={
+                          sectionData.imageTextSectionsCoreFields.cols.cta.link
+                        }
                       >
-                        <span className="font-bold text-[16px]">
-                          {
-                            sectionData.imageTextSectionsCoreFields.cols.cta
-                              .label
-                          }
-                        </span>
-                      </Button>
-                    </Link>
-                  </div>
+                        <Button
+                          size="lg"
+                          className="bg-transparent border-2 border-[#056735] hover:border-[#38BB3F]  hover:bg-transparent text-[#056735] hover:text-[#38BB3F] cursor-pointer w-full lg:w-auto transition shadow-none z-20 relative select-none"
+                        >
+                          <span className="font-bold text-[16px]">
+                            {
+                              sectionData.imageTextSectionsCoreFields.cols.cta
+                                .label
+                            }
+                          </span>
+                        </Button>
+                      </Link>
+                    </div>
+                  )}
                 </div>
               </div>
             </section>

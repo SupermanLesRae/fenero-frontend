@@ -8,6 +8,7 @@ export default async function Page() {
   const client = createApolloClient();
   const { data } = await client.query({
     query: COOKIE_POLICY_QUERY,
+    fetchPolicy: "no-cache", // ✅ rely on ISR
   });
 
   const sectionData = data.cookiePolicies.nodes[0];

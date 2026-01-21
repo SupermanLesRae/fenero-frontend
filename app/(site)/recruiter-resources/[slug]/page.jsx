@@ -15,6 +15,7 @@ export async function generateStaticParams() {
 
   const { data } = await client.query({
     query: ALL_RECRUITER_SLUGS,
+    fetchPolicy: "no-cache", // rely on ISR
   });
 
   return data.recruiterPosts.nodes.map((post) => ({
@@ -28,6 +29,7 @@ export default async function Page({ params }) {
   const { data } = await client.query({
     query: RECRUITER_POST_BY_SLUG_QUERY,
     variables: { slug },
+    fetchPolicy: "no-cache", // rely on ISR
   });
 
   const sectionData = data.recruiterPostBy.recruiterPostsCoreFields;

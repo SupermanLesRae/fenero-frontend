@@ -21,6 +21,7 @@ export default async function Page() {
   const { data } = await client.query({
     query: HERO_QUERY,
     variables: { slug },
+    fetchPolicy: "no-cache", // ✅ let ISR handle caching
   });
 
   console.log(

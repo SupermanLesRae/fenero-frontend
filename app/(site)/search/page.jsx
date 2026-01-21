@@ -10,6 +10,7 @@ export default async function SearchPage({ searchParams }) {
     process.env.NEXT_PUBLIC_BASE_URL ||
     "https://fenero-frontend-git-main-les-raes-projects.vercel.app";
 
+  // keep the search request dynamic (no cache)
   const res = await fetch(`${baseUrl}/api/search?q=${q}`, {
     cache: "no-store",
   });

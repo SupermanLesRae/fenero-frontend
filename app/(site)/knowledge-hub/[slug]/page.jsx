@@ -13,6 +13,7 @@ export async function generateStaticParams() {
 
   const { data } = await client.query({
     query: ALL_NEWS_SLUGS,
+    fetchPolicy: "no-cache", // rely on ISR
   });
 
   return data.newsPosts.nodes.map((post) => ({
@@ -26,6 +27,7 @@ export default async function Page({ params }) {
   const { data } = await client.query({
     query: NEWS_POST_BY_SLUG_QUERY,
     variables: { slug },
+    fetchPolicy: "no-cache", // rely on ISR
   });
 
   const sectionData = data.newsPostBy.newsPostsCoreFields;

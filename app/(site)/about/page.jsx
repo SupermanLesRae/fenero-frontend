@@ -7,7 +7,7 @@ import { SocialImpact } from "@/components/sections/SocialImpact";
 import { createApolloClient } from "@/lib/apolloClient";
 import { HERO_QUERY } from "@/lib/queries/Queries";
 
-export const runtime = "nodejs"; // ✅ Edge runtime
+export const runtime = "nodejs"; // ✅ nodejs runtime
 export const revalidate = 60; // ✅ ISR caching
 
 export default async function Page() {
@@ -17,6 +17,7 @@ export default async function Page() {
   const { data } = await client.query({
     query: HERO_QUERY,
     variables: { slug },
+    fetchPolicy: "no-cache", // ✅ rely on ISR
   });
 
   return (

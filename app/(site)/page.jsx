@@ -1,18 +1,19 @@
-'use client";';
+import dynamic from "next/dynamic";
 
-import HomeHero from "@/components/sections/HomeHero";
-import Testimonials from "@/components/sections/Testimonials";
-import WhoAreYou from "@/components/sections/WhoAreYou";
+export const revalidate = 60;
 
-export const runtime = "nodejs"; // ✅ Edge runtime
-export const revalidate = 60; // ✅ ISR caching
+const HomeHero = dynamic(() => import("@/components/sections/HomeHero"));
+const WhoAreYou = dynamic(() => import("@/components/sections/WhoAreYou"));
+const Testimonials = dynamic(
+  () => import("@/components/sections/Testimonials"),
+);
 
 export default function HomePage() {
   return (
-    <div>
+    <main>
       <HomeHero />
       <WhoAreYou />
       <Testimonials />
-    </div>
+    </main>
   );
 }

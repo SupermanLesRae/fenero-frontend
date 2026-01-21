@@ -8,6 +8,7 @@ export default async function Page() {
   const client = createApolloClient();
   const { data } = await client.query({
     query: PRIVACY_POLICY_QUERY,
+    fetchPolicy: "no-cache",
   });
 
   const sectionData = data.privacyPolicies.nodes[0];

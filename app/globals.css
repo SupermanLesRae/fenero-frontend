@@ -326,3 +326,20 @@ body {
   background-color: #e1e1e1;
   color: #111;
 }
+
+html,
+body {
+  background-color: #e1e1e1 !important;
+  color: #111111 !important;
+}
+
+:root {
+  color-scheme: light;
+}
+
+input,
+textarea,
+select {
+  background-color: #ffffff !important;
+  color: #000000 !important;
+}

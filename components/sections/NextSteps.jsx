@@ -98,7 +98,7 @@ export async function NextSteps({ section }) {
               </div>
 
               {sectionData.note && (
-                <p className="font-nunito font-medium text-[16px] leading-6 tracking-[0.15px] select-none px-6 text-center pt-14">
+                <p className="font-nunito font-medium text-[16px] leading-tight tracking-[0.15px] select-none px-6 text-center pt-14">
                   {sectionData.note}
                 </p>
               )}

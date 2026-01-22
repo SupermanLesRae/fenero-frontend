@@ -29,7 +29,7 @@ export async function ImportantDetails({ section }) {
             key={nodeIndex}
             className="relative w-full py-10 lg:py-20 px-10"
           >
-            <h2 className="relative text-[36px] max-w-300 mx-auto leading-12 md:text-[48px] md:leading-14 font-extrabold font-nunito select-none text-center pt-0 pb-10 text-[#000E47]">
+            <h2 className="relative text-[26px] max-w-300 mx-auto leading-tight md:text-[48px] md:leading-14 font-extrabold font-nunito select-none text-center pt-0 pb-10 text-[#000E47]">
               {sectionData.title}
             </h2>
 
@@ -48,7 +48,7 @@ export async function ImportantDetails({ section }) {
                     />
                   </div>
 
-                  <h3 className="leading-7 font-bold text-[#036735] text-center text-[22px]">
+                  <h3 className="leading-7 font-bold text-[#036735] text-center text-[18px] lg:text-[22px]">
                     {item.title}
                   </h3>
                 </div>

@@ -4,18 +4,18 @@ import Link from "next/link";
 
 export default function RecruiterPostsClient({ posts }) {
   return (
-    <div className="relative pb-0 px-10 min-h-50 bg-[#ffffff]">
-      <h2 className="relative text-[30px] md:text-[48px] font-extrabold font-nunito select-none text-[#000E47] text-center pt-14">
+    <div className="relative pb-10 px-10 min-h-50 bg-[#ffffff]">
+      <h2 className="relative text-[30px] md:text-[48px] font-extrabold font-nunito select-none text-[#000E47] text-center pt-10 lg:pt-14">
         Useful resources for recruiters
       </h2>
 
-      <p className="font-nunito font-medium text-center text-[15px] leading-6 tracking-[0.15px] select-none pb-14">
+      <p className="font-nunito font-medium text-center text-[15px] leading-6 tracking-[0.15px] select-none lg:pb-14">
         Explore the resources and the tools designed to simplify and strengthen
         your contractor relationships.
       </p>
 
       {/* News Cards */}
-      <div className="flex flex-wrap items-center justify-center gap-20 p-4">
+      <div className="flex flex-wrap items-center justify-center gap-6 lg:gap-20 p-4">
         {posts.length > 0 ? (
           posts.map((post, index) => {
             const item = post.recruiterPostsCoreFields;

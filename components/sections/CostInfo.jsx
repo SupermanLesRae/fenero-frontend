@@ -33,7 +33,7 @@ export async function CostInfo({ section }) {
             >
               <div className="px-6">
                 {/* TITLE */}
-                <h2 className="relative text-[36px] max-w-225 mx-auto leading-tight md:text-[48px] font-extrabold font-nunito text-center text-[#000E47] pt-20 pb-16">
+                <h2 className="relative text-[26px] max-w-225 mx-auto leading-tight md:text-[48px] font-extrabold font-nunito text-center text-[#000E47] pt-10 lg:pt-20 pb-10 lg:pb-16">
                   {sectionData.costInfoSectionsCoreFields.title}
                 </h2>
               </div>
@@ -117,7 +117,7 @@ export async function CostInfo({ section }) {
               </div>
 
               <p
-                className="relative text-[18px] max-w-225 mx-auto leading-tight font-nunito text-center text-[#000E47] px-6 pt-10 pb-10 lg:pb-20"
+                className="relative text-[18px] max-w-225 mx-auto leading-tight font-nunito text-center text-[#000E47] px-6 lg:pt-10 pb-10 lg:pb-20"
                 dangerouslySetInnerHTML={{
                   __html: sectionData.costInfoSectionsCoreFields.note,
                 }}

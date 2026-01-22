@@ -85,7 +85,7 @@ export function ContactFormClient({ selectOptions }) {
         setCaptchaValue(null);
         setLoading(false);
         toast.success(
-          "Your message has been sent successfully. We’ll get back to you shortly."
+          "Your message has been sent successfully. We’ll get back to you shortly.",
         );
 
         form.reset();
@@ -249,7 +249,7 @@ export function ContactFormClient({ selectOptions }) {
                       onCheckedChange={(v) => field.onChange(!!v)}
                     />
                   </FormControl>
-                  <FormLabel className="font-normal">
+                  <FormLabel className="font-normal leading-tight">
                     I agree that my data will be collected and stored
                   </FormLabel>
                 </div>
@@ -262,17 +262,19 @@ export function ContactFormClient({ selectOptions }) {
 
           {/* reCAPTCHA */}
           <FormItem>
-            <ReCAPTCHA
-              sitekey={process.env.NEXT_PUBLIC_RECAPTCHA_SITE_KEY}
-              onChange={(value) => setCaptchaValue(value)}
-            />
+            <div className="scale-[0.85] sm:scale-100 origin-left">
+              <ReCAPTCHA
+                sitekey={process.env.NEXT_PUBLIC_RECAPTCHA_SITE_KEY}
+                onChange={(value) => setCaptchaValue(value)}
+              />
+            </div>
           </FormItem>
 
           {/* SUBMIT BUTTON */}
           <Button
             type="submit"
             disabled={loading}
-            className="z-10 flex items-center gap-2 cursor-pointer flex-1 h-10 max-w-62.5 bg-[#D1DF20] hover:bg-[#C9D217] text-[#000E47] select-none"
+            className="z-10 flex items-center gap-2 cursor-pointer lg:flex-1 h-12 max-w-62.5 bg-[#D1DF20] hover:bg-[#C9D217] text-[#000E47] select-none"
           >
             {loading && <Spinner size={20} />}
             {loading ? "Submitting..." : "Submit"}

@@ -20,7 +20,7 @@ export default async function ContactPage() {
     <div className="relative pb-10 lg:pb-20 px-6">
       <h2
         id="contact"
-        className="relative text-[30px] md:text-[48px] font-extrabold font-nunito mb-2 select-none text-white text-center py-10 lg:py-20 z-11"
+        className="relative text-[30px] md:text-[48px] leading-tight font-extrabold font-nunito mb-2 select-none text-white text-center py-10 lg:py-20 z-11"
       >
         {data.title}
       </h2>
@@ -36,7 +36,7 @@ export default async function ContactPage() {
       </div>
 
       {/* Client-side form component */}
-      <div className="relative max-w-358.75 mx-auto rounded-xl border bg-white py-10 px-10 shadow-sm max-w-[980px]">
+      <div className="relative max-w-358.75 mx-auto rounded-xl border bg-white py-10 px-6 lg:px-10 shadow-sm max-w-[980px]">
         <ContactFormClient selectOptions={data.select} />
       </div>
     </div>

@@ -12,6 +12,7 @@ import Link from "next/link";
 import { Button } from "../ui/button";
 import { IconArrowRight } from "@tabler/icons-react";
 import Image from "next/image";
+import { Spinner } from "../ui/spinner";
 
 export default function WhoAreYou() {
   const [sectionData, setSectionData] = useState(null);
@@ -92,7 +93,12 @@ export default function WhoAreYou() {
     return () => window.removeEventListener("resize", handleResize);
   }, [emblaApi, updateDots]);
 
-  if (!sectionData) return <div>Loading...</div>;
+  if (!sectionData)
+    return (
+      <div className="min-h-[100px] flex items-center justify-center w-full py-10">
+        <Spinner className="size-16 text-[#AFCE67]" />
+      </div>
+    );
 
   return (
     <motion.section

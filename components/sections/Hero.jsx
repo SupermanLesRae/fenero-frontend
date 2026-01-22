@@ -130,7 +130,7 @@ export default function Hero({ data }) {
                       />
                     </div>
 
-                    <div className="relative w-full h-full overflow-hidden flex justify-end lg:hidden z-0 min-h-[448px] max-h-[448px]">
+                    <div className="relative w-full h-full overflow-hidden flex justify-end lg:hidden z-0 min-h-[448px]">
                       <Image
                         src={item?.img?.node?.sourceUrl}
                         alt="No alternative text provided"

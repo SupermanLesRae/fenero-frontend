@@ -14,7 +14,7 @@ export const metadata = {
 
 export default function RootLayout({ children }) {
   return (
-    <html lang="en">
+    <html lang="en" style={{ colorScheme: "light" }}>
       <body className={`${nunito.variable} antialiased bg-[#E1E1E1]`}>
         <TopLoadingBar />
         {children}

@@ -38,7 +38,7 @@ export default async function Page({ params }) {
   if (!sectionData) return null;
 
   return (
-    <div className="pb-20">
+    <div className="pb-10 lg:pb-20">
       <div className="bg-[#ECF8EF] relative overflow-hidden">
         <div>
           <Image
@@ -67,7 +67,7 @@ export default async function Page({ params }) {
               <Link href="/recruiter-resources">
                 <Button
                   size="lg"
-                  className="bg-transparent border-2 border-white hover:bg-transparent text-[#ffffff] hover:text-[#38BB3F] cursor-pointer w-full lg:w-auto transition shadow-none z-20 relative"
+                  className="bg-transparent border-2 border-white hover:border-[#38BB3F] hover:bg-transparent text-[#ffffff] hover:text-[#38BB3F] cursor-pointer min-w-auto w-auto transition shadow-none z-20 relative"
                 >
                   <IconArrowLeft stroke={2} />
                   <span className="font-bold text-[16px]">Back</span>
@@ -78,7 +78,7 @@ export default async function Page({ params }) {
         </div>
       </div>
 
-      <div className="relative w-full max-w-300 mx-auto pt-10 px-10">
+      <div className="relative w-full max-w-300 mx-auto lg:pt-10 px-10">
         <div
           className="relative policy-content max-w-282 mx-auto py-10 bg-white px-0"
           dangerouslySetInnerHTML={{ __html: content }}

@@ -9,7 +9,7 @@ export default function RecruiterPostsClient({ posts }) {
         Useful resources for recruiters
       </h2>
 
-      <p className="font-nunito font-medium text-center text-[15px] leading-6 tracking-[0.15px] select-none lg:pb-14">
+      <p className="font-nunito font-medium text-center text-[15px] leading-6 tracking-[0.15px] select-none py-4 lg:pb-14">
         Explore the resources and the tools designed to simplify and strengthen
         your contractor relationships.
       </p>

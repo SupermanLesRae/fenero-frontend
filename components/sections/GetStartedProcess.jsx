@@ -80,7 +80,7 @@ export async function GetStartedProcess({ section }) {
 
           {sectionData?.notes && (
             <p
-              className="relative text-[16px] leading-12 md:text-[16px] md:leading-14  font-nunito select-none text-center pt-10 pb-14 text-[#3C3E47]"
+              className="relative text-[16px] leading-12 md:text-[16px] md:leading-14 px-6 font-nunito select-none text-center pt-10 pb-14 text-[#3C3E47]"
               dangerouslySetInnerHTML={{ __html: sectionData.notes }}
             ></p>
           )}

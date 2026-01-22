@@ -57,7 +57,7 @@ export async function ImportantDetails({ section }) {
 
             {sectionData.note && (
               <p
-                className="text-[#3C3E47] text-[16px] pt-10 pb-0 lg:pb-20 text-center"
+                className="text-[#3C3E47] text-[16px] px-6 pt-10 pb-0 lg:pb-20 text-center"
                 dangerouslySetInnerHTML={{ __html: sectionData.note }}
               />
             )}

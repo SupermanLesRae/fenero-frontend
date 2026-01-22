@@ -116,12 +116,12 @@ export async function CostInfo({ section }) {
                 )}
               </div>
 
-              <h2
-                className="relative text-[18px] max-w-225 mx-auto leading-tight font-nunito text-center text-[#000E47] pt-10 pb-10 lg:pb-20"
+              <p
+                className="relative text-[18px] max-w-225 mx-auto leading-tight font-nunito text-center text-[#000E47] px-6 pt-10 pb-10 lg:pb-20"
                 dangerouslySetInnerHTML={{
                   __html: sectionData.costInfoSectionsCoreFields.note,
                 }}
-              ></h2>
+              ></p>
             </section>
           );
         })}

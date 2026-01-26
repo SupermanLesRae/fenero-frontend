@@ -28,7 +28,12 @@ export async function GetStartedProcess({ section }) {
   return (
     <div className={` bg-[#ECF8EF] ${results.length === 0 && " pb-20"}`}>
       {results.map((sectionData, sectionIndex) => (
-        <section key={sectionIndex} className="relative w-full pb-10 lg:pb-0">
+        <section
+          key={sectionIndex}
+          className={`relative w-full pb-10 ${
+            results.length < 2 ? "lg:pb-0" : "lg:pb-20"
+          }`}
+        >
           <h2
             className={`relative text-[36px] px-6 leading-10 md:text-[48px] md:leading-14 pb-10 lg:pb-14 font-extrabold font-nunito select-none text-center  
                text-[#000E47] ${sectionIndex === 0 && "pt-10 lg:pt-20"}`}

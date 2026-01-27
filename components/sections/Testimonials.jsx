@@ -153,7 +153,7 @@ export default function Testimonials() {
           {sectionData.googleRatings}
         </p>
       </div>
-      <div className="relative w-full px-0 max-[1024px]:max-w-95 max-[1280px]:max-w-190 xl:max-w-300 mx-auto ">
+      <div className="relative w-full px-0 max-[1024px]:max-w-95 max-[1280px]:max-w-190 xl:max-w-300 mx-auto select-none">
         {/* Carousel */}
         <div ref={emblaRef} className="overflow-hidden py-1">
           <div className="flex">
@@ -230,7 +230,7 @@ export default function Testimonials() {
             {Array.from({ length: dotsCount }).map((_, index) => (
               <button
                 key={index}
-                className={`w-3 h-3 rounded-full transition-all duration-300 ${
+                className={`w-3 h-3 rounded-full transition-all duration-300 cursor-pointer ${
                   selectedIndex === index
                     ? "bg-green-600 scale-110"
                     : "bg-gray-300"

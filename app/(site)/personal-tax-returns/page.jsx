@@ -36,7 +36,7 @@ export default async function Page() {
       <NextSteps section={section} />
       <FAQs section={section} />
       <CallBackRequest />
-      <KnowledgeHub />
+      <KnowledgeHub section={section} />
     </div>
   );
 }

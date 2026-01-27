@@ -22,8 +22,6 @@ export async function ImageTextSections({ section }) {
     ),
   );
 
-  console.log("filtered", query, nodes);
-
   if (!nodes) return null;
 
   return (
@@ -40,11 +38,6 @@ export async function ImageTextSections({ section }) {
             b.imageTextSectionsCoreFields.order,
         )
         .map((sectionData, sectionIndex) => {
-          console.log(
-            "ImageTextSections: ",
-            sectionData.imageTextSectionsCoreFields,
-          );
-
           return (
             <section
               key={sectionIndex}

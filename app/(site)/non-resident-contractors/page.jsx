@@ -24,11 +24,6 @@ export default async function Page() {
     fetchPolicy: "no-cache", // ✅ let ISR handle caching
   });
 
-  console.log(
-    "data.heroBy.herosCoreFields.heroSlide",
-    data.heroBy.herosCoreFields.heroSlide,
-  );
-
   return (
     <div>
       {data?.heroBy?.herosCoreFields && (
@@ -40,7 +35,7 @@ export default async function Page() {
       <GetStartedProcess section={section} />
       <Banners section={section} />
       <FAQs section={section} />
-      <KnowledgeHub />
+      <KnowledgeHub section={section} />
       <CallBackRequest />
     </div>
   );

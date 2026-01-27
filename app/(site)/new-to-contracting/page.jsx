@@ -37,7 +37,7 @@ export default async function Page() {
       <GetStartedProcess section={section} />
       <Banners section={section} />
       <FAQs section={section} />
-      <KnowledgeHub />
+      <KnowledgeHub section={section} />
       <CallBackRequest />
     </div>
   );

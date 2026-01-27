@@ -4,7 +4,7 @@ import { IconCalendarEvent } from "@tabler/icons-react";
 import Image from "next/image";
 import Link from "next/link";
 
-export async function KnowledgeHub() {
+export async function KnowledgeHub({ section = "All" } = {}) {
   const client = createApolloClient();
   const { data } = await client.query({
     query: KNOWLEDGE_QUERY,
@@ -15,6 +15,35 @@ export async function KnowledgeHub() {
 
   if (!sectionData) return null;
 
+  // -------------------------------
+  // FILTER LOGIC
+  // -------------------------------
+  const selectedSection = section.toLowerCase();
+
+  const filteredBlocks =
+    section === "All"
+      ? sectionDataBlocks
+      : (() => {
+          const matchingSlug = sectionData.slugtotag?.find((slugObj) => {
+            return slugObj.slugselect[0]?.toLowerCase() === selectedSection;
+          });
+
+          // If no match found, return all posts
+          if (!matchingSlug) return sectionDataBlocks;
+
+          // Otherwise filter by tags
+          return sectionDataBlocks.filter((post) =>
+            post.newsPostsCoreFields.tags.some((tag) =>
+              matchingSlug.tags
+                .map((t) => t.toLowerCase())
+                .includes(tag.toLowerCase()),
+            ),
+          );
+        })();
+
+  // -------------------------------
+  // FORMAT DATE
+  // -------------------------------
   function formatDate(date) {
     if (!date) return "";
 
@@ -39,8 +68,9 @@ export async function KnowledgeHub() {
           {sectionData.description}
         </p>
       </div>
+
       <div className="flex flex-col md:flex-row gap-6 px-6 max-w-337.5 mx-auto justify-center items-center md:items-stretch">
-        {sectionDataBlocks?.slice(0, 3).map((item, index) => (
+        {filteredBlocks?.slice(0, 3).map((item, index) => (
           <Link key={"posts_" + index} href={"/knowledge-hub/" + item.slug}>
             <div
               className="flex flex-col bg-white rounded-lg p-0 shadow-md hover:shadow-sm
@@ -55,8 +85,28 @@ export async function KnowledgeHub() {
                   src={item.newsPostsCoreFields.cardImg.node.sourceUrl}
                   alt=""
                 />
-                <div className="flex items-center justify-center text-white bg-[#056735] rounded-full px-4 py-2 absolute w-32 h-7 top-8 left-8">
-                  Regulation
+                <div className="absolute top-8 left-8 flex flex-wrap gap-2">
+                  {sectionData.slugtotag
+                    .filter((slugObj) => {
+                      return (
+                        slugObj.slugselect[0].toLowerCase() ===
+                        section.toLowerCase()
+                      );
+                    })
+                    .flatMap((slugObj) => slugObj.tags)
+                    .filter((tag) =>
+                      item.newsPostsCoreFields.tags
+                        .map((t) => t.toLowerCase())
+                        .includes(tag.toLowerCase()),
+                    )
+                    .map((tag, idx) => (
+                      <span
+                        key={idx}
+                        className="text-white bg-[#056735] rounded-full px-4 py-2 text-sm font-bold"
+                      >
+                        {tag}
+                      </span>
+                    ))}
                 </div>
               </div>
 

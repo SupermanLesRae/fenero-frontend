@@ -33,9 +33,6 @@ export default function CallbackForm() {
   });
 
   const onSubmit = async (values) => {
-    console.log("SMTP_HOST:", process.env.SMTP_HOST);
-    console.log("SMTP_USER:", process.env.SMTP_USER);
-    console.log("SMTP_PASS exists:", !!process.env.SMTP_PASS);
     setLoading(true);
 
     const baseUrl = process.env.NEXT_PUBLIC_BASE_URL || "";

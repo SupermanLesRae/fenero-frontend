@@ -78,7 +78,6 @@ export async function GET(req) {
   /* ------------------ NEWS POSTS ------------------ */
   const { data: newsData } = await client.query({ query: NEWS_POSTS_QUERY });
 
-  console.log("newsData:------> ", newsData.newsPosts?.nodes);
   const searchTerm = q.trim().toLowerCase();
 
   const newsResults =
@@ -121,8 +120,6 @@ export async function GET(req) {
     ...recruiterResults,
   ];
 
-  console.log("combined: ", combined);
-
   /* ------------------ NORMALIZE + FILTER ------------------ */
   const normalize = (str) =>
     str
@@ -132,8 +129,6 @@ export async function GET(req) {
       .trim();
 
   const normalizedQuery = normalize(q);
-
-  console.log("normalizedQuery: ", normalizedQuery);
 
   const filtered = combined
     .filter((item) => {
@@ -155,8 +150,6 @@ export async function GET(req) {
       normTitle: normalize(item.label),
     }));
 
-  console.log("filtered: ", filtered);
-
   /* ------------------ DEDUPE ------------------ */
   const dedupedMap = new Map();
   filtered.forEach((item) => {
@@ -166,16 +159,12 @@ export async function GET(req) {
     }
   });
 
-  console.log("dedupedMap: ", dedupedMap);
-
   const results = Array.from(dedupedMap.values()).map(
     ({ normTitle, ...item }, index) => ({
       id: index.toString(),
       ...item,
     }),
   );
-
-  console.log("results: ", results);
 
   return NextResponse.json(results);
 }

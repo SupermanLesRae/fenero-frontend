@@ -4,8 +4,6 @@ import Link from "next/link";
 export default function FooterMenu({ menu }) {
   if (!menu) return null;
 
-  console.log("footer: ", menu);
-
   return (
     <footer className="bg-[#000E47] text-white py-10 lg:py-16 lg:px-6 select-none">
       <div className="max-w-500 px-6 mx-auto grid grid-cols-1 sm:grid-cols-1 lg:grid-cols-4 gap-10">

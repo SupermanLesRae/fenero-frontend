@@ -16,7 +16,7 @@ export const revalidate = 60; // ✅ ISR caching
 
 export default async function Page() {
   const slug = "experienced-contractor";
-  const section = "Experienced Contractor";
+  const section = "Experienced Contract";
 
   const client = createApolloClient();
   const { data } = await client.query({

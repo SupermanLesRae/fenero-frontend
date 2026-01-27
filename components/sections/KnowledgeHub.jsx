@@ -40,7 +40,7 @@ export async function KnowledgeHub() {
         </p>
       </div>
       <div className="flex flex-col md:flex-row gap-6 px-6 max-w-337.5 mx-auto justify-center items-center md:items-stretch">
-        {sectionDataBlocks?.map((item, index) => (
+        {sectionDataBlocks?.slice(0, 3).map((item, index) => (
           <Link key={"posts_" + index} href={"/knowledge-hub/" + item.slug}>
             <div
               className="flex flex-col bg-white rounded-lg p-0 shadow-md hover:shadow-sm

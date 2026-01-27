@@ -18,12 +18,16 @@ import { Textarea } from "../ui/textarea";
 export default function CallbackForm() {
   const [loading, setLoading] = useState(false);
   const form = useForm({
-    defaultValues: {
+    /*  defaultValues: {
       name: "",
       surname: "",
       email: "",
       telephone: "",
       message: "",
+    }, */
+    defaultValues: {
+      name: "",
+      telephone: "",
     },
     mode: "onTouched", // validate on blur
   });
@@ -40,10 +44,10 @@ export default function CallbackForm() {
       headers: { "Content-Type": "application/json" },
       body: JSON.stringify({
         name: values.name,
-        surname: values.surname,
-        email: values.email,
+        /*         surname: values.surname,
+        email: values.email, */
         telephone: values.telephone,
-        message: values.message,
+        /* message: values.message, */
       }),
     });
 
@@ -86,7 +90,7 @@ export default function CallbackForm() {
           />
 
           {/* Surname */}
-          <FormField
+          {/* <FormField
             control={form.control}
             name="surname"
             rules={{ required: "Surname is required" }}
@@ -102,36 +106,7 @@ export default function CallbackForm() {
                 <FormMessage className="text-white" />
               </FormItem>
             )}
-          />
-        </div>
-
-        <div className="block space-y-4 md:space-y-0 md:flex  gap-4">
-          {/* Email */}
-          <FormField
-            control={form.control}
-            name="email"
-            rules={{
-              required: "Email is required",
-              pattern: {
-                value: /^[^\s@]+@[^\s@]+\.[^\s@]+$/,
-                message: "Enter a valid email",
-              },
-            }}
-            render={({ field }) => (
-              <FormItem className="flex-1">
-                <FormControl>
-                  <Input
-                    type="email"
-                    {...field}
-                    placeholder="Email"
-                    className="bg-white rounded-xl border border-gray-300 h-13.75"
-                  />
-                </FormControl>
-                <FormMessage className="text-white" />
-              </FormItem>
-            )}
-          />
-
+          /> */}
           {/* Telephone */}
           <FormField
             control={form.control}
@@ -159,8 +134,61 @@ export default function CallbackForm() {
           />
         </div>
 
-        {/* Message */}
-        <FormField
+        {/*  <div className="block space-y-4 md:space-y-0 md:flex  gap-4">
+          
+          <FormField
+            control={form.control}
+            name="email"
+            rules={{
+              required: "Email is required",
+              pattern: {
+                value: /^[^\s@]+@[^\s@]+\.[^\s@]+$/,
+                message: "Enter a valid email",
+              },
+            }}
+            render={({ field }) => (
+              <FormItem className="flex-1">
+                <FormControl>
+                  <Input
+                    type="email"
+                    {...field}
+                    placeholder="Email"
+                    className="bg-white rounded-xl border border-gray-300 h-13.75"
+                  />
+                </FormControl>
+                <FormMessage className="text-white" />
+              </FormItem>
+            )}
+          />
+
+          
+          <FormField
+            control={form.control}
+            name="telephone"
+            rules={{
+              required: "Telephone is required",
+              pattern: {
+                value: /^[0-9+\-()\s]{6,20}$/,
+                message: "Enter a valid phone number",
+              },
+            }}
+            render={({ field }) => (
+              <FormItem className="flex-1">
+                <FormControl>
+                  <Input
+                    type="tel"
+                    {...field}
+                    placeholder="Telephone"
+                    className="bg-white rounded-xl border border-gray-300 h-13.75"
+                  />
+                </FormControl>
+                <FormMessage className="text-white" />
+              </FormItem>
+            )}
+          />
+        </div> */}
+
+        {/*         <FormField
           control={form.control}
           name="message"
           rules={{
@@ -178,7 +206,7 @@ export default function CallbackForm() {
               <FormMessage className="text-white" />
             </FormItem>
           )}
-        />
+        /> */}
 
         {/* Submit Button */}
         <div className="md:col-span-2 flex justify-center mt-2">

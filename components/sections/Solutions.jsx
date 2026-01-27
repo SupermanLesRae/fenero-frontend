@@ -46,7 +46,7 @@ export async function Solutions({ section }) {
         {sectionData?.solutions?.map((item, index) => (
           <div
             key={index}
-            className="flex flex-col bg-white border-2 border-[#CEEED6] rounded-xl overflow-hidden shadow-sm md:min-w-100 md:max-w-100 md:flex-1 relative pb-0"
+            className="flex flex-col bg-white border-2 border-[#CEEED6] rounded-xl overflow-hidden shadow-sm md:min-w-100 md:max-w-100 md:flex-1 relative pb-0 "
           >
             <div className="w-full bg-[#EFF5E1] border-b-2 border-[#CEEED6] p-6">
               <h2
@@ -57,7 +57,7 @@ export async function Solutions({ section }) {
             <div className="px-6 h-full flex flex-col justify-between">
               <div className="py-8">
                 {item.solutionInfo.map((section, sectionIndex) => (
-                  <div key={sectionIndex} className="mb-2">
+                  <div key={sectionIndex} className="mb-2 ">
                     {/* Section title */}
                     <h3 className="mb-4 text-xl font-semibold text-gray-900">
                       {section.title}

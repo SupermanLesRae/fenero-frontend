@@ -7,25 +7,24 @@ const resend = new Resend(process.env.NEXT_PUBLIC_RESEND_API_KEY);
 
 export async function POST(req) {
   try {
-    const { name, surname, email, telephone } = await req.json();
+    const { name, /* surname, email, */ telephone } = await req.json();
 
     // Basic validation
-    if (!name || !surname || !email) {
+    if (!name || !telephone) {
       return NextResponse.json(
         { error: "Missing required fields" },
-        { status: 400 }
+        { status: 400 },
       );
     }
 
     await resend.emails.send({
       from: "Website Contact <onboarding@resend.dev>", // replace after domain verification
       to: ["superman.lesrae111@gmail.com"], // 👈 CONTACT_RECEIVER
-      replyTo: email,
+      replyTo: "superman.lesrae111@gmail.com",
       subject: "Request for a Callback",
       html: `
         <h3>Request for a Callback</h3>
-        <p><strong>Name:</strong> ${name} ${surname}</p>
-        <p><strong>Email:</strong> ${email}</p>
+        <p><strong>Name:</strong> ${name}</p>        
         <p><strong>Telephone:</strong> ${telephone || "N/A"}</p>
       `,
     });

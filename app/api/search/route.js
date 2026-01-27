@@ -77,11 +77,31 @@ export async function GET(req) {
 
   /* ------------------ NEWS POSTS ------------------ */
   const { data: newsData } = await client.query({ query: NEWS_POSTS_QUERY });
+
+  console.log("newsData:------> ", newsData.newsPosts?.nodes);
+  const searchTerm = q.trim().toLowerCase();
+
   const newsResults =
-    newsData.newsPosts?.nodes.map((post) => ({
-      label: post.newsPostsCoreFields?.title || "",
-      url: `/knowledge-hub/${post.slug}`,
-    })) || [];
+    newsData.newsPosts?.nodes
+      .filter((post) => {
+        const core = post.newsPostsCoreFields;
+        if (!core) return false;
+        if (!searchTerm) return true;
+
+        // title match
+        if (core.title?.toLowerCase().includes(searchTerm)) {
+          return true;
+        }
+
+        // tags[] contains match
+        return core.tags?.some((tag) => tag.toLowerCase().includes(searchTerm));
+      })
+      .map((post) => ({
+        label: post.newsPostsCoreFields?.title || "",
+        url: `/knowledge-hub/${post.slug}`,
+        tags: post.newsPostsCoreFields?.tags || [],
+        desc: post.newsPostsCoreFields?.description || "",
+      })) || [];
 
   /* ------------------ RECRUITER POSTS ------------------ */
   const { data: recruiterData } = await client.query({
@@ -113,17 +133,29 @@ export async function GET(req) {
 
   const normalizedQuery = normalize(q);
 
+  console.log("normalizedQuery: ", normalizedQuery);
+
   const filtered = combined
-    .filter(
-      (item) =>
-        normalize(item.label).includes(normalizedQuery) ||
-        item.url.toLowerCase().includes(normalizedQuery)
-    )
+    .filter((item) => {
+      const label = normalize(item.label);
+      const url = (item.url || "").toLowerCase();
+      const tags = (item.tags || []).map(normalize);
+      const desc = normalize(item.desc || "");
+
+      return (
+        label.includes(normalizedQuery) ||
+        url.includes(normalizedQuery) ||
+        tags.some((tag) => tag.includes(normalizedQuery)) ||
+        desc.includes(normalizedQuery)
+      );
+    })
     .map((item) => ({
       title: item.label,
       slug: item.url,
       normTitle: normalize(item.label),
     }));
+
+  console.log("filtered: ", filtered);
 
   /* ------------------ DEDUPE ------------------ */
   const dedupedMap = new Map();
@@ -134,12 +166,16 @@ export async function GET(req) {
     }
   });
 
+  console.log("dedupedMap: ", dedupedMap);
+
   const results = Array.from(dedupedMap.values()).map(
     ({ normTitle, ...item }, index) => ({
       id: index.toString(),
       ...item,
-    })
+    }),
   );
+
+  console.log("results: ", results);
 
   return NextResponse.json(results);
 }

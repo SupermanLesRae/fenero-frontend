@@ -31,27 +31,10 @@ export default function SearchOverlay({ isOpen, onClose }) {
         });
         const data = await res.json();
 
-        const qLower = query.toLowerCase().trim();
+        console.log("data:", data);
 
-        // ✅ Include children of menu items if parent matches
-        const enhanced = [];
-        data.forEach((item) => {
-          // Always match if label contains query
-          if (item.title.toLowerCase().includes(qLower)) {
-            enhanced.push(item);
-          } else if (item.children) {
-            // If parent matches query, include children
-            item.children.forEach((child) => {
-              if (child.title.toLowerCase().includes(qLower)) {
-                enhanced.push(child);
-              }
-            });
-          } else if (item.slug.toLowerCase().includes(qLower)) {
-            enhanced.push(item);
-          }
-        });
-
-        setResults(enhanced);
+        // NO EXTRA FILTERING NEEDED
+        setResults(data);
       } catch (e) {
         // ignore abort errors
       } finally {

@@ -119,7 +119,7 @@ export default function Hero({ data }) {
                       </div>
                     </div>
 
-                    <div className="absolute portrait:absolute top-0 right-0 w-full sm:w-[50%] h-full max-h-250 overflow-hidden hidden lg:block z-0">
+                    <div className="absolute portrait:absolute top-0 right-0 w-full sm:w-[50%] h-full max-h-250 hidden lg:block z-0">
                       <Image
                         src={item?.img?.node?.sourceUrl}
                         alt="No alternative text provided"

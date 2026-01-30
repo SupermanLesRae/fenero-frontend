@@ -85,7 +85,11 @@ export default async function Page({ params }) {
         ></div>
 
         <div>
-          <Link href={sectionData.cta.link}>
+          <Link
+            href={sectionData.cta.link}
+            target="_blank"
+            rel="noopener noreferrer"
+          >
             <Button
               size="lg"
               className="relative bg-[#AFCE67] px-10 hover:bg-[#D1DF20] text-[#000E47] hover:text-[#000E47] cursor-pointer w-full lg:w-auto transition shadow-none z-20 select-none"

@@ -15,23 +15,22 @@ export default function RecruiterPostsClient({ posts }) {
       </p>
 
       {/* News Cards */}
-      <div className="flex flex-wrap items-center justify-center gap-6 lg:gap-20 p-4">
+      <div className="flex flex-wrap items-top justify-center gap-6">
         {posts.length > 0 ? (
           posts.map((post, index) => {
             const item = post.recruiterPostsCoreFields;
+            console.log(" post item:", item);
             return (
-              <Link
+              <RecruiterCard
                 key={"recruiterpost" + index}
-                href={"/recruiter-resources/" + post?.slug}
-              >
-                <RecruiterCard
-                  image={item.img?.node.sourceUrl}
-                  title={item.title}
-                  description={item.description}
-                  date={item.date}
-                  tags={item.tags}
-                />
-              </Link>
+                image={item.img?.node.sourceUrl}
+                title={item.title}
+                description={item.description}
+                date={item.date}
+                tags={item.tags}
+                downloadURL={item?.cta?.link || null}
+                gotoPage={"/recruiter-resources/" + post?.slug}
+              />
             );
           })
         ) : (

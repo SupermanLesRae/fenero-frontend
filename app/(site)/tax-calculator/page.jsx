@@ -3,6 +3,7 @@ import { createApolloClient } from "@/lib/apolloClient";
 import { HERO_QUERY } from "@/lib/queries/Queries";
 import CallBackRequest from "@/components/sections/CallBackRequest";
 import { WhatWeOffer } from "@/components/sections/WhatWeOffer";
+import { TaxCalculator } from "@/components/sections/TaxCalculator";
 
 export const runtime = "nodejs"; // ✅ Edge runtime
 export const revalidate = 60; // ✅ ISR caching
@@ -23,6 +24,7 @@ export default async function Page() {
       {data?.heroBy?.herosCoreFields && (
         <Hero data={data.heroBy.herosCoreFields.heroSlide} />
       )}
+      <TaxCalculator />
       <WhatWeOffer bg={"#ECF8EF"} section={section} />
       <CallBackRequest />
     </div>

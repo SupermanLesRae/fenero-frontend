@@ -11,7 +11,7 @@ export default function MobileMenuItem({ item, callback }) {
       {hasChildren ? (
         <>
           <button
-            className="flex justify-between items-center w-full text-left font-semibold text-white py-3"
+            className="flex justify-between items-center w-full text-left font-semibold text-white py-4"
             onClick={() => setOpen(!open)}
           >
             {item.label}
@@ -27,7 +27,7 @@ export default function MobileMenuItem({ item, callback }) {
           </button>
 
           {open && (
-            <div className="mt-2 ml-3 pl-3 space-y-2">
+            <div className="mt-0 ml-3 pl-3 space-y-0">
               {item.subMenuItems.map((child, index) => (
                 <MobileMenuItem key={"child.id" + index} item={child} />
               ))}
@@ -36,7 +36,7 @@ export default function MobileMenuItem({ item, callback }) {
         </>
       ) : (
         <Link href={item.link || "#"} onClick={() => callback()}>
-          <span className="flex justify-between items-center w-full text-left font-semibold text-white pb-5">
+          <span className="flex justify-between items-center w-full text-left font-semibold text-white py-4">
             {item.label}
           </span>
         </Link>

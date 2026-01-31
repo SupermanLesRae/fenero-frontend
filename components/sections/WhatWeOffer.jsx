@@ -43,18 +43,15 @@ export async function WhatWeOffer({ bg, section }) {
                     className="flex items-start gap-4"
                     key={"offer-" + index}
                   >
-                    <div>
-                      <Image
-                        src={item.icon.node.sourceUrl}
-                        alt={
-                          item.icon.node.altText ||
-                          "No alternative text provided"
-                        }
-                        className="relative"
-                        width={24}
-                        height={24}
-                      />
-                    </div>
+                    <Image
+                      src={item.icon.node.sourceUrl}
+                      alt={
+                        item.icon.node.altText || "No alternative text provided"
+                      }
+                      className="relative w-[24px] h-[24px]"
+                      width={24}
+                      height={24}
+                    />
 
                     <p className="text-[16px] md:text-[16px] leading-6 md:leading-6 tracking-[0.15px] text-[#000000]">
                       {item.label}

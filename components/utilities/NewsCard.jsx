@@ -29,12 +29,12 @@ export default function NewsCard({
   return (
     <Card
       className={`w-full bg-white shadow-md rounded-xl overflow-hidden hover:shadow-lg transition-shadow cursor-pointer py-0 p-4 select-none ${
-        type === "small" ? "min-h-130" : "min-h-auto lg:min-h-155"
+        type === "small" ? "min-h-130" : "min-h-auto md:min-h-155"
       } group`}
     >
       {/* Image */}
       {image && (
-        <div className="overflow-hidden max-h-75 rounded-xl scale-95">
+        <div className="overflow-hidden max-h-75 rounded-lg scale-95">
           <Image
             width={334}
             height={317}
@@ -45,7 +45,7 @@ export default function NewsCard({
         </div>
       )}
 
-      <CardContent className="px-4 pt-4">
+      <CardContent className="px-4 py-4 md:py-0 md:pt-4">
         {/* Title */}
         <CardTitle className="text-lg font-bold text-gray-800">
           {title}

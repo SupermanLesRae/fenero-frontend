@@ -163,7 +163,7 @@ export default function HeaderMenu({ menu }) {
           className="w-72 h-full bg-[#000E47] shadow-xl transform -translate-x-full transition-transform duration-300"
           id="mobileMenuPanel"
         >
-          <div className="p-5 border-b border-white/20 flex justify-between items-center">
+          <div className="relative p-5 border-b border-white/20 flex justify-between items-center shadow-md z-10">
             <Link href="/" onClick={() => closeMenu()}>
               <Image src={logo} alt="Logo" width={120} height={120} />
             </Link>
@@ -184,7 +184,7 @@ export default function HeaderMenu({ menu }) {
             </button>
           </div>
 
-          <nav className="p-5 space-y-5 font-medium text-[16px]">
+          <nav className="p-5 gap-4 font-medium text-[16px] max-h-screen overflow-y-scroll pb-[200px] z-0">
             {navigation.map((nav, index) => {
               const dropdownId = `mobileDropdown${index}`;
               return (
@@ -197,7 +197,7 @@ export default function HeaderMenu({ menu }) {
             })}
 
             <Link href={loginCta.url}>
-              <button className="cursor-pointer w-full flex justify-center items-center gap-2 text-center font-semibold text-[18px] text-white bg-transparent border-2 border-[#D1DF20] hover:bg-[#D1DF20] hover:text-[#000E47] px-6 py-2 rounded-lg transition">
+              <button className="cursor-pointer w-full flex justify-center items-center gap-2 text-center font-semibold text-[18px] text-white bg-transparent border-2 border-[#D1DF20] hover:bg-[#D1DF20] hover:text-[#000E47] px-6 py-2 mt-10 rounded-lg transition">
                 {loginCta.label}
               </button>
             </Link>

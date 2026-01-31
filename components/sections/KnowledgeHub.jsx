@@ -69,30 +69,37 @@ export async function KnowledgeHub({ section = "All" } = {}) {
         </p>
       </div>
 
-      <div className="flex flex-col md:flex-row gap-6 px-6 max-w-337.5 mx-auto justify-center items-center md:items-stretch">
+      <div className="flex flex-wrap justify-center gap-6 px-6">
         {filteredBlocks?.slice(0, 3).map((item, index) => (
-          <Link key={"posts_" + index} href={"/knowledge-hub/" + item.slug}>
+          <Link
+            key={"posts_" + index}
+            href={"/knowledge-hub/" + item.slug}
+            className="w-full sm:w-[400px] flex"
+          >
             <div
-              className="flex flex-col bg-white rounded-lg p-0 shadow-md hover:shadow-sm
-                      w-full max-w-103.5 mx-auto md:mx-0
-                      lg:min-w-103.5 flex-1 h-98 overflow-hidden"
+              className="
+          flex flex-col bg-white rounded-[20px] p-0 shadow-md hover:shadow-sm
+          w-full overflow-hidden
+        "
             >
-              <div className="relative h-49 overflow-hidden">
+              {/* Image */}
+              <div className="relative ml-5 mr-5 mt-5 overflow-hidden flex items-center rounded-2xl justify-center max-h-[300px]">
                 <Image
-                  width={414}
-                  height={196}
-                  className="w-full h-auto"
+                  width={400}
+                  height={380}
+                  className="w-full h-full object-cover object-top-left"
                   src={item.newsPostsCoreFields.cardImg.node.sourceUrl}
                   alt=""
                 />
+
+                {/* Tags */}
                 <div className="absolute top-8 left-8 flex flex-wrap gap-2">
                   {sectionData.slugtotag
-                    .filter((slugObj) => {
-                      return (
+                    .filter(
+                      (slugObj) =>
                         slugObj.slugselect[0].toLowerCase() ===
-                        section.toLowerCase()
-                      );
-                    })
+                        section.toLowerCase(),
+                    )
                     .flatMap((slugObj) => slugObj.tags)
                     .filter((tag) =>
                       item.newsPostsCoreFields.tags
@@ -110,11 +117,12 @@ export async function KnowledgeHub({ section = "All" } = {}) {
                 </div>
               </div>
 
-              <div className="p-6">
-                <h3 className="text-lg font-semibold">
+              {/* Content */}
+              <div className="p-6 flex flex-col">
+                <h3 className="text-lg font-semibold line-clamp-1">
                   {item.newsPostsCoreFields.title}
                 </h3>
-                <p className="text-gray-600 mt-2">
+                <p className="text-gray-600 mt-2 line-clamp-2">
                   {item.newsPostsCoreFields.description}
                 </p>
                 <p className="text-gray-400 text-sm mt-4 flex gap-2 items-center">

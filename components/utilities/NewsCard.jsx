@@ -28,24 +28,24 @@ export default function NewsCard({
 
   return (
     <Card
-      className={`max-w-sm bg-white shadow-md rounded-xl overflow-hidden hover:shadow-lg transition-shadow cursor-pointer py-0 p-6 select-none ${
+      className={`w-full bg-white shadow-md rounded-xl overflow-hidden hover:shadow-lg transition-shadow cursor-pointer py-0 p-4 select-none ${
         type === "small" ? "min-h-130" : "min-h-auto lg:min-h-155"
       } group`}
     >
       {/* Image */}
       {image && (
-        <div className="overflow-hidden max-h-75 rounded-xl">
+        <div className="overflow-hidden max-h-75 rounded-xl scale-95">
           <Image
             width={334}
             height={317}
             src={image}
             alt={title}
-            className="w-full h-auto  object-cover transform transition-transform duration-300 ease-in-out group-hover:scale-105"
+            className="w-full h-auto  object-cover transform transition-transform duration-300 ease-in-out scale-105 group-hover:scale-110"
           />
         </div>
       )}
 
-      <CardContent className="px-4">
+      <CardContent className="px-4 pt-4">
         {/* Title */}
         <CardTitle className="text-lg font-bold text-gray-800">
           {title}

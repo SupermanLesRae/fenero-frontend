@@ -108,23 +108,30 @@ export default function NewsPostsClient({ posts, tags }) {
       </div>
 
       {/* News Cards */}
-      <div className="flex flex-wrap items-center justify-center gap-6 lg:p-4">
+      <div className="flex flex-wrap justify-center gap-[30px] lg:p-4">
         {filteredPosts.length > 0 ? (
           filteredPosts.map((post, index) => {
             const item = post.newsPostsCoreFields;
             return (
-              <Link
+              <div
                 key={"newspost" + index}
-                href={"/knowledge-hub/" + post?.slug}
+                className="flex justify-center"
+                style={{ width: "400px" }} // fixed width for all cards
               >
-                <NewsCard
-                  image={item.cardImg?.node.sourceUrl}
-                  title={item.title}
-                  description={item.description}
-                  date={item.date}
-                  tags={item.tags}
-                />
-              </Link>
+                <Link
+                  href={"/knowledge-hub/" + post?.slug}
+                  className="w-full h-full"
+                >
+                  <NewsCard
+                    image={item.cardImg?.node.sourceUrl}
+                    title={item.title}
+                    description={item.description}
+                    date={item.date}
+                    tags={item.tags}
+                    className="h-full" // ensures cards stretch same height
+                  />
+                </Link>
+              </div>
             );
           })
         ) : (

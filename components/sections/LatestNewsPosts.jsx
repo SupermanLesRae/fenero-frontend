@@ -22,16 +22,24 @@ export default async function LatestNewsPosts({ currentSlug }) {
         Continue reading
       </h2>
 
-      <div className="flex flex-wrap w-full items-center justify-center">
+      <div className="flex flex-wrap justify-center gap-[30px]">
         {latestPosts.map((item, index) => (
-          <div key={"latestPost" + index} className="px-4 mb-6">
-            <Link href={"/knowledge-hub/" + item.slug}>
+          <div
+            key={"latestPost" + index}
+            className="flex justify-center"
+            style={{ width: "400px" }} // fixed width
+          >
+            <Link
+              href={"/knowledge-hub/" + item.slug}
+              className="w-full h-full"
+            >
               <NewsCard
                 image={item.newsPostsCoreFields.cardImg?.node?.sourceUrl}
                 title={item.newsPostsCoreFields.title}
                 description={item.newsPostsCoreFields.description}
                 date={item.newsPostsCoreFields.date}
                 type={"small"}
+                className="h-full"
               />
             </Link>
           </div>

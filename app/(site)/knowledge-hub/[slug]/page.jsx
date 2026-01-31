@@ -80,7 +80,7 @@ export default async function Page({ params }) {
           )}
 
           {sectionData?.date && (
-            <div className="text-center pb-62.5">
+            <div className="text-center pb-87.5">
               {/* Date */}
               <p className="text-[#000E47] text-sm ">{formattedDate}</p>
             </div>
@@ -89,13 +89,13 @@ export default async function Page({ params }) {
       </div>
       {sectionData?.featureImg.node.sourceUrl && (
         <div className="bg-white px-6 lg:px-0">
-          <div className="relative h-110 max-w-282 text-center mx-auto w-full rounded-xl ">
+          <div className="relative h-150 max-w-150 text-center mx-auto w-full rounded-xl justify-center">
             <Image
-              className="object-cover w-full h-110 max-w-282 absolute -mt-55 rounded-xl shadow-lg border-10 border-white "
+              className="object-cover w-full h-150 max-w-150 absolute -mt-75 rounded-xl shadow-lg border-10 border-white "
               src={sectionData.featureImg.node.sourceUrl}
               alt=""
-              width={1108}
-              height={420}
+              width={600}
+              height={600}
               placeholder="blur"
               blurDataURL="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAGYAAABmAQMAAAADEXYhAAAAAXNSR0IB2cksfwAAAAlwSFlzAAALEwAACxMBAJqcGAAAAANQTFRFzu7WkwYvEwAAABhJREFUeJxjZEAGjKO8Ud4ob5Q3yhtAHgAk6QBnmOT1xwAAAABJRU5ErkJggg=="
             />
@@ -103,9 +103,10 @@ export default async function Page({ params }) {
         </div>
       )}
       <div
-        className="policy-content max-w-282 mx-auto py-10 bg-white -mt-55 px-6"
+        className="policy-content max-w-282 mx-auto py-10 bg-white -mt-70 px-6"
         dangerouslySetInnerHTML={{ __html: content }}
       ></div>
+
       <LatestNewsPosts currentSlug={slug} />
     </div>
   );

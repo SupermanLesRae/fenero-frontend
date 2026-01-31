@@ -360,11 +360,11 @@ export function TaxCalculatorForm() {
         />
 
         {/* SUBMIT BUTTON */}
-        <div className="flex justify-center mt-4">
+        <div className="flex justify-center mt-4 ">
           <Button
             type="submit"
             disabled={loading}
-            className="z-10 min-w-[330px] w-full md:max-w-[250px] text-[20px] py-8 flex items-center gap-2 cursor-pointer  font-bold bg-[#D1DF20] hover:bg-[#C9D217] text-[#000E47] select-none mt-6"
+            className="z-10 md:min-w-[330px] w-full md:max-w-[250px] text-[20px] py-8 flex items-center gap-2 cursor-pointer  font-bold bg-[#D1DF20] hover:bg-[#C9D217] text-[#000E47] select-none mt-6"
           >
             {loading && <Spinner size={20} />}
             <IconCalculator className="!w-5 !h-5" stroke={3} />

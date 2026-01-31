@@ -36,7 +36,7 @@ export async function WhatWeOffer({ bg, section }) {
               {sectionData.title}
             </h2>
 
-            <div className="grid grid-cols-1 xl:grid-cols-2 gap-x-8 gap-y-6 px-10 text-left">
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-x-8 gap-y-6 px-10 text-left">
               {sectionData.offers.map((item, index) => {
                 return (
                   <div

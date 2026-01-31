@@ -27,19 +27,35 @@ export default function RecruiterCard({
     >
       {/* Image */}
       {image && (
-        <Link href={downloadURL} target="_blank" rel="noopener noreferrer">
-          <div className="w-auto h-auto rounded-[30] overflow-hidden scale-90 shadow-lg hover:shadow-xs border-4 border-[#38BB3F] hover:border-[#D1DF20] transition-colors duration-200">
-            <Image
-              width={400}
-              height={380}
-              src={image}
-              alt={title}
-              placeholder="blur"
-              blurDataURL="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABoAAAAkAQMAAACt9LhQAAAAAXNSR0IB2cksfwAAAAlwSFlzAAALEwAACxMBAJqcGAAAAANQTFRFTS1YmqKgYAAAAA9JREFUeJxjZAACxqFFAAANtgAlZyMZzAAAAABJRU5ErkJggg=="
-              className="object-cover transform transition-transform duration-300 ease-in-out scale-110"
-            />
-          </div>
-        </Link>
+        <>
+          {downloadURL ? (
+            <Link href={downloadURL} target="_blank" rel="noopener noreferrer">
+              <div className="w-auto h-auto rounded-[30] overflow-hidden scale-90 shadow-lg hover:shadow-xs border-4 border-[#38BB3F] hover:border-[#D1DF20] transition-colors duration-200">
+                <Image
+                  width={400}
+                  height={380}
+                  src={image}
+                  alt={title}
+                  placeholder="blur"
+                  blurDataURL="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABoAAAAkAQMAAACt9LhQAAAAAXNSR0IB2cksfwAAAAlwSFlzAAALEwAACxMBAJqcGAAAAANQTFRFTS1YmqKgYAAAAA9JREFUeJxjZAACxqFFAAANtgAlZyMZzAAAAABJRU5ErkJggg=="
+                  className="object-cover transform transition-transform duration-300 ease-in-out scale-110"
+                />
+              </div>
+            </Link>
+          ) : (
+            <div className="w-auto h-auto rounded-[30] overflow-hidden scale-90 shadow-lg border-4 border-[#38BB3F] opacity-50 cursor-not-allowed">
+              <Image
+                width={400}
+                height={380}
+                src={image}
+                alt={title}
+                placeholder="blur"
+                blurDataURL="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABoAAAAkAQMAAACt9LhQAAAAAXNSR0IB2cksfwAAAAlwSFlzAAALEwAACxMBAJqcGAAAAANQTFRFTS1YmqKgYAAAAA9JREFUeJxjZAACxqFFAAANtgAlZyMZzAAAAABJRU5ErkJggg=="
+                className="object-cover transform transition-transform duration-300 ease-in-out scale-110"
+              />
+            </div>
+          )}
+        </>
       )}
 
       <Link href={gotoPage}>

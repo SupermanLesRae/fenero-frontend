@@ -4,6 +4,8 @@ import {
   RECRUITER_POST_BY_SLUG_QUERY,
   ALL_RECRUITER_SLUGS,
 } from "@/lib/queries/Queries";
+import { IconDownload } from "@tabler/icons-react";
+import { IconArrowDown } from "@tabler/icons-react";
 import { IconArrowLeft } from "@tabler/icons-react";
 import Image from "next/image";
 import Link from "next/link";
@@ -32,13 +34,15 @@ export default async function Page({ params }) {
     fetchPolicy: "no-cache", // rely on ISR
   });
 
-  const sectionData = data.recruiterPostBy.recruiterPostsCoreFields;
-  const content = data.recruiterPostBy.content;
+  const sectionData = data?.recruiterPostBy?.recruiterPostsCoreFields;
+  // const content = data?.recruiterPostBy?.content;
+
+  console.log("sectionData.contentArea:", sectionData.postPageContent);
 
   if (!sectionData) return null;
 
   return (
-    <div className="pb-10 lg:pb-20">
+    <div className="">
       <div className="bg-[#ECF8EF] relative overflow-hidden">
         <div>
           <Image
@@ -63,7 +67,7 @@ export default async function Page({ params }) {
             <h2 className="relative text-[30px] md:text-[48px] leading-10 md:leading-14 font-bold font-nunito mb-0 select-none text-[#38BB3F] text-left pt-0 pb-4">
               {sectionData?.title || "Add a Date"}
             </h2>
-            <div className="max-w-25">
+            <div className="max-w-25 select-none">
               <Link href="/recruiter-resources">
                 <Button
                   size="lg"
@@ -78,30 +82,97 @@ export default async function Page({ params }) {
         </div>
       </div>
 
-      <div className="relative w-full max-w-300 mx-auto lg:pt-10 px-10">
-        <div
-          className="relative policy-content max-w-282 mx-auto py-10 bg-white px-0"
-          dangerouslySetInnerHTML={{ __html: content }}
-        ></div>
+      <div
+        className={`relative w-full max-w-300 mx-auto px-10 pt-10 lg:pt-20 ${
+          sectionData?.cta?.link ? "pb-8" : "pb-20"
+        }`}
+      >
+        <div className="w-full">
+          {sectionData.postPageContent?.length > 0 ? (
+            sectionData.postPageContent.map((block, index) => {
+              const hasLeft = block.leftCol && block.leftCol.trim() !== "";
+              const hasRight = block.rightCol && block.rightCol.trim() !== "";
 
-        <div>
-          <Link
-            href={sectionData.cta.link}
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            <Button
-              size="lg"
-              className="relative bg-[#AFCE67] px-10 hover:bg-[#D1DF20] text-[#000E47] hover:text-[#000E47] cursor-pointer w-full lg:w-auto transition shadow-none z-20 select-none"
-            >
-              <IconArrowLeft stroke={2} />
-              <span className="font-bold text-[16px]">
-                {sectionData.cta.label}
-              </span>
-            </Button>
-          </Link>
+              // Skip block if neither column has content
+              if (!hasLeft && !hasRight) return null;
+
+              return (
+                <div
+                  key={index}
+                  className={`flex flex-col lg:flex-row gap-10 items-start`}
+                >
+                  {hasLeft && (
+                    <div
+                      className={`${hasLeft && hasRight ? "w-full lg:w-1/2" : "w-full"}`}
+                    >
+                      <div
+                        className="policy-content"
+                        dangerouslySetInnerHTML={{ __html: block.leftCol }}
+                      ></div>
+                    </div>
+                  )}
+
+                  {hasRight && (
+                    <div
+                      className={`${hasLeft && hasRight ? "w-full lg:w-1/2" : "w-full"}`}
+                    >
+                      <div
+                        className="policy-content"
+                        dangerouslySetInnerHTML={{ __html: block.rightCol }}
+                      ></div>
+                    </div>
+                  )}
+                </div>
+              );
+            })
+          ) : (
+            <div className="text-center py-10">
+              <p className="mb-4 text-gray-700 select-none">
+                No further information is available at this point.
+              </p>
+
+              {sectionData.downloadPDF && (
+                <a
+                  href={sectionData.downloadPDF}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="inline-block bg-blue-600 text-white px-6 py-3 rounded hover:bg-blue-700 transition"
+                >
+                  Download PDF
+                </a>
+              )}
+            </div>
+          )}
         </div>
       </div>
+
+      {sectionData?.cta?.link && (
+        <div
+          className={`px-10 w-full select-none max-w-300 mx-auto pb-20 ${
+            !sectionData.postPageContent?.length ? "flex justify-center" : ""
+          }`}
+        >
+          <div className="max-w-282">
+            <div className="w-auto">
+              <Link
+                href={sectionData?.cta.link}
+                target="_blank"
+                rel="noopener noreferrer"
+              >
+                <Button
+                  size="lg"
+                  className="bg-[#AFCE67] border-2 border-[#AFCE67] hover:border-[#AFCE67] hover:bg-[#AFCE67] text-[#000E47] cursor-pointer min-w-auto w-auto transition shadow-none z-20 relative"
+                >
+                  <span className="font-bold text-[16px]">
+                    {sectionData?.cta.label}
+                  </span>
+                  <IconDownload stroke={3} />
+                </Button>
+              </Link>
+            </div>
+          </div>
+        </div>
+      )}
     </div>
   );
 }

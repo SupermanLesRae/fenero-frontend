@@ -9,10 +9,6 @@ const nunito = Nunito({
   variable: "--font-nunito",
 });
 
-export const metadata = {
-  colorScheme: "light",
-};
-
 export default function RootLayout({ children }) {
   return (
     <html

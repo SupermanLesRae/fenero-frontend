@@ -24,37 +24,51 @@ import { useState } from "react";
 import { IconCalculator } from "@tabler/icons-react";
 import { Spinner } from "../ui/spinner";
 
-// Schema for validation
+const REQUIRED = "* Required";
+
+// Accepts: 123, 123.4, 123.45
+const moneyRegex = /^\d+(\.\d{1,2})?$/;
+
+const numberRequired = z
+  .string()
+  .trim()
+  .refine((v) => v.length > 0, { message: REQUIRED }) // empty check
+  .refine((v) => moneyRegex.test(v), {
+    message: "Invalid number format (max 2 decimals)",
+  })
+  .transform((v) => Number(v));
+
 const schema = z.object({
-  dailyRate: z.preprocess((v) => Number(v), z.number().min(0, "Required")),
-  payFrequency: z.string().min(1, "Required"),
-  workDays: z.preprocess((v) => Number(v), z.number().min(1, "Required")),
-  maritalStatus: z.string().min(1, "Required"),
-  pensionContribution: z.preprocess(
-    (v) => Number(v),
-    z.number().min(0, "Required"),
-  ),
-  businessExpenses: z.preprocess(
-    (v) => Number(v),
-    z.number().min(0, "Required"),
-  ),
-  currentSalary: z.preprocess((v) => Number(v), z.number().min(0, "Required")),
+  dailyRate: numberRequired.refine((v) => v >= 0, { message: REQUIRED }),
+
+  workDays: numberRequired.refine((v) => v >= 1, { message: REQUIRED }),
+
+  pensionContribution: numberRequired.refine((v) => v >= 0, {
+    message: REQUIRED,
+  }),
+
+  businessExpenses: numberRequired.refine((v) => v >= 0, { message: REQUIRED }),
+
+  currentSalary: numberRequired.refine((v) => v >= 0, { message: REQUIRED }),
+
+  payFrequency: z.string().min(1, REQUIRED),
+
+  maritalStatus: z.string().min(1, REQUIRED),
 });
 
 export function TaxCalculatorForm() {
   const [result, setResult] = useState(null);
   const [loading, setLoading] = useState(false);
-
   const form = useForm({
     resolver: zodResolver(schema),
     defaultValues: {
-      dailyRate: 0,
-      workDays: 0,
+      dailyRate: "",
+      workDays: "",
       payFrequency: "",
       maritalStatus: "",
-      pensionContribution: 0,
-      businessExpenses: 0,
-      currentSalary: 0,
+      pensionContribution: "",
+      businessExpenses: "",
+      currentSalary: "",
     },
   });
 
@@ -106,7 +120,7 @@ export function TaxCalculatorForm() {
     <Form {...form}>
       <form
         onSubmit={form.handleSubmit(onSubmit)}
-        className="space-y-6 max-w-[901px] select-none"
+        className="space-y-6 max-w-[901px] "
       >
         {/** 1. Daily Rate */}
         <FormField
@@ -128,7 +142,8 @@ export function TaxCalculatorForm() {
                     </span>
                     <Input
                       {...field}
-                      type="number"
+                      type="text" // 🔥 Important change!
+                      inputMode="decimal"
                       placeholder="e.g. &euro; 450"
                       min={0}
                       className="h-[60px] w-full rounded-xl border border-[#036735] pl-8 pr-3"
@@ -150,7 +165,7 @@ export function TaxCalculatorForm() {
             <FormItem className="flex flex-col md:flex-row items-center gap-4">
               {/* Label */}
               <FormLabel className="flex-1 text-left">
-                How frequently will you get paid?*
+                How frequently will you get paid? *
               </FormLabel>
 
               <div className="flex flex-col gap-2 w-full md:w-auto md:min-w-[380px]">
@@ -194,7 +209,8 @@ export function TaxCalculatorForm() {
                 <FormControl className="w-full">
                   <Input
                     {...field}
-                    type="number"
+                    type="text" // 🔥 Important change!
+                    inputMode="decimal"
                     min={1}
                     placeholder="0"
                     className="h-[60px] w-full rounded-xl border border-[#036735] pl-3 pr-3"
@@ -215,7 +231,7 @@ export function TaxCalculatorForm() {
             <FormItem className="flex flex-col md:flex-row items-center gap-4">
               {/* Label takes remaining space */}
               <FormLabel className="flex-1 text-left">
-                What is your marital status?*
+                What is your marital status? *
               </FormLabel>
 
               <div className="flex flex-col gap-2 w-full md:w-auto md:min-w-[380px]">
@@ -251,7 +267,7 @@ export function TaxCalculatorForm() {
             <FormItem className="flex flex-col md:flex-row items-center gap-4">
               {/* Label takes remaining space */}
               <FormLabel className="flex-1 text-left">
-                What is your pension contribution?*
+                What is your pension contribution? *
               </FormLabel>
 
               <div className="flex flex-col gap-2 w-full md:w-auto md:min-w-[380px]">
@@ -262,7 +278,8 @@ export function TaxCalculatorForm() {
                     </span>
                     <Input
                       {...field}
-                      type="number"
+                      type="text" // 🔥 Important change!
+                      inputMode="decimal"
                       min={0}
                       placeholder="0.00"
                       className="h-[60px] w-full rounded-xl border border-[#036735] pl-8 pr-3"
@@ -283,7 +300,7 @@ export function TaxCalculatorForm() {
           render={({ field }) => (
             <FormItem className="flex flex-col md:flex-row items-center gap-4">
               <FormLabel className="flex-1 text-left">
-                How much business expenses will you claim?*
+                How much business expenses will you claim? *
               </FormLabel>
 
               <div className="flex flex-col gap-2 w-full md:w-auto md:min-w-[380px]">
@@ -294,7 +311,8 @@ export function TaxCalculatorForm() {
                     </span>
                     <Input
                       {...field}
-                      type="number"
+                      type="text" // 🔥 Important change!
+                      inputMode="decimal"
                       min={0}
                       placeholder="0.00"
                       className="h-[60px] w-full rounded-xl border border-[#036735] pl-8 pr-3"
@@ -315,7 +333,7 @@ export function TaxCalculatorForm() {
           render={({ field }) => (
             <FormItem className="flex flex-col md:flex-row items-center gap-4">
               <FormLabel className="flex-1 text-left">
-                What is your current annual salary?*
+                What is your current annual salary? *
               </FormLabel>
 
               <div className="flex flex-col gap-2 w-full md:w-auto md:min-w-[380px]">
@@ -326,7 +344,8 @@ export function TaxCalculatorForm() {
                     </span>
                     <Input
                       {...field}
-                      type="number"
+                      type="text" // 🔥 Important change!
+                      inputMode="decimal"
                       min={0}
                       placeholder="0.00"
                       className="h-[60px] w-full rounded-xl border border-[#036735] pl-8 pr-3"

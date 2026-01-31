@@ -47,7 +47,7 @@ export default function NewsCard({
 
       <CardContent className="px-4 py-4 md:py-0 md:pt-4">
         {/* Title */}
-        <CardTitle className="text-lg font-bold text-gray-800">
+        <CardTitle className="text-lg font-bold text-gray-800 line-clamp-1">
           {title}
         </CardTitle>
 

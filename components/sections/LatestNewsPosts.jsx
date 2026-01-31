@@ -22,7 +22,7 @@ export default async function LatestNewsPosts({ currentSlug }) {
         Continue reading
       </h2>
 
-      <div className="flex flex-wrap justify-center gap-[30px]">
+      <div className="flex flex-wrap justify-center gap-[30px] px-6">
         {latestPosts.map((item, index) => (
           <div
             key={"latestPost" + index}

@@ -420,26 +420,41 @@ export function TaxCalculatorForm() {
                 title: "Gross Monthly/Weekly Income",
                 values: ["0.00", "0.00", "0.00"],
               },
-              { title: "Fenero Fee", values: ["0.00", "0.00", "0.00"] },
-              { title: "Monthly Net Pay", values: ["0.00", "0.00", "0.00"] },
+              {
+                title: `
+    Fenero Fee <br/>
+    <div class="text-xs">(All inclusive & tax deductible)</div>
+  `,
+                values: ["0.00", "0.00", "0.00"],
+              },
+              {
+                title: `
+    Monthly Net Pay <br/>
+    <div class="text-xs">(including pension contribution)*</div>
+  `,
+                values: ["0.00", "0.00", "0.00"],
+              },
             ].map((row, idx) => (
               <div
                 key={idx}
                 className="border-t border-[#CEEED6] rounded-lg p-3 bg-gray-50 flex flex-col gap-2"
               >
                 {/* Row title */}
-                <div className="font-medium text-gray-700">{row.title}</div>
+                <div
+                  dangerouslySetInnerHTML={{ __html: row.title }}
+                  className="font-bold text-md text-gray-700"
+                ></div>
 
                 {/* Stacked values */}
-                <div className="flex flex-col gap-1 text-gray-900">
+                <div className="flex flex-col gap-1 text-sm text-gray-900">
                   <span>
-                    <b>Umbrella PAYE:</b> {row.values[0]}
+                    <b>Umbrella PAYE:</b> &euro;{row.values[0]}
                   </span>
                   <span>
-                    <b>Umbrella Director / PSC:</b> {row.values[1]}
+                    <b>Umbrella Director / PSC:</b> &euro;{row.values[1]}
                   </span>
                   <span>
-                    <b>Current Salary:</b> {row.values[2]}
+                    <b>Current Salary:</b> &euro;{row.values[2]}
                   </span>
                 </div>
               </div>
@@ -448,7 +463,7 @@ export function TaxCalculatorForm() {
 
           {/* Desktop table */}
           <div className="hidden md:block">
-            <table className="min-w-full text-sm">
+            <table className="min-w-full text-md">
               <thead className="bg-gray-100">
                 <tr>
                   <th className="px-4 py-4 text-left"></th>
@@ -461,27 +476,39 @@ export function TaxCalculatorForm() {
               </thead>
 
               <tbody>
-                <tr className="border-t border-[#CEEED6]">
-                  <td className="px-4 py-4 font-medium">
+                <tr className="border-t border-[#CEEED6] text-center">
+                  <td className="px-4 py-4 text-left">
                     Gross Monthly/Weekly Income
                   </td>
-                  <td className="px-4 py-4">0.00</td>
-                  <td className="px-4 py-4">0.00</td>
-                  <td className="px-4 py-4">0.00</td>
+                  <td className="px-4 py-4 font-bold">&euro;0.00</td>
+                  <td className="px-4 py-4 font-bold">&euro;0.00</td>
+                  <td className="px-4 py-4 font-bold">&euro;0.00</td>
                 </tr>
 
-                <tr className="border-t border-[#CEEED6]">
-                  <td className="px-4 py-4 font-medium">Fenero Fee</td>
-                  <td className="px-4 py-4">0.00</td>
-                  <td className="px-4 py-4">0.00</td>
-                  <td className="px-4 py-4">0.00</td>
+                <tr className="border-t border-[#CEEED6] text-center">
+                  <td className="px-4 py-4 text-left">
+                    Fenero Fee
+                    <br />
+                    <div className="text-xs">
+                      (All inclusive & tax deductible)
+                    </div>
+                  </td>
+                  <td className="px-4 py-4 font-bold">&euro;0.00</td>
+                  <td className="px-4 py-4 font-bold">&euro;0.00</td>
+                  <td className="px-4 py-4 font-bold">&euro;0.00</td>
                 </tr>
 
-                <tr className="border-t border-[#CEEED6]">
-                  <td className="px-4 py-4 font-medium">Monthly Net Pay</td>
-                  <td className="px-4 py-4">0.00</td>
-                  <td className="px-4 py-4">0.00</td>
-                  <td className="px-4 py-4">0.00</td>
+                <tr className="border-t border-[#CEEED6] text-center">
+                  <td className="px-4 py-4 font-bold text-left">
+                    Monthly Net Pay
+                    <br />
+                    <div className="text-xs">
+                      (including pension contribution)*
+                    </div>
+                  </td>
+                  <td className="px-4 py-4 font-bold">&euro;0.00</td>
+                  <td className="px-4 py-4 font-bold">&euro;0.00</td>
+                  <td className="px-4 py-4 font-bold">&euro;0.00</td>
                 </tr>
               </tbody>
             </table>

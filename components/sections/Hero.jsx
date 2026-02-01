@@ -13,7 +13,7 @@ import { useCallback, useEffect, useState } from "react";
 import useEmblaCarousel from "embla-carousel-react";
 import Image from "next/image";
 
-export default function Hero({ data }) {
+export default function Hero({ data, scrollToId = null }) {
   const [emblaRef, emblaApi] = useEmblaCarousel({
     loop: true,
     align: "start",
@@ -100,20 +100,46 @@ export default function Hero({ data }) {
                           className=" font-medium text-[17px] leading-7 tracking-[0.15px] text-[#ffffff] mb-6 lg:pr-10"
                         ></p>
 
-                        {item.hasCta && (
+                        {item.hasCta && !scrollToId ? (
                           <div className="flex flex-wrap gap-6">
-                            <Link className="w-full" href={item.cta?.link}>
+                            <Link
+                              className="w-full lg:w-auto"
+                              href={item.cta?.link || "#"}
+                            >
                               <Button
                                 size="lg"
-                                className={`bg-[#AFCE67] hover:bg-[#D1DF20] text-[#000E47] cursor-pointer w-full lg:w-auto transition shadow-md shadow-[#AFCE67]/30 hover:shadow-[#AFCE67]/10`}
+                                className="bg-[#AFCE67] hover:bg-[#D1DF20] text-[#000E47] cursor-pointer w-full lg:w-auto transition shadow-md shadow-[#AFCE67]/30 hover:shadow-[#AFCE67]/10 flex items-center justify-center"
                               >
-                                <span className=" font-bold text-[16px]">
+                                <span className="font-bold text-[16px]">
                                   {item.cta.label}
                                 </span>
-
-                                <IconArrowRight stroke={2} />
+                                <IconArrowRight stroke={2} className="ml-2" />
                               </Button>
                             </Link>
+                          </div>
+                        ) : (
+                          <div className="flex  flex-wrap gap-6">
+                            <a
+                              className="w-full lg:w-auto"
+                              onClick={(e) => {
+                                e.preventDefault(); // prevent the default jump
+                                if (scrollToId) {
+                                  const el =
+                                    document.getElementById(scrollToId);
+                                  el?.scrollIntoView({ behavior: "smooth" });
+                                }
+                              }}
+                            >
+                              <Button
+                                size="lg"
+                                className="bg-[#AFCE67] hover:bg-[#D1DF20] text-[#000E47] cursor-pointer w-full lg:w-auto transition shadow-md shadow-[#AFCE67]/30 hover:shadow-[#AFCE67]/10 flex items-center justify-center"
+                              >
+                                <span className="font-bold text-[16px]">
+                                  {item.cta.label}
+                                </span>
+                                <IconArrowRight stroke={2} className="ml-2" />
+                              </Button>
+                            </a>
                           </div>
                         )}
                       </div>

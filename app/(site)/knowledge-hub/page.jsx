@@ -20,10 +20,15 @@ export default async function Page() {
   return (
     <div>
       {data?.heroBy?.herosCoreFields && (
-        <Hero data={data.heroBy.herosCoreFields.heroSlide} />
+        <Hero
+          data={data.heroBy.herosCoreFields.heroSlide}
+          scrollToId={"callBack"}
+        />
       )}
       <NewsPosts />
-      <CallBackRequest />
+      <div id="callBack">
+        <CallBackRequest />
+      </div>
     </div>
   );
 }

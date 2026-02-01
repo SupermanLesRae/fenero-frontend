@@ -22,9 +22,14 @@ export default async function Page() {
   return (
     <div>
       {data?.heroBy?.herosCoreFields && (
-        <Hero data={data.heroBy.herosCoreFields.heroSlide} />
+        <Hero
+          data={data.heroBy.herosCoreFields.heroSlide}
+          scrollToId={"calculator"}
+        />
       )}
-      <TaxCalculator />
+      <div id="calculator">
+        <TaxCalculator />
+      </div>
       <WhatWeOffer bg={"#ECF8EF"} section={section} />
       <CallBackRequest />
     </div>

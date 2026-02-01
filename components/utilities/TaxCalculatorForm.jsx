@@ -23,6 +23,11 @@ import {
 import { useState } from "react";
 import { IconCalculator } from "@tabler/icons-react";
 import { Spinner } from "../ui/spinner";
+import { ChartBarIcon } from "lucide-react";
+import { ChartBar } from "lucide-react";
+import { IconChartBar } from "@tabler/icons-react";
+import { IconChartBarOff } from "@tabler/icons-react";
+import { IconChartBarPopular } from "@tabler/icons-react";
 
 const REQUIRED = "* Required";
 
@@ -41,15 +46,22 @@ const numberRequired = z
 const schema = z.object({
   dailyRate: numberRequired.refine((v) => v >= 0, { message: REQUIRED }),
 
-  workDays: numberRequired.refine((v) => v >= 1, { message: REQUIRED }),
+  workDays: z.number().min(1, REQUIRED),
 
-  pensionContribution: numberRequired.refine((v) => v >= 0, {
-    message: REQUIRED,
-  }),
+  pensionContribution: z.preprocess(
+    (v) => (v === "" || v === undefined ? undefined : Number(v)),
+    z.number().min(0).optional(),
+  ),
 
-  businessExpenses: numberRequired.refine((v) => v >= 0, { message: REQUIRED }),
+  businessExpenses: z.preprocess(
+    (v) => (v === "" || v === undefined ? undefined : Number(v)),
+    z.number().min(0).optional(),
+  ),
 
-  currentSalary: numberRequired.refine((v) => v >= 0, { message: REQUIRED }),
+  currentSalary: z.preprocess(
+    (v) => (v === "" || v === undefined ? undefined : Number(v)),
+    z.number().min(0).optional(),
+  ),
 
   payFrequency: z.string().min(1, REQUIRED),
 
@@ -63,9 +75,9 @@ export function TaxCalculatorForm() {
     resolver: zodResolver(schema),
     defaultValues: {
       dailyRate: "",
-      workDays: "",
-      payFrequency: "",
-      maritalStatus: "",
+      workDays: 20,
+      payFrequency: "monthly",
+      maritalStatus: "single",
       pensionContribution: "",
       businessExpenses: "",
       currentSalary: "",
@@ -122,6 +134,20 @@ export function TaxCalculatorForm() {
         onSubmit={form.handleSubmit(onSubmit)}
         className="space-y-6 max-w-[901px] "
       >
+        <div className="flex flex-col md:flex-row items-center gap-4 mb-6">
+          <div className="flex-1 text-left">
+            <p className="text-2xl font-extrabold text-[#000E47] flex items-center gap-3 flex-row">
+              <IconCalculator className="!w-4 !h-4" stroke={3} />
+              Enter your details
+            </p>
+          </div>
+          <div className="flex flex-col gap-2 w-full md:w-auto md:min-w-[380px]">
+            <p className="text-xs font-bold">
+              <i>Fields marked with an asterisk * are mandatory</i>
+            </p>
+          </div>
+        </div>
+
         {/** 1. Daily Rate */}
         <FormField
           control={form.control}
@@ -144,7 +170,7 @@ export function TaxCalculatorForm() {
                       {...field}
                       type="text" // 🔥 Important change!
                       inputMode="decimal"
-                      placeholder="e.g. &euro; 450"
+                      placeholder="450"
                       min={0}
                       className="h-[60px] w-full rounded-xl border border-[#036735] pl-8 pr-3"
                     />
@@ -180,7 +206,6 @@ export function TaxCalculatorForm() {
 
                     <SelectContent>
                       <SelectItem value="weekly">Weekly</SelectItem>
-                      <SelectItem value="biweekly">Biweekly</SelectItem>
                       <SelectItem value="monthly">Monthly</SelectItem>
                     </SelectContent>
                   </Select>
@@ -245,9 +270,17 @@ export function TaxCalculatorForm() {
                     </SelectTrigger>
 
                     <SelectContent>
-                      <SelectItem value="single">Single</SelectItem>
-                      <SelectItem value="married">Married</SelectItem>
-                      <SelectItem value="other">Other</SelectItem>
+                      <SelectItem value="single">
+                        Single, separated or divorced
+                      </SelectItem>
+
+                      <SelectItem value="married_one_earner">
+                        Married (one spouse earning)
+                      </SelectItem>
+
+                      <SelectItem value="married_two_earners">
+                        Married (both spouses earning)
+                      </SelectItem>
                     </SelectContent>
                   </Select>
                 </FormControl>
@@ -267,7 +300,7 @@ export function TaxCalculatorForm() {
             <FormItem className="flex flex-col md:flex-row items-center gap-4">
               {/* Label takes remaining space */}
               <FormLabel className="flex-1 text-left">
-                What is your pension contribution? *
+                What is your pension contribution?
               </FormLabel>
 
               <div className="flex flex-col gap-2 w-full md:w-auto md:min-w-[380px]">
@@ -300,7 +333,7 @@ export function TaxCalculatorForm() {
           render={({ field }) => (
             <FormItem className="flex flex-col md:flex-row items-center gap-4">
               <FormLabel className="flex-1 text-left">
-                How much business expenses will you claim? *
+                How much business expenses will you claim?
               </FormLabel>
 
               <div className="flex flex-col gap-2 w-full md:w-auto md:min-w-[380px]">
@@ -333,7 +366,7 @@ export function TaxCalculatorForm() {
           render={({ field }) => (
             <FormItem className="flex flex-col md:flex-row items-center gap-4">
               <FormLabel className="flex-1 text-left">
-                What is your current annual salary? *
+                What is your current annual salary?
               </FormLabel>
 
               <div className="flex flex-col gap-2 w-full md:w-auto md:min-w-[380px]">
@@ -372,6 +405,89 @@ export function TaxCalculatorForm() {
           </Button>
         </div>
       </form>
+
+      <div className="mt-10">
+        <div className="mb-4 text-2xl font-extrabold text-[#000E47] flex items-center gap-3">
+          <IconChartBar className="!w-4 !h-4" stroke={3} />
+          Your Results
+        </div>
+
+        <div className="bg-white rounded-lg border border-[#38BB3F] shadow-md p-4 space-y-4 md:p-0 md:space-y-0 md:overflow-x-auto">
+          {/* Mobile stacked cards */}
+          <div className="flex flex-col gap-2 md:hidden">
+            {[
+              {
+                title: "Gross Monthly/Weekly Income",
+                values: ["0.00", "0.00", "0.00"],
+              },
+              { title: "Fenero Fee", values: ["0.00", "0.00", "0.00"] },
+              { title: "Monthly Net Pay", values: ["0.00", "0.00", "0.00"] },
+            ].map((row, idx) => (
+              <div
+                key={idx}
+                className="border-t border-[#CEEED6] rounded-lg p-3 bg-gray-50 flex flex-col gap-2"
+              >
+                {/* Row title */}
+                <div className="font-medium text-gray-700">{row.title}</div>
+
+                {/* Stacked values */}
+                <div className="flex flex-col gap-1 text-gray-900">
+                  <span>
+                    <b>Umbrella PAYE:</b> {row.values[0]}
+                  </span>
+                  <span>
+                    <b>Umbrella Director / PSC:</b> {row.values[1]}
+                  </span>
+                  <span>
+                    <b>Current Salary:</b> {row.values[2]}
+                  </span>
+                </div>
+              </div>
+            ))}
+          </div>
+
+          {/* Desktop table */}
+          <div className="hidden md:block">
+            <table className="min-w-full text-sm">
+              <thead className="bg-gray-100">
+                <tr>
+                  <th className="px-4 py-4 text-left"></th>
+                  <th className="px-4 py-4 text-left">Umbrella PAYE</th>
+                  <th className="px-4 py-4 text-left">
+                    Umbrella Director / PSC
+                  </th>
+                  <th className="px-4 py-4 text-left">Current Salary</th>
+                </tr>
+              </thead>
+
+              <tbody>
+                <tr className="border-t border-[#CEEED6]">
+                  <td className="px-4 py-4 font-medium">
+                    Gross Monthly/Weekly Income
+                  </td>
+                  <td className="px-4 py-4">0.00</td>
+                  <td className="px-4 py-4">0.00</td>
+                  <td className="px-4 py-4">0.00</td>
+                </tr>
+
+                <tr className="border-t border-[#CEEED6]">
+                  <td className="px-4 py-4 font-medium">Fenero Fee</td>
+                  <td className="px-4 py-4">0.00</td>
+                  <td className="px-4 py-4">0.00</td>
+                  <td className="px-4 py-4">0.00</td>
+                </tr>
+
+                <tr className="border-t border-[#CEEED6]">
+                  <td className="px-4 py-4 font-medium">Monthly Net Pay</td>
+                  <td className="px-4 py-4">0.00</td>
+                  <td className="px-4 py-4">0.00</td>
+                  <td className="px-4 py-4">0.00</td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+      </div>
     </Form>
   );
 }

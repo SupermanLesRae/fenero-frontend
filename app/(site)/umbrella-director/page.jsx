@@ -27,7 +27,10 @@ export default async function Page() {
   return (
     <div>
       {data?.heroBy?.herosCoreFields && (
-        <Hero data={data.heroBy.herosCoreFields.heroSlide} />
+        <Hero
+          data={data.heroBy.herosCoreFields.heroSlide}
+          scrollToId={"callBack"}
+        />
       )}
       <ImageTextSections section={section} />
       <CostInfo section={section} />
@@ -35,7 +38,9 @@ export default async function Page() {
       <ImportantDetails section={section} />
       <NextSteps section={section} />
       <FAQs section={section} />
-      <CallBackRequest />
+      <div id="callBack">
+        <CallBackRequest />
+      </div>
       <KnowledgeHub section={section} />
     </div>
   );

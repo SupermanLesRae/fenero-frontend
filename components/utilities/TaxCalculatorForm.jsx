@@ -23,11 +23,8 @@ import {
 import { useState } from "react";
 import { IconCalculator } from "@tabler/icons-react";
 import { Spinner } from "../ui/spinner";
-import { ChartBarIcon } from "lucide-react";
-import { ChartBar } from "lucide-react";
 import { IconChartBar } from "@tabler/icons-react";
-import { IconChartBarOff } from "@tabler/icons-react";
-import { IconChartBarPopular } from "@tabler/icons-react";
+import { useEffect } from "react";
 
 const REQUIRED = "* Required";
 
@@ -44,7 +41,7 @@ const numberRequired = z
   .transform((v) => Number(v));
 
 const schema = z.object({
-  dailyRate: numberRequired.refine((v) => v >= 0, { message: REQUIRED }),
+  dailyRate: z.preprocess((val) => Number(val), z.number().min(0, REQUIRED)),
 
   workDays: z.number().min(1, REQUIRED),
 
@@ -69,12 +66,16 @@ const schema = z.object({
 });
 
 export function TaxCalculatorForm() {
-  const [result, setResult] = useState(null);
+  const [results, setResults] = useState({
+    grossIncome: ["1.00", "4.00", "7.00"],
+    feneroFee: ["2.00", "5.00", "8.00"],
+    netPay: ["3.00", "6.00", "9.00"],
+  });
   const [loading, setLoading] = useState(false);
   const form = useForm({
     resolver: zodResolver(schema),
     defaultValues: {
-      dailyRate: "",
+      dailyRate: 450,
       workDays: 20,
       payFrequency: "monthly",
       maritalStatus: "single",
@@ -86,7 +87,7 @@ export function TaxCalculatorForm() {
 
   const onSubmit = async (data) => {
     setLoading(true);
-    setResult(null);
+    //setResults(null);
 
     // Map form data to API payload
     const payload = {
@@ -94,24 +95,21 @@ export function TaxCalculatorForm() {
       days_worked: Number(data.workDays),
       payment_frequency: data.payFrequency,
       marital_status: data.maritalStatus,
-      pension_contribution: Number(data.pensionContribution),
+      pension_contribution: Number(data.pensionContribution || 0),
       expenses: Number(data.businessExpenses),
-      current_annual_salary: Number(data.currentSalary),
+      current_annual_salary: Number(data.currentSalary || 0),
     };
 
     console.log(payload);
 
     try {
-      const response = await fetch(
-        "https://mentis.myfenero.ie/api/tax-calculator",
-        {
-          method: "POST",
-          headers: {
-            "Content-Type": "application/json",
-          },
-          body: JSON.stringify(payload),
+      const response = await fetch(process.env.NEXT_PUBLIC_TAX_URL, {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
         },
-      );
+        body: JSON.stringify(payload),
+      });
 
       if (!response.ok) {
         throw new Error(`Error: ${response.status}`);
@@ -127,6 +125,18 @@ export function TaxCalculatorForm() {
       setLoading(false);
     }
   };
+
+  const payFrequency = form.watch("payFrequency");
+
+  useEffect(() => {
+    if (payFrequency === "monthly") {
+      form.setValue("workDays", 20);
+      form.setValue("businessExpenses", 300);
+    } else if (payFrequency === "weekly") {
+      form.setValue("workDays", 5);
+      form.setValue("businessExpenses", 75);
+    }
+  }, [payFrequency, form]);
 
   return (
     <Form {...form}>
@@ -418,21 +428,21 @@ export function TaxCalculatorForm() {
             {[
               {
                 title: "Gross Monthly/Weekly Income",
-                values: ["0.00", "0.00", "0.00"],
+                values: results.grossIncome,
               },
               {
                 title: `
-    Fenero Fee <br/>
-    <div class="text-xs">(All inclusive & tax deductible)</div>
-  `,
-                values: ["0.00", "0.00", "0.00"],
+      Fenero Fee <br/>
+      <div class="text-xs">(All inclusive & tax deductible)</div>
+    `,
+                values: results.feneroFee,
               },
               {
                 title: `
-    Monthly Net Pay <br/>
-    <div class="text-xs">(including pension contribution)*</div>
-  `,
-                values: ["0.00", "0.00", "0.00"],
+      Monthly Net Pay <br/>
+      <div class="text-xs">(including pension contribution)*</div>
+    `,
+                values: results.netPay,
               },
             ].map((row, idx) => (
               <div
@@ -476,15 +486,20 @@ export function TaxCalculatorForm() {
               </thead>
 
               <tbody>
+                {/* Gross */}
                 <tr className="border-t border-[#CEEED6] text-center">
                   <td className="px-4 py-4 text-left">
                     Gross Monthly/Weekly Income
                   </td>
-                  <td className="px-4 py-4 text-sm">&euro;0.00</td>
-                  <td className="px-4 py-4 text-sm">&euro;0.00</td>
-                  <td className="px-4 py-4 text-sm">&euro;0.00</td>
+
+                  {results.grossIncome.map((value, i) => (
+                    <td key={i} className="px-4 py-4 text-sm">
+                      &euro;{value}
+                    </td>
+                  ))}
                 </tr>
 
+                {/* Fenero Fee */}
                 <tr className="border-t border-[#CEEED6] text-center">
                   <td className="px-4 py-4 text-left">
                     Fenero Fee
@@ -493,11 +508,15 @@ export function TaxCalculatorForm() {
                       (All inclusive & tax deductible)
                     </div>
                   </td>
-                  <td className="px-4 py-4 text-sm">&euro;0.00</td>
-                  <td className="px-4 py-4 text-sm">&euro;0.00</td>
-                  <td className="px-4 py-4 text-sm">&euro;0.00</td>
+
+                  {results.feneroFee.map((value, i) => (
+                    <td key={i} className="px-4 py-4 text-sm">
+                      &euro;{value}
+                    </td>
+                  ))}
                 </tr>
 
+                {/* Net Pay */}
                 <tr className="border-t border-[#CEEED6] text-center">
                   <td className="px-4 py-4 font-bold text-left text-lg leading-0.5 pt-7">
                     Monthly Net Pay
@@ -506,9 +525,12 @@ export function TaxCalculatorForm() {
                       (including pension contribution)*
                     </div>
                   </td>
-                  <td className="px-4 py-4 font-bold text-lg">&euro;0.00</td>
-                  <td className="px-4 py-4 font-bold text-lg">&euro;0.00</td>
-                  <td className="px-4 py-4 font-bold text-lg">&euro;0.00</td>
+
+                  {results.netPay.map((value, i) => (
+                    <td key={i} className="px-4 py-4 font-bold text-lg">
+                      &euro;{value}
+                    </td>
+                  ))}
                 </tr>
               </tbody>
             </table>

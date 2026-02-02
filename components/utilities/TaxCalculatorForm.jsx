@@ -480,9 +480,9 @@ export function TaxCalculatorForm() {
                   <td className="px-4 py-4 text-left">
                     Gross Monthly/Weekly Income
                   </td>
-                  <td className="px-4 py-4 font-bold">&euro;0.00</td>
-                  <td className="px-4 py-4 font-bold">&euro;0.00</td>
-                  <td className="px-4 py-4 font-bold">&euro;0.00</td>
+                  <td className="px-4 py-4 text-sm">&euro;0.00</td>
+                  <td className="px-4 py-4 text-sm">&euro;0.00</td>
+                  <td className="px-4 py-4 text-sm">&euro;0.00</td>
                 </tr>
 
                 <tr className="border-t border-[#CEEED6] text-center">
@@ -493,22 +493,22 @@ export function TaxCalculatorForm() {
                       (All inclusive & tax deductible)
                     </div>
                   </td>
-                  <td className="px-4 py-4 font-bold">&euro;0.00</td>
-                  <td className="px-4 py-4 font-bold">&euro;0.00</td>
-                  <td className="px-4 py-4 font-bold">&euro;0.00</td>
+                  <td className="px-4 py-4 text-sm">&euro;0.00</td>
+                  <td className="px-4 py-4 text-sm">&euro;0.00</td>
+                  <td className="px-4 py-4 text-sm">&euro;0.00</td>
                 </tr>
 
                 <tr className="border-t border-[#CEEED6] text-center">
-                  <td className="px-4 py-4 font-bold text-left">
+                  <td className="px-4 py-4 font-bold text-left text-lg leading-0.5 pt-7">
                     Monthly Net Pay
                     <br />
-                    <div className="text-xs">
+                    <div className="text-sm mt-2">
                       (including pension contribution)*
                     </div>
                   </td>
-                  <td className="px-4 py-4 font-bold">&euro;0.00</td>
-                  <td className="px-4 py-4 font-bold">&euro;0.00</td>
-                  <td className="px-4 py-4 font-bold">&euro;0.00</td>
+                  <td className="px-4 py-4 font-bold text-lg">&euro;0.00</td>
+                  <td className="px-4 py-4 font-bold text-lg">&euro;0.00</td>
+                  <td className="px-4 py-4 font-bold text-lg">&euro;0.00</td>
                 </tr>
               </tbody>
             </table>

@@ -45,7 +45,7 @@ export default function TrueSizeGridGallery({ images, square }) {
               <button
                 key={i}
                 onClick={() => setIndex(i)}
-                className="relative w-full rounded-lg overflow-hidden focus:outline-none"
+                className="relative w-full rounded-[20] overflow-hidden focus:outline-none"
                 style={{ paddingBottom: `${paddingPercent}%` }}
               >
                 <Image

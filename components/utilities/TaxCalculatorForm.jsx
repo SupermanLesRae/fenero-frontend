@@ -457,14 +457,14 @@ export function TaxCalculatorForm() {
                   {/* Row title */}
                   <div
                     dangerouslySetInnerHTML={{ __html: row.title }}
-                    className={` text-[#000E47] my-2 pb-2 ${
+                    className={` text-[#6b0071] my-2 pb-2 ${
                       isLast ? "text-md" : "text-sm"
                     }`}
                   ></div>
 
                   {/* Stacked values */}
                   <div
-                    className={`flex flex-col gap-1  text-[#000E47] ${
+                    className={`flex flex-col gap-1  text-[#6b0071] ${
                       isLast ? "text-sm" : "text-xs"
                     }`}
                   >
@@ -535,7 +535,7 @@ export function TaxCalculatorForm() {
                 </tr>
 
                 {/* Net Pay */}
-                <tr className="border-t border-[#CEEED6] text-center">
+                <tr className="border-t border-[#CEEED6] text-[#6b0071] text-center">
                   <td className="px-4 py-4 font-bold text-left text-lg leading-0.5 pt-7">
                     Monthly Net Pay
                     <br />

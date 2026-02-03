@@ -27,10 +27,7 @@ export default async function Page() {
   return (
     <div>
       {data?.heroBy?.herosCoreFields && (
-        <Hero
-          data={data.heroBy.herosCoreFields.heroSlide}
-          scrollToId={"callBack"}
-        />
+        <Hero data={data.heroBy.herosCoreFields.heroSlide} />
       )}
       <ImageTextSections section={section} />
       <CostInfo section={section} />

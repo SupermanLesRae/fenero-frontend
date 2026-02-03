@@ -28,10 +28,7 @@ export default async function Page() {
   return (
     <div>
       {data?.heroBy?.herosCoreFields && (
-        <Hero
-          data={data.heroBy.herosCoreFields.heroSlide}
-          scrollToId={"callBack"}
-        />
+        <Hero data={data.heroBy.herosCoreFields.heroSlide} />
       )}
       <AboutContracting section={section} />
       <ContactInfo section={section} bgColor={"#ffffff"} />

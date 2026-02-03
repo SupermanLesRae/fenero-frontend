@@ -13,7 +13,7 @@ import { useCallback, useEffect, useState } from "react";
 import useEmblaCarousel from "embla-carousel-react";
 import Image from "next/image";
 
-export default function Hero({ data, scrollToId = null }) {
+export default function Hero({ data }) {
   const [emblaRef, emblaApi] = useEmblaCarousel({
     loop: true,
     align: "start",
@@ -59,6 +59,7 @@ export default function Hero({ data, scrollToId = null }) {
       window.removeEventListener("resize", onResize);
     };
   }, [emblaApi, updateDots]);
+
   return (
     <section className="bg-[#000E47] lg:max-h-[640px]">
       <motion.section
@@ -72,6 +73,17 @@ export default function Hero({ data, scrollToId = null }) {
           <div ref={emblaRef} className="overflow-hidden ">
             <div className="flex lg:max-h-[640px]">
               {data.map((item, index) => {
+                const hasHash = item?.cta?.link?.includes("#");
+                const hash = hasHash ? item.cta.link.split("#")[1] : null;
+
+                const handleSmoothScroll = (e) => {
+                  e.preventDefault();
+                  if (!hash) return;
+
+                  const el = document.getElementById(hash);
+                  if (el) el.scrollIntoView({ behavior: "smooth" });
+                };
+
                 return (
                   <div
                     key={"aboutHeroSlide" + index}
@@ -100,46 +112,42 @@ export default function Hero({ data, scrollToId = null }) {
                           className=" font-medium text-[17px] leading-7 tracking-[0.15px] text-[#ffffff] mb-6 lg:pr-10"
                         ></p>
 
-                        {item.hasCta && !scrollToId ? (
-                          <div className="flex flex-wrap gap-6">
-                            <Link
-                              className="w-full lg:w-auto"
-                              href={item.cta?.link || "#"}
-                            >
-                              <Button
-                                size="lg"
-                                className="bg-[#AFCE67] hover:bg-[#D1DF20] text-[#000E47] cursor-pointer w-full lg:w-auto transition shadow-md shadow-[#AFCE67]/30 hover:shadow-[#AFCE67]/10 flex items-center justify-center"
+                        {item.hasCta && (
+                          <div className="flex flex-wrap gap-6 justify-start">
+                            {" "}
+                            {/* container aligns left */}
+                            {!hasHash ? (
+                              <Link
+                                href={item.cta?.link || "#"}
+                                className="w-auto"
                               >
-                                <span className="font-bold text-[16px]">
-                                  {item.cta.label}
-                                </span>
-                                <IconArrowRight stroke={2} className="ml-2" />
-                              </Button>
-                            </Link>
-                          </div>
-                        ) : (
-                          <div className="flex  flex-wrap gap-6">
-                            <a
-                              className="w-full lg:w-auto"
-                              onClick={(e) => {
-                                e.preventDefault(); // prevent the default jump
-                                if (scrollToId) {
-                                  const el =
-                                    document.getElementById(scrollToId);
-                                  el?.scrollIntoView({ behavior: "smooth" });
-                                }
-                              }}
-                            >
-                              <Button
-                                size="lg"
-                                className="bg-[#AFCE67] hover:bg-[#D1DF20] text-[#000E47] cursor-pointer w-full lg:w-auto transition shadow-md shadow-[#AFCE67]/30 hover:shadow-[#AFCE67]/10 flex items-center justify-center"
+                                <Button
+                                  size="lg"
+                                  className="bg-[#AFCE67] hover:bg-[#D1DF20] text-[#000E47] cursor-pointer transition shadow-md shadow-[#AFCE67]/30 hover:shadow-[#AFCE67]/10 flex items-center gap-2"
+                                >
+                                  <span className="font-bold text-[16px]">
+                                    {item.cta.label}
+                                  </span>
+                                  <IconArrowRight stroke={2} className="ml-2" />
+                                </Button>
+                              </Link>
+                            ) : (
+                              <a
+                                href={item.cta.link}
+                                onClick={handleSmoothScroll}
+                                className="w-auto"
                               >
-                                <span className="font-bold text-[16px]">
-                                  {item.cta.label}
-                                </span>
-                                <IconArrowRight stroke={2} className="ml-2" />
-                              </Button>
-                            </a>
+                                <Button
+                                  size="lg"
+                                  className="bg-[#AFCE67] hover:bg-[#D1DF20] text-[#000E47] cursor-pointer transition shadow-md shadow-[#AFCE67]/30 hover:shadow-[#AFCE67]/10 flex items-center gap-2"
+                                >
+                                  <span className="font-bold text-[16px]">
+                                    {item.cta.label}
+                                  </span>
+                                  <IconArrowRight stroke={2} className="ml-2" />
+                                </Button>
+                              </a>
+                            )}
                           </div>
                         )}
                       </div>

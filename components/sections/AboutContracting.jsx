@@ -21,7 +21,7 @@ export async function AboutContracting({ section }) {
   // Extract only getStartedStepsCoreFields from matched nodes
   const results = matchedNodes.map((node) => node.aboutContractingFields);
 
-  if (!results[0] || results.length > 0) return null;
+  if (!results[0] || results.length === 0) return null;
 
   return (
     <div className="pb-20 bg-[#ECF8EF] h-auto">

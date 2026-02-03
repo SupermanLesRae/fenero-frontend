@@ -444,35 +444,53 @@ export function TaxCalculatorForm() {
     `,
                 values: results.netPay,
               },
-            ].map((row, idx) => (
-              <div
-                key={idx}
-                className="border-t border-[#CEEED6] rounded-lg p-3 bg-gray-50 flex flex-col gap-2"
-              >
-                {/* Row title */}
-                <div
-                  dangerouslySetInnerHTML={{ __html: row.title }}
-                  className="font-bold text-md text-gray-700"
-                ></div>
+            ].map((row, idx, arr) => {
+              const isLast = idx === arr.length - 1;
 
-                {/* Stacked values */}
-                <div className="flex flex-col gap-1 text-sm text-gray-900">
-                  <span>
-                    <b>Umbrella PAYE:</b> &euro;{row.values[0]}
-                  </span>
-                  <span>
-                    <b>Umbrella Director / PSC:</b> &euro;{row.values[1]}
-                  </span>
-                  <span>
-                    <b>Current Salary:</b> &euro;{row.values[2]}
-                  </span>
+              return (
+                <div
+                  key={idx}
+                  className={`border border-[#CEEED6] rounded-lg p-4 bg-gray-50 flex flex-col gap-2 ${
+                    isLast ? "font-bold" : ""
+                  }`}
+                >
+                  {/* Row title */}
+                  <div
+                    dangerouslySetInnerHTML={{ __html: row.title }}
+                    className={` text-[#000E47] my-2 pb-2 ${
+                      isLast ? "text-md" : "text-sm"
+                    }`}
+                  ></div>
+
+                  {/* Stacked values */}
+                  <div
+                    className={`flex flex-col gap-1  text-[#000E47] ${
+                      isLast ? "text-sm" : "text-xs"
+                    }`}
+                  >
+                    <span>
+                      <span className="font-bold">Umbrella PAYE:</span> &euro;
+                      {row.values[0]}
+                    </span>
+                    <span>
+                      <span className="font-bold">
+                        Umbrella Director / PSC:
+                      </span>{" "}
+                      &euro;
+                      {row.values[1]}
+                    </span>
+                    <span>
+                      <span className="font-bold">Current Salary:</span> &euro;
+                      {row.values[2]}
+                    </span>
+                  </div>
                 </div>
-              </div>
-            ))}
+              );
+            })}
           </div>
 
           {/* Desktop table */}
-          <div className="hidden md:block">
+          <div className="hidden md:block ">
             <table className="min-w-full text-md">
               <thead className="bg-gray-100">
                 <tr>

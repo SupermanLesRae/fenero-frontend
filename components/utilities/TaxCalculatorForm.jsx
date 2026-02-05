@@ -53,6 +53,7 @@ export function TaxCalculatorForm() {
     feneroFee: ["2.00", "5.00", "8.00"],
     netPay: ["3.00", "6.00", "9.00"],
   });
+  const [hasCalculated, setHasCalculated] = useState(false);
   const [loading, setLoading] = useState(false);
   const form = useForm({
     resolver: zodResolver(schema),
@@ -80,7 +81,7 @@ export function TaxCalculatorForm() {
       current_annual_salary: +Number(data.currentSalary || 0).toFixed(2),
     };
 
-    console.log(payload);
+    // console.log(payload);
 
     try {
       const response = await fetch(process.env.NEXT_PUBLIC_TAX_URL, {
@@ -96,7 +97,7 @@ export function TaxCalculatorForm() {
       }
 
       const resultData = await response.json();
-      console.log("API result:", resultData);
+      //console.log("API result:", resultData);
       const formattedResults = {
         grossIncome: [
           resultData.employee_calculation.taxable_income, // Umbrella PAYE
@@ -116,6 +117,7 @@ export function TaxCalculatorForm() {
       };
 
       setResults(formattedResults);
+      setHasCalculated(true);
     } catch (error) {
       console.error(error);
       alert("Failed to calculate tax.");
@@ -439,154 +441,160 @@ export function TaxCalculatorForm() {
           >
             {loading && <Spinner size={20} />}
             <IconCalculator className="!w-5 !h-5" stroke={3} />
-            {loading ? "Submitting..." : "Calculate Now"}
+            {loading
+              ? "Submitting..."
+              : hasCalculated
+                ? "Recalculate"
+                : "Calculate Now"}
           </Button>
         </div>
       </form>
 
-      <div className="mt-10">
-        <div className="mb-4 text-2xl font-extrabold text-[#000E47] flex items-center gap-3">
-          <IconChartBar className="!w-4 !h-4" stroke={3} />
-          Your Results
-        </div>
+      {hasCalculated && (
+        <div className="mt-10">
+          <div className="mb-4 text-2xl font-extrabold text-[#000E47] flex items-center gap-3">
+            <IconChartBar className="!w-4 !h-4" stroke={3} />
+            Your Results
+          </div>
 
-        <div className="bg-white rounded-lg border border-[#38BB3F] shadow-md p-4 space-y-4 md:p-0 md:space-y-0 md:overflow-x-auto">
-          {/* Mobile stacked cards */}
-          <div className="flex flex-col gap-2 md:hidden">
-            {[
-              {
-                title: "Gross Monthly/Weekly Income",
-                values: results.grossIncome,
-              },
-              {
-                title: `
+          <div className="bg-white rounded-lg border border-[#38BB3F] shadow-md p-4 space-y-4 md:p-0 md:space-y-0 md:overflow-x-auto">
+            {/* Mobile stacked cards */}
+            <div className="flex flex-col gap-2 md:hidden">
+              {[
+                {
+                  title: "Gross Monthly/Weekly Income",
+                  values: results.grossIncome,
+                },
+                {
+                  title: `
         Fenero Fee <br/>
         <div class="text-xs">(All inclusive & tax deductible)</div>
       `,
-                values: results.feneroFee,
-              },
-              {
-                title: `
+                  values: results.feneroFee,
+                },
+                {
+                  title: `
         Monthly Net Pay <br/>
         <div class="text-xs">(including pension contribution)*</div>
       `,
-                values: results.netPay,
-              },
-            ].map((row, idx, arr) => {
-              const isLast = idx === arr.length - 1;
+                  values: results.netPay,
+                },
+              ].map((row, idx, arr) => {
+                const isLast = idx === arr.length - 1;
 
-              // Helper to format values consistently
-              const formatValue = (v) => (v ? `€ ${v}` : "-");
+                // Helper to format values consistently
+                const formatValue = (v) => (v ? `€ ${v}` : "-");
 
-              return (
-                <div
-                  key={idx}
-                  className={`border border-[#CEEED6] rounded-lg p-4 bg-gray-50 flex flex-col gap-2 ${
-                    isLast ? "font-bold" : ""
-                  }`}
-                >
-                  {/* Row title */}
+                return (
                   <div
-                    dangerouslySetInnerHTML={{ __html: row.title }}
-                    className={`my-2 pb-2 ${
-                      isLast ? "text-md text-[#6b0071]" : "text-sm"
-                    }`}
-                  ></div>
-
-                  {/* Stacked values */}
-                  <div
-                    className={`flex flex-col gap-1 ${
-                      isLast ? "text-sm text-[#6b0071]" : "text-xs"
+                    key={idx}
+                    className={`border border-[#CEEED6] rounded-lg p-4 bg-gray-50 flex flex-col gap-2 ${
+                      isLast ? "font-bold" : ""
                     }`}
                   >
-                    <span>
-                      <span className="font-bold">Umbrella PAYE:</span>{" "}
-                      {formatValue(row.values[0])}
-                    </span>
+                    {/* Row title */}
+                    <div
+                      dangerouslySetInnerHTML={{ __html: row.title }}
+                      className={`my-2 pb-2 ${
+                        isLast ? "text-md text-[#6b0071]" : "text-sm"
+                      }`}
+                    ></div>
 
-                    <span>
-                      <span className="font-bold">
-                        Umbrella Director / PSC:
+                    {/* Stacked values */}
+                    <div
+                      className={`flex flex-col gap-1 ${
+                        isLast ? "text-sm text-[#6b0071]" : "text-xs"
+                      }`}
+                    >
+                      <span>
+                        <span className="font-bold">Umbrella PAYE:</span>{" "}
+                        {formatValue(row.values[0])}
                       </span>
-                      {formatValue(row.values[1])}
-                    </span>
 
-                    <span>
-                      <span className="font-bold">Current Salary:</span>{" "}
-                      {formatValue(row.values[2])}
-                    </span>
+                      <span>
+                        <span className="font-bold">
+                          Umbrella Director / PSC:
+                        </span>
+                        {formatValue(row.values[1])}
+                      </span>
+
+                      <span>
+                        <span className="font-bold">Current Salary:</span>{" "}
+                        {formatValue(row.values[2])}
+                      </span>
+                    </div>
                   </div>
-                </div>
-              );
-            })}
-          </div>
+                );
+              })}
+            </div>
 
-          {/* Desktop table */}
-          <div className="hidden md:block ">
-            <table className="min-w-full text-md">
-              <thead className="bg-gray-100">
-                <tr>
-                  <th className="px-4 py-4 text-left"></th>
-                  <th className="px-4 py-4 text-left">Umbrella PAYE</th>
-                  <th className="px-4 py-4 text-left">
-                    Umbrella Director / PSC
-                  </th>
-                  <th className="px-4 py-4 text-left">Current Salary</th>
-                </tr>
-              </thead>
+            {/* Desktop table */}
+            <div className="hidden md:block ">
+              <table className="min-w-full text-md">
+                <thead className="bg-gray-100">
+                  <tr>
+                    <th className="px-4 py-4 text-left"></th>
+                    <th className="px-4 py-4 text-left">Umbrella PAYE</th>
+                    <th className="px-4 py-4 text-left">
+                      Umbrella Director / PSC
+                    </th>
+                    <th className="px-4 py-4 text-left">Current Salary</th>
+                  </tr>
+                </thead>
 
-              <tbody>
-                {/* Gross */}
-                <tr className="border-t border-[#CEEED6] text-center">
-                  <td className="px-4 py-4 text-left">
-                    Gross Monthly/Weekly Income
-                  </td>
-
-                  {results.grossIncome.map((value, i) => (
-                    <td key={i} className="px-4 py-4 text-sm">
-                      {value ? `€ ${value}` : "—"}
+                <tbody>
+                  {/* Gross */}
+                  <tr className="border-t border-[#CEEED6] text-center">
+                    <td className="px-4 py-4 text-left">
+                      Gross Monthly/Weekly Income
                     </td>
-                  ))}
-                </tr>
 
-                {/* Fenero Fee */}
-                <tr className="border-t border-[#CEEED6] text-center">
-                  <td className="px-4 py-4 text-left">
-                    Fenero Fee
-                    <br />
-                    <div className="text-xs">
-                      (All inclusive & tax deductible)
-                    </div>
-                  </td>
+                    {results.grossIncome.map((value, i) => (
+                      <td key={i} className="px-4 py-4 text-sm">
+                        {value ? `€ ${value}` : "—"}
+                      </td>
+                    ))}
+                  </tr>
 
-                  {results.feneroFee.map((value, i) => (
-                    <td key={i} className="px-4 py-4 text-sm">
-                      {value ? `€ ${value}` : "—"}
+                  {/* Fenero Fee */}
+                  <tr className="border-t border-[#CEEED6] text-center">
+                    <td className="px-4 py-4 text-left">
+                      Fenero Fee
+                      <br />
+                      <div className="text-xs">
+                        (All inclusive & tax deductible)
+                      </div>
                     </td>
-                  ))}
-                </tr>
 
-                {/* Net Pay */}
-                <tr className="border-t border-[#CEEED6] text-[#6b0071] text-center">
-                  <td className="px-4 py-4 font-bold text-left text-lg leading-0.5 pt-7">
-                    Monthly Net Pay
-                    <br />
-                    <div className="text-sm mt-2">
-                      (including pension contribution)*
-                    </div>
-                  </td>
+                    {results.feneroFee.map((value, i) => (
+                      <td key={i} className="px-4 py-4 text-sm">
+                        {value ? `€ ${value}` : "—"}
+                      </td>
+                    ))}
+                  </tr>
 
-                  {results.netPay.map((value, i) => (
-                    <td key={i} className="px-4 py-4 font-bold text-lg">
-                      {value ? `€ ${value}` : "—"}
+                  {/* Net Pay */}
+                  <tr className="border-t border-[#CEEED6] text-[#6b0071] text-center">
+                    <td className="px-4 py-4 font-bold text-left text-lg leading-0.5 pt-7">
+                      Monthly Net Pay
+                      <br />
+                      <div className="text-sm mt-2">
+                        (including pension contribution)*
+                      </div>
                     </td>
-                  ))}
-                </tr>
-              </tbody>
-            </table>
+
+                    {results.netPay.map((value, i) => (
+                      <td key={i} className="px-4 py-4 font-bold text-lg">
+                        {value ? `€ ${value}` : "—"}
+                      </td>
+                    ))}
+                  </tr>
+                </tbody>
+              </table>
+            </div>
           </div>
         </div>
-      </div>
+      )}
     </Form>
   );
 }

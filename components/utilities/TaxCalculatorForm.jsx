@@ -90,15 +90,7 @@ export function TaxCalculatorForm() {
         headers: {
           "Content-Type": "application/json",
         },
-        body: {
-          daily_rate: 450.0,
-          days_worked: 20,
-          payment_frequency: "monthly",
-          marital_status: "single_or_separated_or_divorced",
-          pension_contribution: 350.0,
-          expenses: 125.0,
-          current_salary: 1000.0,
-        },
+        body: JSON.stringify(payload),
       });
 
       if (!response.ok) {
@@ -107,7 +99,7 @@ export function TaxCalculatorForm() {
 
       const resultData = await response.json();
       console.log("API result:", resultData);
-      setResult(resultData); // adjust if the API returns a specific property
+      setResults(resultData); // adjust if the API returns a specific property
     } catch (error) {
       console.error(error);
       alert("Failed to calculate tax.");

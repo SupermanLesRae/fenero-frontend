@@ -476,7 +476,7 @@ export function TaxCalculatorForm() {
               const isLast = idx === arr.length - 1;
 
               // Helper to format values consistently
-              const formatValue = (v) => (v ? `€${v}` : "—");
+              const formatValue = (v) => (v ? `€ ${v}` : "-");
 
               return (
                 <div
@@ -544,7 +544,7 @@ export function TaxCalculatorForm() {
 
                   {results.grossIncome.map((value, i) => (
                     <td key={i} className="px-4 py-4 text-sm">
-                      {value ? `€${value}` : "—"}
+                      {value ? `€ ${value}` : "—"}
                     </td>
                   ))}
                 </tr>
@@ -561,7 +561,7 @@ export function TaxCalculatorForm() {
 
                   {results.feneroFee.map((value, i) => (
                     <td key={i} className="px-4 py-4 text-sm">
-                      {value ? `€${value}` : "—"}
+                      {value ? `€ ${value}` : "—"}
                     </td>
                   ))}
                 </tr>
@@ -578,7 +578,7 @@ export function TaxCalculatorForm() {
 
                   {results.netPay.map((value, i) => (
                     <td key={i} className="px-4 py-4 font-bold text-lg">
-                      &euro;{value}
+                      {value ? `€ ${value}` : "—"}
                     </td>
                   ))}
                 </tr>

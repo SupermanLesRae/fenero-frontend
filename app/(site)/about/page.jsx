@@ -12,6 +12,7 @@ export const revalidate = 60; // ✅ ISR caching
 
 export default async function Page() {
   const slug = "about-us";
+  const section = "about us";
 
   const client = createApolloClient();
   const { data } = await client.query({
@@ -25,7 +26,7 @@ export default async function Page() {
       {data?.heroBy?.herosCoreFields && (
         <Hero data={data.heroBy.herosCoreFields.heroSlide} />
       )}
-      <Partner />
+      <Partner section={section} />
       <Founder />
       <OurValues />
       <SocialImpact />

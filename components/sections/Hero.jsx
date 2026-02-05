@@ -61,7 +61,7 @@ export default function Hero({ data }) {
   }, [emblaApi, updateDots]);
 
   return (
-    <section className="bg-[#000E47] lg:max-h-[640px]">
+    <section className="bg-[#000E47] h-auto lg:max-h-[640px] ">
       <motion.section
         className="relative w-full lg:max-h-[640px] m-0 bg-[#000E47]"
         initial={{ opacity: 0, y: 0 }}
@@ -69,9 +69,9 @@ export default function Hero({ data }) {
         viewport={{ once: true, margin: "-100px" }}
         transition={{ duration: 0.3, ease: "easeOut" }}
       >
-        <div className="relative max-w-500 mx-auto lg:max-h-[640px]">
+        <div className="relative max-w-500 mx-auto h-auto lg:max-h-[640px]">
           <div ref={emblaRef} className="overflow-hidden ">
-            <div className="flex lg:max-h-[640px]">
+            <div className="flex h-auto lg:max-h-[640px]">
               {data.map((item, index) => {
                 const hasHash = item?.cta?.link?.includes("#");
                 const hash = hasHash ? item.cta.link.split("#")[1] : null;
@@ -87,35 +87,33 @@ export default function Hero({ data }) {
                 return (
                   <div
                     key={"aboutHeroSlide" + index}
-                    className="flex-[0_0_100%] relative flex flex-col lg:flex-row xl:items-center select-none min-h-0 h-auto lg:h-[640px] portrait:min-h-0 overflow-y-hidden lg:max-h-[640px]"
+                    className="flex-[0_0_100%] relative flex flex-col lg:flex-row xl:items-center select-none h-auto lg:h-[640px] portrait:min-h-0 overflow-y-hidden lg:max-h-[640px]"
                   >
-                    <div className="w-full py-10 px-6 xl:p-20 lg:flex lg:items-center flex justify-center lg:justify-start z-1 mb-0 lg:mb-10 shadow-lg lg:shadow-none">
-                      <div className="text-center md:text-left md:max-w-[620px]">
-                        <h2
-                          className="mb-4 text-[35px] leading-9 md:text-[48px] md:leading-13 tracking-[0.15px] font-bold text-white "
-                          dangerouslySetInnerHTML={{
-                            __html: item.title,
-                          }}
-                        />
+                    <div className="w-full py-10 px-6 xl:p-20 lg:flex lg:items-center flex justify-center lg:justify-start z-1 mb-0 lg:mb-10 shadow-lg lg:shadow-none ">
+                      <div className="flex flex-col h-[calc(100vh-220px)] lg:h-auto md:text-left md:max-w-[620px] text-center">
+                        {/* Text content */}
+                        <div>
+                          <h2
+                            className="mb-4 text-[35px] leading-9 md:text-[48px] md:leading-13 tracking-[0.15px] font-bold text-white"
+                            dangerouslySetInnerHTML={{ __html: item.title }}
+                          />
 
-                        <p
-                          dangerouslySetInnerHTML={{
-                            __html: item.subTitle,
-                          }}
-                          className=" font-medium text-[18px] lg:text-[32px] text-bold leading-6 lg:leading-9 tracking-[0.15px] text-[#ffffff] mb-6 lg:pr-10"
-                        ></p>
+                          <p
+                            className="font-medium text-[18px] lg:text-[32px] font-bold leading-6 lg:leading-9 tracking-[0.15px] text-[#ffffff] mb-6 lg:pr-10"
+                            dangerouslySetInnerHTML={{ __html: item.subTitle }}
+                          ></p>
 
-                        <p
-                          dangerouslySetInnerHTML={{
-                            __html: item.description,
-                          }}
-                          className=" font-medium text-[17px] leading-7 tracking-[0.15px] text-[#ffffff] mb-6 lg:pr-10"
-                        ></p>
+                          <p
+                            className="font-medium text-[17px] leading-7 tracking-[0.15px] text-[#ffffff] mb-6 lg:pr-10"
+                            dangerouslySetInnerHTML={{
+                              __html: item.description,
+                            }}
+                          ></p>
+                        </div>
 
+                        {/* CTA pushed to bottom only on mobile */}
                         {item.hasCta && (
-                          <div className="flex flex-wrap gap-6 justify-start">
-                            {" "}
-                            {/* container aligns left */}
+                          <div className="mt-auto lg:mt-0 flex flex-wrap gap-6 justify-center lg:justify-start">
                             {!hasHash ? (
                               <Link
                                 href={item.cta?.link || "#"}

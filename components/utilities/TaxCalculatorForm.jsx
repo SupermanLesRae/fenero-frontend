@@ -469,15 +469,15 @@ export function TaxCalculatorForm() {
                   {/* Row title */}
                   <div
                     dangerouslySetInnerHTML={{ __html: row.title }}
-                    className={` text-[#6b0071] my-2 pb-2 ${
-                      isLast ? "text-md" : "text-sm"
+                    className={`  my-2 pb-2 ${
+                      isLast ? "text-md text-[#6b0071]" : "text-sm"
                     }`}
                   ></div>
 
                   {/* Stacked values */}
                   <div
-                    className={`flex flex-col gap-1  text-[#6b0071] ${
-                      isLast ? "text-sm" : "text-xs"
+                    className={`flex flex-col gap-1   ${
+                      isLast ? "text-sm text-[#6b0071]" : "text-xs"
                     }`}
                   >
                     <span>

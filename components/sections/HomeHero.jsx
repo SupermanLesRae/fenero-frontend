@@ -120,7 +120,7 @@ export default async function HomeHero() {
         <Image
           src={homeData.img.node.sourceUrl}
           alt="No alternative text provided"
-          className="max-w-163 w-[70%] h-auto object-cover object-right"
+          className="max-w-163 w-full lg:w-[70%] h-auto object-cover object-right"
           width={652}
           height={639}
           placeholder="blur"

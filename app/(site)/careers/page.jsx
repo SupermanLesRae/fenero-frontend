@@ -27,7 +27,7 @@ export default async function Page() {
       {data?.heroBy?.herosCoreFields && (
         <Hero data={data.heroBy.herosCoreFields.heroSlide} />
       )}
-      <Partner />
+      <Partner section={section} />
       <WhatWeOffer section={section} />
       <OurValues />
       <Roles customStyles={"min-w-auto rounded-md"} />

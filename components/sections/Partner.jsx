@@ -2,15 +2,29 @@ import { createApolloClient } from "@/lib/apolloClient";
 import { PARTNER_QUERY } from "@/lib/queries/Queries";
 import Image from "next/image";
 
-export async function Partner() {
+export async function Partner({ section }) {
   const client = createApolloClient();
+
+  // Fetch the data
   const { data } = await client.query({
     query: PARTNER_QUERY,
   });
 
-  const sectionData =
-    data.partnerWithUsSections.nodes[0].partnerWithUsCoreFields;
+  const searchText = section.toLowerCase(); // normalize sel
 
+  // Find the first node whose section includes sel
+  const matchedNode = data.partnerWithUsSections.nodes.find((node) => {
+    const sections = node.partnerWithUsCoreFields.section; // e.g. ['Home', 'New to Contracting']
+    return sections?.some((section) => section.toLowerCase() === searchText);
+  });
+
+  const result = matchedNode ? matchedNode.partnerWithUsCoreFields : null;
+
+  console.log("result", data);
+
+  const sectionData = result;
+
+  // Return null if nothing found
   if (!sectionData) return null;
 
   return (

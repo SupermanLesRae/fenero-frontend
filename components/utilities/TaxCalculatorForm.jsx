@@ -90,14 +90,14 @@ export function TaxCalculatorForm() {
         headers: {
           "Content-Type": "application/json",
         },
-        body: JSON.stringify({
+        body: {
           daily_rate: 450.0,
           days_worked: 20,
           payment_frequency: "monthly",
           marital_status: "single_or_separated_or_divorced",
           pension_contribution: 350.0,
           expenses: 125.0,
-        }),
+        },
       });
 
       if (!response.ok) {

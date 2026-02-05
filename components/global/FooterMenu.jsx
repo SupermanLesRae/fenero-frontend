@@ -1,5 +1,6 @@
 import Image from "next/image";
 import Link from "next/link";
+import SocialLinks from "./SocialLinks";
 
 export default function FooterMenu({ menu }) {
   if (!menu) return null;
@@ -24,31 +25,7 @@ export default function FooterMenu({ menu }) {
           </p>
 
           <div className="flex items-center gap-10 pt-2 mx-auto lg:mx-0">
-            {menu.socialLinks.map((item, index) => (
-              <Link
-                key={index}
-                href={item.url}
-                target={
-                  item.url?.includes(".pdf") || item.url?.includes("http")
-                    ? "_blank"
-                    : "_self"
-                }
-                rel={
-                  item.url?.includes(".pdf") || item.url?.includes("http")
-                    ? "noopener noreferrer"
-                    : undefined
-                }
-                className="hover:text-[#D1DF20] transition"
-              >
-                <Image
-                  src={`${item?.icon?.node?.sourceUrl}`}
-                  alt={"No alternative text provided"}
-                  className="w-4.5 h-4.5"
-                  width={18}
-                  height={18}
-                />
-              </Link>
-            ))}
+            <SocialLinks menu={menu} />
           </div>
         </div>
 

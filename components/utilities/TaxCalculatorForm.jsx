@@ -72,14 +72,24 @@ export function TaxCalculatorForm() {
     //setResults(null);
 
     // Map form data to API payload
-    const payload = {
-      daily_rate: 450.0, //Number(data.dailyRate),
-      days_worked: 20, //Number(data.workDays),
-      payment_frequency: "monthly", //data.payFrequency,
-      marital_status: "single_or_separated_or_divorced", //data.maritalStatus,
-      pension_contribution: 350.0, //Number(data.pensionContribution || 0),
-      expenses: 125.0, //Number(data.businessExpenses),
+    /*  const payload = {
+      daily_rate: Number(data.dailyRate),
+      days_worked: Number(data.workDays),
+      payment_frequency: data.payFrequency,
+      marital_status: data.maritalStatus,
+      pension_contribution: Number(data.pensionContribution || 0),
+      expenses: Number(data.businessExpenses),
       current_salary: Number(data.currentSalary || 0),
+    }; */
+
+    const payload = {
+      daily_rate: 450.0,
+      days_worked: 20.0,
+      payment_frequency: "monthly",
+      marital_status: "single",
+      pension_contribution: 350.0,
+      expenses: 125.0,
+      current_salary: 0.0,
     };
 
     console.log(payload);

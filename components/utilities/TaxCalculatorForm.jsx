@@ -162,7 +162,7 @@ export function TaxCalculatorForm() {
         retentionRatePercentage: [
           resultData.employee_calculation.retention_rate_percentage,
           resultData.director_calculation.retention_rate_percentage,
-          resultData.current_salary_retention, // matches response
+          resultData?.current_salary_retention || 0, // matches response
         ],
       };
 

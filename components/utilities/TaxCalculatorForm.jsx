@@ -60,7 +60,7 @@ export function TaxCalculatorForm() {
       dailyRate: 450,
       workDays: 20,
       payFrequency: "monthly",
-      maritalStatus: "single_or_separated_or_divorced",
+      maritalStatus: "single",
       pensionContribution: "",
       businessExpenses: "",
       currentSalary: "",
@@ -284,7 +284,7 @@ export function TaxCalculatorForm() {
                     </SelectTrigger>
 
                     <SelectContent>
-                      <SelectItem value="single_or_separated_or_divorced">
+                      <SelectItem value="single">
                         Single, separated or divorced
                       </SelectItem>
 

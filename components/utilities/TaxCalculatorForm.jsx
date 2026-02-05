@@ -156,7 +156,9 @@ export function TaxCalculatorForm() {
         netPay: [
           resultData.employee_calculation.net_takehome_pay,
           resultData.director_calculation.net_takehome_pay,
-          resultData.current_salary_retention, // or empty if not relevant
+          resultData.current_salary_retention === "nan"
+            ? "0"
+            : resultData.current_salary_retention, // matches response
         ],
 
         retentionRatePercentage: [

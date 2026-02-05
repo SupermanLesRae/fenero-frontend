@@ -202,7 +202,7 @@ export function TaxCalculatorForm() {
     <Form {...form}>
       <form
         onSubmit={form.handleSubmit(onSubmit)}
-        className="space-y-6 max-w-[901px] "
+        className="space-y-6 max-w-[901px] select-none"
       >
         <div className="flex flex-col md:flex-row items-center gap-4 mb-6">
           <div className="flex-1 text-left">

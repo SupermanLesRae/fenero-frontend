@@ -106,12 +106,12 @@ export function TaxCalculatorForm() {
         feneroFee: [
           resultData.employee_calculation.fenero_fee,
           resultData.director_calculation.fenero_fee,
-          "", // No fee for current salary
+          " - ", // No fee for current salary
         ],
         netPay: [
           resultData.employee_calculation.net_takehome_pay,
           resultData.director_calculation.net_takehome_pay,
-          "", // Could also use current_salary_retention if relevant
+          " - ", // Could also use current_salary_retention if relevant
         ],
       };
 

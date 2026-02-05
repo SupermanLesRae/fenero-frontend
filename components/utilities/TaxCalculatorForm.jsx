@@ -72,7 +72,7 @@ export function TaxCalculatorForm() {
     //setResults(null);
 
     // Map form data to API payload
-    /*  const payload = {
+    const payload = {
       daily_rate: Number(data.dailyRate),
       days_worked: Number(data.workDays),
       payment_frequency: data.payFrequency,
@@ -80,19 +80,9 @@ export function TaxCalculatorForm() {
       pension_contribution: Number(data.pensionContribution || 0),
       expenses: Number(data.businessExpenses),
       current_salary: Number(data.currentSalary || 0),
-    }; */
-
-    const payload = {
-      daily_rate: +Number(data.dailyRate).toFixed(2), // converts to 450.00 as a number
-      days_worked: +Number(data.workDays),
-      payment_frequency: data.payFrequency,
-      marital_status: data.maritalStatus,
-      pension_contribution: +Number(data.pensionContribution || 0).toFixed(2),
-      expenses: +Number(data.businessExpenses || 0).toFixed(2),
-      /*  current_salary: +Number(data.currentSalary || 0).toFixed(2), */
     };
 
-    console.log(payload);
+    console.log(JSON.stringify(payload));
 
     try {
       const response = await fetch(process.env.NEXT_PUBLIC_TAX_URL, {
@@ -100,7 +90,14 @@ export function TaxCalculatorForm() {
         headers: {
           "Content-Type": "application/json",
         },
-        body: JSON.stringify(payload),
+        body: JSON.stringify({
+          daily_rate: 450.0,
+          days_worked: 20,
+          payment_frequency: "monthly",
+          marital_status: "single_or_separated_or_divorced",
+          pension_contribution: 350.0,
+          expenses: 125.0,
+        }),
       });
 
       if (!response.ok) {

@@ -567,7 +567,8 @@ export function TaxCalculatorForm() {
                       }`}
                     >
                       <span>
-                        <span className="font-bold">Umbrella PAYE:</span>{" "}
+                        <span className="font-bold">Umbrella PAYE:</span>
+                        <br />
                         {formatValue(row.values[0])}
                       </span>
 
@@ -575,11 +576,13 @@ export function TaxCalculatorForm() {
                         <span className="font-bold">
                           Umbrella Director / PSC:
                         </span>
+                        <br />
                         {formatValue(row.values[1])}
                       </span>
 
                       <span>
-                        <span className="font-bold">Current Salary:</span>{" "}
+                        <span className="font-bold">Current Salary:</span>
+                        <br />
                         {formatValue(row.values[2])}
                       </span>
                     </div>

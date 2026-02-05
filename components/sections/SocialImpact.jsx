@@ -50,7 +50,7 @@ export async function SocialImpact() {
               style={{ color: sectionData.styling.textColor }}
               className="flex flex-col gap-2"
             >
-              <Link className="w-full" href="#">
+              <Link className="w-full" href={sectionData.cta.link}>
                 <Button
                   style={{
                     color: sectionData.styling.ctaColor,

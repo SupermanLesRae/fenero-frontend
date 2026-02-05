@@ -97,6 +97,7 @@ export function TaxCalculatorForm() {
           marital_status: "single_or_separated_or_divorced",
           pension_contribution: 350.0,
           expenses: 125.0,
+          current_salary: 1000.0,
         },
       });
 

@@ -77,7 +77,7 @@ export function TaxCalculatorForm() {
       marital_status: data.maritalStatus,
       pension_contribution: +Number(data.pensionContribution || 0).toFixed(2),
       expenses: +Number(data.businessExpenses || 0).toFixed(2),
-      current_salary: +Number(data.currentSalary || 0).toFixed(2),
+      current_annual_salary: +Number(data.currentSalary || 0).toFixed(2),
     };
 
     console.log(payload);

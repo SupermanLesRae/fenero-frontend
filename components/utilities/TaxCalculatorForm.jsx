@@ -103,19 +103,66 @@ export function TaxCalculatorForm() {
       //console.log("API result:", resultData);
       const formattedResults = {
         grossIncome: [
-          resultData.employee_calculation.taxable_income, // Umbrella PAYE
-          resultData.director_calculation.taxable_income, // Umbrella Director / PSC
-          resultData.current_salary_period, // Current Salary
+          resultData.employee_calculation.taxable_income,
+          resultData.director_calculation.taxable_income,
+          resultData.current_salary_period,
         ],
+
         feneroFee: [
           resultData.employee_calculation.fenero_fee,
           resultData.director_calculation.fenero_fee,
           "", // No fee for current salary
         ],
+
+        totalDeductions: [
+          resultData.employee_calculation.total_deductions,
+          resultData.director_calculation.total_deductions,
+          "", // Not applicable for current salary
+        ],
+
+        payeTax: [
+          resultData.employee_calculation.taxes_and_contributions.paye_tax,
+          resultData.director_calculation.taxes_and_contributions.paye_tax,
+          "", // No PAYE breakdown for current salary
+        ],
+
+        usc: [
+          resultData.employee_calculation.taxes_and_contributions.usc,
+          resultData.director_calculation.taxes_and_contributions.usc,
+          "",
+        ],
+
+        employeePrsi: [
+          resultData.employee_calculation.taxes_and_contributions.employee_prsi,
+          resultData.director_calculation.taxes_and_contributions.employee_prsi,
+          "",
+        ],
+
+        employerPrsiCost: [
+          resultData.employee_calculation.taxes_and_contributions
+            .employer_prsi_cost,
+          "", // Director calc doesn’t include employer PRSI
+          "",
+        ],
+
+        totalTaxDeduction: [
+          resultData.employee_calculation.taxes_and_contributions
+            .total_tax_deduction,
+          resultData.director_calculation.taxes_and_contributions
+            .total_tax_deduction,
+          "",
+        ],
+
         netPay: [
           resultData.employee_calculation.net_takehome_pay,
           resultData.director_calculation.net_takehome_pay,
-          "", // Could also use current_salary_retention if relevant
+          resultData.current_salary_retention, // or empty if not relevant
+        ],
+
+        retentionRatePercentage: [
+          resultData.employee_calculation.retention_rate_percentage,
+          resultData.director_calculation.retention_rate_percentage,
+          resultData.current_salary_retention, // matches response
         ],
       };
 

@@ -163,7 +163,7 @@ export function TaxCalculatorForm() {
           resultData.employee_calculation.retention_rate_percentage,
           resultData.director_calculation.retention_rate_percentage,
           resultData.current_salary_retention === "nan"
-            ? 0
+            ? "0"
             : resultData.current_salary_retention, // matches response
         ],
       };

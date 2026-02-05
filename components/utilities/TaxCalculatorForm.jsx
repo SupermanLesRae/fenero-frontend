@@ -31,34 +31,16 @@ const REQUIRED = "* Required";
 // Accepts: 123, 123.4, 123.45
 const moneyRegex = /^\d+(\.\d{1,2})?$/;
 
-const numberRequired = z
-  .string()
-  .trim()
-  .refine((v) => v.length > 0, { message: REQUIRED }) // empty check
-  .refine((v) => moneyRegex.test(v), {
-    message: "Invalid number format (max 2 decimals)",
-  })
-  .transform((v) => Number(v));
-
 const schema = z.object({
-  dailyRate: z.preprocess((val) => Number(val), z.number().min(0, REQUIRED)),
+  dailyRate: z.coerce.number().min(0, REQUIRED),
 
-  workDays: z.number().min(1, REQUIRED),
+  workDays: z.coerce.number().min(1, REQUIRED),
 
-  pensionContribution: z.preprocess(
-    (v) => (v === "" || v === undefined ? undefined : Number(v)),
-    z.number().min(0).optional(),
-  ),
+  pensionContribution: z.coerce.number().min(0).optional(),
 
-  businessExpenses: z.preprocess(
-    (v) => (v === "" || v === undefined ? undefined : Number(v)),
-    z.number().min(0).optional(),
-  ),
+  businessExpenses: z.coerce.number().min(0).optional(),
 
-  currentSalary: z.preprocess(
-    (v) => (v === "" || v === undefined ? undefined : Number(v)),
-    z.number().min(0).optional(),
-  ),
+  currentSalary: z.coerce.number().min(0).optional(),
 
   payFrequency: z.string().min(1, REQUIRED),
 
@@ -179,10 +161,16 @@ export function TaxCalculatorForm() {
                     <Input
                       {...field}
                       type="text" // 🔥 Important change!
-                      inputMode="decimal"
+                      inputMode="decimal" // mobile keyboard shows numbers
+                      pattern="[0-9]*\.?[0-9]*" // allows digits + optional decimal
                       placeholder="450"
                       min={0}
                       className="h-[60px] w-full rounded-xl border border-[#036735] pl-8 pr-3"
+                      onChange={(e) => {
+                        // Remove ANY non-numeric or extra dots
+                        const cleaned = e.target.value.replace(/[^0-9.]/g, "");
+                        field.onChange(cleaned);
+                      }}
                     />
                   </div>
                 </FormControl>
@@ -245,10 +233,16 @@ export function TaxCalculatorForm() {
                   <Input
                     {...field}
                     type="text" // 🔥 Important change!
-                    inputMode="decimal"
+                    inputMode="decimal" // mobile keyboard shows numbers
+                    pattern="[0-9]*\.?[0-9]*" // allows digits + optional decimal
                     min={1}
                     placeholder="0"
                     className="h-[60px] w-full rounded-xl border border-[#036735] pl-3 pr-3"
+                    onChange={(e) => {
+                      // Remove ANY non-numeric or extra dots
+                      const cleaned = e.target.value.replace(/[^0-9.]/g, "");
+                      field.onChange(cleaned);
+                    }}
                   />
                 </FormControl>
 
@@ -322,10 +316,16 @@ export function TaxCalculatorForm() {
                     <Input
                       {...field}
                       type="text" // 🔥 Important change!
-                      inputMode="decimal"
+                      inputMode="decimal" // mobile keyboard shows numbers
+                      pattern="[0-9]*\.?[0-9]*" // allows digits + optional decimal
                       min={0}
                       placeholder="0.00"
                       className="h-[60px] w-full rounded-xl border border-[#036735] pl-8 pr-3"
+                      onChange={(e) => {
+                        // Remove ANY non-numeric or extra dots
+                        const cleaned = e.target.value.replace(/[^0-9.]/g, "");
+                        field.onChange(cleaned);
+                      }}
                     />
                   </div>
                 </FormControl>
@@ -355,10 +355,16 @@ export function TaxCalculatorForm() {
                     <Input
                       {...field}
                       type="text" // 🔥 Important change!
-                      inputMode="decimal"
+                      inputMode="decimal" // mobile keyboard shows numbers
+                      pattern="[0-9]*\.?[0-9]*" // allows digits + optional decimal
                       min={0}
                       placeholder="0.00"
                       className="h-[60px] w-full rounded-xl border border-[#036735] pl-8 pr-3"
+                      onChange={(e) => {
+                        // Remove ANY non-numeric or extra dots
+                        const cleaned = e.target.value.replace(/[^0-9.]/g, "");
+                        field.onChange(cleaned);
+                      }}
                     />
                   </div>
                 </FormControl>
@@ -388,10 +394,16 @@ export function TaxCalculatorForm() {
                     <Input
                       {...field}
                       type="text" // 🔥 Important change!
-                      inputMode="decimal"
+                      inputMode="decimal" // mobile keyboard shows numbers
+                      pattern="[0-9]*\.?[0-9]*" // allows digits + optional decimal
                       min={0}
                       placeholder="0.00"
                       className="h-[60px] w-full rounded-xl border border-[#036735] pl-8 pr-3"
+                      onChange={(e) => {
+                        // Remove ANY non-numeric or extra dots
+                        const cleaned = e.target.value.replace(/[^0-9.]/g, "");
+                        field.onChange(cleaned);
+                      }}
                     />
                   </div>
                 </FormControl>

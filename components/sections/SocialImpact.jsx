@@ -50,7 +50,22 @@ export async function SocialImpact() {
               style={{ color: sectionData.styling.textColor }}
               className="flex flex-col gap-2"
             >
-              <Link className="w-full" href={sectionData.cta.link}>
+              <Link
+                className="w-full"
+                href={sectionData.cta.link}
+                target={
+                  sectionData.cta.link?.includes(".pdf") ||
+                  sectionData.cta.link?.includes("http")
+                    ? "_blank"
+                    : "_self"
+                }
+                rel={
+                  sectionData.cta.link?.includes(".pdf") ||
+                  sectionData.cta.link?.includes("http")
+                    ? "noopener noreferrer"
+                    : undefined
+                }
+              >
                 <Button
                   style={{
                     color: sectionData.styling.ctaColor,

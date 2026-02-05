@@ -47,7 +47,19 @@ function MenuItemDesktop({ item }) {
           )}
         </div>
       ) : (
-        <Link href={item.link}>
+        <Link
+          href={item.link}
+          target={
+            item.link?.includes(".pdf") || item.link?.includes("http")
+              ? "_blank"
+              : "_self"
+          }
+          rel={
+            item.link?.includes(".pdf") || item.link?.includes("http")
+              ? "noopener noreferrer"
+              : undefined
+          }
+        >
           <div
             className="flex items-center gap-2 text-white cursor-pointer transition text-[18px] 2xl:text-[20px] hover:text-[#AFCE67]"
             onMouseEnter={openMenu}
@@ -80,6 +92,16 @@ function MenuItemDesktop({ item }) {
             <li key={`submenu-${index}`}>
               <Link
                 href={sub.link}
+                target={
+                  sub.link?.includes(".pdf") || sub.link?.includes("http")
+                    ? "_blank"
+                    : "_self"
+                }
+                rel={
+                  sub.link?.includes(".pdf") || sub.link?.includes("http")
+                    ? "noopener noreferrer"
+                    : undefined
+                }
                 className="block relative px-4 py-3 first:pt-4 last:pb-4 text-[#000E47] hover:bg-[#AFCE67] hover:text-[#000E47] whitespace-nowrap pointer-events-auto cursor-pointer"
               >
                 {sub.label}

@@ -186,7 +186,22 @@ export async function Solutions({ section }) {
                 {/* CTA BUTTON */}
                 {card.cta?.label && (
                   <div className="w-full left-0">
-                    <Link className="w-full" href={card?.cta?.link || "/"}>
+                    <Link
+                      className="w-full"
+                      href={card?.cta?.link || "/"}
+                      target={
+                        card?.cta?.link?.includes(".pdf") ||
+                        card?.cta?.link?.includes("http")
+                          ? "_blank"
+                          : "_self"
+                      }
+                      rel={
+                        card?.cta?.link?.includes(".pdf") ||
+                        card?.cta?.link?.includes("http")
+                          ? "noopener noreferrer"
+                          : undefined
+                      }
+                    >
                       <Button
                         size="lg"
                         className="bg-[#000E47] hover:bg-[#AFCE67] text-[#ffffff] hover:text-[#000E47] cursor-pointer w-full transition shadow-md mb-6"

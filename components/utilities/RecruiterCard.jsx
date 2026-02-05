@@ -29,7 +29,19 @@ export default function RecruiterCard({
       {image && (
         <>
           {downloadURL ? (
-            <Link href={downloadURL} target="_blank" rel="noopener noreferrer">
+            <Link
+              href={downloadURL}
+              target={
+                downloadURL?.includes(".pdf") || downloadURL?.includes("http")
+                  ? "_blank"
+                  : "_self"
+              }
+              rel={
+                downloadURL?.includes(".pdf") || downloadURL?.includes("http")
+                  ? "noopener noreferrer"
+                  : undefined
+              }
+            >
               <div className="w-auto h-auto rounded-[30] overflow-hidden scale-90 shadow-lg hover:shadow-xs border-4 border-[#38BB3F] hover:border-[#D1DF20] transition-colors duration-200">
                 <Image
                   width={400}
@@ -58,7 +70,19 @@ export default function RecruiterCard({
         </>
       )}
 
-      <Link href={gotoPage}>
+      <Link
+        href={gotoPage}
+        target={
+          gotoPage?.includes(".pdf") || gotoPage?.includes("http")
+            ? "_blank"
+            : "_self"
+        }
+        rel={
+          gotoPage?.includes(".pdf") || gotoPage?.includes("http")
+            ? "noopener noreferrer"
+            : undefined
+        }
+      >
         <CardContent className="px-4 rounded-none text-[#056735] no-underline hover:underline">
           {/* Title */}
           <CardTitle className="text-lg font-bold ">{title}</CardTitle>

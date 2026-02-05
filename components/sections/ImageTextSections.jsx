@@ -124,6 +124,26 @@ export async function ImageTextSections({ section }) {
                         href={
                           sectionData.imageTextSectionsCoreFields.cols.cta.link
                         }
+                        target={
+                          sectionData.imageTextSectionsCoreFields.cols.cta.link?.includes(
+                            ".pdf",
+                          ) ||
+                          sectionData.imageTextSectionsCoreFields.cols.cta.link?.includes(
+                            "http",
+                          )
+                            ? "_blank"
+                            : "_self"
+                        }
+                        rel={
+                          sectionData.imageTextSectionsCoreFields.cols.cta.link?.includes(
+                            ".pdf",
+                          ) ||
+                          sectionData.imageTextSectionsCoreFields.cols.cta.link?.includes(
+                            "http",
+                          )
+                            ? "noopener noreferrer"
+                            : undefined
+                        }
                       >
                         <Button
                           size="lg"

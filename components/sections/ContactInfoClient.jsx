@@ -80,7 +80,21 @@ export default function ContactInfoClient({ sectionData, bgColor }) {
               }
 
               return (
-                <Link key={index} href={link} className="w-auto">
+                <Link
+                  key={index}
+                  href={link}
+                  target={
+                    link?.includes(".pdf") || link?.includes("http")
+                      ? "_blank"
+                      : "_self"
+                  }
+                  rel={
+                    link?.includes(".pdf") || link?.includes("http")
+                      ? "noopener noreferrer"
+                      : undefined
+                  }
+                  className="w-auto"
+                >
                   <Button
                     size="lg"
                     style={{

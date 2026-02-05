@@ -28,6 +28,16 @@ export default function FooterMenu({ menu }) {
               <Link
                 key={index}
                 href={item.url}
+                target={
+                  item.url?.includes(".pdf") || item.url?.includes("http")
+                    ? "_blank"
+                    : "_self"
+                }
+                rel={
+                  item.url?.includes(".pdf") || item.url?.includes("http")
+                    ? "noopener noreferrer"
+                    : undefined
+                }
                 className="hover:text-[#D1DF20] transition"
               >
                 <Image
@@ -60,6 +70,18 @@ export default function FooterMenu({ menu }) {
                     <li key={index}>
                       <Link
                         href={item.footerSectionLink || ""}
+                        target={
+                          item.footerSectionLink?.includes(".pdf") ||
+                          item.footerSectionLink?.includes("http")
+                            ? "_blank"
+                            : "_self"
+                        }
+                        rel={
+                          item.footerSectionLink?.includes(".pdf") ||
+                          item.footerSectionLink?.includes("http")
+                            ? "noopener noreferrer"
+                            : undefined
+                        }
                         className="hover:text-[#D1DF20] transition flex items-start justify-center sm:justify-start sm:items-center gap-2"
                       >
                         {item.footerLabelIcon === "phone" && (

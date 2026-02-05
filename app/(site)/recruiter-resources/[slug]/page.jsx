@@ -134,8 +134,18 @@ export default async function Page({ params }) {
               {sectionData.downloadPDF && (
                 <a
                   href={sectionData.downloadPDF}
-                  target="_blank"
-                  rel="noopener noreferrer"
+                  target={
+                    sectionData.downloadPDF?.includes(".pdf") ||
+                    sectionData.downloadPDF?.includes("http")
+                      ? "_blank"
+                      : "_self"
+                  }
+                  rel={
+                    sectionData.downloadPDF?.includes(".pdf") ||
+                    sectionData.downloadPDF?.includes("http")
+                      ? "noopener noreferrer"
+                      : undefined
+                  }
                   className="inline-block bg-blue-600 text-white px-6 py-3 rounded hover:bg-blue-700 transition"
                 >
                   Download PDF
@@ -156,8 +166,18 @@ export default async function Page({ params }) {
             <div className="w-auto">
               <Link
                 href={sectionData?.cta.link}
-                target="_blank"
-                rel="noopener noreferrer"
+                target={
+                  sectionData?.cta.link?.includes(".pdf") ||
+                  sectionData?.cta.link?.includes("http")
+                    ? "_blank"
+                    : "_self"
+                }
+                rel={
+                  sectionData?.cta.link?.includes(".pdf") ||
+                  sectionData?.cta.link?.includes("http")
+                    ? "noopener noreferrer"
+                    : undefined
+                }
               >
                 <Button
                   size="lg"

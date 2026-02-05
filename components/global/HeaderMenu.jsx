@@ -63,7 +63,20 @@ export default function HeaderMenu({ menu }) {
       {/* Top Right login + search */}
       <div className="w-full absolute pr-10 xl:pr-20 max-w-430 left-1/2 -translate-x-1/2 h-8.75 top-14 xl:top-6 flex justify-end gap-4 z-50">
         <div className="gap-4 flex">
-          <Link href={loginCta.url} className="pointer-events-auto">
+          <Link
+            href={loginCta.url}
+            target={
+              loginCta.url?.includes(".pdf") || loginCta.url?.includes("http")
+                ? "_blank"
+                : "_self"
+            }
+            rel={
+              loginCta.url?.includes(".pdf") || loginCta.url?.includes("http")
+                ? "noopener noreferrer"
+                : undefined
+            }
+            className="pointer-events-auto"
+          >
             <div className="hidden sm:flex items-center gap-2 font-semibold text-[18px] text-white bg-transparent border-2 border-[#D1DF20] hover:bg-[#D1DF20] hover:text-[#000E47] px-6 py-1 rounded-lg transition">
               {loginCta.label}
             </div>
@@ -196,7 +209,19 @@ export default function HeaderMenu({ menu }) {
               );
             })}
 
-            <Link href={loginCta.url}>
+            <Link
+              href={loginCta.url}
+              target={
+                loginCta.url?.includes(".pdf") || loginCta.url?.includes("http")
+                  ? "_blank"
+                  : "_self"
+              }
+              rel={
+                loginCta.url?.includes(".pdf") || loginCta.url?.includes("http")
+                  ? "noopener noreferrer"
+                  : undefined
+              }
+            >
               <button className="cursor-pointer w-full flex justify-center items-center gap-2 text-center font-semibold text-[18px] text-white bg-transparent border-2 border-[#D1DF20] hover:bg-[#D1DF20] hover:text-[#000E47] px-6 py-2 mt-10 rounded-lg transition">
                 {loginCta.label}
               </button>

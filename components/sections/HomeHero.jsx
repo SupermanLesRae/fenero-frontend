@@ -65,7 +65,22 @@ export default async function HomeHero() {
             </div>
 
             <div className="flex flex-wrap gap-6">
-              <Link className="w-full" href={homeData.cta?.link}>
+              <Link
+                className="w-full"
+                href={homeData.cta?.link}
+                target={
+                  homeData.cta?.link?.includes(".pdf") ||
+                  homeData.cta?.link?.includes("http")
+                    ? "_blank"
+                    : "_self"
+                }
+                rel={
+                  homeData.cta?.link?.includes(".pdf") ||
+                  homeData.cta?.link?.includes("http")
+                    ? "noopener noreferrer"
+                    : undefined
+                }
+              >
                 <Button
                   /* style={{ color: cta.txtColor, backgroundColor: cta.bgColor }} */
                   size="lg"

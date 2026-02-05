@@ -45,7 +45,22 @@ export async function Roles({ customStyles }) {
                     <p>{item.place}</p>
                   </div>
                   <div className="flex-1 text-right">
-                    <Link className="w-full" href={item?.link || "/"}>
+                    <Link
+                      className="w-full"
+                      href={item?.link || "/"}
+                      target={
+                        item?.link?.includes(".pdf") ||
+                        item?.link?.includes("http")
+                          ? "_blank"
+                          : "_self"
+                      }
+                      rel={
+                        item?.link?.includes(".pdf") ||
+                        item?.link?.includes("http")
+                          ? "noopener noreferrer"
+                          : undefined
+                      }
+                    >
                       <Button
                         size="lg"
                         className={`cursor-pointer w-full lg:w-auto max-w-auto transition shadow-sm bg-[#AFCE67] hover:bg-[#D1DF20] shadow-[#AFCE67]/30 hover:shadow-[#AFCE67]/10 ${

@@ -117,6 +117,18 @@ export default function Hero({ data }) {
                             {!hasHash ? (
                               <Link
                                 href={item.cta?.link || "#"}
+                                target={
+                                  item.cta?.link?.includes(".pdf") ||
+                                  item.cta?.link?.includes("http")
+                                    ? "_blank"
+                                    : "_self"
+                                }
+                                rel={
+                                  item.cta?.link?.includes(".pdf") ||
+                                  item.cta?.link?.includes("http")
+                                    ? "noopener noreferrer"
+                                    : undefined
+                                }
                                 className="w-auto"
                               >
                                 <Button
@@ -132,6 +144,18 @@ export default function Hero({ data }) {
                             ) : (
                               <a
                                 href={item.cta.link}
+                                target={
+                                  item.cta.link?.includes(".pdf") ||
+                                  item.cta.link?.includes("http")
+                                    ? "_blank"
+                                    : "_self"
+                                }
+                                rel={
+                                  item.cta.link?.includes(".pdf") ||
+                                  item.cta.link?.includes("http")
+                                    ? "noopener noreferrer"
+                                    : undefined
+                                }
                                 onClick={handleSmoothScroll}
                                 className="w-auto"
                               >

@@ -59,6 +59,18 @@ export async function Community() {
 
             <Link
               href={community.link}
+              target={
+                community.link?.includes(".pdf") ||
+                community.link?.includes("http")
+                  ? "_blank"
+                  : "_self"
+              }
+              rel={
+                community.link?.includes(".pdf") ||
+                community.link?.includes("http")
+                  ? "noopener noreferrer"
+                  : undefined
+              }
               className="text-[16px] lg:text-[20px] leading-6 md:leading-6 tracking-[0.15px] text-[#C5D320]"
             >
               {formatLinkText(community.link)}

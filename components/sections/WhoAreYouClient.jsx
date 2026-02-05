@@ -112,7 +112,22 @@ export default function WhoAreYouClient({ sectionData, items }) {
                       ))}
                     </ul>
 
-                    <Link href="#" className="mt-6">
+                    <Link
+                      href={item.cta?.link}
+                      target={
+                        item.cta?.link?.includes(".pdf") ||
+                        item.cta?.link?.includes("http")
+                          ? "_blank"
+                          : "_self"
+                      }
+                      rel={
+                        item.cta?.link?.includes(".pdf") ||
+                        item.cta?.link?.includes("http")
+                          ? "noopener noreferrer"
+                          : undefined
+                      }
+                      className="mt-6"
+                    >
                       <Button
                         style={{
                           color: item.textColor,

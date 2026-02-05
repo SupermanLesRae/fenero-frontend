@@ -192,7 +192,7 @@ export function TaxCalculatorForm() {
                       pattern="[0-9]*\.?[0-9]*" // allows digits + optional decimal
                       placeholder="450"
                       min={0}
-                      className="h-[60px] w-full rounded-xl border border-[#036735] pl-8 pr-3"
+                      className="h-[60px] w-full rounded-xl border border-[#036735] pl-8 pr-3 selection:bg-gray-300 selection:text-black"
                       onChange={(e) => {
                         // Remove ANY non-numeric or extra dots
                         const cleaned = e.target.value.replace(/[^0-9.]/g, "");
@@ -264,7 +264,7 @@ export function TaxCalculatorForm() {
                     pattern="[0-9]*\.?[0-9]*" // allows digits + optional decimal
                     min={1}
                     placeholder="0"
-                    className="h-[60px] w-full rounded-xl border border-[#036735] pl-3 pr-3"
+                    className="h-[60px] w-full rounded-xl border border-[#036735] pl-3 pr-3 selection:bg-gray-300 selection:text-black"
                     onChange={(e) => {
                       // Remove ANY non-numeric or extra dots
                       const cleaned = e.target.value.replace(/[^0-9.]/g, "");
@@ -347,7 +347,7 @@ export function TaxCalculatorForm() {
                       pattern="[0-9]*\.?[0-9]*" // allows digits + optional decimal
                       min={0}
                       placeholder="0.00"
-                      className="h-[60px] w-full rounded-xl border border-[#036735] pl-8 pr-3"
+                      className="h-[60px] w-full rounded-xl border border-[#036735] pl-8 pr-3 selection:bg-gray-300 selection:text-black"
                       onChange={(e) => {
                         // Remove ANY non-numeric or extra dots
                         const cleaned = e.target.value.replace(/[^0-9.]/g, "");
@@ -386,7 +386,7 @@ export function TaxCalculatorForm() {
                       pattern="[0-9]*\.?[0-9]*" // allows digits + optional decimal
                       min={0}
                       placeholder="0.00"
-                      className="h-[60px] w-full rounded-xl border border-[#036735] pl-8 pr-3"
+                      className="h-[60px] w-full rounded-xl border border-[#036735] pl-8 pr-3 selection:bg-gray-300 selection:text-black"
                       onChange={(e) => {
                         // Remove ANY non-numeric or extra dots
                         const cleaned = e.target.value.replace(/[^0-9.]/g, "");
@@ -425,7 +425,7 @@ export function TaxCalculatorForm() {
                       pattern="[0-9]*\.?[0-9]*" // allows digits + optional decimal
                       min={0}
                       placeholder="0.00"
-                      className="h-[60px] w-full rounded-xl border border-[#036735] pl-8 pr-3"
+                      className="h-[60px] w-full rounded-xl border border-[#036735] pl-8 pr-3 selection:bg-gray-300 selection:text-black"
                       onChange={(e) => {
                         // Remove ANY non-numeric or extra dots
                         const cleaned = e.target.value.replace(/[^0-9.]/g, "");

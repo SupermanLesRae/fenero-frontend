@@ -305,11 +305,11 @@ export function TaxCalculatorForm() {
                         Single, separated or divorced
                       </SelectItem>
 
-                      <SelectItem value="married_one_earner">
+                      <SelectItem value="married_one_spouse_earning">
                         Married (one spouse earning)
                       </SelectItem>
 
-                      <SelectItem value="married_two_earners">
+                      <SelectItem value="married_both_spouses_earning">
                         Married (both spouses earning)
                       </SelectItem>
                     </SelectContent>

@@ -97,7 +97,7 @@ export function TaxCalculatorForm() {
 
       const resultData = await response.json();
       console.log("API result:", resultData);
-      setResult(resultData); // adjust if the API returns a specific property
+      setResults(resultData); // adjust if the API returns a specific property
     } catch (error) {
       console.error(error);
       alert("Failed to calculate tax.");

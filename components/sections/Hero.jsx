@@ -90,7 +90,7 @@ export default function Hero({ data }) {
                     className="flex-[0_0_100%] relative flex flex-col lg:flex-row xl:items-center select-none h-auto lg:h-[640px] portrait:min-h-0 overflow-y-hidden lg:max-h-[640px]"
                   >
                     <div className="w-full py-10 px-6 xl:p-20 lg:flex lg:items-center flex justify-center lg:justify-start z-1 mb-0 lg:mb-10 shadow-lg lg:shadow-none ">
-                      <div className="flex flex-col min-h-[calc(100svh-220px)] lg:min-h-auto md:text-left md:max-w-[620px] text-center">
+                      <div className="flex flex-col min-h-[calc(100svh-200px)] lg:min-h-auto md:text-left md:max-w-[620px] text-center">
                         {/* Text content */}
                         <div>
                           <h2

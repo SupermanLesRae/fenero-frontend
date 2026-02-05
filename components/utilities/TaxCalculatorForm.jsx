@@ -83,15 +83,14 @@ export function TaxCalculatorForm() {
     }; */
 
     const payload = {
-      daily_rate: 450.0,
-      days_worked: 20.0,
-      payment_frequency: "monthly",
-      marital_status: "single",
-      pension_contribution: 350.0,
-      expenses: 125.0,
-      current_salary: 0.0,
+      daily_rate: Number(data.dailyRate).toFixed(2),
+      days_worked: Number(data.workDays).toFixed(2),
+      payment_frequency: data.payFrequency,
+      marital_status: data.maritalStatus,
+      pension_contribution: Number(data.pensionContribution || 0).toFixed(2),
+      expenses: Number(data.businessExpenses || 0).toFixed(2),
+      current_salary: Number(data.currentSalary || 0).toFixed(2),
     };
-
     console.log(payload);
 
     try {

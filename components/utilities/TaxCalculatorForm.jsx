@@ -459,7 +459,7 @@ export function TaxCalculatorForm() {
         </div>
       </form>
 
-      {hasCalculated && (
+      {hasCalculated && !loading && (
         <div ref={resultsRef} className="mt-10">
           <div className="mb-4 text-2xl font-extrabold text-[#000E47] flex items-center gap-3">
             <IconChartBar className="!w-4 !h-4" stroke={3} />

@@ -25,6 +25,7 @@ import { IconCalculator } from "@tabler/icons-react";
 import { Spinner } from "../ui/spinner";
 import { IconChartBar } from "@tabler/icons-react";
 import { useEffect } from "react";
+import { useRef } from "react";
 
 const REQUIRED = "* Required";
 
@@ -55,6 +56,8 @@ export function TaxCalculatorForm() {
   });
   const [hasCalculated, setHasCalculated] = useState(false);
   const [loading, setLoading] = useState(false);
+  const resultsRef = useRef(null);
+
   const form = useForm({
     resolver: zodResolver(schema),
     defaultValues: {
@@ -118,6 +121,12 @@ export function TaxCalculatorForm() {
 
       setResults(formattedResults);
       setHasCalculated(true);
+      setTimeout(() => {
+        resultsRef.current?.scrollIntoView({
+          behavior: "smooth",
+          block: "start",
+        });
+      }, 50);
     } catch (error) {
       console.error(error);
       alert("Failed to calculate tax.");
@@ -451,7 +460,7 @@ export function TaxCalculatorForm() {
       </form>
 
       {hasCalculated && (
-        <div className="mt-10">
+        <div ref={resultsRef} className="mt-10">
           <div className="mb-4 text-2xl font-extrabold text-[#000E47] flex items-center gap-3">
             <IconChartBar className="!w-4 !h-4" stroke={3} />
             Your Results
@@ -483,7 +492,7 @@ export function TaxCalculatorForm() {
                 const isLast = idx === arr.length - 1;
 
                 // Helper to format values consistently
-                const formatValue = (v) => (v ? `€ ${v}` : "-");
+                const formatValue = (v) => (v ? ` € ${v}` : " -");
 
                 return (
                   <div
@@ -585,7 +594,7 @@ export function TaxCalculatorForm() {
 
                     {results.netPay.map((value, i) => (
                       <td key={i} className="px-4 py-4 font-bold text-lg">
-                        {value ? `€ ${value}` : "—"}
+                        {value ? `€ ${value}` : " —"}
                       </td>
                     ))}
                   </tr>

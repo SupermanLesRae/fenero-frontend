@@ -69,18 +69,6 @@ export function TaxCalculatorForm() {
 
   const onSubmit = async (data) => {
     setLoading(true);
-    //setResults(null);
-
-    // Map form data to API payload
-    /*  const payload = {
-      daily_rate: Number(data.dailyRate),
-      days_worked: Number(data.workDays),
-      payment_frequency: data.payFrequency,
-      marital_status: data.maritalStatus,
-      pension_contribution: Number(data.pensionContribution || 0),
-      expenses: Number(data.businessExpenses),
-      current_salary: Number(data.currentSalary || 0),
-    }; */
 
     const payload = {
       daily_rate: +Number(data.dailyRate).toFixed(2),
@@ -104,7 +92,7 @@ export function TaxCalculatorForm() {
       });
 
       if (!response.ok) {
-        throw new Error(`Error: ${response.status}`);
+        throw new Error(`Error: ${response}`);
       }
 
       const resultData = await response.json();

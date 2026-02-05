@@ -60,7 +60,7 @@ export function TaxCalculatorForm() {
       dailyRate: 450,
       workDays: 20,
       payFrequency: "monthly",
-      maritalStatus: "single",
+      maritalStatus: "single_or_separated_or_divorced",
       pensionContribution: "",
       businessExpenses: "",
       currentSalary: "",
@@ -72,7 +72,7 @@ export function TaxCalculatorForm() {
     //setResults(null);
 
     // Map form data to API payload
-    const payload = {
+    /*  const payload = {
       daily_rate: Number(data.dailyRate),
       days_worked: Number(data.workDays),
       payment_frequency: data.payFrequency,
@@ -80,9 +80,19 @@ export function TaxCalculatorForm() {
       pension_contribution: Number(data.pensionContribution || 0),
       expenses: Number(data.businessExpenses),
       current_salary: Number(data.currentSalary || 0),
+    }; */
+
+    const payload = {
+      daily_rate: +Number(data.dailyRate).toFixed(2),
+      days_worked: +Number(data.workDays),
+      payment_frequency: data.payFrequency,
+      marital_status: data.maritalStatus,
+      pension_contribution: +Number(data.pensionContribution || 0).toFixed(2),
+      expenses: +Number(data.businessExpenses || 0).toFixed(2),
+      current_salary: +Number(data.currentSalary || 0).toFixed(2),
     };
 
-    console.log(JSON.stringify(payload));
+    console.log(payload);
 
     try {
       const response = await fetch(process.env.NEXT_PUBLIC_TAX_URL, {
@@ -99,7 +109,7 @@ export function TaxCalculatorForm() {
 
       const resultData = await response.json();
       console.log("API result:", resultData);
-      setResults(resultData); // adjust if the API returns a specific property
+      setResult(resultData); // adjust if the API returns a specific property
     } catch (error) {
       console.error(error);
       alert("Failed to calculate tax.");
@@ -274,7 +284,7 @@ export function TaxCalculatorForm() {
                     </SelectTrigger>
 
                     <SelectContent>
-                      <SelectItem value="single">
+                      <SelectItem value="single_or_separated_or_divorced">
                         Single, separated or divorced
                       </SelectItem>
 

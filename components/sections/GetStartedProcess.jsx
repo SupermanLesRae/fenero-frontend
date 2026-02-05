@@ -68,7 +68,7 @@ export async function GetStartedProcess({ section }) {
                       />
                     </div>
                     <h3 className="text-lg font-semibold text-center min-h-[85px]">
-                      {item.label}
+                      {item.label.trim()}
                     </h3>
                   </div>
 
@@ -85,11 +85,13 @@ export async function GetStartedProcess({ section }) {
             })}
           </div>
 
-          {sectionData?.notes && (
+          {sectionData?.notes ? (
             <p
               className="relative text-[16px] md:text-[16px] leading-tight md:leading-14 px-6 font-nunito select-none text-center pt-10 pb-14 text-[#3C3E47]"
               dangerouslySetInnerHTML={{ __html: sectionData.notes }}
             ></p>
+          ) : (
+            <div className="pb-10 lg:pb-20"></div>
           )}
         </section>
       ))}

@@ -343,3 +343,12 @@ select {
   background-color: #ffffff !important;
   color: #000000 !important;
 }
+
+@media (max-width: 800px) {
+  .solution-section {
+    height: auto !important;
+  }
+  .solution-item {
+    height: auto !important;
+  }
+}

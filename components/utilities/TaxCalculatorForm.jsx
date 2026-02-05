@@ -97,7 +97,26 @@ export function TaxCalculatorForm() {
 
       const resultData = await response.json();
       console.log("API result:", resultData);
-      setResults(resultData); // adjust if the API returns a specific property
+      const formattedResults = {
+        grossIncome: [
+          resultData.employee_calculation.taxable_income, // Umbrella PAYE
+          resultData.director_calculation.taxable_income, // Umbrella Director / PSC
+          resultData.current_salary_period, // Current Salary
+        ],
+        feneroFee: [
+          resultData.employee_calculation.fenero_fee,
+          resultData.director_calculation.fenero_fee,
+          "", // No fee for current salary
+        ],
+        netPay: [
+          resultData.employee_calculation.net_takehome_pay,
+          resultData.director_calculation.net_takehome_pay,
+          "", // Could also use current_salary_retention if relevant
+        ],
+      };
+
+      setResults(formattedResults);
+      //setResults(resultData); // adjust if the API returns a specific property
     } catch (error) {
       console.error(error);
       alert("Failed to calculate tax.");

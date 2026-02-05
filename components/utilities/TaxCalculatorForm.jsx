@@ -101,96 +101,68 @@ export function TaxCalculatorForm() {
 
       const resultData = await response.json();
       //console.log("API result:", resultData);
-      const safeValue = (value) =>
-        isNaN(Number(value)) ||
-        value === null ||
-        value === undefined ||
-        value === ""
-          ? "-"
-          : value;
-
       const formattedResults = {
         grossIncome: [
-          safeValue(resultData.employee_calculation.taxable_income),
-          safeValue(resultData.director_calculation.taxable_income),
-          safeValue(resultData.current_salary_period),
+          resultData.employee_calculation.taxable_income,
+          resultData.director_calculation.taxable_income,
+          resultData.current_salary_period,
         ],
 
         feneroFee: [
-          safeValue(resultData.employee_calculation.fenero_fee),
-          safeValue(resultData.director_calculation.fenero_fee),
-          "-", // No fee for current salary
+          resultData.employee_calculation.fenero_fee,
+          resultData.director_calculation.fenero_fee,
+          "", // No fee for current salary
         ],
 
         totalDeductions: [
-          safeValue(resultData.employee_calculation.total_deductions),
-          safeValue(resultData.director_calculation.total_deductions),
-          "-", // Not applicable for current salary
+          resultData.employee_calculation.total_deductions,
+          resultData.director_calculation.total_deductions,
+          "", // Not applicable for current salary
         ],
 
         payeTax: [
-          safeValue(
-            resultData.employee_calculation.taxes_and_contributions.paye_tax,
-          ),
-          safeValue(
-            resultData.director_calculation.taxes_and_contributions.paye_tax,
-          ),
-          "-",
+          resultData.employee_calculation.taxes_and_contributions.paye_tax,
+          resultData.director_calculation.taxes_and_contributions.paye_tax,
+          "", // No PAYE breakdown for current salary
         ],
 
         usc: [
-          safeValue(
-            resultData.employee_calculation.taxes_and_contributions.usc,
-          ),
-          safeValue(
-            resultData.director_calculation.taxes_and_contributions.usc,
-          ),
-          "-",
+          resultData.employee_calculation.taxes_and_contributions.usc,
+          resultData.director_calculation.taxes_and_contributions.usc,
+          "",
         ],
 
         employeePrsi: [
-          safeValue(
-            resultData.employee_calculation.taxes_and_contributions
-              .employee_prsi,
-          ),
-          safeValue(
-            resultData.director_calculation.taxes_and_contributions
-              .employee_prsi,
-          ),
-          "-",
+          resultData.employee_calculation.taxes_and_contributions.employee_prsi,
+          resultData.director_calculation.taxes_and_contributions.employee_prsi,
+          "",
         ],
 
         employerPrsiCost: [
-          safeValue(
-            resultData.employee_calculation.taxes_and_contributions
-              .employer_prsi_cost,
-          ),
-          "-", // Director calc doesn’t include employer PRSI
-          "-",
+          resultData.employee_calculation.taxes_and_contributions
+            .employer_prsi_cost,
+          "", // Director calc doesn’t include employer PRSI
+          "",
         ],
 
         totalTaxDeduction: [
-          safeValue(
-            resultData.employee_calculation.taxes_and_contributions
-              .total_tax_deduction,
-          ),
-          safeValue(
-            resultData.director_calculation.taxes_and_contributions
-              .total_tax_deduction,
-          ),
-          "-",
+          resultData.employee_calculation.taxes_and_contributions
+            .total_tax_deduction,
+          resultData.director_calculation.taxes_and_contributions
+            .total_tax_deduction,
+          "",
         ],
 
         netPay: [
-          safeValue(resultData.employee_calculation.net_takehome_pay),
-          safeValue(resultData.director_calculation.net_takehome_pay),
-          safeValue(resultData.current_salary_retention),
+          resultData.employee_calculation.net_takehome_pay,
+          resultData.director_calculation.net_takehome_pay,
+          resultData.current_salary_retention, // or empty if not relevant
         ],
 
         retentionRatePercentage: [
-          safeValue(resultData.employee_calculation.retention_rate_percentage),
-          safeValue(resultData.director_calculation.retention_rate_percentage),
-          safeValue(resultData.current_salary_retention),
+          resultData.employee_calculation.retention_rate_percentage,
+          resultData.director_calculation.retention_rate_percentage,
+          resultData.current_salary_retention, // matches response
         ],
       };
 

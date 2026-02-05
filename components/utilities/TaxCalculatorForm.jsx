@@ -106,17 +106,16 @@ export function TaxCalculatorForm() {
         feneroFee: [
           resultData.employee_calculation.fenero_fee,
           resultData.director_calculation.fenero_fee,
-          " - ", // No fee for current salary
+          "", // No fee for current salary
         ],
         netPay: [
           resultData.employee_calculation.net_takehome_pay,
           resultData.director_calculation.net_takehome_pay,
-          " - ", // Could also use current_salary_retention if relevant
+          "", // Could also use current_salary_retention if relevant
         ],
       };
 
       setResults(formattedResults);
-      //setResults(resultData); // adjust if the API returns a specific property
     } catch (error) {
       console.error(error);
       alert("Failed to calculate tax.");
@@ -461,20 +460,23 @@ export function TaxCalculatorForm() {
               },
               {
                 title: `
-      Fenero Fee <br/>
-      <div class="text-xs">(All inclusive & tax deductible)</div>
-    `,
+        Fenero Fee <br/>
+        <div class="text-xs">(All inclusive & tax deductible)</div>
+      `,
                 values: results.feneroFee,
               },
               {
                 title: `
-      Monthly Net Pay <br/>
-      <div class="text-xs">(including pension contribution)*</div>
-    `,
+        Monthly Net Pay <br/>
+        <div class="text-xs">(including pension contribution)*</div>
+      `,
                 values: results.netPay,
               },
             ].map((row, idx, arr) => {
               const isLast = idx === arr.length - 1;
+
+              // Helper to format values consistently
+              const formatValue = (v) => (v ? `€${v}` : "—");
 
               return (
                 <div
@@ -486,31 +488,32 @@ export function TaxCalculatorForm() {
                   {/* Row title */}
                   <div
                     dangerouslySetInnerHTML={{ __html: row.title }}
-                    className={`  my-2 pb-2 ${
+                    className={`my-2 pb-2 ${
                       isLast ? "text-md text-[#6b0071]" : "text-sm"
                     }`}
                   ></div>
 
                   {/* Stacked values */}
                   <div
-                    className={`flex flex-col gap-1   ${
+                    className={`flex flex-col gap-1 ${
                       isLast ? "text-sm text-[#6b0071]" : "text-xs"
                     }`}
                   >
                     <span>
-                      <span className="font-bold">Umbrella PAYE:</span> &euro;
-                      {row.values[0]}
+                      <span className="font-bold">Umbrella PAYE:</span>{" "}
+                      {formatValue(row.values[0])}
                     </span>
+
                     <span>
                       <span className="font-bold">
                         Umbrella Director / PSC:
-                      </span>{" "}
-                      &euro;
-                      {row.values[1]}
+                      </span>
+                      {formatValue(row.values[1])}
                     </span>
+
                     <span>
-                      <span className="font-bold">Current Salary:</span> &euro;
-                      {row.values[2]}
+                      <span className="font-bold">Current Salary:</span>{" "}
+                      {formatValue(row.values[2])}
                     </span>
                   </div>
                 </div>
@@ -541,7 +544,7 @@ export function TaxCalculatorForm() {
 
                   {results.grossIncome.map((value, i) => (
                     <td key={i} className="px-4 py-4 text-sm">
-                      &euro;{value}
+                      {value ? `€${value}` : "—"}
                     </td>
                   ))}
                 </tr>
@@ -558,7 +561,7 @@ export function TaxCalculatorForm() {
 
                   {results.feneroFee.map((value, i) => (
                     <td key={i} className="px-4 py-4 text-sm">
-                      &euro;{value}
+                      {value ? `€${value}` : "—"}
                     </td>
                   ))}
                 </tr>

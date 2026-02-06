@@ -89,22 +89,22 @@ export default function Hero({ data }) {
                     key={"aboutHeroSlide" + index}
                     className="flex-[0_0_100%] relative flex flex-col lg:flex-row xl:items-center select-none h-auto lg:h-[640px] portrait:min-h-0 overflow-y-hidden lg:max-h-[640px]"
                   >
-                    <div className="w-full pt-10 pb-15 px-6 xl:p-20 lg:flex lg:items-center flex justify-center lg:justify-start z-1 mb-0 lg:mb-10 shadow-lg lg:shadow-none ">
-                      <div className="flex flex-col min-h-[calc(100svh-230px)] lg:min-h-auto md:text-left max-w-[320px] md:max-w-[620px] text-center">
+                    <div className="w-full pt-4 pb-24 px-6 xl:p-20 lg:flex lg:items-center flex justify-center lg:justify-start z-1 mb-0 lg:mb-10 shadow-lg lg:shadow-none ">
+                      <div className="flex flex-col min-h-[calc(100svh-240px)] lg:min-h-auto md:text-left max-w-[320px] md:max-w-[620px] text-center">
                         {/* Text content */}
                         <div>
                           <h2
-                            className="mb-4 text-[35px] leading-9 md:text-[48px] md:leading-13 tracking-[0.15px] font-bold text-white"
+                            className="mb-4 text-[30px] leading-8 md:text-[48px] md:leading-13 tracking-[0.15px] font-bold text-white"
                             dangerouslySetInnerHTML={{ __html: item.title }}
                           />
 
                           <p
-                            className="font-medium text-[18px] lg:text-[32px] font-bold leading-6 lg:leading-9 tracking-[0.15px] text-[#ffffff] mb-6 lg:pr-10"
+                            className="font-medium text-[17px] lg:text-[32px] font-bold leading-6 lg:leading-9 tracking-[0.15px] text-[#ffffff] mb-6 lg:pr-10"
                             dangerouslySetInnerHTML={{ __html: item.subTitle }}
                           ></p>
 
                           <p
-                            className="font-medium text-[17px] leading-7 tracking-[0.15px] text-[#ffffff] mb-6 lg:pr-10"
+                            className="font-medium text-[16px] leading-6 tracking-[0.15px] text-[#ffffff] mb-6 lg:pr-10"
                             dangerouslySetInnerHTML={{
                               __html: item.description,
                             }}

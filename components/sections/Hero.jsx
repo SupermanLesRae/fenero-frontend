@@ -70,8 +70,8 @@ export default function Hero({ data }) {
         transition={{ duration: 0.3, ease: "easeOut" }}
       >
         <div className="relative max-w-500 mx-auto h-auto lg:max-h-[640px]">
-          <div ref={emblaRef} className="overflow-hidden ">
-            <div className="flex h-auto lg:max-h-[640px]">
+          <div ref={emblaRef} className="overflow-hidden">
+            <div className="flex h-auto lg:max-h-[640px] ">
               {data.map((item, index) => {
                 const hasHash = item?.cta?.link?.includes("#");
                 const hash = hasHash ? item.cta.link.split("#")[1] : null;
@@ -89,8 +89,8 @@ export default function Hero({ data }) {
                     key={"aboutHeroSlide" + index}
                     className="flex-[0_0_100%] relative flex flex-col lg:flex-row xl:items-center select-none h-auto lg:h-[640px] portrait:min-h-0 overflow-y-hidden lg:max-h-[640px]"
                   >
-                    <div className="w-full py-10 px-6 xl:p-20 lg:flex lg:items-center flex justify-center lg:justify-start z-1 mb-0 lg:mb-10 shadow-lg lg:shadow-none ">
-                      <div className="flex flex-col min-h-[calc(100svh-200px)] lg:min-h-auto md:text-left md:max-w-[620px] text-center">
+                    <div className="w-full pt-10 pb-15 px-6 xl:p-20 lg:flex lg:items-center flex justify-center lg:justify-start z-1 mb-0 lg:mb-10 shadow-lg lg:shadow-none ">
+                      <div className="flex flex-col min-h-[calc(100svh-230px)] lg:min-h-auto md:text-left max-w-[320px] md:max-w-[620px] text-center">
                         {/* Text content */}
                         <div>
                           <h2
@@ -187,7 +187,7 @@ export default function Hero({ data }) {
                       />
                     </div>
 
-                    <div className="relative w-full h-full overflow-hidden flex justify-end lg:hidden z-0 min-h-[448px]">
+                    <div className="relative  w-full h-full overflow-hidden flex justify-end lg:hidden z-0 min-h-[448px]">
                       <Image
                         src={item?.img?.node?.sourceUrl}
                         alt="No alternative text provided"
@@ -202,6 +202,28 @@ export default function Hero({ data }) {
                 );
               })}
             </div>
+
+            {/* Dots */}
+            {showControls && (
+              <div
+                className="absolute top-0 left-0 w-full block lg:hidden"
+                style={{ top: "calc(100svh - 165px)" }}
+              >
+                <div className="flex justify-center gap-3">
+                  {Array.from({ length: dotsCount }).map((_, index) => (
+                    <button
+                      key={index}
+                      className={`w-2 h-2 rounded-full transition-all duration-300 ${
+                        selectedIndex === index
+                          ? "bg-green-600 scale-110"
+                          : "bg-gray-300"
+                      }`}
+                      onClick={() => scrollToDot(index)}
+                    />
+                  ))}
+                </div>
+              </div>
+            )}
 
             {showControls && (
               <div className="absolute h-full w-full top-0 left-0 hidden md:flex text-[#036735] z-1 pointer-events-none">
@@ -222,7 +244,7 @@ export default function Hero({ data }) {
 
             {/* Dots */}
             {showControls && (
-              <div className="absolute -mt-10 w-full">
+              <div className="absolute -mt-10 w-full hidden lg:block">
                 <div className="flex justify-center gap-4">
                   {Array.from({ length: dotsCount }).map((_, index) => (
                     <button

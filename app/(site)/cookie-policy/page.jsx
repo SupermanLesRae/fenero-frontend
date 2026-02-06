@@ -17,11 +17,11 @@ export default async function Page() {
 
   return (
     <section>
-      <div className="max-w-500 mx-auto px-20 py-20 text-[#000E47] select-none">
+      <div className="max-w-[1280px] mx-auto px-6 lg:px-20 py-20 text-[#000E47] select-none">
         <h1 className="text-[48px] font-bold">{sectionData.title}</h1>
         <div
           className="policy-content"
-          dangerouslySetInnerHTML={{ __html: sectionData.content }}
+          dangerouslySetInnerHTML={{ __html: sectionData.content.trim() }}
         ></div>
       </div>
     </section>

@@ -27,3 +27,18 @@ export default async function Page() {
     </section>
   );
 }
+
+
+<div class="accordion">
+
+  <details class="accordion-item" open>
+    <summary class="accordion-header">
+      <h3>WordPress</h3>
+      
+    </summary>
+    <div class="accordion-content">
+    
+    </div>
+
+  </details>
+</div>

@@ -1,2 +1,9 @@
+# *
 User-agent: *
-Disallow: /
+Allow: /
+
+# Host
+Host: https://fenero-frontend.vercel.app
+
+# Sitemaps
+Sitemap: https://fenero-frontend.vercel.app/sitemap.xml

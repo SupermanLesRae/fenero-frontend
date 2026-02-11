@@ -1,4 +1,44 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<sitemapindex xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
-<sitemap><loc>https://fenero-frontend.vercel.app/sitemap-0.xml</loc></sitemap>
-</sitemapindex>
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9" xmlns:news="http://www.google.com/schemas/sitemap-news/0.9" xmlns:xhtml="http://www.w3.org/1999/xhtml" xmlns:mobile="http://www.google.com/schemas/sitemap-mobile/1.0" xmlns:image="http://www.google.com/schemas/sitemap-image/1.1" xmlns:video="http://www.google.com/schemas/sitemap-video/1.1">
+<url><loc>https://fenero-frontend.vercel.app/about</loc><lastmod>2026-02-10T15:26:28.594Z</lastmod><changefreq>daily</changefreq><priority>0.7</priority></url>
+<url><loc>https://fenero-frontend.vercel.app/careers</loc><lastmod>2026-02-10T15:26:28.596Z</lastmod><changefreq>daily</changefreq><priority>0.7</priority></url>
+<url><loc>https://fenero-frontend.vercel.app/contact-us</loc><lastmod>2026-02-10T15:26:28.596Z</lastmod><changefreq>daily</changefreq><priority>0.7</priority></url>
+<url><loc>https://fenero-frontend.vercel.app/cookie-policy</loc><lastmod>2026-02-10T15:26:28.596Z</lastmod><changefreq>daily</changefreq><priority>0.7</priority></url>
+<url><loc>https://fenero-frontend.vercel.app/experienced-contractor</loc><lastmod>2026-02-10T15:26:28.596Z</lastmod><changefreq>daily</changefreq><priority>0.7</priority></url>
+<url><loc>https://fenero-frontend.vercel.app/financial-planning</loc><lastmod>2026-02-10T15:26:28.596Z</lastmod><changefreq>daily</changefreq><priority>0.7</priority></url>
+<url><loc>https://fenero-frontend.vercel.app/foreign-limited-company</loc><lastmod>2026-02-10T15:26:28.596Z</lastmod><changefreq>daily</changefreq><priority>0.7</priority></url>
+<url><loc>https://fenero-frontend.vercel.app/knowledge-hub/5-tips-for-starting-a-career-in-contracting</loc><lastmod>2026-02-10T15:26:28.596Z</lastmod><changefreq>daily</changefreq><priority>0.7</priority></url>
+<url><loc>https://fenero-frontend.vercel.app/knowledge-hub/budget-2025</loc><lastmod>2026-02-10T15:26:28.596Z</lastmod><changefreq>daily</changefreq><priority>0.7</priority></url>
+<url><loc>https://fenero-frontend.vercel.app/knowledge-hub/budget-2026-what-does-it-mean-for-individuals</loc><lastmod>2026-02-10T15:26:28.596Z</lastmod><changefreq>daily</changefreq><priority>0.7</priority></url>
+<url><loc>https://fenero-frontend.vercel.app/knowledge-hub/claiming-business-entertainment-expenses-what-you-need-to-know</loc><lastmod>2026-02-10T15:26:28.596Z</lastmod><changefreq>daily</changefreq><priority>0.7</priority></url>
+<url><loc>https://fenero-frontend.vercel.app/knowledge-hub/claiming-tax-free-expenses-10-common-mistakes</loc><lastmod>2026-02-10T15:26:28.596Z</lastmod><changefreq>daily</changefreq><priority>0.7</priority></url>
+<url><loc>https://fenero-frontend.vercel.app/knowledge-hub/dont-have-enough-money-to-pay-your-income-tax-bill</loc><lastmod>2026-02-10T15:26:28.596Z</lastmod><changefreq>daily</changefreq><priority>0.7</priority></url>
+<url><loc>https://fenero-frontend.vercel.app/knowledge-hub/how-contractors-can-save-money-using-the-bike-to-work-tax-scheme</loc><lastmod>2026-02-10T15:26:28.596Z</lastmod><changefreq>daily</changefreq><priority>0.7</priority></url>
+<url><loc>https://fenero-frontend.vercel.app/knowledge-hub/how-contractors-can-save-tax-when-moving-house</loc><lastmod>2026-02-10T15:26:28.596Z</lastmod><changefreq>daily</changefreq><priority>0.7</priority></url>
+<url><loc>https://fenero-frontend.vercel.app/knowledge-hub/how-you-can-get-e125-back-with-stay-spend</loc><lastmod>2026-02-10T15:26:28.596Z</lastmod><changefreq>daily</changefreq><priority>0.7</priority></url>
+<url><loc>https://fenero-frontend.vercel.app/knowledge-hub/is-it-okay-to-borrow-money-from-your-limited-company</loc><lastmod>2026-02-10T15:26:28.596Z</lastmod><changefreq>daily</changefreq><priority>0.7</priority></url>
+<url><loc>https://fenero-frontend.vercel.app/knowledge-hub/qa-with-orla-bourke-head-of-people-and-culture-at-fenero</loc><lastmod>2026-02-10T15:26:28.596Z</lastmod><changefreq>daily</changefreq><priority>0.7</priority></url>
+<url><loc>https://fenero-frontend.vercel.app/knowledge-hub/qa-with-philip-lyons</loc><lastmod>2026-02-10T15:26:28.596Z</lastmod><changefreq>daily</changefreq><priority>0.7</priority></url>
+<url><loc>https://fenero-frontend.vercel.app/knowledge-hub/qa-with-sam-armstrong</loc><lastmod>2026-02-10T15:26:28.596Z</lastmod><changefreq>daily</changefreq><priority>0.7</priority></url>
+<url><loc>https://fenero-frontend.vercel.app/knowledge-hub/tax-savings-for-contractors-on-training-and-learning</loc><lastmod>2026-02-10T15:26:28.596Z</lastmod><changefreq>daily</changefreq><priority>0.7</priority></url>
+<url><loc>https://fenero-frontend.vercel.app/knowledge-hub/the-pros-and-cons-of-contracting</loc><lastmod>2026-02-10T15:26:28.596Z</lastmod><changefreq>daily</changefreq><priority>0.7</priority></url>
+<url><loc>https://fenero-frontend.vercel.app/knowledge-hub/would-you-like-a-e1000-tax-free-payment-from-your-limited-company</loc><lastmod>2026-02-10T15:26:28.596Z</lastmod><changefreq>daily</changefreq><priority>0.7</priority></url>
+<url><loc>https://fenero-frontend.vercel.app/knowledge-hub</loc><lastmod>2026-02-10T15:26:28.596Z</lastmod><changefreq>daily</changefreq><priority>0.7</priority></url>
+<url><loc>https://fenero-frontend.vercel.app/new-to-contracting</loc><lastmod>2026-02-10T15:26:28.596Z</lastmod><changefreq>daily</changefreq><priority>0.7</priority></url>
+<url><loc>https://fenero-frontend.vercel.app/non-resident-contractors</loc><lastmod>2026-02-10T15:26:28.596Z</lastmod><changefreq>daily</changefreq><priority>0.7</priority></url>
+<url><loc>https://fenero-frontend.vercel.app/onward-invoicing</loc><lastmod>2026-02-10T15:26:28.596Z</lastmod><changefreq>daily</changefreq><priority>0.7</priority></url>
+<url><loc>https://fenero-frontend.vercel.app</loc><lastmod>2026-02-10T15:26:28.596Z</lastmod><changefreq>daily</changefreq><priority>0.7</priority></url>
+<url><loc>https://fenero-frontend.vercel.app/personal-service-company</loc><lastmod>2026-02-10T15:26:28.596Z</lastmod><changefreq>daily</changefreq><priority>0.7</priority></url>
+<url><loc>https://fenero-frontend.vercel.app/personal-tax-returns</loc><lastmod>2026-02-10T15:26:28.596Z</lastmod><changefreq>daily</changefreq><priority>0.7</priority></url>
+<url><loc>https://fenero-frontend.vercel.app/privacy-policy</loc><lastmod>2026-02-10T15:26:28.596Z</lastmod><changefreq>daily</changefreq><priority>0.7</priority></url>
+<url><loc>https://fenero-frontend.vercel.app/recruiter-resources/are-you-working-with-uk-contractors</loc><lastmod>2026-02-10T15:26:28.596Z</lastmod><changefreq>daily</changefreq><priority>0.7</priority></url>
+<url><loc>https://fenero-frontend.vercel.app/recruiter-resources/benefits-of-hiring-contractors</loc><lastmod>2026-02-10T15:26:28.596Z</lastmod><changefreq>daily</changefreq><priority>0.7</priority></url>
+<url><loc>https://fenero-frontend.vercel.app/recruiter-resources/fenero-on-a-page</loc><lastmod>2026-02-10T15:26:28.596Z</lastmod><changefreq>daily</changefreq><priority>0.7</priority></url>
+<url><loc>https://fenero-frontend.vercel.app/recruiter-resources/tips-for-relocating-from-the-uk-eu-from-ireland</loc><lastmod>2026-02-10T15:26:28.596Z</lastmod><changefreq>daily</changefreq><priority>0.7</priority></url>
+<url><loc>https://fenero-frontend.vercel.app/recruiter-resources/umbrella-company-expenses</loc><lastmod>2026-02-10T15:26:28.596Z</lastmod><changefreq>daily</changefreq><priority>0.7</priority></url>
+<url><loc>https://fenero-frontend.vercel.app/recruiter-resources/umbrella-company-psc-solutions</loc><lastmod>2026-02-10T15:26:28.596Z</lastmod><changefreq>daily</changefreq><priority>0.7</priority></url>
+<url><loc>https://fenero-frontend.vercel.app/recruiter-resources</loc><lastmod>2026-02-10T15:26:28.596Z</lastmod><changefreq>daily</changefreq><priority>0.7</priority></url>
+<url><loc>https://fenero-frontend.vercel.app/tax-calculator</loc><lastmod>2026-02-10T15:26:28.596Z</lastmod><changefreq>daily</changefreq><priority>0.7</priority></url>
+<url><loc>https://fenero-frontend.vercel.app/umbrella-director</loc><lastmod>2026-02-10T15:26:28.596Z</lastmod><changefreq>daily</changefreq><priority>0.7</priority></url>
+<url><loc>https://fenero-frontend.vercel.app/umbrella-paye</loc><lastmod>2026-02-10T15:26:28.596Z</lastmod><changefreq>daily</changefreq><priority>0.7</priority></url>
+</urlset>

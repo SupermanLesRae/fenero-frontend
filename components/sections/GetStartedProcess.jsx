@@ -59,13 +59,15 @@ export async function GetStartedProcess({ section }) {
                   {/* CARD */}
                   <div className="flex flex-col justify-center items-center w-67.5 min-h-65 bg-white border border-[#AFCE67] rounded-lg p-6 shadow-sm">
                     <div className="h-[100px] mb-4">
-                      <Image
-                        src={item.icon.node.sourceUrl}
-                        className="w-25 h-25 mb-4"
-                        alt={item.label}
-                        width={100}
-                        height={100}
-                      />
+                      {item.icon?.node?.sourceUrl && (
+                        <Image
+                          src={item.icon?.node?.sourceUrl}
+                          className="w-25 h-25 mb-4"
+                          alt={item.label}
+                          width={100}
+                          height={100}
+                        />
+                      )}
                     </div>
                     <h3 className="text-lg font-semibold text-center min-h-[85px]">
                       {item.label.trim()}

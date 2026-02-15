@@ -12,13 +12,18 @@ export async function AboutContracting({ section }) {
 
   const searchText = section.toLowerCase(); // normalize sel
 
-  // Get all nodes whose section includes sel
+  const searchTokens = searchText.toLowerCase().trim().split(/\s+/); // split into words
+
   const matchedNodes = data.allMoreAboutContracting.nodes.filter((node) => {
-    const sections = node.aboutContractingFields.section; // e.g. ['Home', 'New to Contracting']
-    return sections?.some((section) => section.toLowerCase() === searchText);
+    const sections = node?.aboutContractingFields?.section || [];
+
+    return sections.some((s) => {
+      const lowerSection = s.toLowerCase();
+      // every search token must appear somewhere in the section
+      return searchTokens.every((token) => lowerSection.includes(token));
+    });
   });
 
-  // Extract only getStartedStepsCoreFields from matched nodes
   const results = matchedNodes.map((node) => node.aboutContractingFields);
 
   if (!results[0] || results.length === 0) return null;

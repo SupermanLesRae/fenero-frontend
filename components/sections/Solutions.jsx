@@ -144,7 +144,7 @@ export async function Solutions({ section }) {
                       )}
                       {card.priceMonth.priceInfo && (
                         <p className="text-[20px] leading-7">
-                          {card.priceMonth.priceInfo} info
+                          {card.priceMonth.priceInfo}
                         </p>
                       )}
                     </div>

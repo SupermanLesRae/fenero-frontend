@@ -43,6 +43,24 @@ export default function WhoAreYouClient({ sectionData, items }) {
   }, [emblaApi, items.length]);
 
   useEffect(() => {
+    const headers = document.querySelectorAll(".card-header");
+    let maxHeight = 0;
+
+    // Reset heights first (important for responsive recalculation)
+    headers.forEach((h) => (h.style.height = "auto"));
+
+    // Find tallest
+    headers.forEach((h) => {
+      if (h.offsetHeight > maxHeight) {
+        maxHeight = h.offsetHeight;
+      }
+    });
+
+    // Apply tallest height to all
+    headers.forEach((h) => (h.style.height = `${maxHeight}px`));
+  }, []);
+
+  useEffect(() => {
     if (!emblaApi) return;
 
     updateDots();
@@ -54,8 +72,8 @@ export default function WhoAreYouClient({ sectionData, items }) {
     return () => window.removeEventListener("resize", handleResize);
   }, [emblaApi, updateDots]);
 
-  const truncate = (text, maxLength = 70) =>
-    text && text.length > maxLength ? text.slice(0, maxLength) + "..." : text;
+  /*   const truncate = (text, maxLength = 70) =>
+    text && text.length > maxLength ? text.slice(0, maxLength) + "..." : text; */
 
   return (
     <motion.section
@@ -91,18 +109,20 @@ export default function WhoAreYouClient({ sectionData, items }) {
                       color: item.textColor,
                       backgroundColor: item.backgroundColor,
                     }}
-                    className="p-8 flex flex-col justify-between flex-1 max-h-60"
+                    className="p-8 flex flex-col"
                   >
-                    <Image
-                      src={item.icon.node.sourceUrl}
-                      alt=""
-                      width={74}
-                      height={74}
-                    />
-                    <h3 className="mt-6 text-[22px] font-medium">
-                      {item.title}
-                    </h3>
-                    <p className="text-[15px]">{truncate(item.description)}</p>
+                    <div className="card-header">
+                      <Image
+                        src={item.icon.node.sourceUrl}
+                        alt=""
+                        width={74}
+                        height={74}
+                      />
+                      <h3 className="mt-6 text-[22px] font-medium">
+                        {item.title}
+                      </h3>
+                      <p className="text-[15px]">{item.description}</p>
+                    </div>
                   </div>
 
                   <div className="p-8 flex flex-col justify-between flex-1 ">

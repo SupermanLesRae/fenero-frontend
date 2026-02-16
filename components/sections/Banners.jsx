@@ -34,12 +34,16 @@ export async function Banners({ section }) {
       <div className="max-w-350 mx-auto text-center">
         <h2
           style={{ color: sectionData.styling.titleColor }}
-          className="relative text-[36px] leading-12 md:text-[48px] md:leading-14  font-extrabold font-nunito  select-none text-center pt-10 lg:pt-20 pb-10  text-[#000E47]"
+          className="relative text-[36px] leading-12 md:text-[48px] md:leading-14  font-extrabold font-nunito  select-none text-center pt-10 lg:pt-20 pb-4  text-[#000E47]"
         >
-          {sectionData.title}
+          {sectionData.title} {sectionData.styling.fontsize}
         </h2>
         <p
-          style={{ color: sectionData.styling.textColor }}
+          style={{
+            color: sectionData.styling.textColor,
+            fontSize: sectionData.styling.fontsize,
+            lineHeight: 1.4,
+          }}
           className="text-gray-600 mt-2"
           dangerouslySetInnerHTML={{ __html: sectionData.description }}
         ></p>

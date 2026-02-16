@@ -2,6 +2,7 @@ import { createApolloClient } from "@/lib/apolloClient";
 import { NEXT_STEPS_QUERY } from "@/lib/queries/Queries";
 import { ArrowDown, ArrowRight } from "lucide-react";
 import Image from "next/image";
+import Link from "next/link";
 
 {
   /* NextSteps */
@@ -66,13 +67,29 @@ export async function NextSteps({ section }) {
 
                       {/* CARD */}
                       <div className="flex flex-col items-center w-full md:w-83 min-h-65 bg-white rounded-lg py-6 shadow-sm">
-                        <Image
-                          width={270}
-                          height={260}
-                          src={item.icon.node.sourceUrl}
-                          className="w-25 h-25 mb-4"
-                          alt={item.label || ""}
-                        />
+                        {item?.link ? (
+                          <Link
+                            href={item.link}
+                            target="_self"
+                            className="cursor-pointer"
+                          >
+                            <Image
+                              width={270}
+                              height={260}
+                              src={item.icon.node.sourceUrl}
+                              className="w-25 h-25 mb-4"
+                              alt={item.label || ""}
+                            />
+                          </Link>
+                        ) : (
+                          <Image
+                            width={270}
+                            height={260}
+                            src={item.icon.node.sourceUrl}
+                            className="w-25 h-25 mb-4"
+                            alt={item.label || ""}
+                          />
+                        )}
                         <h3
                           style={{ color: item.color }}
                           className="text-[40px] font-extrabold text-center uppercase"

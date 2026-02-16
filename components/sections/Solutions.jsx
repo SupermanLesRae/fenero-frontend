@@ -139,7 +139,7 @@ export async function Solutions({ section }) {
                     <div className="mb-6">
                       {card.priceMonth.price && (
                         <h2 className="font-bold text-[36px] leading-9">
-                          {card.priceMonth.price} price
+                          {card.priceMonth.price}
                         </h2>
                       )}
                       {card.priceMonth.priceInfo && (

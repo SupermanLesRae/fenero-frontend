@@ -19,7 +19,6 @@ export default function RecruiterPostsClient({ posts }) {
         {posts.length > 0 ? (
           posts.map((post, index) => {
             const item = post.recruiterPostsCoreFields;
-            console.log(" post item:", item);
             return (
               <RecruiterCard
                 key={"recruiterpost" + index}

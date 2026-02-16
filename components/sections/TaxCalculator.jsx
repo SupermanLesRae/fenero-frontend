@@ -11,7 +11,6 @@ export async function TaxCalculator() {
     query: TAX_INFO_QUERY,
   });
 
-  console.log(data.taxCalculations.nodes[0].taxCalculatorFields);
   const sectionData = data?.taxCalculations?.nodes[0]?.taxCalculatorFields;
   if (!sectionData) return null;
 

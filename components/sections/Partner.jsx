@@ -20,8 +20,6 @@ export async function Partner({ section }) {
 
   const result = matchedNode ? matchedNode.partnerWithUsCoreFields : null;
 
-  console.log("result", data);
-
   const sectionData = result;
 
   // Return null if nothing found

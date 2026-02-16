@@ -35,9 +35,6 @@ export default async function Page({ params }) {
   });
 
   const sectionData = data?.recruiterPostBy?.recruiterPostsCoreFields;
-  // const content = data?.recruiterPostBy?.content;
-
-  console.log("sectionData.contentArea:", sectionData.postPageContent);
 
   if (!sectionData) return null;
 

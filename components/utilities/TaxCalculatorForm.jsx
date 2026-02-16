@@ -84,8 +84,6 @@ export function TaxCalculatorForm() {
       current_annual_salary: +Number(data.currentSalary || 0).toFixed(2),
     };
 
-    // console.log(payload);
-
     try {
       const response = await fetch(process.env.NEXT_PUBLIC_TAX_URL, {
         method: "POST",
@@ -100,7 +98,6 @@ export function TaxCalculatorForm() {
       }
 
       const resultData = await response.json();
-      //console.log("API result:", resultData);
       const formattedResults = {
         grossIncome: [
           resultData.employee_calculation.taxable_income,

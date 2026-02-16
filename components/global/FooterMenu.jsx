@@ -137,15 +137,18 @@ export default function FooterMenu({ menu }) {
 
                         {item.footerSectionLinkLabel}
                       </Link>
-                      {item?.logoicon?.node?.sourceUrl && (
-                        <div className="w-full">
-                          <Image
-                            width={68}
-                            height={69}
-                            alt=""
-                            className="mt-4 mx-auto sm:mx-0"
-                            src={item.logoicon.node.sourceUrl}
-                          />
+                      {item?.imagearray && (
+                        <div className="w-full flex items-center justify-center lg:justify-start gap-4 mt-4">
+                          {item.imagearray.map((imgObj, index) => (
+                            <Image
+                              key={index}
+                              width={68}
+                              height={69}
+                              alt={imgObj.image?.node?.altText || ""}
+                              className="mx-0"
+                              src={imgObj.image?.node?.sourceUrl}
+                            />
+                          ))}
                         </div>
                       )}
                     </li>

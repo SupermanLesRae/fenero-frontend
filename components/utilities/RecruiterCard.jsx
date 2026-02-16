@@ -70,19 +70,29 @@ export default function RecruiterCard({
         </>
       )}
 
-      <Link
-        href={gotoPage}
-        target={
-          gotoPage?.includes(".pdf") || gotoPage?.includes("http")
-            ? "_blank"
-            : "_self"
-        }
-        rel={
-          gotoPage?.includes(".pdf") || gotoPage?.includes("http")
-            ? "noopener noreferrer"
-            : undefined
-        }
-      >
+      {downloadURL ? (
+        <Link
+          href={downloadURL}
+          target={
+            downloadURL?.includes(".pdf") || downloadURL?.includes("http")
+              ? "_blank"
+              : "_self"
+          }
+          rel={
+            downloadURL?.includes(".pdf") || downloadURL?.includes("http")
+              ? "noopener noreferrer"
+              : undefined
+          }
+        >
+          <CardContent className="px-4 rounded-none text-[#056735] no-underline hover:underline">
+            {/* Title */}
+            <CardTitle className="text-lg font-bold ">{title}</CardTitle>
+
+            {/* Date */}
+            {date && <p className="text-sm ">{formattedDate}</p>}
+          </CardContent>
+        </Link>
+      ) : (
         <CardContent className="px-4 rounded-none text-[#056735] no-underline hover:underline">
           {/* Title */}
           <CardTitle className="text-lg font-bold ">{title}</CardTitle>
@@ -90,7 +100,7 @@ export default function RecruiterCard({
           {/* Date */}
           {date && <p className="text-sm ">{formattedDate}</p>}
         </CardContent>
-      </Link>
+      )}
     </Card>
   );
 }

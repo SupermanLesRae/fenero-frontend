@@ -138,16 +138,16 @@ export default function FooterMenu({ menu }) {
                         {item.footerSectionLinkLabel}
                       </Link>
                       {/*  */}
-                      {item?.imagearray && (
-                        <div className="w-full flex items-center justify-center lg:justify-start gap-4 mt-4">
+                      {Array.isArray(item?.imagearray) && (
+                        <div className="w-full flex gap-4 mt-4">
                           {item.imagearray.map((imgObj, index) => (
                             <Image
                               key={index}
                               width={68}
                               height={69}
                               alt={imgObj.image?.node?.altText || ""}
-                              className="mx-0"
-                              src={imgObj.image?.node?.sourceUrl}
+                              className="mx-auto sm:mx-0"
+                              src={imgObj.image?.node?.sourceUrl || ""}
                             />
                           ))}
                         </div>

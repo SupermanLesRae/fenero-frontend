@@ -70,6 +70,7 @@ export default function RecruiterCard({
         </>
       )}
 
+      {/*  */}
       {downloadURL ? (
         <Link
           href={downloadURL}

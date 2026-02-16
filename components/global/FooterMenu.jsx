@@ -137,6 +137,7 @@ export default function FooterMenu({ menu }) {
 
                         {item.footerSectionLinkLabel}
                       </Link>
+                      {/*  */}
                       {item?.imagearray && (
                         <div className="w-full flex items-center justify-center lg:justify-start gap-4 mt-4">
                           {item.imagearray.map((imgObj, index) => (

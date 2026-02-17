@@ -36,12 +36,12 @@ export async function Banners({ section }) {
           style={{ color: sectionData.styling.titleColor }}
           className="relative text-[36px] leading-12 md:text-[48px] md:leading-14  font-extrabold font-nunito  select-none text-center pt-10 lg:pt-20 pb-4  text-[#000E47]"
         >
-          {sectionData.title} {sectionData.styling.fontsize}
+          {sectionData.title}
         </h2>
         <p
           style={{
             color: sectionData.styling.textColor,
-            fontSize: sectionData.styling.fontsize,
+            fontSize: sectionData.styling?.fontsize || 20,
             lineHeight: 1.4,
           }}
           className="text-gray-600 mt-2"

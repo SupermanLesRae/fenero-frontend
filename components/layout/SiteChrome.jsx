@@ -3,6 +3,7 @@ import { createApolloClient } from "@/lib/apolloClient";
 import { MenuQuery } from "@/lib/queries/MenuQuery";
 import HeaderMenu from "@/components/global/HeaderMenu";
 import FooterMenu from "@/components/global/FooterMenu";
+import ScrollToTopButton from "../global/ScrollToTopButton";
 
 export default async function SiteChrome({ children }) {
   const client = createApolloClient();
@@ -19,6 +20,7 @@ export default async function SiteChrome({ children }) {
       <HeaderMenu menu={headerMenu} />
       <main className="bg-white mx-auto">{children}</main>
       <FooterMenu menu={footerMenu} />
+      <ScrollToTopButton />
     </>
   );
 }

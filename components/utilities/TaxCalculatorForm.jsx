@@ -188,10 +188,10 @@ export function TaxCalculatorForm() {
   useEffect(() => {
     if (payFrequency === "monthly") {
       form.setValue("workDays", 20);
-      form.setValue("businessExpenses", 300);
+      //form.setValue("businessExpenses", 300);
     } else if (payFrequency === "weekly") {
       form.setValue("workDays", 5);
-      form.setValue("businessExpenses", 75);
+      //form.setValue("businessExpenses", 75);
     }
   }, [payFrequency, form]);
 

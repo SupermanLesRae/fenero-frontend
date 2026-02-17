@@ -41,11 +41,11 @@ export async function CostInfo({ section }) {
               {/* CONTENT */}
 
               <div
-                className={`flex flex-col md:flex-row items-center md:items-start gap-10 px-6 pb-10 w-full max-w-337.5 relative mx-auto justify-center h-full`}
+                className={`flex flex-col md:flex-row items-center md:items-start gap-0 px-6 pb-10 w-full max-w-337.5 relative mx-auto justify-center h-full`}
               >
                 {/*  */}
                 {sectionData.costInfoSectionsCoreFields.cols?.left?.title && (
-                  <div className="flex flex-col gap-4  bg-[#036735] max-w-xl text-white p-10 rounded-xl min-w-[300px] max-w-[500px]">
+                  <div className="flex flex-col gap-4  bg-[#036735] max-w-xl text-white p-10 rounded-xl min-w-[300px] max-w-[500px] mx-6">
                     <p className="relative text-[18px] leading-tight font-nunito text-left  ">
                       {sectionData.costInfoSectionsCoreFields.cols.left.title}
                     </p>

@@ -13,7 +13,7 @@ export async function POST(req) {
     if (!name || !email || !phone || !enquiry || !message || !terms) {
       return NextResponse.json(
         { error: "Missing required fields" },
-        { status: 400 }
+        { status: 400 },
       );
     }
 
@@ -23,7 +23,7 @@ export async function POST(req) {
 
     await resend.emails.send({
       from: "Fenero <onboarding@resend.dev>",
-      to: ["superman.lesrae111@gmail.com"], // 👈 CONTACT_RECEIVER
+      to: [process.env.CONTACT_RECEIVER], // 👈 CONTACT_RECEIVER
       replyTo: email,
       subject: `New Contact Request: ${enquiry}`,
       html: `

@@ -19,8 +19,8 @@ export async function POST(req) {
 
     await resend.emails.send({
       from: "Website Contact <onboarding@resend.dev>", // replace after domain verification
-      to: ["superman.lesrae111@gmail.com"], // 👈 CONTACT_RECEIVER
-      replyTo: "superman.lesrae111@gmail.com",
+      to: [process.env.CONTACT_RECEIVER], // 👈 CONTACT_RECEIVER
+      replyTo: process.env.CONTACT_RECEIVER,
       subject: "Request for a Callback",
       html: `
         <h3>Request for a Callback</h3>

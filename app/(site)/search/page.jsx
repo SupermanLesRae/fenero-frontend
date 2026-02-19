@@ -6,9 +6,7 @@ export default async function SearchPage({ searchParams }) {
   const params = await searchParams; // <- unwrap it
   const q = params?.q || "";
 
-  const baseUrl =
-    process.env.NEXT_PUBLIC_BASE_URL ||
-    "https://fenero-frontend-smoky.vercel.app/";
+  const baseUrl = process.env.NEXT_PUBLIC_BASE_URL;
 
   // keep the search request dynamic (no cache)
   const res = await fetch(`${baseUrl}/api/search?q=${q}`, {

@@ -82,7 +82,6 @@ export default async function HomeHero() {
                 }
               >
                 <Button
-                  /* style={{ color: cta.txtColor, backgroundColor: cta.bgColor }} */
                   size="lg"
                   className={`bg-[#AFCE67] hover:bg-[#D1DF20] text-[#000E47] cursor-pointer w-full lg:w-auto transition shadow-md `}
                 >

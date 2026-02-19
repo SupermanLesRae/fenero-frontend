@@ -72,9 +72,6 @@ export default function WhoAreYouClient({ sectionData, items }) {
     return () => window.removeEventListener("resize", handleResize);
   }, [emblaApi, updateDots]);
 
-  /*   const truncate = (text, maxLength = 70) =>
-    text && text.length > maxLength ? text.slice(0, maxLength) + "..." : text; */
-
   return (
     <motion.section
       style={{ backgroundColor: sectionData.backgroundColor }}

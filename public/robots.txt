@@ -3,7 +3,7 @@ User-agent: *
 Allow: /
 
 # Host
-Host: https://https://fenero-frontend-smoky.vercel.app/
+Host: https://fenero-frontend-smoky.vercel.app/
 
 # Sitemaps
-Sitemap: https://https://fenero-frontend-smoky.vercel.app//sitemap.xml
+Sitemap: https://fenero-frontend-smoky.vercel.app/sitemap.xml

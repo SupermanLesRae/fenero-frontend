@@ -8,7 +8,7 @@ export default async function SearchPage({ searchParams }) {
 
   const baseUrl =
     process.env.NEXT_PUBLIC_BASE_URL ||
-    "https://fenero-frontend-git-main-les-raes-projects.vercel.app";
+    "https://fenero-frontend-smoky.vercel.app/";
 
   // keep the search request dynamic (no cache)
   const res = await fetch(`${baseUrl}/api/search?q=${q}`, {

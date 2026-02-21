@@ -98,6 +98,7 @@ export function TaxCalculatorForm() {
       }
 
       const resultData = await response.json();
+      console.log(resultData);
       const formattedResults = {
         grossIncome: [
           resultData.employee_calculation.taxable_income,
@@ -378,8 +379,9 @@ export function TaxCalculatorForm() {
           render={({ field }) => (
             <FormItem className="flex flex-col md:flex-row items-center gap-4">
               {/* Label takes remaining space */}
-              <FormLabel className="flex-1 text-left">
+              <FormLabel className="flex-1 text-left leading-4">
                 What is your pension contribution?
+                <span className="text-xs">(per month/week)</span>
               </FormLabel>
 
               <div className="flex flex-col gap-2 w-full md:w-auto md:min-w-[380px]">
@@ -417,8 +419,9 @@ export function TaxCalculatorForm() {
           name="businessExpenses"
           render={({ field }) => (
             <FormItem className="flex flex-col md:flex-row items-center gap-4">
-              <FormLabel className="flex-1 text-left">
+              <FormLabel className="flex-1 text-left leading-4">
                 How much business expenses will you claim?
+                <span className="text-xs">(per month/week)</span>
               </FormLabel>
 
               <div className="flex flex-col gap-2 w-full md:w-auto md:min-w-[380px]">
@@ -594,9 +597,15 @@ export function TaxCalculatorForm() {
                 <thead className="bg-gray-100">
                   <tr>
                     <th className="px-4 py-4 text-left"></th>
-                    <th className="px-4 py-4 text-left">Umbrella PAYE</th>
+                    <th className="px-4 py-4 text-left">
+                      Umbrella PAYE
+                      <br />
+                      <span className="text-xs">(Class A PRSI)</span>
+                    </th>
                     <th className="px-4 py-4 text-left">
                       Umbrella Director / PSC
+                      <br />
+                      <span className="text-xs">(Class S PRSI)</span>
                     </th>
                     <th className="px-4 py-4 text-left">Current Salary</th>
                   </tr>

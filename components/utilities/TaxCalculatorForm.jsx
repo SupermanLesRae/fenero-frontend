@@ -578,7 +578,6 @@ export function TaxCalculatorForm() {
                         <span className="font-bold">
                           Umbrella PAYE
                           <span className="text-xs font-light">
-                            {" "}
                             (Class A PRSI)
                           </span>
                           :
@@ -591,7 +590,6 @@ export function TaxCalculatorForm() {
                         <span className="font-bold">
                           Umbrella Director / PSC
                           <span className="text-xs font-light">
-                            {" "}
                             (Class S PRSI)
                           </span>
                           :

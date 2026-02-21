@@ -379,9 +379,12 @@ export function TaxCalculatorForm() {
           render={({ field }) => (
             <FormItem className="flex flex-col md:flex-row items-center gap-4">
               {/* Label takes remaining space */}
-              <FormLabel className="flex-1 text-left leading-4">
-                What is your pension contribution?
-                <span className="text-xs">(per month/week)</span>
+              <FormLabel className="flex-1 text-center md:text-left leading-4">
+                <div>
+                  What is your pension contribution?
+                  <br />
+                  <span className="text-xs ">(per month/week)</span>
+                </div>
               </FormLabel>
 
               <div className="flex flex-col gap-2 w-full md:w-auto md:min-w-[380px]">
@@ -419,9 +422,14 @@ export function TaxCalculatorForm() {
           name="businessExpenses"
           render={({ field }) => (
             <FormItem className="flex flex-col md:flex-row items-center gap-4">
-              <FormLabel className="flex-1 text-left leading-4">
-                How much business expenses will you claim?
-                <span className="text-xs">(per month/week)</span>
+              <FormLabel className="flex-1 text-center md:text-left leading-4">
+                <div>
+                  How much business expenses will you claim?
+                  <br />
+                  <span className="text-xs text-center md:text-left">
+                    (per month/week)
+                  </span>
+                </div>
               </FormLabel>
 
               <div className="flex flex-col gap-2 w-full md:w-auto md:min-w-[380px]">

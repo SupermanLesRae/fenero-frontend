@@ -575,14 +575,18 @@ export function TaxCalculatorForm() {
                       }`}
                     >
                       <span>
-                        <span className="font-bold">Umbrella PAYE:</span>
+                        <span className="font-bold">
+                          Umbrella PAYE
+                          <span className="text-xs">(Class A PRSI)</span>:
+                        </span>
                         <br />
                         {formatValue(row.values[0])}
                       </span>
 
                       <span>
                         <span className="font-bold">
-                          Umbrella Director / PSC:
+                          Umbrella Director / PSC
+                          <span className="text-xs">(Class S PRSI)</span>:
                         </span>
                         <br />
                         {formatValue(row.values[1])}

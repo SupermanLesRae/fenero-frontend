@@ -382,8 +382,8 @@ export function TaxCalculatorForm() {
               <FormLabel className="flex-1 text-center md:text-left leading-4">
                 <div>
                   What is your pension contribution?
-                  <br />
-                  <span className="text-xs ">(per month/week)</span>
+                  {/* <br />
+                  <span className="text-xs ">(per month/week)</span> */}
                 </div>
               </FormLabel>
 
@@ -425,10 +425,10 @@ export function TaxCalculatorForm() {
               <FormLabel className="flex-1 text-center md:text-left leading-4">
                 <div>
                   How much business expenses will you claim?
-                  <br />
+                  {/* <br />
                   <span className="text-xs text-center md:text-left">
                     (per month/week)
-                  </span>
+                  </span> */}
                 </div>
               </FormLabel>
 
@@ -577,9 +577,9 @@ export function TaxCalculatorForm() {
                       <span>
                         <span className="font-bold">
                           Umbrella PAYE&nbsp;
-                          <span className="text-xs font-normal">
+                          {/*  <span className="text-xs font-normal">
                             (Class A PRSI)
-                          </span>
+                          </span> */}
                           :
                         </span>
                         <br />
@@ -589,9 +589,9 @@ export function TaxCalculatorForm() {
                       <span>
                         <span className="font-bold">
                           Umbrella Director / PSC&nbsp;
-                          <span className="text-xs font-normal">
+                          {/*  <span className="text-xs font-normal">
                             (Class S PRSI)
-                          </span>
+                          </span> */}
                           :
                         </span>
                         <br />
@@ -617,13 +617,13 @@ export function TaxCalculatorForm() {
                     <th className="px-4 py-4 text-left"></th>
                     <th className="px-4 py-4 text-left">
                       Umbrella PAYE
-                      <br />
-                      <span className="text-xs">(Class A PRSI)</span>
+                      {/* <br />
+                      <span className="text-xs">(Class A PRSI)</span> */}
                     </th>
                     <th className="px-4 py-4 text-left">
                       Umbrella Director / PSC
-                      <br />
-                      <span className="text-xs">(Class S PRSI)</span>
+                      {/* <br />
+                      <span className="text-xs">(Class S PRSI)</span> */}
                     </th>
                     <th className="px-4 py-4 text-left">Current Salary</th>
                   </tr>

@@ -101,8 +101,8 @@ export function TaxCalculatorForm() {
       console.log(resultData);
       const formattedResults = {
         grossIncome: [
-          resultData.employee_calculation.taxable_income,
-          resultData.director_calculation.taxable_income,
+          resultData.period_gross_invoice,
+          resultData.period_gross_invoice,
           resultData.current_salary_period,
         ],
 

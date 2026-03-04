@@ -30,8 +30,8 @@ export default async function Page() {
       <div id="calculator">
         <TaxCalculator />
       </div>
-      <WhatWeOffer bg={"#ECF8EF"} section={section} />
       <CallBackRequest />
+      <WhatWeOffer bg={"#ECF8EF"} section={section} />
     </div>
   );
 }

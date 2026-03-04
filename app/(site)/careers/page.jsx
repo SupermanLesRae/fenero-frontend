@@ -5,6 +5,7 @@ import { OurValues } from "@/components/sections/OurValues";
 import { Partner } from "@/components/sections/Partner";
 import { Roles } from "@/components/sections/Roles";
 import { WhatWeOffer } from "@/components/sections/WhatWeOffer";
+import ScrollToSection from "@/components/utilities/ScrollToSection";
 import { createApolloClient } from "@/lib/apolloClient";
 import { HERO_QUERY } from "@/lib/queries/Queries";
 
@@ -24,6 +25,7 @@ export default async function Page() {
 
   return (
     <div>
+      <ScrollToSection />
       {data?.heroBy?.herosCoreFields && (
         <Hero data={data.heroBy.herosCoreFields.heroSlide} />
       )}
@@ -31,7 +33,9 @@ export default async function Page() {
       <WhatWeOffer section={section} />
       <OurValues />
       <Roles customStyles={"min-w-auto rounded-md"} />
+
       <Events />
+
       <Community />
     </div>
   );

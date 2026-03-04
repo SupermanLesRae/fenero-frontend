@@ -249,8 +249,17 @@ export function ContactFormClient({ selectOptions }) {
                       onCheckedChange={(v) => field.onChange(!!v)}
                     />
                   </FormControl>
-                  <FormLabel className="font-normal leading-tight">
-                    I agree that my data will be collected and stored
+                  <FormLabel className="font-normal leading-tight flex flex-col">
+                    <span>
+                      I agree that my data will be collected and stored as per
+                      the{" "}
+                      <a
+                        href="/privacy-policy"
+                        className="underline hover:text-[#021047]"
+                      >
+                        Privacy Policy.
+                      </a>
+                    </span>
                   </FormLabel>
                 </div>
                 <div className="h-5">

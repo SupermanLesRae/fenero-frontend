@@ -382,8 +382,10 @@ export function TaxCalculatorForm() {
               <FormLabel className="flex-1 text-center md:text-left leading-4">
                 <div>
                   What is your pension contribution?
-                  {/* <br />
-                  <span className="text-xs ">(per month/week)</span> */}
+                  <br />
+                  <span className="text-xs ">
+                    <i>(per month/week)</i>
+                  </span>
                 </div>
               </FormLabel>
 
@@ -425,10 +427,10 @@ export function TaxCalculatorForm() {
               <FormLabel className="flex-1 text-center md:text-left leading-4">
                 <div>
                   How much business expenses will you claim?
-                  {/* <br />
+                  <br />
                   <span className="text-xs text-center md:text-left">
-                    (per month/week)
-                  </span> */}
+                    <i>(per month/week)</i>
+                  </span>
                 </div>
               </FormLabel>
 
@@ -542,7 +544,7 @@ export function TaxCalculatorForm() {
                 },
                 {
                   title: `
-        Monthly Net Pay <br/>
+        Monthly/Weekly Net Pay <br/>
         <div class="text-xs">(including pension contribution)*</div>
       `,
                   values: results.netPay,

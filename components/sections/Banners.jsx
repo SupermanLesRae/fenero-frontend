@@ -47,6 +47,15 @@ export async function Banners({ section }) {
           className="text-gray-600 mt-2"
           dangerouslySetInnerHTML={{ __html: sectionData.description }}
         ></p>
+        <p
+          style={{
+            color: sectionData.styling.textColor,
+            fontSize: 12,
+            lineHeight: 1.4,
+          }}
+          className="text-gray-600 mt-2 text-xs italic"
+          dangerouslySetInnerHTML={{ __html: sectionData.note }}
+        ></p>
       </div>
     </section>
   );

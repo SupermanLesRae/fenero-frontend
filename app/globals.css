@@ -595,3 +595,78 @@ details[open] .chevron {
   height: 500px !important; /* big enough to fit all content */
   padding: 10px !important;
 }
+
+.SRSJobCard {
+  padding: 15px 30px;
+}
+
+@media (max-width: 640px) {
+  .SRSJobCard {
+    padding: 15px 5px !important;
+  }
+}
+#ij-snippet .SRSJobButton {
+  display: flex !important;
+  justify-content: flex-end !important;
+}
+
+@media (max-width: 700px) {
+  #ij-snippet .SRSJobButton {
+    display: flex !important;
+    justify-content: center !important;
+  }
+}
+
+#ij-snippet .SRSJobButton a {
+  margin-top: 20px;
+
+  width: 100% !important;
+  max-width: fit-content !important;
+
+  background-color: #afce67 !important;
+  padding: 12px 20px !important;
+  border-radius: 8px !important;
+
+  font-size: 16px !important;
+  font-weight: 700 !important;
+  color: #000 !important;
+  text-decoration: none !important;
+
+  cursor: pointer !important;
+  transition: all 0.2s ease !important;
+
+  box-shadow: 0 2px 6px rgba(175, 206, 103, 0.3) !important;
+}
+
+#ij-snippet .SRSJobButton a:hover {
+  background-color: #d1df20 !important;
+  box-shadow: 0 2px 6px rgba(175, 206, 103, 0.1) !important;
+}
+
+#ij-snippet .SRSJobTitle {
+  font-weight: 700 !important;
+  font-size: 20px !important; /* optional, adjust if needed */
+  color: #090d47 !important;
+  text-decoration: none !important;
+  display: inline-block;
+  margin-bottom: 15px;
+  margin-top: 10px !important;
+}
+
+#ij-snippet .SRSJobCard {
+  border-bottom: 1px solid #cecaca !important;
+  padding-bottom: 25px !important;
+}
+
+#ij-snippet .SRSJobDetails {
+  padding: 10px 0px !important;
+  font-size: 12px !important;
+}
+
+#ij-snippet .SRSJobPosted {
+  font-size: 12px !important;
+}
+
+#ij-snippet .SRSJobSummary {
+  font-size: 14px !important;
+}

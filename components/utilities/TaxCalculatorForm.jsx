@@ -665,7 +665,7 @@ export function TaxCalculatorForm() {
                   {/* Net Pay */}
                   <tr className="border-t border-[#CEEED6] text-[#6b0071] text-center">
                     <td className="px-4 py-4 font-bold text-left text-lg leading-0.5 pt-7">
-                      Monthly Net Pay
+                      Monthly/Weekly Net Pay
                       <br />
                       <div className="text-sm mt-2">
                         (including pension contribution)*

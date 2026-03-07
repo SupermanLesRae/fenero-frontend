@@ -616,18 +616,18 @@ export function TaxCalculatorForm() {
               <table className="min-w-full text-md">
                 <thead className="bg-gray-100">
                   <tr>
-                    <th className="px-4 py-4 text-left"></th>
-                    <th className="px-4 py-4 text-left">
+                    <th className="px-4 py-4 text-center"></th>
+                    <th className="px-4 py-4 text-center">
                       Umbrella PAYE
                       <br />
                       <span className="text-xs">(Class A PRSI)</span>
                     </th>
-                    <th className="px-4 py-4 text-left">
+                    <th className="px-4 py-4 text-center">
                       Umbrella Director / PSC
                       <br />
                       <span className="text-xs">(Class S PRSI)</span>
                     </th>
-                    <th className="px-4 py-4 text-left">Current Salary</th>
+                    <th className="px-4 py-4 text-center">Current Salary</th>
                   </tr>
                 </thead>
 
